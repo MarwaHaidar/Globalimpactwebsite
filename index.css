@@ -1,0 +1,487 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+body{
+    background:linear-gradient(to right, #F0E6F7,#DAC1ED);;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.header {
+    height: 3.5rem;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #E1CEEE;
+    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    padding: 0 5px;
+    z-index: 100;
+    
+  }
+  .header__container {
+    display: flex;
+    align-items: center;
+    height: 3.5rem;
+    justify-content: space-between;
+  }
+  .header__logo img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+
+  }
+  .header__search {
+    display: flex;
+    padding: 10px 10px;
+    background-color: #F4F0FA;
+    width: 20%;
+    border-radius: 5px;
+  }  
+  .header__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #F4F0FA;
+  } 
+  .header__input::placeholder {
+    font-family:'Poppins', sans-serif;
+    color: #58555E;
+  }  
+.header__profile{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 50px;
+}
+.header_profile{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}  
+/*---------------------------------------------------------------------*/
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 5px 5px 0;
+    background-color: #E1CEEE;
+    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    z-index: 100;
+    transition: .4s ease;
+    width: 0;
+  }
+ .nav__logo img{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    margin-left: 5px;
+ }
+ a{
+    text-decoration: none;
+ }
+ .nav__logo-name{
+    
+    color: 333333;
+    
+ }
+
+  .nav__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    overflow: auto;
+    scrollbar-width: none; /* For mozilla */
+    margin-left: 5px;
+  }
+  /* For Google Chrome and others */
+.nav__container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /*.nav__logo {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    
+  }
+  .nav__logo-name{
+    
+    margin-left:10px;
+    font-size: 20px;
+
+  }
+  .nav__logo img{
+    margin:0px;
+    padding: 0;
+  }*/
+  .nav__logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav__logo img {
+    width: 100px; /* Adjust the size to your preference */
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+  
+  
+  /*-----------------------*/
+  .nav__list, 
+  .nav__items {
+    display: grid;
+  }
+  
+  .nav__list {
+    row-gap: 5px;
+    margin: 5px;
+  }
+  
+  .nav__items {
+    row-gap: 5px;
+  }
+  
+  .nav__subtitle {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:#333333;
+  }
+  
+  .nav__link {
+    display: flex;
+    align-items: center;
+    color: #58555E;
+    margin: 0px;
+  }
+  
+  .nav__link:hover {
+    color: #9370DB;
+  }
+  
+ 
+  
+  .nav__name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 5px;
+    margin-top: 5px;
+    
+
+    
+  }
+  
+  .nav_logout {
+    margin-bottom:50px;
+    border-radius: 40px;
+    background-color: #9370DB;
+    color: white;
+    width: 40%;
+    margin-left: 50px;
+  }
+  /* Dropdown----------------------------------------------------------------------------- */
+.nav__dropdown {
+    overflow: hidden;
+    max-height: 30px;
+    transition: .4s ease-in-out;
+  }
+  
+  .nav__dropdown-collapse {
+    
+   
+    margin-top: 5px;
+  }
+  
+  .nav__dropdown-content {
+    display: grid;
+    row-gap: .25rem;
+    padding: .75rem 2.5rem .75rem 1.8rem;
+  }
+  
+  .nav__dropdown-item {
+    font-size:14px;
+    font-weight: 500;
+    color: #333333;
+    
+  }
+  
+  .nav__dropdown-item:hover {
+    color: #9370DB;
+  }
+  
+  .nav__dropdown-icon {
+    margin-left: auto;
+    transition: .4s;
+  }
+  
+  /* Show dropdown collapse */
+  .nav__dropdown:hover {
+    max-height: 100rem;
+  }
+  
+  /* Rotate icon arrow */
+  .nav__dropdown:hover .nav__dropdown-icon {
+    transform: rotate(180deg);
+  }
+  
+  /*===== Show menu =====*/
+  .show-menu {
+    left: 0;
+  }
+
+  
+  
+  /* Navbar expanded */
+  .nav:hover {
+    
+      width: 219px;
+    }
+  /*------------------create post------------*/
+  .create_post{
+    width: 600px;
+    height: 100px;
+    margin: 40px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+ 
+  .create{
+    display: flex;
+    margin-left: 10px;
+  }
+  .type_something{
+    border: none;
+    width: 90%;
+    opacity: 0.5;
+    margin-left: 10px;
+  
+  }
+  .post_features{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+  .createpost_icons i{
+    margin-left: 10px;
+  }
+  .post_post{
+    background-color: #9370DB;
+    color: white;
+    border-radius: 10px;
+    width: 90px;
+  }
+  
+ /*post style---------------------------------------------------------------------------------*/
+ .post__container{
+  display: grid;
+  justify-content: center;
+  margin-top: 60px;
+  margin-left: 300px;
+ 
+ }
+
+ .post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.post_menu {
+  position: relative;
+}
+
+.actions-menu {
+  position: absolute;
+  
+  
+  background-color: #E1CEEE;
+  box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+  display: none;
+  border-radius: 20px;
+  color: #333333;
+  font-weight: 300;
+}
+
+.actions-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.actions-menu li {
+  padding: 8px 16px;
+  cursor: pointer;
+ 
+}
+
+.actions-menu li:hover {
+  color: #9370DB;
+}
+
+.account-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0px;
+}
+
+.account-name {
+  font-weight: bold;
+  color: #333333;
+  margin-right: 480px;
+  
+}
+
+ .post {
+ 
+  width: 600px;
+  height: auto;
+  margin: 40px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.post-caption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333333;
+  font-family:'Poppins', sans-serif ;
+}
+
+.post-actions {
+  margin-top: 10px;
+  display: flex;
+  
+  /*justify-content: space-between;*/
+}
+
+.vote-buttons {
+  display: flex;
+  
+}
+.vote-buttons button{
+  margin-left: 10px;
+  border: none;
+  background-color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
+.comment-button {
+  background-color: white;
+  color: #333333;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.view-comments{
+  text-align: center;
+  color: #9370DB;
+
+}
+.divider{
+  color: #333333;
+  max-width: 400px;
+  font-weight:800 ;
+}
+.comment{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  /*margin-left: 60px;*/
+}
+.comment_profile{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  }
+
+.profile_photo{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+}
+.write_comment{
+  border:none;
+  
+  margin-left: 10px;
+  width: 100px;
+}
+/*----------------------------------------------------------*/
+.right_navbar{
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  
+}
+
+.Trending_bar{
+  background-color: white;
+  width: 200px;
+  height: 150px;
+  
+  border-radius: 20px;
+  margin-top:100px;
+  
+}
+
+.recommended_bar{
+  background-color: white;
+  width: 200px;
+  height: 150px;
+  
+  border-radius: 20px;
+  margin-top:30px;
+  
+}
+
+.community_bar{
+  background-color: white;
+  width: 200px;
+  height: 150px;
+  
+  border-radius: 20px;
+  margin-top:30px;
+  
+}

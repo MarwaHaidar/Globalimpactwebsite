@@ -9,11 +9,13 @@
 
         <!--========== CSS ==========-->
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="community.css">
 
         <title>Responsive sidebar submenus</title>
     </head>
     <body>
-       
+       <div class="main_content" id="main_content">
+        <section class="section">
         <!--========== HEADER ==========-->
         <header class="header">
             <div class="header__container">
@@ -267,10 +269,7 @@
                 <p class="name">#amjad</p>
                 <button class="follow">Follow</button>
             </div>
-            <div class="element2">
-                <p class="name">#ali</p>
-                <button class="follow">Follow</button>
-            </div>
+            
 
 
         </div>
@@ -294,13 +293,7 @@
                     <p class="name">Ali Mantache</p>
                     <button class="follow">Follow</button>
                 </div>
-                <div class="element3">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-                    <p class="name">oussama hamzeh</p>
-                    <button class="follow">Follow</button>
-                </div>
+                
                 <div class="element4">
                     <div class="comment_profile">
                         <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
@@ -342,61 +335,94 @@
                 <hr class="right-divider">
                 <div class="title"><i class="fa-solid fa-people-roof" style="color: #333333; font-size: 20px;"></i>
                     <p class="add-community" style="font-size: 12px;"> ADD Community</p>
-                    <i class="fa-solid fa-circle-plus" style="color: #333333; font-size: 15px; margin-left: 5px; " ></i></div>
+                    <i class="fa-solid fa-circle-plus"id="open_overlay" style="color: #333333; font-size: 15px; margin-left: 5px; " ></i></div>
 
 
 
         </div>
 
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </div>
+    
+</section>
+</div>
 
-       <script src="index.js"></script>
+        <div id="overlayPage" class="overlay-page">
+            <div class="overlay-content">
+                <div id="overlay_header">
+                <h2>Create Community</h2>
+                <button id="closeOverlay">Exit</button>
+                
+
+            </div>
+            
+            <div id="form">
+                <form id="createCommunityForm">
+                    <hr>
+                    <div class="comm_name">
+                        <label for="communityName">Community Name</label><br>
+                        <input type="text" id="communityName" name="communityName" placeholder="Community Name" required>
+                    </div>
+                    <div class="comm_topic">
+                        <label for="description">Topic</label><br>
+                        <input type="text" id="communityTopic" name="communityTopic"  placeholder= "This will help relevant users find your community ">
+                    </div>
+                    <div class="comm_desc">
+                        <label for="description">Description</label><br>
+                        <input type="text" id="communityName" name="communityName"  placeholder="This is how new members come to understand your community" required>
+                    </div>
+                    <div class="comm_img">
+                        <label for="communityPhoto">Community Photo</label><br>
+                        <input type="file" id="communityPhoto" name="communityPhoto" accept="image/*">
+                        
+                    </div>
+                    
+                    <button type="submit">Create Community</button>
+                    
+                </form>
+                </div>
+                
+            </div>
+        </div>
+      
+
+
+    <script>
+        // Add this script to control overlay visibility and blur effect
+        const overlayPage = document.getElementById("overlayPage");
+        const closeOverlayButton = document.getElementById("closeOverlay");
+        const mainContent = document.getElementById("main_content");
+        const openoverlaybutton=document.getElementById("open_overlay")
+
+        function openOverlay() {
+            overlayPage.style.display = "block";
+            overlayPage.classList.remove("blurred")
+            mainContent.classList.add("blurred");
+            
+        }
+
+        function closeOverlay() {
+            overlayPage.style.display = "none";
+            mainContent.classList.remove("blurred");
+        }
+
+        // Close the overlay when the close button is clicked
+        closeOverlayButton.addEventListener("click", closeOverlay);
+        openoverlaybutton.addEventListener("click",openOverlay);
+
+        // Close the overlay when clicking outside the content
+        window.addEventListener("click", (event) => {
+            if (event.target === overlayPage) {
+                closeOverlay();
+            }
+        });
+    </script>
+
+<script src="index.js"></script>
+
     </body>
+   
+
 </html>

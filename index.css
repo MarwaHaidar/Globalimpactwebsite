@@ -5,14 +5,13 @@ body{
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+
 }
 
 
 
 .header {
-    height: 3.5rem;
-    
+    height: 4rem; 
     position: fixed;
     top: 0;
     left: 0;
@@ -27,20 +26,22 @@ body{
   .header__container {
     display: flex;
     align-items: center;
-    height: 3.5rem;
+    height: 4rem;
     justify-content: space-between;
   }
   .header__logo img{
     width: 90px;
     height: 90px;
     border-radius: 50%;
+    margin-left: 23px;
+    margin-top: 10px;
 
   }
   .header__search {
     display: flex;
     padding: 10px 10px;
     background-color: #F4F0FA;
-    width: 20%;
+    width: 30%;
     border-radius: 5px;
   }  
   .header__input {
@@ -64,7 +65,15 @@ body{
   height: 50px;
   width: 50px;
   border-radius: 50%;
-}  
+}
+.nav_login{
+  
+  border-radius: 40px;
+  background-color: #9370DB;
+  color: white;
+  width: 60%;
+  margin-right: 60px;}
+  
 /*---------------------------------------------------------------------*/
 
 .nav {
@@ -80,10 +89,9 @@ body{
     width: 0;
   }
  .nav__logo img{
-    height: 90px;
-    width: 90px;
     border-radius: 50%;
-    margin-left: 5px;
+    margin-left: 2px;
+    margin-top: -20px;
  }
  a{
     text-decoration: none;
@@ -102,7 +110,7 @@ body{
     padding-bottom: 5px;
     overflow: auto;
     scrollbar-width: none; /* For mozilla */
-    margin-left: 5px;
+    margin-left: 15px;
   }
   /* For Google Chrome and others */
 .nav__container::-webkit-scrollbar {
@@ -171,6 +179,7 @@ body{
   
   .nav__link:hover {
     color: #9370DB;
+
   }
   
  
@@ -198,6 +207,7 @@ body{
     overflow: hidden;
     max-height: 30px;
     transition: .4s ease-in-out;
+    
   }
   
   .nav__dropdown-collapse {
@@ -221,6 +231,7 @@ body{
   
   .nav__dropdown-item:hover {
     color: #9370DB;
+ 
   }
   
   .nav__dropdown-icon {
@@ -252,9 +263,10 @@ body{
     }
   /*------------------create post------------*/
   .create_post{
-    width: 600px;
+    width:85%;
     height: 100px;
-    margin: 40px;
+    margin-top: 30px;
+    margin-left: 40px;
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 8px;
@@ -263,6 +275,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 
   }
  
@@ -294,30 +307,30 @@ body{
   
  /*post style---------------------------------------------------------------------------------*/
  .post__container{
-  display: grid;
-  justify-content: center;
+
   margin-top: 60px;
-  margin-left: 300px;
+  margin-left: 26%;
+  width: 50%;
+  border-radius: 10px;
  
  }
 
  .post-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  
+  justify-content: flex-start;
   margin-bottom: 10px;
   margin-top: 0px;
 }
 
 .post_menu {
-  position: relative;
+  position: absolute;
+  left: 70.5%;
+
 }
 
 .actions-menu {
   position: absolute;
-  
-  
   background-color: #E1CEEE;
   box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
   display: none;
@@ -343,29 +356,33 @@ body{
 }
 
 .account-image {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 50px;
   border-radius: 50%;
   margin-right: 0px;
+
 }
 
 .account-name {
   font-weight: bold;
   color: #333333;
-  margin-right: 480px;
-  
+  font-size: large;
+  padding-left: 2%; 
 }
 
+
  .post {
- 
-  width: 600px;
+
+  width: 85%;
   height: auto;
-  margin: 40px;
+  margin-top: 30px;
+  margin-left: 40px;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 
 }
 
@@ -407,6 +424,7 @@ body{
   color: #333333;
   border: none;
   padding: 5px 10px;
+  
   cursor: pointer;
   margin-left: 10px;
   font-size: 15px;
@@ -444,44 +462,237 @@ body{
 }
 .write_comment{
   border:none;
-  
+
   margin-left: 10px;
-  width: 100px;
+  width: 150px;
 }
 /*----------------------------------------------------------*/
 .right_navbar{
+  width: 15%;
   display: flex;
   flex-direction: column;
+  
+  right: 6%;
+
+
+
+}
+
+.Trending_bar,.recommended_bar,.community_bar{
+  background-color: white;
+  width: 100%;
+  height: auto;
+  color: #333333;
+  border-radius: 20px;
+  margin-top:90px;
+  margin-left: 70px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  
+}
+.title {
+  display: flex;
+  align-items: center;
+  
+}
+
+.fa-fire-flame-curved ,.fa-people-group,.fa-people-roof {
   margin-right: 10px;
+  margin-left: 10px;
+  font-size: 20px; /* Adjust the font size as needed */
+}
+
+.title-word {
+  font-weight: bold;
+  font-size: 14px; /* Adjust the font size as needed */
+}
+.right-divider{
+  max-width: 100%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+.recommended_bar,
+.community_bar {
+  margin-top: 30px;
+}
+
+.element1,
+.element2,
+.element3,
+.element4{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  padding: 0px 10px;
   
 }
 
-.Trending_bar{
-  background-color: white;
-  width: 200px;
-  height: 150px;
-  
-  border-radius: 20px;
-  margin-top:100px;
-  
-}
-
-.recommended_bar{
-  background-color: white;
-  width: 200px;
-  height: 150px;
-  
-  border-radius: 20px;
-  margin-top:30px;
+.follow {
+  background-color: #9370DB;
+  color: white;
+  border-radius: 10px;
+  padding: 0px 10px;
+  height: 20px;
+  font-size: 10px;
   
 }
 
-.community_bar{
-  background-color: white;
-  width: 200px;
-  height: 150px;
+.name {
+  font-size: 12px;
+  color: #333333;
+  margin-right: 14px;
+  margin-top: 5px;
+}
+
+.element2 {
+  margin-bottom: 10px;
+}
+.right-divider{
+  max-width: 150px;
+}
+/*--------------------------------------------------------------------*/
+.section{
+  position: relative;
+  width: 100%;
+  height: 5vh;
+  display: flex;
+}
+
+.overlay-page {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 95%;
+  margin-left: 30%;
+  margin-top: 0.5%;
+  margin-bottom: 5%;
+  background: #ecf0f3;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* Add this style for the blur effect */
+.blurred {
+  filter: blur(15px);
+  transition: filter 0.5s ease;
+}
+
+#overlay_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+ 
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
-  border-radius: 20px;
-  margin-top:30px;
+  margin-bottom: 250px;
   
+  
+  
+}
+
+
+
+
+#createCommunityForm label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#createCommunityForm input[type="text"],
+#createCommunityForm input[type="file"] {
+  width: 100%;
+  padding: 15px;
+ 
+  box-sizing: border-box;
+  border: none;
+  background-color: #ecf0f3;
+   box-shadow:  8px 8px 8px #cbced1,
+   -8px -8px 8px #ffffff;
+  border-radius: 5px;
+}
+#createCommunityForm input[type="text"]::placeholder{
+  font-size: larger;
+  color: gray;
+  opacity: 0.4;
+}
+
+#createCommunityForm button {
+  padding: 10px;
+  background-color: #9370DB;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 32%;
+  box-shadow:  8px 8px 8px #cbced1,
+   -8px -8px 8px #ffffff;
+}
+
+#closeOverlay {
+  border-radius: 8px;
+  width: 40px;
+  height: 30px; /* Adding height for a square button */
+  font-size: 15px;
+  background-color: #9370DB;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: 8px;
+  box-shadow:  8px 8px 8px #cbced1,
+   -8px -8px 8px #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#closeOverlay:hover {
+  background-color: #7a5aaf; /* Adjust the color on hover if needed */
+}
+.comm_img input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the file input to make it visually appealing */
+.comm_img input[type="file"]::-webkit-file-upload-button {
+  background-color: #9370DB;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comm_img input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #9370DB;
+}
+.comm_img input[type="file"]::placeholder {
+  color: gray;
+  opacity: 0.4;
+  margin-left: 5px;
 }

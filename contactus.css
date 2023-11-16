@@ -1,0 +1,526 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+body{
+   /* background:linear-gradient(to right, #F0E6F7,#DAC1ED);*/
+    font-family: 'Poppins', sans-serif;
+	color:#333333;
+	margin: 0;
+}
+.section{
+    position: relative;
+    background: linear-gradient(to bottom, #F0E6F7,#DAC1ED);
+    width: 100%;
+    height: 100vh;
+    display:grid;
+	padding:0 5px;
+}
+
+.header {
+    height: 3.5rem;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #E1CEEE;
+    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    padding: 0 5px;
+    z-index: 100;
+    
+  }
+  .header__container {
+    display: flex;
+    align-items: center;
+    height: 3.5rem;
+    justify-content: space-between;
+  }
+  .header__logo img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+
+  }
+  .header__search {
+    display: flex;
+    padding: 10px 10px;
+    background-color: #F4F0FA;
+    width: 20%;
+    border-radius: 5px;
+  }  
+  .header__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #F4F0FA;
+  } 
+  .header__input::placeholder {
+    font-family:'Poppins', sans-serif;
+    color: #58555E;
+  }  
+.header__profile{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 50px;
+}  
+.header-img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color:transparent;
+  margin-right: 50px;
+ }
+/*---------------------------------------------------------------------*/
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 5px 5px 0;
+    background-color: #E1CEEE;
+    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    z-index: 100;
+    transition: .4s ease;
+    width: 0;
+  }
+ .nav__logo img{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    margin-left: 5px;
+ }
+ a{
+    text-decoration: none;
+ }
+ .nav__logo-name{
+    
+    color: 333333;
+    
+ }
+
+  .nav__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    overflow: auto;
+    scrollbar-width: none; /* For mozilla */
+    margin-left: 5px;
+  }
+  /* For Google Chrome and others */
+.nav__container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /*.nav__logo {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    
+  }
+  .nav__logo-name{
+    
+    margin-left:10px;
+    font-size: 20px;
+
+  }
+  .nav__logo img{
+    margin:0px;
+    padding: 0;
+  }*/
+  .nav__logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav__logo img {
+    width: 100px; /* Adjust the size to your preference */
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+  
+  
+  /*-----------------------*/
+  .nav__list, 
+  .nav__items {
+    display: grid;
+  }
+  
+  .nav__list {
+    row-gap: 5px;
+    margin: 5px;
+  }
+  
+  .nav__items {
+    row-gap: 5px;
+  }
+  
+  .nav__subtitle {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:#333333;
+  }
+  
+  .nav__link {
+    display: flex;
+    align-items: center;
+    color: #58555E;
+    margin: 0px;
+  }
+  
+  .nav__link:hover {
+    color: #9370DB;
+  }
+  
+ 
+  
+  .nav__name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 5px;
+    margin-top: 5px;
+    
+
+    
+  }
+  
+  .nav_logout {
+    margin-bottom:50px;
+    border-radius: 40px;
+    background-color: #9370DB;
+    color: white;
+    width: 40%;
+    margin-left: 50px;
+  }
+  /* Dropdown----------------------------------------------------------------------------- */
+.nav__dropdown {
+    overflow: hidden;
+    max-height: 30px;
+    transition: .4s ease-in-out;
+  }
+  
+  .nav__dropdown-collapse {
+    
+   
+    margin-top: 5px;
+  }
+  
+  .nav__dropdown-content {
+    display: grid;
+    row-gap: .25rem;
+    padding: .75rem 2.5rem .75rem 1.8rem;
+  }
+  
+  .nav__dropdown-item {
+    font-size:14px;
+    font-weight: 500;
+    color: #333333;
+    
+  }
+  
+  .nav__dropdown-item:hover {
+    color: #9370DB;
+  }
+  
+  .nav__dropdown-icon {
+    margin-left: auto;
+    transition: .4s;
+  }
+  
+  /* Show dropdown collapse */
+  .nav__dropdown:hover {
+    max-height: 100rem;
+  }
+  
+  /* Rotate icon arrow */
+  .nav__dropdown:hover .nav__dropdown-icon {
+    transform: rotate(180deg);
+  }
+  
+  /*===== Show menu =====*/
+  .show-menu {
+    left: 0;
+  }
+
+  
+  
+  /* Navbar expanded */
+  .nav:hover {
+    
+      width: 219px;
+    }
+  
+.contact-form{
+    opacity:1;
+  position: absolute;
+	top: 27%;
+	left: 30%;
+	width: 600px;
+	height: 500px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-ms-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+    -o-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+    -webkit-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+    -moz-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+	/*box-shadow: inset 0 0 5px 5px rgba(180, 163, 190, 0.4);*/
+	box-shadow: inset 0 0 5px 5px rgba(22, 8, 43, 0.1);
+	background:rgba(225,204,237,0.1);
+}
+.h2-form{
+  position: absolute;
+  display:flex ;
+  align-items: center;
+  text-align: center;
+  justify-items: center;
+  justify-content: center;
+  top: 14%;
+	left: 39%;
+	width: 20%;
+	height: 6%;
+	background:rgba(255,255,255,0);
+}
+.h2{
+  position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-family: Poppins;
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 24px;
+	padding-top: 26px;
+	margin-top: -26px;
+	color:#333333;
+}
+.h3-form{
+ /* position: absolute;
+  display:flex ;
+  align-items: center;
+  text-align: center;
+  justify-items: center;
+  justify-content: center;
+  top: 100px;
+	left: 38%;
+	width: 300px;
+	height: 100px;
+	background:rgba(255,255,255,0);
+  border: 1px solid blue;*/
+}
+.h3{
+  position: absolute;
+  top: 100px;
+	left: 16%;
+	width: 70%;
+	height: 9%;
+	overflow: hidden;
+	/*font-family: Roboto;*/
+	font-size: 32px;
+	text-align: center;
+	letter-spacing: 1.142857208252px;
+	color:#333333;
+}
+.first-text{
+    top: 500px;
+	left: 650px;
+	width: 578px;
+	height: 80px;
+	background:rgba(255,255,255,0);
+}
+.text{
+    position: relative;
+    top:30px;
+	left: 40px;
+	width: 97.6px;
+	height: 28.6px;
+	overflow: hidden;
+	/*font-family: Inter;*/
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 24px;
+	color:#333333;
+  }  
+  .input-text-control{
+    position: relative;
+    top: 40px;
+	left: 40px;
+	width: 500px;
+	height: 30px;
+	font-family:poppins;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 2px solid white;
+	background:white;
+  } 
+
+  .msg-text{
+    position: relative;
+    top: 40px;
+	left: 40px;
+	width: 500px;
+	height: 131px;
+    -ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 2px solid white;
+	overflow: hidden;
+	/*font-family: Inter;*/
+	font-size: 16px;
+	font-weight:200;
+	text-align: left;
+	line-height: 24px;
+	color:#333333;
+  }
+  .btn-form{
+    position: relative;
+    top: 60px;
+	left: 200px;
+	width: 219px;
+	height: 40px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(147,112,219,1);
+  }   
+  .btn-send-msg{
+    position: relative;
+    top: -20px;
+	left: 68px;
+	width: 131.6px;
+	height: 28.6px;
+	overflow: hidden;
+	font-family: Poppins;
+	font-size: 16px;
+	text-align: left;
+	line-height: 24px;
+	color:#EEEEEE;
+  }
+  .icon-msg{
+    position: relative;
+    top: 9px;
+	left: 24px;
+	width: 24px;
+	height: 24px;
+    color: white;
+  }
+  /*.phone-form{
+    position: relative;
+    top: 70px;
+	left: 200px;
+	width: 219px;
+	height: 20px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:transparent;
+  } */
+  .phone-nb{
+    position: relative;
+   /* top: 33px;
+	left: 52px;
+	width: 131.6px;
+	height: 28.6px;*/
+	overflow: hidden;
+	font-family: Poppins;
+	font-size: 12px;
+	text-align: left;
+	line-height: 24px;
+	color:#333333;
+  }
+  .icon-phone{
+    position: relative;
+   /* top: 60px;
+	left: 20px;
+	width: 24px;
+	height: 24px;*/
+    color: rgba(147,112,219,1);
+  }  
+.contact-info {
+    display: flex; /* Displays the elements in a row */
+    align-items: center; /* Aligns items vertically */
+	top: 450px;
+	left: 145px;
+	position: absolute;
+}
+
+/* Optional styles for each element */
+.phone-form, .mail-form {
+    display: flex;
+    align-items: center;
+    margin-right: 6px; /* Adjust for spacing between phone and email */
+}
+
+/* Adjust the margin to separate phone and email if needed */
+.mail-form {
+    margin-left: 10px;
+}
+
+ /* .mail-form{
+    position: relative;
+    top: 70px;
+	left: 200px;
+	width: 219px;
+	height: 20px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:transparent;
+  } */
+  .email-text{
+    position: relative;
+    /*top: 5px;
+	left: 50px;
+	width: 131.6px;
+	height: 28.6px;*/
+	overflow: hidden;
+	font-family: Poppins;
+	font-size: 12px;
+	text-align: left;
+	line-height: 24px;
+	color:#333333;
+  }
+  .icon-mail{
+    position: relative;
+    /*top: 33px;
+	left: 20px;
+	width: 24px;
+	height: 24px;*/
+	left: -4px;
+    color: rgba(147,112,219,1);
+  }  
+  /* Add style to the dash */
+.dash {
+    margin: 0px 10px; /* Adjust margins as needed */
+    color: #333333; /* Set the color for the dash */
+    font-weight: bold; /* Make the dash bold or adjust styling as needed */
+}
+.email-text:hover,
+.phone-nb:hover {
+    color: rgba(147,112,219,1); /* Change color on hover to red (you can choose any color) */
+}
+
+        

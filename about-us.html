@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" type="text/css" href="aboutus.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>    
+    <!--Section: About Us-->
+    <section class="section">
+       <!--========== HEADER ==========-->
+        <header class="header">
+            <div class="header__container">
+                
+
+                <a href="#Home" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+    
+                <div class="header__search">
+                    <input type="search" placeholder="Search" class="header__input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+    
+                <div class="header__profile" id="profile-image">
+                    <img src="images/rayan1.jpg" alt="header-profile" class="header-img">  
+                </div>
+            </div>
+        </header>
+
+        <!--========== NAV ==========-->
+        <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                    <a href="#Home" class="nav__logo">
+                        <img src="images/global logo.png" alt="Global Impact">
+                        
+                    </a>
+    
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Our World</h3>
+    
+                            <a href="#" class="nav__link active">
+                                <i class="fa-solid fa-house nav_icon" style="color: #333333;"></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                            
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class="fa-solid fa-layer-group" style="color: #333333;"></i>
+                                    <span class="nav__name">Categories</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">Sports</a>
+                                        <a href="#" class="nav__dropdown-item">News</a>
+                                        <a href="#" class="nav__dropdown-item">Technologies</a>
+                                        <a href="#" class="nav__dropdown-item">Movies</a>
+                                        <a href="#" class="nav__dropdown-item">Arts</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#" class="nav__link">
+                                <i class="fa-solid fa-earth-americas" style="color: #333333;"></i>
+                                <span class="nav__name">About Us</span>
+                            </a>
+                        </div>
+
+                        <a href="#" class="nav__link">
+                            <i class="fa-solid fa-envelope" style="color: #333333;"></i>
+                            <span class="nav__name" id="contactus">Contact Us</span>
+                        </a>
+                    </div>
+    
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Top Picks</h3>
+    
+                           
+                                <a href="#" class="nav__link">
+                                    <i class="fa-solid fa-folder-plus" style="color: #333333;"></i>
+                                    <span class="nav__name">New</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                
+
+                            
+
+                            <a href="#" class="nav__link">
+                                <i class="fa-solid fa-arrow-trend-up" style="color: #333333;"></i>
+                                <span class="nav__name">Trendy</span>
+                            </a>
+                            <a href="#" class="nav__link">
+                                <i class="fas fa-thumbs-up" style="color: #333333;"></i>
+                                <span class="nav__name">Recommended</span>
+                            </a>
+                        </div>
+                    </div>
+                
+
+                <button class="nav_logout">LOGOUT</button>
+            </nav>
+        </div>
+
+
+        <!-- Heading for the contact form -->
+        <div class="h2-form">
+            <h2 class="h2">About us</h2>
+        </div>
+        <div class="image-container">
+            <img src="images/planet.png" alt="planet image" class="planet-image">
+        </div>  
+            <pre class="aboutus-parag">
+Welcome to  our online community, which is a place where people can
+  connect, learn, and share.
+
+ At “Global Impact”, we're committed to creating a varied community
+    where individuals from all over the world
+come together to discuss important topics, share interests, and learn
+      from one another. 
+
+We hope to give everyone a place to explore, participate, 
+and establish connections with people who have similar interests through 
+     our unique system of interest-based communities.
+            </pre>
+    </section>
+    <script>
+        // JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('contactus').addEventListener('click', function() {
+    // Specify the URL of the page you want to navigate to
+    var profilePageUrl = 'contactUs.html';
+
+    // Navigate to the specified page
+    window.location.href = profilePageUrl;
+});
+});
+
+// JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('profile-image').addEventListener('click', function() {
+    // Specify the URL of the page you want to navigate to
+    var profilePageUrl = 'edit-post.html';
+
+    // Navigate to the specified page
+    window.location.href = profilePageUrl;
+});
+});
+    </script>
+    
+
+        
+</body>
+</html>

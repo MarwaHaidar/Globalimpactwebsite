@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+body{
+    background:linear-gradient(to bottom, #F0E6F7,#DAC1ED);
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+}
+
+.section{
+    position: relative;
+    background: linear-gradient(to bottom, #F0E6F7,#DAC1ED);
+    width: 100%;
+    height: 100vh;
+    display:grid;
+    padding: 0 5px;
+    padding-bottom: 50px;
+}
+
+.header {
+    height: 3.5rem;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #E1CEEE;
+    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    padding: 0 5px;
+    z-index: 100;
+    
+  }
+  .header__container {
+    display: flex;
+    align-items: center;
+    height: 3.5rem;
+    justify-content: space-between;
+  }
+  .header__logo img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+
+  }
+  .header__search {
+    display: flex;
+    padding: 10px 10px;
+    background-color: #F4F0FA;
+    width: 20%;
+    border-radius: 5px;
+  }  
+  .header__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #F4F0FA;
+  } 
+  .header__input::placeholder {
+    font-family:'Poppins', sans-serif;
+    color: #58555E;
+  }  
+.header__profile{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 50px;
+}  
+.header-img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color:transparent;
+  margin-right: 50px;
+ }
+/*---------------------------------------------------------------------*/
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 5px 5px 0;
+    background-color: #E1CEEE;
+    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    z-index: 100;
+    transition: .4s ease;
+    width: 0;
+  }
+ .nav__logo img{
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    margin-left: 5px;
+ }
+ a{
+    text-decoration: none;
+ }
+ .nav__logo-name{
+    
+    color: 333333;
+    
+ }
+
+  .nav__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    overflow: auto;
+    scrollbar-width: none; /* For mozilla */
+    margin-left: 5px;
+  }
+  /* For Google Chrome and others */
+.nav__container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /*.nav__logo {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    
+  }
+  .nav__logo-name{
+    
+    margin-left:10px;
+    font-size: 20px;
+
+  }
+  .nav__logo img{
+    margin:0px;
+    padding: 0;
+  }*/
+  .nav__logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav__logo img {
+    width: 100px; /* Adjust the size to your preference */
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+  
+  
+  /*-----------------------*/
+  .nav__list, 
+  .nav__items {
+    display: grid;
+  }
+  
+  .nav__list {
+    row-gap: 5px;
+    margin: 5px;
+  }
+  
+  .nav__items {
+    row-gap: 5px;
+  }
+  
+  .nav__subtitle {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:#333333;
+  }
+  
+  .nav__link {
+    display: flex;
+    align-items: center;
+    color: #58555E;
+    margin: 0px;
+  }
+  
+  .nav__link:hover {
+    color: #9370DB;
+  }
+  
+ 
+  
+  .nav__name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 5px;
+    margin-top: 5px;
+    
+
+    
+  }
+  
+  .nav_logout {
+    margin-bottom:50px;
+    border-radius: 40px;
+    background-color: #9370DB;
+    color: white;
+    width: 40%;
+    margin-left: 50px;
+  }
+  /* Dropdown----------------------------------------------------------------------------- */
+.nav__dropdown {
+    overflow: hidden;
+    max-height: 30px;
+    transition: .4s ease-in-out;
+  }
+  
+  .nav__dropdown-collapse {
+    
+   
+    margin-top: 5px;
+  }
+  
+  .nav__dropdown-content {
+    display: grid;
+    row-gap: .25rem;
+    padding: .75rem 2.5rem .75rem 1.8rem;
+  }
+  
+  .nav__dropdown-item {
+    font-size:14px;
+    font-weight: 500;
+    color: #333333;
+    
+  }
+  
+  .nav__dropdown-item:hover {
+    color: #9370DB;
+  }
+  
+  .nav__dropdown-icon {
+    margin-left: auto;
+    transition: .4s;
+  }
+  
+  /* Show dropdown collapse */
+  .nav__dropdown:hover {
+    max-height: 100rem;
+  }
+  
+  /* Rotate icon arrow */
+  .nav__dropdown:hover .nav__dropdown-icon {
+    transform: rotate(180deg);
+  }
+  
+  /*===== Show menu =====*/
+  .show-menu {
+    left: 0;
+  }
+
+  
+  
+  /* Navbar expanded */
+  .nav:hover {
+    
+      width: 219px;
+    }
+  
+  .h2-form{
+    position: relative;
+    top: 70px;
+	  left: 28%;
+	  width: 50%;
+	  height: 100%;
+	  background:rgba(255,255,255,0);
+}
+.h2{
+  position: relative;
+  top: 30px;
+	left:21%;
+	width: 45%;
+	height: 39px;
+	overflow: hidden;
+	font-family: Poppins;
+	font-size: 50px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 24px;
+	padding-top: 26px;
+	margin-top: -26px;
+	color:#333333;
+  text-align: center;
+}
+.aboutus-parag{
+    position: relative;
+    top:-25px;
+    width: 600px; /* Set the width of the bordered paragraph */
+    height: 300px;
+    border: 4px solid #B392D0; /* Example border */
+    border-radius: 40px; /* Rounds the border corners */
+    padding: 20px; /* Adds padding inside the border */
+    text-align: center; /* Centers the text horizontally */
+    /*font-family:Verdana, Geneva, Tahoma, sans-serif;*/
+    font-family:poppins;
+    font-size: 15px;
+    line-height: 25px;
+    color: #333333;
+    border-bottom: 30px;
+
+    /* Centering the paragraph within the container */
+    margin: 100px auto 210px; /* Auto left and right margins center the paragraph */
+}
+.image-container {
+    width: 300px; 
+    height: 100px; 
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 79%;
+    left: 35%;
+    transform: translate(-50%, -50%); 
+}
+.planet-image {
+    width: 130%; /* Adjust as needed */
+    height: auto; /* To maintain aspect ratio */
+    animation: rotateX 5s linear infinite; /* 6s is the duration; adjust as needed */
+}
+
+
+@keyframes rotateX {
+    0% {
+        transform: rotateY(0deg); /* Initial state - no rotation */
+    }
+    100% {
+        transform: rotateY(360deg); /* Final state - full rotation */
+    }
+}
+

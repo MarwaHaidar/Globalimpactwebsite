@@ -13,6 +13,8 @@
         <title>Responsive sidebar submenus</title>
     </head>
     <body>
+        <div class="main_content" id="main_content">
+            <section class="section">
        
         <!--========== HEADER ==========-->
         <header class="header">
@@ -163,7 +165,32 @@
                     </div>
                     <button class="comment-button" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button>
                 </div>
-                <div class="view-comments"><a>View All Comments</a></div>
+                   <!--view comments--------------------------------------------->
+                   <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
+                    
+                   <div id="view-Comments-Overlay-Id" class="view-Comments-Overlay">
+                           <div class="view-Comments-Overlay-Form">
+                               <p>This is the caption for the image.</p>
+                                      <div id="exit-comment"> <img 
+                                       loading="lazy"
+                                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
+                                       class="x-imgComments"
+                                       />
+                                   </div>
+                               <hr class="hrComments">
+                               <img src=  "images/images (1).jpg" alt="Post Image" class="post-image " >
+                               <hr class="hrComments">
+                               <h3 style="text-align: center;">All Comments</h3>
+                               <div class="All-Comments-Inside-Overlay">
+                                  
+                               </div>
+                               <div class="comment-overlay">
+                               <input type="text" class="write_comment-overlay" placeholder="Write a comment">
+                               </div>
+
+                           </div>
+                   </div>
+                   <!------------------------------------------------------->
                 <hr class="divider">
                 <div class="comment">
                     <div class="comment_profile">
@@ -198,7 +225,32 @@
                     </div>
                     <button class="comment-button" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button>
                 </div>
-                <div class="view-comments"><a>View All Comments</a></div>
+                <!--view comments--------------------------------------------->
+                <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
+                    
+                            <div id="view-Comments-Overlay-Id" class="view-Comments-Overlay">
+                                    <div class="view-Comments-Overlay-Form">
+                                        <p>This is the caption for the image.</p>
+                                               <div id="exit-comment"> <img 
+                                                loading="lazy"
+                                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
+                                                class="x-imgComments"
+                                                />
+                                            </div>
+                                        <hr class="hrComments">
+                                        <img src=  "images/images (1).jpg" alt="Post Image" class="post-image " >
+                                        <hr class="hrComments">
+                                        <h3 style="text-align: center;">All Comments</h3>
+                                        <div class="All-Comments-Inside-Overlay">
+                                           
+                                        </div>
+                                        <div class="comment-overlay">
+                                        <input type="text" class="write_comment-overlay" placeholder="Write a comment">
+                                        </div>
+
+                                    </div>
+                            </div>
+                            <!------------------------------------------------------->
                 <hr class="divider">
                 <div class="comment">
                     <div class="comment_profile">
@@ -234,7 +286,32 @@
                     </div>
                     <button class="comment-button" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button>
                 </div>
-                <div class="view-comments"><a>View All Comments</a></div>
+                  <!--view comments--------------------------------------------->
+                  <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
+                    
+                  <div id="view-Comments-Overlay-Id" class="view-Comments-Overlay">
+                          <div class="view-Comments-Overlay-Form">
+                              <p>This is the caption for the image.</p>
+                                     <div id="exit-comment"> <img 
+                                      loading="lazy"
+                                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
+                                      class="x-imgComments"
+                                      />
+                                  </div>
+                              <hr class="hrComments">
+                              <img src=  "images/images (1).jpg" alt="Post Image" class="post-image " >
+                              <hr class="hrComments">
+                              <h3 style="text-align: center;">All Comments</h3>
+                              <div class="All-Comments-Inside-Overlay">
+                                 
+                              </div>
+                              <div class="comment-overlay">
+                              <input type="text" class="write_comment-overlay" placeholder="Write a comment">
+                              </div>
+
+                          </div>
+                  </div>
+                  <!------------------------------------------------------->
                 <hr class="divider">
                 <div class="comment">
                     <div class="comment_profile">
@@ -267,10 +344,7 @@
                 <p class="name">#amjad</p>
                 <button class="follow">Follow</button>
             </div>
-            <div class="element2">
-                <p class="name">#ali</p>
-                <button class="follow">Follow</button>
-            </div>
+           
 
 
         </div>
@@ -294,13 +368,7 @@
                     <p class="name">Ali Mantache</p>
                     <button class="follow">Follow</button>
                 </div>
-                <div class="element3">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-                    <p class="name">oussama hamzeh</p>
-                    <button class="follow">Follow</button>
-                </div>
+                
                 <div class="element4">
                     <div class="comment_profile">
                         <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
@@ -342,60 +410,124 @@
                 <hr class="right-divider">
                 <div class="title"><i class="fa-solid fa-people-roof" style="color: #333333; font-size: 20px;"></i>
                     <p class="add-community" style="font-size: 12px;"> ADD Community</p>
-                    <i class="fa-solid fa-circle-plus" style="color: #333333; font-size: 15px; margin-left: 5px; " ></i></div>
+                    <i class="fa-solid fa-circle-plus" id="open_overlay" style="color: #333333; font-size: 15px; margin-left: 5px; " ></i></div>
 
 
 
         </div>
 
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
+    </section>
+    </div>
+
+    <div id="overlayPage" class="overlay-page">
+        <div class="overlay-content">
+            <div id="overlay_header">
+            <h2>Create Community</h2>
+          <!--  <button id="closeOverlay">Exit</button>-->
+            <i class="fa-regular fa-circle-xmark"  id="closeOverlay" style="color: #000000;"></i>
+            
+
+        </div>
+        
+        <div id="form">
+            <form id="createCommunityForm">
+                <hr>
+                <div class="comm_name">
+                    <label for="communityName">Community Name</label><br>
+                    <input type="text" id="communityName" name="communityName" placeholder="Community Name" required>
+                </div>
+                <div class="comm_topic">
+                    <label for="description">Topic</label><br>
+                    <input type="text" id="communityTopic" name="communityTopic"  placeholder= "This will help relevant users find your community ">
+                </div>
+                <div class="comm_desc">
+                    <label for="description">Description</label><br>
+                    <input type="text" id="communityName" name="communityName"  placeholder="This is how new members come to understand your community" required>
+                </div>
+                <div class="comm_img">
+                    <label for="communityPhoto">Community Photo</label><br>
+                    <input type="file" id="communityPhoto" name="communityPhoto" accept="image/*">
+                    
+                </div>
+                
+                <button type="submit" class="custom-btn save-edit-aboutinfo">Create Community</button>
+                
+                
+            </form>
+            </div>
+            
+        </div>
+    </div>
+  
+
+
+<script>
+    // Add this script to control overlay visibility and blur effect
+    const overlayPage = document.getElementById("overlayPage");
+    const closeOverlayButton = document.getElementById("closeOverlay");
+    const mainContent = document.getElementById("main_content");
+    const openoverlaybutton=document.getElementById("open_overlay")
+
+    function openOverlay() {
+        overlayPage.style.display = "block";
+        overlayPage.classList.remove("blurred")
+        mainContent.classList.add("blurred");
+        
+    }
+
+    function closeOverlay() {
+        overlayPage.style.display = "none";
+        mainContent.classList.remove("blurred");
+    }
+
+    // Close the overlay when the close button is clicked
+    closeOverlayButton.addEventListener("click", closeOverlay);
+    openoverlaybutton.addEventListener("click",openOverlay);
+
+    // Close the overlay when clicking outside the content
+    window.addEventListener("click", (event) => {
+        if (event.target === overlayPage) {
+            closeOverlay();
+        }
+    });
+   
+
+/*---------------------------------*/
+
+
+/*
+    //click view all comments 
+        document.getElementById('CommentsId').addEventListener('click', function() {
+       document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
+       document.querySelector('.main-content').classList.add('blurred');
+     });
+      
+     // for exit comment form inside overlay
+     document.getElementById('exit-comment').addEventListener('click', function() {
+        document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
+        document.querySelector('.main-content').classList.remove('blurred');
+     
+    });*/
+ // Get all elements with the class 'CommentsLink'
+var commentLinks = document.querySelectorAll('.CommentsLink');
+
+// Add the click event listener to each link
+commentLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
+        document.querySelector('.main-content').classList.add('blurred');
+    });
+});
+// for exit comment form inside overlay
+document.getElementById('exit-comment').addEventListener('click', function() {
+        document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
+        document.querySelector('.main-content').classList.remove('blurred');
+     
+    });
+</script>
 
        <script src="index.js"></script>
     </body>

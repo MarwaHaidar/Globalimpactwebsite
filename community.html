@@ -111,8 +111,54 @@
             </nav>
         </div>
 
+
+
+
+
+
+
+
         <!--create social media posts------------------------------------------------------->
-        <div class="post__container">
+        <div class="community__container" >
+
+
+            
+        <!--posts display-->    
+        <div class="post">
+            <div class="post-header">
+                <img src="images/download (2).jpg" alt="Account Image" class="community-image">
+                <div class="community_details">
+                <p class="community_name">Barcelona Fans</p>
+                <p class="community-topic" >Sports</p>
+                
+            </div>
+            <div class="post_menu" style="margin-left: 30px;">
+                <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
+                <div class="actions-menu">
+                    <ul>
+                        <li onclick="editAction()">Edit</li>
+                        <li onclick="deleteAction()">Delete</li>
+                    </ul>
+                </div>
+                
+            </div>
+            </div>
+            <div class="community_desc">
+                <p>FC Barcelona is not just a football club; it's a symbol of excellence, a cradle of football legends, and a cultural
+                    icon. Its legacy of success, iconic players, and resilience in the face of challenges make it a true institution 
+                   in the world of sports. As Barcelona continues to shape the future of football, one thing remains certain:
+                    the Blaugrana spirit will shine on, captivating fans and inspiring generations to come. 
+                   Mes Que Un Club! 🔵🔴 #FCBarcelona</p>
+
+
+            </div>
+            
+            
+            
+            </div>
+
+            <!------------------------------------------------------------->
+            
             <div class="create_post">
                 <div class="create">
                     <div class="comment_profile">
@@ -135,119 +181,15 @@
                 </div>
             
 
-
-        <!--posts display-->    
-            <div class="post">
-                <div class="post-header">
-                    <img src="images/images.jpg" alt="Account Image" class="account-image">
-                    <p class="account-name">Rayan</p>
-                    <div class="post_menu">
-                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
-                        <div class="actions-menu">
-                            <ul>
-                                <li onclick="editAction()">Edit</li>
-                                <li onclick="deleteAction()">Delete</li>
-                            </ul>
-                        </div>
-                        
-                    </div>
                 </div>
-
-                <p class="post-caption">This is the caption for the image.</p>
-                <img src="images/images (1).jpg" alt="Post Image" class="post-image">
                 
-                <div class="post-actions">
-                    <div class="vote-buttons">
-                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up" style="color: #333333;"></i></button>
-                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down" style="color: #333333;"></i></button>
-                    </div>
-                    <button class="comment-button" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button>
-                </div>
-                <div class="view-comments"><a>View All Comments</a></div>
-                <hr class="divider">
-                <div class="comment">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-
-                <input type="text" class="write_comment" placeholder="Write a comment">
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <img src="images/download (1).jpg" alt="Account Image" class="account-image">
-                    <p class="account-name">Marwa</p>
-                    <div class="post_menu">
-                        <i class="fa-solid fa-ellipsis-vertical " style="color: #333333;" onclick="showMenu(this)"></i>
-                        <div class="actions-menu">
-                            <ul>
-                                <li onclick="editAction()">Edit</li>
-                                <li onclick="deleteAction()">Delete</li>
-                            </ul>
-                        </div>
-                </div>
-                </div>
-                <p class="post-caption">This is the caption for the image.</p>
-                <img src="images/images (1).jpg" alt="Post Image" class="post-image">
                 
-                <div class="post-actions">
-                    <div class="vote-buttons">
-                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up" style="color: #333333;"></i></button>
-                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down" style="color: #333333;"></i></button>
-                    </div>
-                    <button class="comment-button" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button>
-                </div>
-                <div class="view-comments"><a>View All Comments</a></div>
-                <hr class="divider">
-                <div class="comment">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
+                
 
-                <input type="text" class="write_comment" placeholder="Write a comment">
-                </div>
-            </div>
             
-
-            <div class="post">
-                <div class="post-header">
-                    <img src="images/download.jpg" alt="Account Image" class="account-image">
-                    <p class="account-name">Ousama</p>
-                    <div class="post_menu">
-                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
-                        <div class="actions-menu">
-                            <ul>
-                                <li onclick="editAction()">Edit</li>
-                                <li onclick="deleteAction()">Delete</li>
-                            </ul>
-                        </div>
-                </div>
-                </div>
-                <p class="post-caption">This is the caption for the image.</p>
-                <img src="images/images (1).jpg" alt="Post Image" class="post-image">
+                    
                 
-                <div class="post-actions">
-                    <div class="vote-buttons">
-                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up" style="color: #333333;"></i></button>
-                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down" style="color: #333333;"></i></button>
-                    </div>
-                    <button class="comment-button" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button>
-                </div>
-                <div class="view-comments"><a>View All Comments</a></div>
-                <hr class="divider">
-                <div class="comment">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-
-                <input type="text" class="write_comment" placeholder="Write a comment">
-                </div>
-                
-                
-            </div>
-
-    </div>
+        
     <!------------------------------------------------------------------------------------->
     
        <script src="index.js"></script>

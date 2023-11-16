@@ -391,7 +391,12 @@ body{
   height: auto;
   border-radius: 8px;
 }
-
+.post-imageComment{
+    width: 100%;
+    height: 40%;
+    border-radius: 8px;
+  
+}
 .post-caption {
   margin-top: 10px;
   font-size: 14px;
@@ -431,6 +436,7 @@ body{
 }
 
 .view-comments{
+  
   text-align: center;
   color: #9370DB;
 
@@ -445,7 +451,7 @@ body{
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  /*margin-left: 60px;*/
+  margin-left: 6%;
 }
 .comment_profile{
   height: 30px;
@@ -460,12 +466,15 @@ body{
   border-radius: 50%;
 
 }
+
 .write_comment{
   border:none;
 
   margin-left: 10px;
   width: 150px;
 }
+
+
 /*----------------------------------------------------------*/
 .right_navbar{
   width: 15%;
@@ -575,7 +584,7 @@ body{
   width: 40%;
   height: 98%;
   margin-left: 30%;
-  margin-top: 0.1%;
+  margin-top: 1%;
   margin-bottom: 5%;
   background: #ecf0f3;
   padding: 10px;
@@ -595,6 +604,7 @@ body{
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
+  margin-left: 5%;
  
 }
 
@@ -602,15 +612,9 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
   margin-bottom: 250px;
-  
-  
-  
+
 }
-
-
-
 
 #createCommunityForm label {
   display: block;
@@ -621,8 +625,7 @@ body{
 #createCommunityForm input[type="text"],
 #createCommunityForm input[type="file"] {
   width: 100%;
-  padding: 15px;
- 
+  padding: 10px;
   box-sizing: border-box;
   border: none;
   background-color: #ecf0f3;
@@ -635,7 +638,10 @@ body{
   color: gray;
   opacity: 0.4;
 }
-
+.comunnityForm{
+  width: 90%;
+  margin-left: 4%;
+}
 /*#createCommunityForm button {
   padding: 10px;
   background-color: #9370DB;
@@ -672,6 +678,7 @@ body{
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
   left: 45%;
+
  
   
 }
@@ -851,6 +858,7 @@ body{
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255,255, 255,0.3);
   border-radius: 20px;
+  color:rgba(255,255, 255,0.2); ;
 
 }
 .hrComments{
@@ -862,10 +870,10 @@ body{
 
 .x-imgComments {
   aspect-ratio: 1.08;
-  width: 40px;
+  width: 25px;
   position: absolute;
   left: 92%;
-  top: 1%;
+  top: 2%;
 }
 
 .comment-overlay{
@@ -884,4 +892,19 @@ body{
     height: 35px;
     border-radius: 13px;
     margin-left: 0%;
+  }
+
+  .Comments-inside-O{
+  display: flex;
+  justify-content: flex-start;
+  width: 10%;
+  padding-top: 5px;
+  padding-left: 10px;
+
+  }
+  .usersComments{
+    color: black;
+    padding-left: 10px;
+    width: 100%;
+    white-space: nowrap;
   }

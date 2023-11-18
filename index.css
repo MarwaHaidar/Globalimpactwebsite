@@ -1,15 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+
+
 body{
-    background:linear-gradient(to right, #F0E6F7,#DAC1ED);;
+    background:var(--backGroundColor);
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
-
+    transition: background-color 0.5s, color 0.5s;
+    
 }
-
-
-
+/* this for dark and light mode -------------------*/
+body.light-mode {
+  --navbarColor:linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
+  --navbarColorSite:rgba(176,191,238,1);
+  --navbarColorTopic:black;
+  --navbarColorLink:black;
+  --navbarColorLinkHover:rgba(30,73,128,1) ;
+  --navbarColorButtom:rgba(30,73,128,1) ;
+  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
+  --backGroundColor: linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
+  --IcansColor:black;
+  --varBoxShadowColor:-5px -6px 10px black;
+}
+body.dark-mode {
+  --navbarColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --navbarColorSite:  rgba(51,52,61,100);
+  --navbarColorTopic:white;
+  --navbarColorLink:white;
+  --navbarColorLinkHover:rgba(30,73,128,1) ;
+  --navbarColorButtom:rgba(30,73,128,1) ;
+  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
+  --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --varBoxShadowColor:-5px -6px 10px black;
+} 
+/* --------------------------------- */
 .header {
     height: 4rem; 
     position: fixed;
@@ -17,8 +42,8 @@ body{
     left: 0;
     right: 0;
     width: 100%;
-    background-color: #E1CEEE;
-    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    background: var(--navbarColor);
+    box-shadow: var(--varBoxShadowColor);
     padding: 0 5px;
     z-index: 100;
     
@@ -37,12 +62,14 @@ body{
     margin-top: 10px;
 
   }
+
   .header__search {
     display: flex;
     padding: 10px 10px;
     background-color: #F4F0FA;
     width: 30%;
     border-radius: 5px;
+    box-shadow: var(--varBoxShadowColor);
   }  
   .header__input {
     width: 100%;
@@ -66,13 +93,13 @@ body{
   width: 50px;
   border-radius: 50%;
 }
-.nav_login{
+/* .nav_login{
   
   border-radius: 40px;
   background-color: #9370DB;
   color: white;
   width: 60%;
-  margin-right: 60px;}
+  margin-right: 60px;} */
   
 /*---------------------------------------------------------------------*/
 
@@ -82,8 +109,8 @@ body{
     left: 0;
     height: 100vh;
     padding: 5px 5px 0;
-    background-color: #E1CEEE;
-    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    background: var(--navbarColorSite);
+    box-shadow: var(--varBoxShadowColor);
     z-index: 100;
     transition: .4s ease;
     width: 0;
@@ -96,11 +123,7 @@ body{
  a{
     text-decoration: none;
  }
- .nav__logo-name{
-    
-    color: 333333;
-    
- }
+
 
   .nav__container {
     height: 100%;
@@ -117,25 +140,7 @@ body{
     display: none;
   }
   
-  /*.nav__logo {
-    font-weight: 600;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-    
-  }
-  .nav__logo-name{
-    
-    margin-left:10px;
-    font-size: 20px;
 
-  }
-  .nav__logo img{
-    margin:0px;
-    padding: 0;
-  }*/
   .nav__logo {
     display: flex;
     align-items: center;
@@ -146,6 +151,7 @@ body{
     margin-right: 5px;
     border-radius: 50%;
   }
+  
   
   
   /*-----------------------*/
@@ -167,19 +173,19 @@ body{
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color:#333333;
+    color:var(--navbarColorTopic);
   }
   
   .nav__link {
     display: flex;
     align-items: center;
-    color: #58555E;
+    color: var(--navbarColorLink);
     margin: 0px;
   }
   
   .nav__link:hover {
-    color: #9370DB;
-
+    color: var(--navbarColorLinkHover);
+   
   }
   
  
@@ -193,11 +199,14 @@ body{
 
     
   }
+  .iconsColor{
+    color: var(--IcansColor);
+  }
   
   .nav_logout {
     margin-bottom:50px;
     border-radius: 40px;
-    background-color: #9370DB;
+    background: var(--navbarColorButtom);
     color: white;
     width: 40%;
     margin-left: 50px;
@@ -225,12 +234,12 @@ body{
   .nav__dropdown-item {
     font-size:14px;
     font-weight: 500;
-    color: #333333;
+    color: var(--navbarColorLink);
     
   }
   
   .nav__dropdown-item:hover {
-    color: #9370DB;
+    color: var(--navbarColorLinkHover);
  
   }
   
@@ -270,12 +279,12 @@ body{
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--varBoxShadowColor);
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  
 
   }
  
@@ -299,7 +308,7 @@ body{
     margin-left: 10px;
   }
   .post_post{
-    background-color: #9370DB;
+    background: var(--navbarColorButtom);
     color: white;
     border-radius: 10px;
     width: 90px;
@@ -320,7 +329,7 @@ body{
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 10px;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 .post_menu {
@@ -331,7 +340,7 @@ body{
 
 .actions-menu {
   position: absolute;
-  background-color: #E1CEEE;
+  background-color: var(--navbarColor);
   box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
   display: none;
   border-radius: 20px;
@@ -352,27 +361,42 @@ body{
 }
 
 .actions-menu li:hover {
-  color: #9370DB;
+  color: var(--navbarColorLinkHover);
 }
 
 .account-image {
   width: 60px;
-  height: 50px;
+  height: 60px;
   border-radius: 50%;
   margin-right: 0px;
+  margin-top: 10px;
 
 }
 
+
 .account-name {
+
   font-weight: bold;
   color: #333333;
   font-size: large;
   padding-left: 2%; 
+  margin-top: 5px;
+
+}
+.account-Date{
+  display: flex;
+  align-items: center;
+  font-weight:100;
+  color: #333333;
+  font-size: small;
+margin-left: -60px; 
+  padding-top: 50px;
+
+
 }
 
 /*------------------------------------*/
  .post {
-
   width: 85%;
   height: auto;
   margin-top: 30px;
@@ -380,11 +404,12 @@ body{
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow:var(--varBoxShadowColor);
   background-color: white;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+
 
 }
+
 
 .post-image {
   width: 100%;
@@ -429,18 +454,25 @@ body{
   color: #333333;
   border: none;
   padding: 5px 10px;
-  
   cursor: pointer;
   margin-left: 10px;
   font-size: 15px;
 }
+.comment-button:hover{
+  transform: scale(0.9);
+}
 
 .view-comments{
-  
   text-align: center;
-  color: #9370DB;
+}
+.CommentsLink{
+  color: var(--navbarColorLinkHover);
 
 }
+.CommentsLink a:hover{
+  transform: scale(1.3);
+}
+
 .divider{
   color: #333333;
   max-width: 400px;
@@ -453,6 +485,7 @@ body{
   margin-top: 10px;
   margin-left: 6%;
 }
+
 .comment_profile{
   height: 30px;
   width: 30px;
@@ -469,7 +502,6 @@ body{
 
 .write_comment{
   border:none;
-
   margin-left: 10px;
   width: 150px;
 }
@@ -495,14 +527,36 @@ body{
   border-radius: 20px;
   margin-top:90px;
   margin-left: 70px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--varBoxShadowColor);
 
   
+}
+.Trending_bar:hover,.recommended_bar:hover,.community_bar:hover{
+  transform: scale(1.03);
 }
 .title {
   display: flex;
   align-items: center;
   
+}
+.titleCommunity {
+  display: flex;
+  align-items: center;
+
+}
+.iconCommunity{
+  color: #333333;
+   font-size: 15px;
+   margin-left: 5px;
+}
+.iconCommunity:hover{
+  transform: scale(1.3);
+}
+
+.UpvateClass:hover,
+.DownClass:hover
+{
+transform: scale(1.6);
 }
 
 .fa-fire-flame-curved ,.fa-people-group,.fa-people-roof {
@@ -535,17 +589,60 @@ body{
   padding: 0px 10px;
   
 }
-
+/*------------------------follow button--------------------------------------------*/
 .follow {
-  background-color: #9370DB;
+  background: var(--navbarColorButtom);
   color: white;
-  border-radius: 10px;
   padding: 0px 10px;
   height: 20px;
   font-size: 10px;
-  
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 42px;
+  border: none;
+  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
 }
 
+.follow:hover {
+  color: white;
+  background: #92aed0;
+  box-shadow: none;
+}
+
+.follow:before,
+.follow:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: var(--navbarColorButtom);
+  box-shadow:
+      -1px -1px 5px 0px #fff,
+      7px 7px 20px 0px #0003,
+      4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+
+.follow:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+.follow:hover:before,
+.follow:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+
+/*--------------------------------------------------------------------*/
 .name {
   font-size: 12px;
   color: #333333;
@@ -574,7 +671,7 @@ body{
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background:var(--OverlayBackgroundColor);
   z-index: 1;
 }
 
@@ -688,14 +785,14 @@ body{
   line-height: 42px;
   padding: 0;
   border: none;
-  background: #9370DB;
-  background: linear-gradient(0deg, #9370DB 0%, #9370DB 100%);
+  background: var(--navbarColorButtom);
+  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
   bottom: 4px;
   
 
 }
 .save-edit-aboutinfo:hover{
-  color: #9370DB;
+  color: var(--navbarColorButtom);
   background: transparent;
    box-shadow:none;
 }
@@ -707,7 +804,7 @@ body{
   right:0;
   height:2px;
   width:0;
-  background: #9370DB;
+  background: var(--navbarColorButtom);
   box-shadow:
    -1px -1px 5px 0px #fff,
    7px 7px 20px 0px #0003,
@@ -731,8 +828,6 @@ body{
   width: 40px;
   height: 40px; /* Adding height for a square button */
   font-size: 30px;
- /* background-color: #9370DB;*/
- /* color: #fff;*/
   border: none;
   cursor: pointer;
   margin-right: 10px;
@@ -744,9 +839,6 @@ body{
   align-items: center;
 }
 
-/*#closeOverlay:hover {
-  background-color: #7a5aaf; /* Adjust the color on hover if needed 
-}*/
 
 .comm_img input[type="file"] {
   width: 100%;
@@ -758,7 +850,7 @@ body{
 
 /* Style the file input to make it visually appealing */
 .comm_img input[type="file"]::-webkit-file-upload-button {
-  background-color: #9370DB;
+  background: var(--navbarColorButtom);
   color: #fff;
   padding: 10px;
   border: none;
@@ -767,7 +859,7 @@ body{
 }
 
 .comm_img input[type="file"]::-webkit-file-upload-button:hover {
-  background-color: #9370DB;
+  background: var(--navbarColorButtom);
 }
 .comm_img input[type="file"]::placeholder {
   color: gray;
@@ -908,3 +1000,48 @@ body{
     width: 100%;
     white-space: nowrap;
   }
+
+
+/* this for Dark mode Form  */
+/* Container for the theme switch */
+.theme-switch {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Hidden default checkbox input */
+.theme-switch input {
+  display: none;
+}
+
+/* Styles for the toggle switch label */
+.theme-switch label {
+  position: relative;
+  display: block;
+  width: 40px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  background-color: #000000; /* Dark background color for the switch */
+  border-radius: 10px; /* Rounded corners for the switch */
+  cursor: pointer;
+}
+
+/* Styles for the toggle switch handle */
+.theme-switch label::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px; /* Width of the handle */
+  height: 16px; /* Height of the handle */
+  background-color: #fff; /* Color of the handle */
+  border-radius: 50%; /* Make the handle round */
+  transition: transform 0.3s; /* Smooth transition for the handle movement */
+}
+
+/* Adjust the handle position based on the checkbox state */
+.theme-switch input:checked + label::after {
+  transform: translateX(20px); /* Move the handle to the right when checked */
+}

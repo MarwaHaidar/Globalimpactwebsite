@@ -463,104 +463,11 @@
 
 
 <script>
-    // Add this script to control overlay visibility and blur effect
-    const overlayPage = document.getElementById("overlayPage");
-    const closeOverlayButton = document.getElementById("closeOverlay");
-    const mainContent = document.getElementById("main_content");
-    const openoverlaybutton=document.getElementById("open_overlay")
-
-    function openOverlay() {
-        overlayPage.style.display = "block";
-        overlayPage.classList.remove("blurred")
-        mainContent.classList.add("blurred");
-        
-    }
-
-    function closeOverlay() {
-        overlayPage.style.display = "none";
-        mainContent.classList.remove("blurred");
-    }
-
-    // Close the overlay when the close button is clicked
-    closeOverlayButton.addEventListener("click", closeOverlay);
-    openoverlaybutton.addEventListener("click",openOverlay);
-
-    // Close the overlay when clicking outside the content
-    window.addEventListener("click", (event) => {
-        if (event.target === overlayPage) {
-            closeOverlay();
-        }
-    });
    
-
-/*---------------------------------*/
-
-
-/*
-    //click view all comments 
-        document.getElementById('CommentsId').addEventListener('click', function() {
-       document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
-       document.querySelector('.main-content').classList.add('blurred');
-     });
-      
-     // for exit comment form inside overlay
-     document.getElementById('exit-comment').addEventListener('click', function() {
-        document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
-        document.querySelector('.main-content').classList.remove('blurred');
-     
-    });*/
- // Get all elements with the class 'CommentsLink'
-var commentLinks = document.querySelectorAll('.CommentsLink');
-
-
-// Add the click event listener to each link
-commentLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-        document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
-        document.querySelector('.main-content').classList.add('blurred');
-    });
-});
-// for exit comment form inside overlay
-document.getElementById('exit-comment').addEventListener('click', function() {
-        document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
-        document.querySelector('.main-content').classList.remove('blurred');
-     
-    });
-
-
-    //this for light and dark mode
-
-    document.addEventListener('DOMContentLoaded', function() {
-    const body = document.body;
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-
-    // Check for saved dark mode preference
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        body.classList.add(currentTheme);
-        if (currentTheme === 'dark-mode') {
-            toggleSwitch.checked = true;
-        }
-    }
-
-    // Toggle dark mode
-    toggleSwitch.addEventListener('change', function() {
-        if (this.checked) {
-            body.classList.replace('light-mode', 'dark-mode');
-            localStorage.setItem('theme', 'dark-mode');
-        } else {
-            body.classList.replace('dark-mode', 'light-mode');
-            localStorage.setItem('theme', 'light-mode');
-        }
-    });
-});
-
-
-
-
 
 </script>
 
        <script src="index.js"></script>
+       <script src="indexAll.js"></script>
     </body>
 </html>

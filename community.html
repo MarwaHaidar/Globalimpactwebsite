@@ -13,6 +13,8 @@
         <title>Responsive sidebar submenus</title>
     </head>
     <body>
+        <div class="main_content" id="main_content">
+            <section class="section">
        
         <!--========== HEADER ==========-->
         <header class="header">
@@ -26,8 +28,9 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
     
+               
                 <div class="header__profile">
-                    <img  class="header_profile"src="images/Eo_circle_purple_letter-m.svg.png">
+                    <h3>Login</h3>
                     
                 </div>
             </div>
@@ -47,13 +50,13 @@
                             <h3 class="nav__subtitle">Our World</h3>
     
                             <a href="#" class="nav__link active">
-                                <i class="fa-solid fa-house nav_icon" style="color: #333333;"></i>
+                                <i class="fa-solid fa-house nav_icon iconsColor"></i>
                                 <span class="nav__name">Home</span>
                             </a>
                             
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
-                                    <i class="fa-solid fa-layer-group" style="color: #333333;"></i>
+                                    <i class="fa-solid fa-layer-group iconsColor"></i>
                                     <span class="nav__name">Categories</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                 </a>
@@ -70,13 +73,13 @@
                             </div>
 
                             <a href="#" class="nav__link">
-                                <i class="fa-solid fa-earth-americas" style="color: #333333;"></i>
+                                <i class="fa-solid fa-earth-americas iconsColor" ></i>
                                 <span class="nav__name">About Us</span>
                             </a>
                         </div>
 
                         <a href="#" class="nav__link">
-                            <i class="fa-solid fa-envelope" style="color: #333333;"></i>
+                            <i class="fa-solid fa-envelope iconsColor" ></i>
                             <span class="nav__name">Contact Us</span>
                         </a>
                     </div>
@@ -86,7 +89,7 @@
     
                            
                                 <a href="#" class="nav__link">
-                                    <i class="fa-solid fa-folder-plus" style="color: #333333;"></i>
+                                    <i class="fa-solid fa-folder-plus iconsColor" ></i>
                                     <span class="nav__name">New</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                 </a>
@@ -96,15 +99,25 @@
                             
 
                             <a href="#" class="nav__link">
-                                <i class="fa-solid fa-arrow-trend-up" style="color: #333333;"></i>
+                                <i class="fa-solid fa-arrow-trend-up iconsColor"></i>
                                 <span class="nav__name">Trendy</span>
                             </a>
-                            <a href="#" class="nav__link">
-                                <i class="fas fa-thumbs-up" style="color: #333333;"></i>
-                                <span class="nav__name">Recommended</span>
-                            </a>
+                       
+                        </div>
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
+    
+                            <div class="theme-switch">
+                                <span class="nav__name" style="margin-bottom: 10px;" >Dark mode</span>
+                                <input type="checkbox" id="toggle-switch">
+                                <label for="toggle-switch"></label>
+                            </div>
                         </div>
                     </div>
+
+
+
+                   
                 
 
                 <button class="nav_logout">LOGOUT</button>
@@ -115,14 +128,9 @@
 
 
 
-
-
-
         <!--create social media posts------------------------------------------------------->
         <div class="community__container" >
-
-
-            
+         
         <!--posts display-->    
         <div class="post">
             <div class="post-header">
@@ -177,21 +185,19 @@
                     </div>
                    
 
-
+                </section>
                 </div>
+                </div>
+                
+                
             
-
-                </div>
-                
-                
-                
 
             
                     
-                
+           
         
-    <!------------------------------------------------------------------------------------->
+  
     
-       <script src="index.js"></script>
+<script src="indexAll.js"></script>
     </body>
 </html>

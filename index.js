@@ -19,7 +19,7 @@
      mainContent.classList.remove("blurred");
  }
 
- if (window.location.pathname.includes("adminpage.html") || window.location.pathname.includes("anonymous.html")){
+ if (window.location.pathname.includes("adminpage.html") || window.location.pathname.includes("anonymous.html")|| window.location.pathname.includes("Category.html")){
     closeOverlayButton.addEventListener("click", closeOverlay);
    
  }

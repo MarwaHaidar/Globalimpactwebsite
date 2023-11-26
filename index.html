@@ -126,8 +126,79 @@
             </nav>
         </div>
 
-        <!--create social media posts-->
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
         <div class="post__container">
+
+
+            <!--create Stories--> 
+<div class="main_contentStory">
+  <div class="StoryGallery">
+    <div class="navigation left">&lt;</div>
+    <div class="scroll-container">
+      <div class="inner-container">
+        <div class="Poststory Poststory1" id="PostStory" onclick="openFileInput()">
+            <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="displaySelectedImage()">
+            <img src="./images/UploadImageStory.png" id="postImage">
+            <p>Post Story</p>
+          </div>
+          <!-- <div id="selectedImageContainer">
+            <img id="selectedImage" src="" alt="Selected Image">   past into html
+          </div>
+           -->
+        <div class="story story2" >
+          <img src="./images/rayan1.jpg">
+          <p>Rayan</p>
+        </div>
+        <div class="story story3">
+          <img src="./images/download (1).jpg">
+          <p>Marwa</p>
+        </div>
+        <div class="story story4">
+          <img src="./images/member.jpg">
+          <p>Ahmad</p>
+        </div>
+        <div class="story story5">
+          <img src="./images/member.jpg">
+          <p>Amjad</p>
+        </div>
+        <div class="story story6">
+          <img src="./images/member.jpg">
+          <p>Ismail</p>
+        </div>
+        <div class="story story7">
+          <img src="./images/member.jpg">
+          <p>Ali</p>
+        </div>
+      </div>
+    </div>
+    <div class="navigation right">&gt;</div>
+  </div>
+</div>
+<!-- this for overlay stories  -->
+<div class="overlayStories" id="overlayStories">
+  <div class="overlay-content-Story">
+    <span class="close-btn-Story" onclick="closeOverlayStory()">&times;</span>
+    <img id="overlayimageStory" src="" alt="Overlay Image Story">
+  </div>
+</div>
+
+  <!--create social media posts-->
+
             <div class="create_post">
                 <div class="create">
                     <div class="comment_profile">
@@ -138,7 +209,7 @@
                 </div>
                 <div class="post_features">
                     <div class="createpost_icons">
-                        <i class="fa-solid fa-face-smile" style="color: #333333;"></i>
+                        <i class="fa-solid fa-face-smile" style="color: #333333; "></i>
                         <i class="fa-solid fa-hashtag" style="color: #333333;"></i>
                         <i class="fa-solid fa-image" style="color: #333333;"></i>
                     </div>    
@@ -154,13 +225,14 @@
         <!--posts display-->    
             <div class="post">
                 <div class="post-header">
-                    <img src="images/images.jpg" alt="Account Image" class="account-image">
-                    <p class="account-name">Rayan</p>
+                    <img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" >
+                    <div class="user-ProfilePost">
+                    <p class="account-name">Rayan Sultan</p>
                         <div class="account-Date">
-                        <p>3h ago</p>
-                        <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i>
+                        <small>3h ago</small>
+                     <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
                         </div>
-                        
+                    </div>
                     <div class="post_menu">
                         <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
                         <div class="actions-menu">
@@ -168,11 +240,11 @@
                                 <li onclick="editAction()">Edit</li>
                                 <li onclick="deleteAction()">Delete</li>
                             </ul>
-                        </div>
-                        
+                        </div>    
                     </div>
                 </div>
-
+           
+               
                 <p class="post-caption">This is the caption for the image.</p>
                 <img src="images/images (1).jpg" alt="Post Image" class="post-image">
                 
@@ -181,7 +253,7 @@
                         <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
                         <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
                     </div>
-                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
+                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" ></i></button><span class="count">60</span>
                 </div>
                    <!--view comments--------------------------------------------->
                    <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
@@ -199,21 +271,23 @@
 
             <div class="post">
                 <div class="post-header">
-                    <img src="images/download (1).jpg" alt="Account Image" class="account-image">
-                    <p class="account-name">Marwa</p>
-                    <div class="account-Date">
-                        <p>10h ago</p>
-                        <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i>
+                    <img src="./images/download (1).jpg" alt="Account Image" class="AccountImage" >
+                    <div class="user-ProfilePost">
+                    <p class="account-name">Marwa Haidar</p>
+                        <div class="account-Date">
+                        <small>3h ago</small>
+                     <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
                         </div>
+                    </div>
                     <div class="post_menu">
-                        <i class="fa-solid fa-ellipsis-vertical " style="color: #333333;" onclick="showMenu(this)"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
                         <div class="actions-menu">
                             <ul>
                                 <li onclick="editAction()">Edit</li>
                                 <li onclick="deleteAction()">Delete</li>
                             </ul>
-                        </div>
-                </div>
+                        </div>    
+                    </div>
                 </div>
                 <p class="post-caption">This is the caption for the image.</p>
                 <img src="images/images (1).jpg" alt="Post Image" class="post-image">
@@ -241,12 +315,14 @@
 
             <div class="post">
                 <div class="post-header">
-                    <img src="images/download.jpg" alt="Account Image" class="account-image">
-                    <p class="account-name">Oussama</p>
-                    <div class="account-Date">
-                        <p>12h ago</p>
-                        <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i>
+                    <img src="images/myself.jpg" alt="Account Image" class="AccountImage" >
+                    <div class="user-ProfilePost">
+                    <p class="account-name">Oussama hamzeh</p>
+                        <div class="account-Date">
+                        <small>3h ago</small>
+                     <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
                         </div>
+                    </div>
                     <div class="post_menu">
                         <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
                         <div class="actions-menu">
@@ -254,8 +330,8 @@
                                 <li onclick="editAction()">Edit</li>
                                 <li onclick="deleteAction()">Delete</li>
                             </ul>
-                        </div>
-                </div>
+                        </div>    
+                    </div>
                 </div>
                 <p class="post-caption">This is the caption for the image.</p>
                 <img src="images/images (1).jpg" alt="Post Image" class="post-image">

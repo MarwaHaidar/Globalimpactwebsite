@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== Font Awsome ==========-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="index.css">
+
+        <title>Responsive sidebar submenus</title>
+    </head>
+    <body>
+        <div class="main_content" id="main_content">
+            <section class="section">
+       
+        <!--========== HEADER ==========-->
+        <header class="header">
+            <div class="header__container">
+                
+
+                <a href="#Home" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+    
+                <div class="header__search">
+                    <input type="search" placeholder="Search" class="header__input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+    
+               
+                <div class="header__profile">
+                    <h3>Login</h3>
+                    
+                </div>
+            </div>
+        </header>
+
+        <!--========== NAV ==========-->
+        <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                    <a href="#Home" class="nav__logo">
+                        <img src="images/global logo.png" alt="Global Impact">
+                        
+                    </a>
+    
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Our World</h3>
+    
+                            <a href="#" class="nav__link active">
+                                <i class="fa-solid fa-house nav_icon iconsColor"></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                            
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class="fa-solid fa-layer-group iconsColor"></i>
+                                    <span class="nav__name">Categories</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">Sports</a>
+                                        <a href="#" class="nav__dropdown-item">News</a>
+                                        <a href="#" class="nav__dropdown-item">Technologies</a>
+                                        <a href="#" class="nav__dropdown-item">Movies</a>
+                                        <a href="#" class="nav__dropdown-item">Arts</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#" class="nav__link">
+                                <i class="fa-solid fa-earth-americas iconsColor" ></i>
+                                <span class="nav__name">About Us</span>
+                            </a>
+                        </div>
+
+                        <a href="#" class="nav__link">
+                            <i class="fa-solid fa-envelope iconsColor" ></i>
+                            <span class="nav__name">Contact Us</span>
+                        </a>
+                    </div>
+    
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Top Picks</h3>
+    
+                           
+                                <a href="#" class="nav__link">
+                                    <i class="fa-solid fa-folder-plus iconsColor" ></i>
+                                    <span class="nav__name">New</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                
+
+                            
+
+                            <a href="#" class="nav__link">
+                                <i class="fa-solid fa-arrow-trend-up iconsColor"></i>
+                                <span class="nav__name">Trendy</span>
+                            </a>
+                       
+                        </div>
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
+    
+                            <div class="theme-switch">
+                                <span class="nav__name" style="margin-bottom: 10px;" >Dark mode</span>
+                                <input type="checkbox" id="toggle-switch">
+                                <label for="toggle-switch"></label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                   
+                
+
+                <button class="nav_logout">LOGOUT</button>
+            </nav>
+        </div>
+
+
+
+
+
+        <!--create social media posts------------------------------------------------------->
+        <div class="community__container" >
+         
+        <!--posts display-->    
+        <div class="post">
+            <div class="post-header">
+                <img src="images/download (2).jpg" alt="Account Image" class="community-image">
+                <div class="community_details">
+                <p class="community_name">Barcelona Fans</p>
+                <p class="community-topic" >Sports</p>
+                
+            </div>
+            <div class="post_menu" style="margin-left: 30px;">
+                <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
+                <div class="actions-menu">
+                    <ul>
+                        <li onclick="editAction()">Edit</li>
+                        <li onclick="deleteAction()">Delete</li>
+                    </ul>
+                </div>
+                
+            </div>
+            </div>
+            <div class="community_desc">
+                <p>FC Barcelona is not just a football club; it's a symbol of excellence, a cradle of football legends, and a cultural
+                    icon. Its legacy of success, iconic players, and resilience in the face of challenges make it a true institution 
+                   in the world of sports. As Barcelona continues to shape the future of football, one thing remains certain:
+                    the Blaugrana spirit will shine on, captivating fans and inspiring generations to come. 
+                   Mes Que Un Club! 🔵🔴 #FCBarcelona</p>
+
+
+            </div>
+            
+            
+            
+            </div>
+
+            <!------------------------------------------------------------->
+            
+            <div class="create_post">
+                <div class="create">
+                    <div class="comment_profile">
+                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                    </div>
+
+                <input type="text" class="type_something" placeholder="Type Something">
+                </div>
+                <div class="post_features">
+                    <div class="createpost_icons">
+                        <i class="fa-solid fa-face-smile" style="color: #333333;"></i>
+                        <i class="fa-solid fa-hashtag" style="color: #333333;"></i>
+                        <i class="fa-solid fa-image" style="color: #333333;"></i>
+                    </div>    
+                        <button class="post_post">Post</button>
+                    </div>
+                   
+
+                </section>
+                </div>
+                </div>
+                
+                
+            
+
+            
+                    
+           
+        
+  
+    
+<script src="indexAll.js"></script>
+    </body>
+</html>

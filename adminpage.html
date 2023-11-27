@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== Font Awsome ==========-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="index.css">
+
+        <title>Responsive sidebar submenus</title>
+    </head>
+    <body>
+       
+        <div class="main_content" id="main_content">
+            <section class="section">
+       
+        <!--========== HEADER ==========-->
+        <header class="header">
+            <div class="header__container">
+                
+
+                <a href="#Home" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+    
+                <div class="header__search">
+                    <input type="search" placeholder="Search" class="header__input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+    
+                <div class="header__profile">
+                    <img  class="header_profile"src="images/Eo_circle_purple_letter-m.svg.png">
+                    
+                </div>
+            </div>
+        </header>
+        <div class="document">
+
+        <!--========== NAV ==========-->
+        <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                    <a href="#Home" class="nav__logo">
+                        <img src="images/global logo.png" alt="Global Impact">
+                        
+                    </a>
+    
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Our World</h3>
+    
+                            <a href="#" class="nav__link active">
+                                <i class="fa-solid fa-house nav_icon iconsColor"></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                            
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class="fa-solid fa-layer-group iconsColor"></i>
+                                    <span class="nav__name">Categories</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="#" class="nav__dropdown-item">Sports</a>
+                                        <a href="#" class="nav__dropdown-item">News</a>
+                                        <a href="#" class="nav__dropdown-item">Technologies</a>
+                                        <a href="#" class="nav__dropdown-item">Movies</a>
+                                        <a href="#" class="nav__dropdown-item">Arts</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#" class="nav__link">
+                                <i class="fa-solid fa-earth-americas iconsColor" ></i>
+                                <span class="nav__name">About Us</span>
+                            </a>
+                        </div>
+
+                        <a href="#" class="nav__link">
+                            <i class="fa-solid fa-envelope iconsColor" ></i>
+                            <span class="nav__name">Contact Us</span>
+                        </a>
+                    </div>
+    
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Top Picks</h3>
+    
+                           
+                                <a href="#" class="nav__link">
+                                    <i class="fa-solid fa-folder-plus iconsColor" ></i>
+                                    <span class="nav__name">New</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                
+
+                            
+
+                            <a href="#" class="nav__link">
+                                <i class="fa-solid fa-arrow-trend-up iconsColor"></i>
+                                <span class="nav__name">Trendy</span>
+                            </a>
+                       
+                        </div>
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
+    
+                            <div class="theme-switch">
+                                <span class="nav__name" style="margin-bottom: 10px;" >Dark mode</span>
+                                <input type="checkbox" id="toggle-switch">
+                                <label for="toggle-switch"></label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                   
+                
+
+                <button class="nav_logout">LOGOUT</button>
+            </nav>
+        </div>
+
+        <!--create social media posts-->
+        <div class="post__container">
+
+            
+        <!--posts display-->    
+            <div class="post">
+                <div class="post-header">
+                    <img src="images/images.jpg" alt="Account Image" class="account-image">
+                    <p class="account-name">Rayan</p>
+                        <div class="account-Date">
+                        <p>3h ago</p>
+                        <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i>
+                        </div>
+                        
+                    <div class="post_menu">
+                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
+                        <div class="actions-menu">
+                            <ul>
+                                <li onclick="editAction()">Edit</li>
+                                <li onclick="deleteAction()">Delete</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="image_container">
+
+                <p class="post-caption">This is the caption for the image.</p>
+                <img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
+                
+                <div class="post-actions">
+                    <div class="vote-buttons">
+                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
+                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+                    </div>
+                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
+                </div>
+                   <!--view comments--------------------------------------------->
+                   <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
+                 
+                   <!------------------------------------------------------->
+                <hr class="divider">
+        
+            </div>
+
+            <div class="post">
+                <div class="post-header">
+                    <img src="images/download (1).jpg" alt="Account Image" class="account-image">
+                    <p class="account-name">Marwa</p>
+                    <div class="account-Date">
+                        <p>10h ago</p>
+                        <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i>
+                        </div>
+                    <div class="post_menu">
+                        <i class="fa-solid fa-ellipsis-vertical " style="color: #333333;" onclick="showMenu(this)"></i>
+                        <div class="actions-menu">
+                            <ul>
+                                <li onclick="editAction()">Edit</li>
+                                <li onclick="deleteAction()">Delete</li>
+                            </ul>
+                        </div>
+                </div>
+                </div>
+                <div class="image_container">
+                <p class="post-caption">This is the caption for the image.</p>
+                <img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
+                
+                <div class="post-actions">
+                    <div class="vote-buttons">
+                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
+                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+                    </div>
+                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">20</span>
+                </div>
+                <!--view comments--------------------------------------------->
+                <div class="view-comments"><a class="CommentsLink" href="#2">View All Comments </a></div>          
+                <!------------------------------------------------------->
+                <hr class="divider">
+                <div class="comment">
+                    <div class="comment_profile">
+                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                    </div>
+
+                <input type="text" class="write_comment" placeholder="Write a comment">
+                </div>
+            </div>
+            
+
+            <div class="post">
+                <div class="post-header">
+                    <img src="images/download.jpg" alt="Account Image" class="account-image">
+                    <p class="account-name">Oussama</p>
+                    <div class="account-Date">
+                        <p>12h ago</p>
+                        <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i>
+                        </div>
+                    <div class="post_menu">
+                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
+                        <div class="actions-menu">
+                            <ul>
+                                <li onclick="editAction()">Edit</li>
+                                <li onclick="deleteAction()">Delete</li>
+                            </ul>
+                        </div>
+                </div>
+                </div>
+                <div class="image_container">
+                <p class="post-caption">This is the caption for the image.</p>
+                <img src="images/sports2.jpg" alt="Post Image" class="post-image"></div>
+                
+                <div class="post-actions">
+                    <div class="vote-buttons">
+                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
+                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+                    </div>
+                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">10</span>
+                </div>
+                  <!--view comments--------------------------------------------->
+                  <div class="view-comments" id=""><a class="CommentsLink" href="#3">View All Comments </a></div>    
+                  <!------------------------------------------------------->
+                <hr class="divider">
+                <div class="comment">
+                    <div class="comment_profile">
+                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                    </div>
+
+                <input type="text" class="write_comment" placeholder="Write a comment">
+                </div>
+                
+                
+            </div>
+
+    </div>
+
+
+<!-------------------------------this Form  for view All comment inside Overlay------------------------------------------------------>
+
+
+    <div id="view-Comments-Overlay-Id" class="view-Comments-Overlay">
+        <div class="view-Comments-Overlay-Form">
+            <p>This is the caption for the image.</p>
+                   <div id="exit-comment"> <img 
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
+                    class="x-imgComments"
+                    />
+                 
+                </div>
+            <hr class="hrComments">
+            <img src=  "images/images (1).jpg" alt="Post Image" class="post-imageComment " >
+            <hr class="hrComments">
+            <h3 style="text-align: center; margin-top: 2px;">All Comments</h3>
+            <div class="All-Comments-Inside-Overlay">
+                   <div class="Comments-inside-O">
+                     <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                     <div class="usersComments"> Nice</div>
+                   </div>
+                     
+                   <div class="Comments-inside-O">
+                     <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                     <div class="usersComments"> Amazing!</div>
+                   </div>
+                   <div class="Comments-inside-O">
+                     <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                     <div class="usersComments"> I like this !!!</div>
+                   </div>
+            </div>
+  
+
+        </div>
+</div>
+    
+    <!------------------------------------------------------------------------------------->
+    <div class="right_navbar">
+        <div class="Trending_bar">
+            <div class="title"><i class="fa-solid fa-fire-flame-curved" style="color: #333333;"></i>
+            <p class="title-word">Trending</p></div>
+            <hr class="right-divider">
+            <div class="element1">
+                <p class="name">#mhmd</p>
+                <button class="follow">Follow</button>
+            </div>
+
+            <div class="element2">
+                <p class="name">#ahmd</p>
+                <button class="follow">Follow</button>
+            </div>
+            <div class="element2">
+                <p class="name">#amjad</p>
+                <button class="follow">Follow</button>
+            </div>
+           
+        </div>
+
+
+
+           </div>
+
+    </div>
+    </section>
+    </div>
+
+    <div id="overlayPage" class="overlay-page">
+        <div class="overlay-content">
+            <div id="overlay_header">
+            <h2>Create Community</h2>
+          <!--  <button id="closeOverlay">Exit</button>-->
+            <i class="fa-regular fa-circle-xmark"  id="closeOverlay" style="color: #000000;"></i>
+        </div>
+        
+        <div id="form">
+            <form id="createCommunityForm">
+                <hr style="width: 90%; margin-left: 4%;">
+          <div class="comunnityForm">
+                    <label for="communityName">Community Name</label><br>
+                    <input type="text" id="communityName" name="communityName" placeholder="Community Name" required>
+      
+          
+                    <label for="description">Topic</label><br>
+                    <input type="text" id="communityTopic" name="communityTopic"  placeholder= "This will help relevant users find your community ">
+          
+         
+                    <label for="description">Description</label><br>
+                    <input type="text" id="communityName" name="communityName"  placeholder="This is how new members come to understand your community" required>
+          
+           
+                    <label for="communityPhoto">Community Photo</label><br>
+                    <input type="file" id="communityPhoto" name="communityPhoto" accept="image/*">
+                    
+       
+                
+                <button type="submit" class="custom-btn save-edit-aboutinfo">Create Community</button>
+                
+            </div>    
+            </form>
+            </div>
+            
+        </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script src="index.js"></script>
+       <script src="indexAll.js"></script>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link rel="stylesheet" href="categories.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+        <title>Arts</title>
+
+   
+    </head>
+    <body>
+        <div class="main_content" id="main_content">
+            <section class="section">
+        <section class="main-arts" >
+            <header>
+                <a href="#" class="logo">Arts</a>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./categories.html" >Sports</a></li>
+                    <li><a href="./news.html" >News</a></li>
+                    <li><a href="./technology.html" >Technologies</a></li>
+                    <li><a href="./movies.html">Movies</a></li>
+                    <li><a href="./arts.html" class="AcitveCategory">Arts</a></li>
+                </ul>
+            </header>
+            <div class="content">
+                <div class="textBox">
+                    <h2>That's what<br><span>I like</span></h2>
+                    <p>
+                        ARTS
+                    </p>
+                    <a href="#POSTS">View POSTS</a>
+                </div>
+                <div class="imgBox">
+                    <img src="images/art1.png" alt="" class="arts">
+                </div>
+            </div>
+            <ul class="thumb-arts">
+                <li><img src="images/art2.png" onclick=" changeColor('#FFA500');"></li>
+                <li><img src="images/art4.png" onclick=" changeColor('#0099ff');"></li>
+                <li><img src="images/art5.png" onclick="changeColor('#7B2CBF');"></li>
+            </ul>
+        </section>
+
+
+
+        <section class="POSTS" id="POSTS" >
+            
+<div class="post">
+    <div class="post-header">
+        <img src="images/images.jpg" alt="Account Image" class="account-image">
+        <p class="account-name">Rayan</p>
+            <div class="account-Date">
+            <p style="margin-top: 10px;margin-left: 3px;">3h ago</p>
+            <i class="fa-solid fa-earth-americas"   style="margin-top: 7px; padding-left: 5px;"></i>
+            </div>
+            
+      
+    </div>
+    
+    <div class="image_container">
+
+    <p class="post-caption">This is the caption for the image.</p>
+    <img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
+    
+    <div class="post-actions">
+        <div class="vote-buttons">
+            <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i><span class="count">100</span>
+            <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+        
+        
+        <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
+    </div>
+    
+    </div>
+       <!--view comments--------------------------------------------->
+       <div class="view-comments"><a class="CommentsLink" href="#3">View All Comments </a></div>
+     
+       <!------------------------------------------------------->
+    <hr class="divider">
+    <div class="comment">
+        <div class="comment_profile">
+            <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+        </div>
+
+    <input type="text" class="write_comment" placeholder="Write a comment">
+    </div>
+</div>
+
+
+
+
+
+<div class="post">
+    <div class="post-header">
+        <img src="images/images.jpg" alt="Account Image" class="account-image">
+        <p class="account-name">Rayan</p>
+            <div class="account-Date">
+            <p style="margin-top: 10px; margin-left: 3px;">3h ago</p>
+            <i class="fa-solid fa-earth-americas"  style="margin-top: 7px; padding-left: 5px;"></i>
+            </div>
+            
+      
+    </div>
+    
+    <div class="image_container">
+
+    <p class="post-caption">This is the caption for the image.</p>
+    <img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
+    
+    <div class="post-actions">
+        <div class="vote-buttons">
+            <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
+            <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+            <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
+        </div>
+        
+    </div>
+       <!--view comments--------------------------------------------->
+       <div class="view-comments"><a class="CommentsLink" href="#3">View All Comments </a></div>
+     
+       <!------------------------------------------------------->
+    <hr class="divider">
+    <div class="comment">
+        <div class="comment_profile">
+            <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+        </div>
+
+    <input type="text" class="write_comment" placeholder="Write a comment">
+    </div>
+</div>
+                 
+
+    
+
+
+           
+
+
+
+
+        </section>
+       
+
+
+
+        <div id="view-Comments-Overlay-Id" class="view-Comments-Overlay">
+            <div class="view-Comments-Overlay-Form">
+                <p style="margin-top: 15px;">This is the caption for the image.</p>
+                       <div id="exit-comment" style="margin: 5px;"> <img 
+                        loading="lazy"
+                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
+                        class="x-imgComments"
+                        />
+                     
+                    </div>
+                <hr class="hrComments" style="margin-top: 5px;">
+                <img src=  "images/images (1).jpg" alt="Post Image" class="post-imageComment " >
+                <hr class="hrComments">
+                <h3 style="text-align: center; margin-top: 2px;">All Comments</h3>
+                <div class="All-Comments-Inside-Overlay">
+                       <div class="Comments-inside-O">
+                         <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                         <div class="usersComments"> Nice</div>
+                       </div>
+                         
+                       <div class="Comments-inside-O">
+                         <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                         <div class="usersComments"> Amazing!</div>
+                       </div>
+                       <div class="Comments-inside-O">
+                         <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                         <div class="usersComments"> I like this !!!</div>
+                       </div>
+                </div>
+                <div class="comment-overlay">
+                <input type="text" class="write_comment-overlay" placeholder="Write a comment">
+                </div>
+    
+            </div>
+    </div>
+
+</section>
+</div>
+
+
+    
+        <script>
+
+let commentLinks = document.querySelectorAll('.CommentsLink');
+
+
+// Add the click event listener to each link
+commentLinks.forEach(function(link) {
+ link.addEventListener('click', function() {
+     document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
+     document.querySelector('.main-content').classList.add('blurred');
+ });
+});
+// for exit comment form inside overlay
+document.getElementById('exit-comment').addEventListener('click', function() {
+     document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
+     document.querySelector('.main-content').classList.remove('blurred');
+  
+ });
+
+
+
+
+
+
+
+
+
+            function imgSlider(someThing){
+                document.querySelector('.arts').src = someThing;
+            }
+            function changeColor(color){
+                const sec = document.querySelector('.main-arts');
+                sec.style.background = color;
+                // const sec2=document.querySelector('.POSTS');
+                // sec2.style.background=color;
+            }
+        </script>
+       
+    </body>
+</html>
+

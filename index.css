@@ -46,6 +46,7 @@ body.dark-mode {
   --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
   --ColorGrey:red;
   --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --IcansColor:black;
   --varBoxShadowColor:5px 6px 10px black;
 } 
 /* --------------------------------- */
@@ -277,6 +278,15 @@ body.dark-mode {
     
       width: 219px;
     }
+    
+    .Activeclass{
+      color: var(--IcansColor); 
+      background-color: var(--navbarColorTopic);
+      width: 80%;
+      border-radius: 10px;
+      border-right: 15px solid var(--IcansColor);
+  }
+ 
   /*------------------create post------------*/
   .create_post{
     width:85%;
@@ -536,7 +546,7 @@ padding: 10px;
   font-size: 15px;
 }
 .comment-button:hover{
-  transform: scale(0.9);
+  transform: scale(1.9);
   color: var(--navbarColor)!important;
 }
 

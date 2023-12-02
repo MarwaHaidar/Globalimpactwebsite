@@ -166,3 +166,16 @@ function openFileInput() {
 //     }
 //   });
   
+
+
+// this for Community path -------------
+
+document.getElementById('ComunityPath').addEventListener('click', function(){
+  window.location.href = 'community.html';
+});
+
+// -------------this for Profile  path-----------------
+
+document.getElementById('ProfilePath').addEventListener('click', function(){
+  window.location.href = 'profilepage.html';
+});

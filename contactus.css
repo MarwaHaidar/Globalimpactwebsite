@@ -1,0 +1,597 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root{
+  --navbarColor:linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
+  --navbarColorSite:rgba(176,191,238,1);
+  --navbarColorTopic:black;
+  --navbarColorLink:black;
+  --navbarColorLinkHover:rgba(30,73,128,1) ;
+  --navbarColorButtom:rgba(30,73,128,1) ;
+  --OverlayBackgroundColor:rgba(30,73,128,0.8);
+  --ColorGrey:#404245;
+  --backGroundColor: linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
+  --IcansColor:black;
+  --varBoxShadowColor:-5px -6px 10px black;
+}
+
+body{
+    background:var(--backGroundColor);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    transition: background-color 0.5s, color 0.5s;
+    
+}
+/* this for dark and light mode -------------------*/
+body.light-mode {
+  --navbarColor:#2e3c4e;
+  --navbarColorSite:#2e3c4e;
+  --navbarColorTopic:#E39942;
+  --navbarColorLink:#ecf0f3;
+  --navbarColorLinkHover:#E39942 ;
+  --navbarColorButtom:rgba(30,73,128,1) ;
+  --OverlayBackgroundColor:rgba(30,73,128,0.5);
+  --ColorGrey:#404245;
+  --backGroundColor: #ecf0f3;
+  --IcansColor:#ecf0f3;
+  --varBoxShadowColor:5px 6px 10px black;
+}
+body.dark-mode {
+  --navbarColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --navbarColorSite:  rgba(51,52,61,100);
+  --navbarColorTopic:white;
+  --navbarColorLink:white;
+  --navbarColorLinkHover:rgba(30,73,128,1) ;
+  --navbarColorButtom:rgba(30,73,128,1) ;
+  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
+  --ColorGrey:red;
+  --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --IcansColor:black;
+  --varBoxShadowColor:5px 6px 10px black;
+} 
+/* --------------------------------- */
+.header {
+    height: 4rem; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--navbarColor);
+    box-shadow: var(--varBoxShadowColor);
+    padding: 0 5px;
+    z-index: 100;
+    
+  }
+  .header__container {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    justify-content: space-between;
+  }
+  .header__logo img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-left: 23px;
+    margin-top: 10px;
+
+  }
+
+  .header__search {
+    display: flex;
+    padding: 10px 10px;
+    background-color: #F4F0FA;
+    width: 30%;
+    border-radius: 5px;
+    box-shadow: var(--varBoxShadowColor);
+  }  
+  .header__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #F4F0FA;
+  } 
+  .header__input::placeholder {
+    font-family:'Poppins', sans-serif;
+    color: #58555E;
+  }  
+.header__profile{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 50px;
+}
+.header_profile{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+/* .nav_login{
+  
+  border-radius: 40px;
+  background-color: #9370DB;
+  color: white;
+  width: 60%;
+  margin-right: 60px;} */
+  
+/*---------------------------------------------------------------------*/
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 5px 5px 0;
+    background: var(--navbarColorSite);
+    box-shadow: var(--varBoxShadowColor);
+    z-index: 100;
+    transition: .4s ease;
+    width: 0;
+  }
+ .nav__logo img{
+    border-radius: 50%;
+    margin-left: 2px;
+    margin-top: -20px;
+ }
+ a{
+    text-decoration: none;
+ }
+
+
+  .nav__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    overflow: auto;
+    scrollbar-width: none; /* For mozilla */
+    margin-left: 15px;
+  }
+  /* For Google Chrome and others */
+.nav__container::-webkit-scrollbar {
+    display: none;
+  }
+  
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav__logo img {
+    width: 100px; /* Adjust the size to your preference */
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+  
+  
+  
+  /*-----------------------*/
+  .nav__list, 
+  .nav__items {
+    display: grid;
+  }
+  
+  .nav__list {
+    row-gap: 5px;
+    margin: 5px;
+  }
+  
+  .nav__items {
+    row-gap: 5px;
+  }
+  
+  .nav__subtitle {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:var(--navbarColorTopic);
+  }
+  
+  .nav__link {
+    display: flex;
+    align-items: center;
+    color: var(--navbarColorLink);
+    margin: 0px;
+  }
+  
+  .nav__link:hover {
+    color: var(--navbarColorLinkHover);
+   
+  }
+  
+ 
+  
+  .nav__name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 5px;
+    margin-top: 5px;
+    
+
+    
+  }
+  .iconsColor{
+    color: var(--IcansColor);
+  }
+  
+
+  /* Dropdown----------------------------------------------------------------------------- */
+.nav__dropdown {
+    overflow: hidden;
+    max-height: 30px;
+    transition: .4s ease-in-out;
+    
+  }
+  
+  .nav__dropdown-collapse {
+    
+   
+    margin-top: 5px;
+  }
+  
+  .nav__dropdown-content {
+    display: grid;
+    row-gap: .25rem;
+    padding: .75rem 2.5rem .75rem 1.8rem;
+  }
+  
+  .nav__dropdown-item {
+    font-size:14px;
+    font-weight: 500;
+    color: var(--navbarColorLink);
+    
+  }
+  
+  .nav__dropdown-item:hover {
+    color: var(--navbarColorLinkHover);
+ 
+  }
+  
+  .nav__dropdown-icon {
+    margin-left: auto;
+    transition: .4s;
+  }
+  
+  /* Show dropdown collapse */
+  .nav__dropdown:hover {
+    max-height: 100rem;
+  }
+  
+  /* Rotate icon arrow */
+  .nav__dropdown:hover .nav__dropdown-icon {
+    transform: rotate(180deg);
+  }
+  
+  /*===== Show menu =====*/
+  .show-menu {
+    left: 0;
+  }
+
+  
+  
+  /* Navbar expanded */
+  .nav:hover {
+    
+      width: 219px;
+    }
+    
+    .Activeclass{
+      color: var(--IcansColor); 
+      background-color: var(--navbarColorTopic);
+      width: 80%;
+      border-radius: 10px;
+      border-right: 15px solid var(--IcansColor);
+  }
+  /* ------------------------------------------------------ */
+/* this for Dark mode Form  */
+/* Container for the theme switch */
+.theme-switch {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Hidden default checkbox input */
+.theme-switch input {
+  display: none;
+}
+
+/* Styles for the toggle switch label */
+.theme-switch label {
+  position: relative;
+  display: block;
+  width: 40px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  background-color: #000000; /* Dark background color for the switch */
+  border-radius: 10px; /* Rounded corners for the switch */
+  cursor: pointer;
+}
+
+/* Styles for the toggle switch handle */
+.theme-switch label::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px; /* Width of the handle */
+  height: 16px; /* Height of the handle */
+  background-color: #fff; /* Color of the handle */
+  border-radius: 50%; /* Make the handle round */
+  transition: transform 0.3s; /* Smooth transition for the handle movement */
+}
+
+/* Adjust the handle position based on the checkbox state */
+.theme-switch input:checked + label::after {
+  transform: translateX(20px); /* Move the handle to the right when checked */
+}
+
+  /* -------------------dark mode ------------------------ */
+
+  .header-img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color:transparent;
+    margin-right: 50px;
+   }
+    .section{
+      position: relative;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230099ff' fill-opacity='1' d='M0,160L24,138.7C48,117,96,75,144,80C192,85,240,139,288,181.3C336,224,384,256,432,240C480,224,528,160,576,149.3C624,139,672,181,720,181.3C768,181,816,139,864,138.7C912,139,960,181,1008,208C1056,235,1104,245,1152,234.7C1200,224,1248,192,1296,197.3C1344,203,1392,245,1416,266.7L1440,288L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat center center fixed;
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      display:grid;
+    padding:0 5px;
+      object-fit: cover;
+  }
+.contact-form{
+  opacity:1;
+  position: absolute;
+	top: 30%;
+	left: 60%;
+	width: 20%;
+	height: 60%;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-ms-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+    -o-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+    -webkit-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+    -moz-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
+	/*box-shadow: inset 0 0 5px 5px rgba(180, 163, 190, 0.4);*/
+	box-shadow: inset 0 0 5px 5px rgba(22, 8, 43, 0.1);
+	background:white;
+}
+
+.question-header{
+  position: absolute;
+  width: 40%;
+  height: 8%;
+  overflow:visible;
+  font-family: Poppins;
+  font-size: 250%;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  padding: 0% 0% 0% 0%;
+  margin-top: 5%;
+  left: 30%;
+  color: white;
+}
+
+.first-text{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+	background:rgba(255,255,255,0);
+}
+  .input-text-control{
+    margin-bottom: 5%;
+    top: 60%;
+	left: 7%;
+	width: 85%;
+	height:35px;
+	font-family:poppins;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 2px solid white;
+	background:#d2d2d160;
+    font-size: 60%;
+    padding: 5px 5px 5px 15px;
+    
+  } 
+
+  .input-text-control:hover {
+    width: 90%;
+	height:40px;
+    font-size: 70%;
+}
+.input-text-control:hover::placeholder {
+    color:#FB941E; /* Change the placeholder text color on hover */
+}
+
+  .msg-text{
+    position: relative;
+    margin-bottom: 5%;
+    top: 40%;
+	left: 5%;
+	width: 86%;
+	height: 100px;
+  padding-left: 10px;
+    -ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 2px solid white;
+	overflow: hidden;
+	/*font-family: Inter;*/
+	font-size: 65%;
+    font-family: "poppins";
+	text-align: left;
+	line-height: 24px;
+	color:#333333;
+    background-color: #d2d2d160;
+  }
+  .msg-text:hover {
+    width: 90%;
+	height:110px;
+    font-size: 75%;
+}
+.msg-text:hover::placeholder {
+    color:#FB941E; /* Change the placeholder text color on hover */
+}
+  .btn-form{
+    position: absolute;
+    top: 87%;
+	left: 8%;
+	width: 85%;
+	height: 35px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	background:#FB941E;
+  }   
+  .btn-send-msg{
+    position: relative;
+    top: -22px;
+	left: 68px;
+	font-family: Poppins;
+	font-size: 90%;
+	text-align: left;
+	color:white;
+  }
+  .icon-msg{
+    position: relative;
+    top: 7px;
+	left: 24px;
+	width: 24px;
+	height: 24px;
+    color: white;
+  }
+  .privacy-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .p1{
+    position: absolute;
+    font-size: 50%;
+    top: 90% ;
+
+  }
+  .p2{
+    position: absolute;
+    font-size: 50%;
+    top: 90% ;
+
+  }
+  .contact-info-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .hr-line{
+    border: 1px solid black;
+    width: 10%;
+    margin-left: 27.5%;
+  }
+  .contact-img{
+    margin-top: 5%;
+    margin-right: 35%;
+  }
+  .get-in-touch{
+    margin-right: 38%;
+  }
+
+  .phone-form{
+    margin-right: 37%;
+    margin-top: 1%;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:transparent;
+  } 
+  .phone-nb{
+    position: relative;
+   /* top: 33px;
+	left: 52px;
+	width: 131.6px;
+	height: 28.6px;*/
+	overflow: hidden;
+	font-family: Poppins;
+	font-size: 100%;
+	text-align: left;
+	line-height: 24px;
+	color:#333333;
+  }
+  .phone-nb:hover {
+    font-size: 120%;
+}
+  .icon-phone{
+    position: relative;
+   /* top: 60px;
+	left: 20px;
+	width: 24px;
+	height: 24px;*/
+    color: #0099ff;
+  }  
+
+/* Adjust the margin to separate phone and email if needed */
+.mail-form {
+    margin-right: 30%;
+    margin-top: 1%;
+}
+  .email-text{
+    position: relative;
+    /*top: 5px;
+	left: 50px;
+	width: 131.6px;
+	height: 28.6px;*/
+	overflow: hidden;
+	font-family: Poppins;
+	font-size: 100%;
+	text-align: left;
+	line-height: 24px;
+	color:#333333;
+  }
+  .email-text:hover {
+    font-size: 120%;
+}
+  .icon-mail{
+    position: relative;
+    /*top: 33px;
+	left: 20px;
+	width: 24px;
+	height: 24px;*/
+	left: -4px;
+    color: #0099ff;
+  }  
+  /* Add style to the dash */
+
+.email-text:hover,
+.phone-nb:hover {
+    color: #0099ff; /* Change color on hover to red (you can choose any color) */
+}
+
+
+        

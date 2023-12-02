@@ -7,7 +7,7 @@
   --navbarColorLink:black;
   --navbarColorLinkHover:rgba(30,73,128,1) ;
   --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
+  --OverlayBackgroundColor:rgba(30,73,128,0.8);
   --ColorGrey:#404245;
   --backGroundColor: linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
   --IcansColor:black;
@@ -30,11 +30,11 @@ body.light-mode {
   --navbarColorLink:#ecf0f3;
   --navbarColorLinkHover:#E39942 ;
   --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
+  --OverlayBackgroundColor:rgba(30,73,128,0.5);
   --ColorGrey:#404245;
   --backGroundColor: #ecf0f3;
   --IcansColor:#ecf0f3;
-  --varBoxShadowColor:-5px -6px 10px black;
+  --varBoxShadowColor:5px 6px 10px black;
 }
 body.dark-mode {
   --navbarColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
@@ -46,7 +46,8 @@ body.dark-mode {
   --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
   --ColorGrey:red;
   --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
-  --varBoxShadowColor:-5px -6px 10px black;
+  --IcansColor:black;
+  --varBoxShadowColor:5px 6px 10px black;
 } 
 /* --------------------------------- */
 .header {
@@ -217,14 +218,7 @@ body.dark-mode {
     color: var(--IcansColor);
   }
   
-  .nav_logout {
-    margin-bottom:50px;
-    border-radius: 40px;
-    background: var(--navbarColorButtom);
-    color: white;
-    width: 40%;
-    margin-left: 50px;
-  }
+
   /* Dropdown----------------------------------------------------------------------------- */
 .nav__dropdown {
     overflow: hidden;
@@ -284,6 +278,15 @@ body.dark-mode {
     
       width: 219px;
     }
+    
+    .Activeclass{
+      color: var(--IcansColor); 
+      background-color: var(--navbarColorTopic);
+      width: 80%;
+      border-radius: 10px;
+      border-right: 15px solid var(--IcansColor);
+  }
+ 
   /*------------------create post------------*/
   .create_post{
     width:85%;
@@ -309,7 +312,7 @@ body.dark-mode {
   .type_something{
     border: none;
     width: 90%;
-    opacity: 0.5;
+  
     margin-left: 10px;
   
   }
@@ -321,12 +324,86 @@ body.dark-mode {
   .createpost_icons i{
     margin-left: 10px;
   }
-  .post_post{
-    background: var(--navbarColorButtom);
-    color: white;
-    border-radius: 10px;
-    width: 90px;
-  }
+  /*------------------------post button and log out--------------------------------------------*/
+
+.post_post
+{
+  width: 90px;
+  background: var(--navbarColorButtom);
+  color: white;
+  padding: 0px 10px;
+  height: 20px;
+  font-size: 10px;
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 42px;
+  border: none;
+  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+}
+.nav_logout{
+
+  width: 100px;
+  background: var(--navbarColorButtom);
+  color:var(--navbarColorTopic);
+  padding: 0px 10px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 2px;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 42px;
+  border: none;
+  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+  bottom: 10%;
+  left: 20%;
+}
+.post_post:hover,
+.nav_logout:hover {
+  color: white;
+  background: #92aed0;
+  box-shadow: none;
+}
+
+.post_post:before,
+.post_post:after ,
+.nav_logout:before ,
+.nav_logout:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: var(--navbarColorTopic);
+  box-shadow:
+      -1px -1px 5px 0px #fff,
+      7px 7px 20px 0px #0003,
+      4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+
+.post_post:after,
+.nav_logout:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+.post_post:hover:before,
+.post_post:hover:after,
+.nav_logout:hover:before,
+.nav_logout:hover:after{
+  width: 100%;
+  transition: 800ms ease all;
+}
+
   
  /*post style---------------------------------------------------------------------------------*/
  .post__container{
@@ -341,15 +418,13 @@ body.dark-mode {
  .post-header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+  position: relative;
+
+} 
 
 .post_menu {
   position: absolute;
-  left: 70.5%;
-
+  right: 0%;
 }
 
 .actions-menu {
@@ -357,9 +432,12 @@ body.dark-mode {
   background-color: var(--navbarColor);
   box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
   display: none;
-  border-radius: 20px;
-  color: #333333;
+  border-radius: 10px;
+  color: white;
   font-weight: 300;
+  width: 100px;
+padding: 10px;
+
 }
 
 .actions-menu ul {
@@ -378,37 +456,33 @@ body.dark-mode {
   color: var(--navbarColorLinkHover);
 }
 
-.account-image {
-  width: 60px;
-  height: 60px;
+.AccountImage{
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  margin-right: 0px;
-  margin-top: 10px;
-
+  margin-right: 10px;
 }
 
-
 .account-name {
-
   font-weight: bold;
   color: #333333;
-  font-size: large;
-  padding-left: 2%; 
+  font-size: medium;
+
   margin-top: 5px;
 
 }
 .account-Date{
   display: flex;
   align-items: center;
-  font-weight:100;
-  color: #333333;
-  font-size: small;
-margin-left: -60px; 
-  padding-top: 50px;
-
+  margin-top: -18px;
 
 }
-
+.user-ProfilePost{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  height: 10%;
+}
 /*------------------------------------*/
  .post {
   width: 85%;
@@ -420,7 +494,6 @@ margin-left: -60px;
   border-radius: 8px;
   box-shadow:var(--varBoxShadowColor);
   background-color: white;
-
 
 }
 
@@ -465,7 +538,7 @@ margin-left: -60px;
 
 .comment-button {
   background-color: white;
-  color: #333333;
+  color: #333333 !important;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -473,24 +546,26 @@ margin-left: -60px;
   font-size: 15px;
 }
 .comment-button:hover{
-  transform: scale(0.9);
+  transform: scale(1.9);
+  color: var(--navbarColor)!important;
 }
 
 .view-comments{
   text-align: center;
 }
 .CommentsLink{
-  color: var(--navbarColorLinkHover);
+  color: var(--navbarColor);
 
 }
 .CommentsLink a:hover{
   transform: scale(1.3);
+  
 }
 
 .divider{
   color: #333333;
-  max-width: 400px;
-  font-weight:800 ;
+ width: 100%;
+
 }
 .comment{
   display: flex;
@@ -565,12 +640,14 @@ margin-left: -60px;
 }
 .iconCommunity:hover{
   transform: scale(1.3);
+  color: var(--navbarColor);
 }
 
 .UpvateClass:hover,
 .DownClass:hover
 {
 transform: scale(1.6);
+color: var(--navbarColor) !important;
 }
 
 .fa-fire-flame-curved ,.fa-people-group,.fa-people-roof {
@@ -705,7 +782,7 @@ transform: scale(1.6);
 }
 
 /* Add this style for the blur effect */
-.blurred {
+.blurred{
   filter: blur(15px);
   transition: filter 0.5s ease;
 }
@@ -927,12 +1004,20 @@ transform: scale(1.6);
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: var(--OverlayBackgroundColor);
+  backdrop-filter: blur(15px); /* Adjust the blur radius as needed */
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  
 
 }
+
+  
+
+
+
+
 
 .view-Comments-Overlay-Form{
   position:relative;
@@ -1479,5 +1564,170 @@ transform: scale(1.2);
   #carouselExample .carousel-indicators li.active img {
       transform: scale(1.2);
   }
+}
+
+/* -------------------- create story------------------------- */
+
+.StoryGallery {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+
+.scroll-container {
+  overflow-x: auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.inner-container {
+  display: flex;
+}
+
+.story,
+.Poststory {
+  flex: 0 0 auto;
+  width: 18%;
+  padding-top: 32%;
+  position: relative;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.5)), url(./images/StoryImage.png);
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.story img{
+  width: 40px;
+  height: 40px;
+}
+.story:hover,
+.Poststory:hover {
+  transform: scale(0.99);
+}
+
+.story img ,
+.Poststory img{
+  position: absolute;
+  width: 45px;
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+  border: 5px solid var(--navbarColor);
+  
+}
+
+.story p,
+.Poststory p {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+
+.navigation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  user-select: none;
+}
+
+.navigation.left {
+  left: 0;
+  z-index: 1;
+
+}
+
+.navigation.right {
+  right: 0;
+z-index: 1;
+  
+}
+
+
+.Poststory1{
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(./images/myself.jpg); 
+ 
+}
+.story2{
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(./images/rayan2.jpg); 
+
+}
+.story3{
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(./images/download\ \(1\).jpg); 
+}
+.story4{
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(./images/member.jpg); 
+}
+.story5{
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(./images/member.jpg);  
+}
+.story6{
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(./images/member.jpg);  
+}
+.story7{
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(./images/member.jpg);  
+}
+
+
+.Poststory.Poststory1 img{
+  top: unset;
+  left:50%;
+  bottom: 45px;
+  transform: translateX(-50%);
+  border: 0;
+  width: 25px;
+}
+
+
+/*  ----------overlay Stories------------  */
+
+
+.overlayStories {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.overlay-content-Story {
+  position: relative;
+ width: 50%;
+ height: 60%;
+
+
+ 
+
+}
+#overlayimageStory{
+
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.close-btn-Story {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
 }
 

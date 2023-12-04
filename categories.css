@@ -507,6 +507,94 @@ header .logo-movies{
   text-decoration: none;
 }
 
-.movies{
+/* ------------technology--------------------------- */
+.tech{
+  margin-right: 50px;
+  border-radius: 10px;
+  width: 700px;
+  height: 500px;
+}
+
+/* Add this CSS to your existing stylesheet */
+
+
+.tech {
+  margin-right: 50px;
+  border-radius: 30px;
+  width: 700px;
+  height: 500px;
+  margin-top: 10px;
+
+}
+@keyframes flipAnimation {
+  0%, 100% {
+    transform: scaleX(1.3);
+  }
+  50% {
+    transform: scaleX(-1.3);
+  }
+}
+
+.tech {
+  animation: flipAnimation 20s infinite; /* Adjust the animation duration as needed */
+}
+
+/* ---------------movies--------------------- */
+.main-movies{
   
+  background-image: url(https://assets-global.website-files.com/5a9423a3f702750001758d4f/64ddbb7f254f68d3f78af5bd_noise.png); }
+
+.cover-img{
+ width: 100%;
+}
+.cover-img img{
+ position: cover;
+ width: 100%;
+ height: auto;
+}
+.thumb-movies li img{
+ width: 150px;
+ margin-left: 1px;
+
+}
+
+header{
+ position: absolute;
+ top: 0; left: 0;
+ width: 100%;
+ padding: 20px 100px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+header .logo-movies{
+ position: relative;
+ font-size: 30px;
+ text-decoration: none;
+ color: black;
+ font-weight: 600;
+}
+.movies-ul{
+ position: relative;
+ display: flex;
+ z-index: 999;
+}
+.movies-ul li{
+ list-style-type: none;
+}
+.movies-ul li a{
+ display: inline-block;
+ color: black;
+ font-weight: 400;
+ margin-left: 40px;
+ text-decoration: none;
+}
+
+.movies {
+ margin-left: 20px;
+ margin-bottom: 20px;
+ width: 100%;
+ height: auto;
+ box-shadow: 0px 4px 8px black; /* Adjust values as needed */
+ border-radius: 5px;
 }

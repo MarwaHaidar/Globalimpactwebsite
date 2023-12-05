@@ -13,6 +13,24 @@
   --IcansColor:#ecf0f3;
   --varBoxShadowColor:5px 7px 5px grey;
 }
+
+.lightMode{
+--LightColorSport:green!important;
+--LightColorNews:red;
+--LightColorTechnologie:yellow;
+--LightColorMovies:green;
+--LightColorArts:blue;
+
+}
+.lightMode{
+  --LightColorSport:black;
+  --LightColorNews:black;
+  --LightColorTechnologie:black;
+  --LightColorMovies:black;
+  --LightColorArts:black;
+  
+  }
+
 .section{
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -141,10 +159,11 @@ header ul li a{
 
 .AcitveCategory{
 
-  border-bottom: 5px solid grey;
+  border-bottom: 5px solid white;
  
 
 }
+
 /* --------------this for Post Style --------------- */
 .POSTS{
     background-color: #ecf0f3;
@@ -444,10 +463,10 @@ header ul li a{
   }
   /* ---------------------------NEWS--------------------------- */
   .news_main{
-   
-background: rgb(52,58,64);
-background: linear-gradient(90deg, rgba(52,58,64,1) 0%, rgba(96,105,113,1) 63%);
+    background-color: grey;
+ 
   }
+
   .news-image{
     width: 800px;
     height: auto;
@@ -508,6 +527,9 @@ header .logo-movies{
 }
 
 /* ------------technology--------------------------- */
+.main-tec{
+background-color: rgb(59, 59, 94);
+}
 .tech{
   margin-right: 50px;
   border-radius: 10px;
@@ -542,7 +564,7 @@ header .logo-movies{
 /* ---------------movies--------------------- */
 .main-movies{
   
-  background-image: url(https://assets-global.website-files.com/5a9423a3f702750001758d4f/64ddbb7f254f68d3f78af5bd_noise.png); }
+background-color: rgb(184, 139, 139); }
 
 .cover-img{
  width: 100%;
@@ -571,7 +593,7 @@ header .logo-movies{
  position: relative;
  font-size: 30px;
  text-decoration: none;
- color: black;
+ color: white;
  font-weight: 600;
 }
 .movies-ul{
@@ -584,7 +606,7 @@ header .logo-movies{
 }
 .movies-ul li a{
  display: inline-block;
- color: black;
+ color: white;
  font-weight: 400;
  margin-left: 40px;
  text-decoration: none;
@@ -597,4 +619,51 @@ header .logo-movies{
  height: auto;
  box-shadow: 0px 4px 8px black; /* Adjust values as needed */
  border-radius: 5px;
+}
+
+
+/* dark mode  */
+
+/* this for Dark mode Form  */
+/* Container for the theme switch */
+.theme-switch {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Hidden default checkbox input */
+.theme-switch input {
+  display: none;
+}
+
+/* Styles for the toggle switch label */
+.theme-switch label {
+  position: relative;
+  display: block;
+  width: 40px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  background-color: #000000; /* Dark background color for the switch */
+  border-radius: 10px; /* Rounded corners for the switch */
+  cursor: pointer;
+}
+
+/* Styles for the toggle switch handle */
+.theme-switch label::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px; /* Width of the handle */
+  height: 16px; /* Height of the handle */
+  background-color: #fff; /* Color of the handle */
+  border-radius: 50%; /* Make the handle round */
+  transition: transform 0.3s; /* Smooth transition for the handle movement */
+}
+
+/* Adjust the handle position based on the checkbox state */
+.theme-switch input:checked + label::after {
+  transform: translateX(20px); /* Move the handle to the right when checked */
 }

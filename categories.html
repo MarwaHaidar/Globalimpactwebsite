@@ -12,10 +12,10 @@
 
    
     </head>
-    <body>
+    <body data-page-type="sports">
         <div class="main_content" id="main_content">
             <section class="section">
-        <section class="main" >
+        <section class="main" id="SectionColorModeId" >
             <header>
                 <a href="#" class="logo">Sports</a>
                 <ul>
@@ -25,6 +25,10 @@
                 <li><a href="./technology.html">Technologies</a></li>
                 <li><a href="./movies.html">Movies</a></li>
                 <li><a href="./arts.html">Arts</a></li>
+                <div class="theme-switch" style="padding-left: 30px;">
+                    <input type="checkbox" id="toggle-switch">
+                    <label for="toggle-switch"></label>
+                </div>
                 </ul>
             </header>
             <div class="content">
@@ -225,5 +229,6 @@ document.getElementById('exit-comment').addEventListener('click', function() {
         </script>
        
     </body>
+    <script src="./categories.js"></script>
 </html>
 

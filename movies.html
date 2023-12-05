@@ -13,20 +13,24 @@
 <!-- head starts here -->
    
     </head>
-    <body>
+    <body data-page-type="Movies">
         <div class="main_content" id="main_content">
             <section class="section">
-        <section class="main-movies" style="background-color: white;">
+        <section class="main-movies" id="SectionColorModeIdMovies">
             <header>
                 <a href="#" class="logo-movies">Movies</a>
                 <ul class="movies-ul">
                     
-                    <li><a href="#Home">Home</a></li>
-                    <li><a href="categories.html">Sports</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="technology.html">Technologies</a></li>
-                    <li><a href="movies.html">Movies</a></li>
-                    <li><a href="arts.html">Arts</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./categories.html" >Sports</a></li>
+                    <li><a href="./news.html">News</a></li>
+                    <li><a href="./technology.html" >Technologies</a></li>
+                    <li><a href="./movies.html" class="AcitveCategory">Movies</a></li>
+                    <li><a href="./arts.html">Arts</a></li>
+                    <div class="theme-switch" style="padding-left: 30px;">
+                        <input type="checkbox" id="toggle-switch">
+                        <label for="toggle-switch"></label>
+                    </div>
                     
                 </ul>
             </header>
@@ -51,7 +55,7 @@
         </section>
 
 
-        <section class="POSTS" id="POSTS">
+        <section class="POSTS" id="POSTSMovies">
             
             <div class="post">
                 <div class="post-header">
@@ -230,6 +234,7 @@
                     </script>
                    
                 </body>
+                <script src="./categories.js"></script>
             </html>
             
             

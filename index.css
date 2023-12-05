@@ -365,8 +365,8 @@ body.dark-mode {
 }
 .post_post:hover,
 .nav_logout:hover {
-  color: white;
-  background: #92aed0;
+  color: rgb(0, 191, 255);
+  background: white;
   box-shadow: none;
 }
 

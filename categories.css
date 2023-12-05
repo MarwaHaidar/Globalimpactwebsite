@@ -1,35 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-:root{
-    --navbarColor:#0099ff;
-  --navbarColorSite:#0099ff;
-  --navbarColorTopic:#FFA500;
-  --navbarColorLink:#ecf0f3;
-  --navbarColorLinkHover:#FFA500 ;
-  --navbarColorButtom:#0466C8 ;
-  
-  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
-  --backGroundColor: #ecf0f3;
-  --IcansColor:#ecf0f3;
-  --varBoxShadowColor:5px 7px 5px grey;
-}
 
-.lightMode{
---LightColorSport:green!important;
---LightColorNews:red;
---LightColorTechnologie:yellow;
---LightColorMovies:green;
---LightColorArts:blue;
 
-}
-.lightMode{
-  --LightColorSport:black;
-  --LightColorNews:black;
-  --LightColorTechnologie:black;
-  --LightColorMovies:black;
-  --LightColorArts:black;
-  
-  }
 
 .section{
     font-family: 'Poppins', sans-serif;

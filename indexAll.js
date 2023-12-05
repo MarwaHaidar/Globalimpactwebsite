@@ -30,7 +30,7 @@ function hideAllMenus() {
 
 
 
-//this for dark and light mode ----------------------------
+//this for dark and light mode index  ----------------------------
 
 
 
@@ -61,7 +61,150 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+//this dark mode for categories  ----------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  const postsSection = document.getElementById('POSTS');
+  const postsSectionNews = document.getElementById('POSTSNews');
+  const postsSectionTechnologie = document.getElementById('POSTSTechnologie');
+  const postsSectionMovies = document.getElementById('POSTSMovies');
+  const postsSectionArt = document.getElementById('POSTSArt');
+  const sectionColorModeId = document.getElementById('SectionColorModeId');
+  const SectionColorModeIdNews = document.getElementById('SectionColorModeIdNews');
+  const sectionColorModeIdTechnologies= document.getElementById('sectionColorModeIdTechnologies');
+  const SectionColorModeIdMovies = document.getElementById('SectionColorModeIdMovies');
+  const sectionColorModeIdArts = document.getElementById('sectionColorModeIdArts');
 
+
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'dark-mode') {
+      enableDarkMode();
+      toggleSwitch.checked = true;
+  }
+
+
+  function toggleBackground() {
+     
+      if (toggleSwitch.checked) {
+        
+          enableDarkMode();
+      } else {
+        
+          enableLightMode();
+      }
+  }
+
+  function enableDarkMode() {
+      const pageType = document.body.getAttribute('data-page-type');
+
+      switch (pageType) {
+          case 'sports':
+              postsSection.style.backgroundColor = 'black';
+              sectionColorModeId.style.backgroundColor = 'black';
+              break;
+          case 'news':
+              postsSectionNews.style.backgroundColor = 'black';
+              SectionColorModeIdNews.style.backgroundColor = 'black';
+              break;
+              case 'Technologies':
+                  postsSectionTechnologie.style.backgroundColor = 'black';
+                  sectionColorModeIdTechnologies.style.backgroundColor = 'black';
+                  break;
+                  case 'Movies':
+                      postsSectionMovies.style.backgroundColor = 'black';
+                      SectionColorModeIdMovies.style.backgroundColor = 'black';
+                      break;
+                      case 'Arts':
+                          postsSectionArt.style.backgroundColor = 'black';
+                          sectionColorModeIdArts.style.backgroundColor = 'black';
+                          break;
+          
+          default:
+              break;
+      }
+
+  }
+
+  function enableLightMode() {
+      const pageType = document.body.getAttribute('data-page-type');
+
+      switch (pageType) {
+          case 'sports':
+              postsSection.style.backgroundColor = 'white';
+              sectionColorModeId.style.backgroundColor = '#0099ff';
+              break;
+          case 'news':
+              postsSectionNews.style.backgroundColor = 'white';
+              SectionColorModeIdNews.style.background = 'grey';
+
+              break;
+              case 'Technologies':
+                  postsSectionTechnologie.style.backgroundColor = 'white';
+                  sectionColorModeIdTechnologies.style.backgroundColor = 'rgb(59, 59, 94)';
+                  break;
+                  case 'Movies':
+                      postsSectionMovies.style.backgroundColor = 'white';
+                      SectionColorModeIdMovies.style.background = 'rgb(184, 139, 139)';
+                      break;
+                      case 'Arts':
+                          postsSectionArt.style.backgroundColor = 'white';
+                          sectionColorModeIdArts.style.backgroundColor = '#0099ff';
+                          break;
+      
+          default:
+              break;
+      }
+
+  }
+
+  toggleSwitch.addEventListener('change', toggleBackground);
+});
+//this dark mode for categories  ----------------------------
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const MarketBackground = document.getElementById('MarkertDarkmOdeId');
+  const body = document.body;
+  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+  // Check for saved dark mode preference
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+      body.classList.add(currentTheme);
+      if (currentTheme === 'dark-mode') {
+          toggleSwitch.checked = true;
+          enableDarkMode();
+      } else {
+          enableLightMode();
+      }
+  }
+
+  // Toggle dark mode
+  toggleSwitch.addEventListener('change', function() {
+      if (this.checked) {
+          body.classList.replace('light-mode', 'dark-mode');
+          localStorage.setItem('theme', 'dark-mode');
+          enableDarkMode();
+      } else {
+          body.classList.replace('dark-mode', 'light-mode');
+          localStorage.setItem('theme', 'light-mode');
+          enableLightMode();
+      }
+  });
+
+  function enableDarkMode() {
+      // Adjust background color for dark mode
+      body.style.backgroundColor = 'black';
+      document.documentElement.style.backgroundColor = 'black';
+      MarketBackground.style.backgroundColor = 'black';
+  }
+
+  function enableLightMode() {
+      // Adjust background color for light mode
+      body.style.backgroundColor = 'white';
+      document.documentElement.style.backgroundColor = 'white';
+      MarketBackground.style.backgroundColor = 'white';
+  }
+});
 
 
 // --------------------this for story next and privous buttom-------------------------- 

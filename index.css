@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-:root{
+/* :root{
   --navbarColor:linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
   --navbarColorSite:rgba(176,191,238,1);
   --navbarColorTopic:black;
@@ -12,7 +12,7 @@
   --backGroundColor: linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
   --IcansColor:black;
   --varBoxShadowColor:-5px -6px 10px black;
-}
+} */
 
 body{
     background:var(--backGroundColor);
@@ -24,13 +24,13 @@ body{
 }
 /* this for dark and light mode -------------------*/
 body.light-mode {
-  --navbarColor:#2e3c4e;
-  --navbarColorSite:#2e3c4e;
-  --navbarColorTopic:#E39942;
+  --navbarColor:#0099ff;
+  --navbarColorSite:#0099ff;
+  --navbarColorTopic:#FB941E;
   --navbarColorLink:#ecf0f3;
   --navbarColorLinkHover:#E39942 ;
-  --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(30,73,128,0.5);
+  --navbarColorButtom:#0099ff;
+  --OverlayBackgroundColor:#0099ff;
   --ColorGrey:#404245;
   --backGroundColor: #ecf0f3;
   --IcansColor:#ecf0f3;
@@ -347,7 +347,7 @@ body.dark-mode {
 
   width: 100px;
   background: var(--navbarColorButtom);
-  color:var(--navbarColorTopic);
+  color:white;
   padding: 0px 10px;
   height: 30px;
   font-size: 15px;
@@ -359,7 +359,7 @@ body.dark-mode {
   justify-content: center;
   line-height: 42px;
   border: none;
-  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+  background: linear-gradient(0deg, gray 0%,gray 100%);
   bottom: 10%;
   left: 20%;
 }
@@ -698,8 +698,8 @@ color: var(--navbarColor) !important;
 }
 
 .follow:hover {
-  color: white;
-  background: #92aed0;
+  color: rgb(0, 191, 255);
+  background: white;
   box-shadow: none;
 }
 
@@ -711,7 +711,7 @@ color: var(--navbarColor) !important;
   right: 0;
   height: 2px;
   width: 0;
-  background: var(--navbarColorButtom);
+  background: var(--navbarColorTopic);
   box-shadow:
       -1px -1px 5px 0px #fff,
       7px 7px 20px 0px #0003,
@@ -783,7 +783,7 @@ color: var(--navbarColor) !important;
 
 /* Add this style for the blur effect */
 .blurred{
-  filter: blur(15px);
+  filter: blur(7px);
   transition: filter 0.5s ease;
 }
 
@@ -1166,7 +1166,7 @@ color: var(--navbarColor) !important;
   top: 2%;
   left: 10%;
   position: absolute;
-  color: #ecf0f3;
+  color: black;
   font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif;
   font-weight: 900;
   font-size: 80px;
@@ -1183,7 +1183,7 @@ color: var(--navbarColor) !important;
   font-size: 23px;
   letter-spacing: 2px;
   line-height: 1.2em;
-  color: var(--navbarColorTopic);
+  color: black;
   font-family:'Montserrat', Helvetica, sans-serif;
   position:static;
   width: 35%;
@@ -1193,7 +1193,7 @@ color: var(--navbarColor) !important;
   margin-left: 10%;
 }
 .AboutUsParagraph:hover {
-  color: white; /* Change the color on hover, you can use your preferred gold color code */
+  color: var(--navbarColorTopic); /* Change the color on hover, you can use your preferred gold color code */
   transform: scale(1.1); /* Scale the image on hover */
 }
 .cardsFlex{

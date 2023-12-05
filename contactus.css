@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-:root{
+/* :root{
   --navbarColor:linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
   --navbarColorSite:rgba(176,191,238,1);
   --navbarColorTopic:black;
@@ -12,7 +12,7 @@
   --backGroundColor: linear-gradient(90deg,rgba(176,191,238,1)0%, rgba(176,191,238,1) 18%, rgba(220,225,240,1) 40%, rgba(220,225,240,1) 60%, rgba(176,191,238,1) 86%, rgba(87,122,232,1) 100%);
   --IcansColor:black;
   --varBoxShadowColor:-5px -6px 10px black;
-}
+} */
 
 body{
     background:var(--backGroundColor);
@@ -24,13 +24,13 @@ body{
 }
 /* this for dark and light mode -------------------*/
 body.light-mode {
-  --navbarColor:#2e3c4e;
-  --navbarColorSite:#2e3c4e;
-  --navbarColorTopic:#E39942;
+  --navbarColor:#0099ff;
+  --navbarColorSite:#0099ff;
+  --navbarColorTopic:#FB941E;
   --navbarColorLink:#ecf0f3;
   --navbarColorLinkHover:#E39942 ;
-  --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(30,73,128,0.5);
+  --navbarColorButtom:#0099ff ;
+  --OverlayBackgroundColor:#0099ff;
   --ColorGrey:#404245;
   --backGroundColor: #ecf0f3;
   --IcansColor:#ecf0f3;

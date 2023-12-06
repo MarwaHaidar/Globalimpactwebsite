@@ -1,0 +1,641 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+
+
+
+.section{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: iran_sans_medi; */
+    font-family: 'Poppins', sans-serif;
+}
+section{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0099ff;
+    transition: 0.5s;
+}
+header{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo{
+    position: relative;
+    font-size: 30px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+header ul{
+    position: relative;
+    display: flex;
+    z-index: 999;
+}
+header ul li{
+    list-style-type: none;
+}
+header ul li a{
+    display: inline-block;
+    color: #fff;
+    font-weight: 400;
+    margin-left: 40px;
+    text-decoration: none;
+}
+.content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 100px;
+}
+.content .textBox{
+    position: relative;
+    max-width: 600px;
+    z-index: 999;
+}
+.content .textBox h2{
+    color: #fff;
+    font-size: 4em;
+    line-height: 1.7em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.content .textBox h2 span{
+    font-size: 2em;
+}
+.content .textBox p{
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 900;
+}
+.content .textBox a{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: #fff;
+    color: #111;
+    border-radius: 40px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.content .imgBox{
+    width: 600px;
+    display: flex;
+    padding-right: 10px;
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+.content .imgBox img{
+    max-width: 500px;
+}
+.thumb,.thumb-arts,.thumb-movies{
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+}
+.thumb li,.thumb-arts li,.thumb-movies li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.thumb li img{
+    max-width: 100px;
+}
+.thumb li:hover,.thumb-movies li:hover{
+    transform: translateY(-15px);
+}
+
+.AcitveCategory{
+
+  border-bottom: 5px solid white;
+ 
+
+}
+
+/* --------------this for Post Style --------------- */
+.POSTS{
+    background-color: #ecf0f3;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+} 
+  
+  .post_menu {
+    position: absolute;
+    left: 70.5%;
+  
+  }
+  
+  .actions-menu {
+    position: absolute;
+    background-color: var(--navbarColor);
+    box-shadow: 5px 5px 5px rgba(22, 8, 43, 0.1);
+    display: none;
+    border-radius: 20px;
+    color: #333333;
+    font-weight: 300;
+  }
+  
+  .actions-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .actions-menu li {
+    padding: 8px 16px;
+    cursor: pointer;
+   
+  }
+  
+  .actions-menu li:hover {
+    color: var(--navbarColorLinkHover);
+  }
+  
+  .account-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 0px;
+    margin-top: 10px;
+  
+  }
+  
+
+  .account-name {
+    font-weight: bold;
+    color: #333333;
+    font-size: medium;
+    margin-top: 5px;
+  
+  }
+  .account-Date{
+    display: flex;
+    align-items: center;
+  }
+
+.post {
+    width: 50%;
+    height: auto;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow:var(--varBoxShadowColor);
+    background-color: white;
+  
+  
+  }
+  
+  
+  .post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .post-imageComment{
+      width: 100%;
+      height: 40%;
+      border-radius: 8px;
+    
+  }
+  .post-caption {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333333;
+    font-family:'Poppins', sans-serif ;
+  }
+  
+  .post-actions {
+    margin-top: 10px;
+    display: flex;
+    
+  }
+  
+  .vote-buttons {
+    display: flex;
+    padding: 5px;
+    
+  }
+  .vote-buttons button{
+    margin-left: 10px;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  
+ 
+  .count{
+    padding: 5px;
+    
+  }
+
+
+
+  .view-comments a{
+    text-decoration: none;
+  }
+  .comment-button:hover, .vote-buttons button:hover{
+    transform: scale(1.1);
+  }
+
+  
+  .view-comments{
+    text-align: center;
+  }
+  .CommentsLink{
+    color: var(--navbarColorSite);
+  
+  }
+  .CommentsLink a:hover{
+    transform: scale(1.3);
+  }
+  
+  .divider{
+    color: #333333;
+    max-width: 100%;
+    font-weight:800 ;
+    
+  }
+  .comment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 6%;
+  }
+  
+  .comment_profile{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+    }
+  
+  .profile_photo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  
+  }
+  
+  .write_comment{
+    border:none;
+    margin-left: 10px;
+    width: 150px;
+  }
+  
+  .user-ProfilePost{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+  }
+  .AccountImage{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  /* -----------------------------overlay-------------------------------------- */
+
+
+  .view-Comments-Overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  
+  
+  }
+  
+  .view-Comments-Overlay-Form{
+    position:relative;
+    display:flex;
+    left: 28%;
+    top: 2%;
+    flex-direction: column;
+    padding: 0 30px 0 34px;
+    position: relative;
+    width: 42%;
+    height: 90%;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255, 255,0.3);
+    background: rgba(255,255, 255,0.2);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    color:  #fff;
+    backdrop-filter: blur(5px);
+  
+  }
+  
+  
+  .All-Comments-Inside-Overlay{
+    background-color:white ;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255,255, 255,0.3);
+    border-radius: 20px;
+    color:rgba(255,255, 255,0.2); ;
+  
+  }
+  .hrComments{
+    border-color: white;
+    border-width: 1px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .x-imgComments {
+    aspect-ratio: 1.08;
+    width: 25px;
+    position: absolute;
+    left: 92%;
+    top: 2%;
+  }
+  
+  .comment-overlay{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  
+    .write_comment-overlay{
+      border:none;
+      margin-left: 10px;
+      width: 100%;
+      height: 35px;
+      border-radius: 13px;
+      margin-left: 0%;
+    }
+  
+    .Comments-inside-O{
+    display: flex;
+    justify-content: flex-start;
+    width: 10%;
+    padding-top: 5px;
+    padding-left: 10px;
+  
+    }
+    .usersComments{
+      color: black;
+      padding-left: 10px;
+      width: 100%;
+      white-space: nowrap;
+    }
+    .view-Comments-Overlay {
+      display: none; 
+  }
+  /* ---------------------------NEWS--------------------------- */
+  .news_main{
+    background-color: grey;
+ 
+  }
+
+  .news-image{
+    width: 800px;
+    height: auto;
+    margin-right: 15px;
+  }
+ /* ------------------arts */
+ .main-arts{
+  background-color: #0099ff;
+ }
+ .thumb-arts li img{
+  width: 300px;
+  height: auto;
+ }
+
+ /*--------------------------------------------------------------------------------------------  */
+ .main-movies{
+  
+  background-color: white;
+ }
+
+ .thumb-movies li img{
+  width: 200px;
+
+ }
+ .thumb-movies{
+  padding:0px;
+ }
+ header{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo-movies{
+  position: relative;
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+.movies-ul{
+  position: relative;
+  display: flex;
+  z-index: 999;
+}
+.movies-ul li{
+  list-style-type: none;
+}
+.movies-ul li a{
+  display: inline-block;
+  color: black;
+  font-weight: 400;
+  margin-left: 40px;
+  text-decoration: none;
+}
+
+/* ------------technology--------------------------- */
+.main-tec{
+background-color: rgb(59, 59, 94);
+}
+.tech{
+  margin-right: 50px;
+  border-radius: 10px;
+  width: 700px;
+  height: 500px;
+}
+
+/* Add this CSS to your existing stylesheet */
+
+
+.tech {
+  margin-right: 50px;
+  border-radius: 30px;
+  width: 700px;
+  height: 500px;
+  margin-top: 10px;
+
+}
+@keyframes flipAnimation {
+  0%, 100% {
+    transform: scaleX(1.3);
+  }
+  50% {
+    transform: scaleX(-1.3);
+  }
+}
+
+.tech {
+  animation: flipAnimation 20s infinite; /* Adjust the animation duration as needed */
+}
+
+/* ---------------movies--------------------- */
+.main-movies{
+  
+background-color: rgb(184, 139, 139); }
+
+.cover-img{
+ width: 100%;
+}
+.cover-img img{
+ position: cover;
+ width: 100%;
+ height: auto;
+}
+.thumb-movies li img{
+ width: 150px;
+ margin-left: 1px;
+
+}
+
+header{
+ position: absolute;
+ top: 0; left: 0;
+ width: 100%;
+ padding: 20px 100px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+header .logo-movies{
+ position: relative;
+ font-size: 30px;
+ text-decoration: none;
+ color: white;
+ font-weight: 600;
+}
+.movies-ul{
+ position: relative;
+ display: flex;
+ z-index: 999;
+}
+.movies-ul li{
+ list-style-type: none;
+}
+.movies-ul li a{
+ display: inline-block;
+ color: white;
+ font-weight: 400;
+ margin-left: 40px;
+ text-decoration: none;
+}
+
+.movies {
+ margin-left: 20px;
+ margin-bottom: 20px;
+ width: 100%;
+ height: auto;
+ box-shadow: 0px 4px 8px black; /* Adjust values as needed */
+ border-radius: 5px;
+}
+
+
+/* dark mode  */
+
+/* this for Dark mode Form  */
+/* Container for the theme switch */
+.theme-switch {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Hidden default checkbox input */
+.theme-switch input {
+  display: none;
+}
+
+/* Styles for the toggle switch label */
+.theme-switch label {
+  position: relative;
+  display: block;
+  width: 40px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  background-color: #000000; /* Dark background color for the switch */
+  border-radius: 10px; /* Rounded corners for the switch */
+  cursor: pointer;
+}
+
+/* Styles for the toggle switch handle */
+.theme-switch label::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px; /* Width of the handle */
+  height: 16px; /* Height of the handle */
+  background-color: #fff; /* Color of the handle */
+  border-radius: 50%; /* Make the handle round */
+  transition: transform 0.3s; /* Smooth transition for the handle movement */
+}
+
+/* Adjust the handle position based on the checkbox state */
+.theme-switch input:checked + label::after {
+  transform: translateX(20px); /* Move the handle to the right when checked */
+}

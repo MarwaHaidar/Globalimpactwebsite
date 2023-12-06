@@ -134,46 +134,45 @@
      <img src="images/rayan1.jpg" alt="circle-profile" class="circle-img">
 
       </div>
-
-     <!--part2-->
-     <div class="container">
-        <div class="text-content">
-            <div class="row-1">
-                <div class="name-job">
-                  <span>Rayan Soltan</span>
-                  <span>Developer</span>
+            <!--part2-->
+            <div class="container">
+                <div class="text-content">
+                    <div class="row-1">
+                        <div class="name-job">
+                          <span>Rayan Soltan</span>
+                          <span>Developer</span>
+                        </div>
+                        <button class="btn" id="openButton1">Edit Profile</button>
+                      </div>
+                  <div class="row-2">
+                    <div class="column">
+                      <i class="fa-solid fa-location-dot icon"></i>
+                      <span class="location">Lebanon</span>
+                    </div>
+                    <div class="column">
+                      <i class="fa-regular fa-newspaper icon"></i>
+                      <span class="numbers">75</span>
+                      <span>Post</span>
+                  </div>
+                  <div class="column">
+                      <i class="fa-solid fa-user-group icon"></i>
+                      <span class="numbers">245</span>
+                      <span>Followers</span>
+                  </div>
+                  <div class="column">
+                      <i class="fa-solid fa-user-group icon"></i>
+                      <span class="numbers">2,456</span>
+                      <span>Following</span>
+                  </div>
+                  </div>
                 </div>
-                <button class="btn" id="openButton1">Edit Profile</button>
               </div>
-          <div class="row-2">
-            <div class="column">
-              <i class="fa-solid fa-location-dot icon"></i>
-              <span class="location">Lebanon</span>
-            </div>
-            <div class="column">
-              <i class="fa-regular fa-newspaper icon"></i>
-              <span class="numbers">75</span>
-              <span>Post</span>
-          </div>
-          <div class="column">
-              <i class="fa-solid fa-user-group icon"></i>
-              <span class="numbers">245</span>
-              <span>Followers</span>
-          </div>
-          <div class="column">
-              <i class="fa-solid fa-user-group icon"></i>
-              <span class="numbers">2,456</span>
-              <span>Following</span>
-          </div>
-          </div>
-        </div>
-      </div>
 
      <div class="navbar-profile">
-        <div class="overview">OVERVIEW</div>
-        <a href="my-photo-page.html">
-            <div class="nav-prof-name">PHOTOS</div>
+        <a href="edit-post.html">
+            <div class="nav-prof-name">OVERVIEW</div>
         </a>
+        <div class="overview">PHOTOS</div>
         <div class="nav-prof-name">UPVOTED</div>
         <div class="nav-prof-name">DOWNVOTED</div>
       </div>
@@ -204,124 +203,18 @@
      </div>
     </div>
 
-    <!--posts display-->    
-    <div class="post">
-        <div class="post-header">
-            <img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" >
-            <div class="user-ProfilePost">
-            <p class="account-name">Rayan Sultan</p>
-                <div class="account-Date">
-                <small>3h ago</small>
-             <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
-                </div>
-            </div>
-            <div class="post_menu">
-                <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
-                <div class="actions-menu">
-                    <ul>
-                        <li onclick="editAction()" id="edit-post">Edit</li>
-                        <li onclick="deleteAction()">Delete</li>
-                    </ul>
-                </div>    
-            </div>
-        </div>
-   
-       
-        <p class="post-caption">This is the caption for the image.</p>
-        <img src="images/images (1).jpg" alt="Post Image" class="post-image">
-        
-        <div class="post-actions">
-            <div class="vote-buttons">
-                <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
-                <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
-            </div>
-            <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" ></i></button><span class="count">60</span>
-        </div>
-           <!--view comments--------------------------------------------->
-           <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
-         
-           <!------------------------------------------------------->
-        <hr class="divider">
-        <div class="comment">
-            <div class="comment_profile">
-                <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-            </div>
+    <!--create the photo section-->
+    <div class="grid-photo-container">
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>  
+        <div class="grid-item"></div>
+      </div>
 
-        <input type="text" class="write_comment" placeholder="Write a comment">
-        </div>
-    </div>
-    
+   
      
      </section>
     </div>
-
-    <div class="edit-post-overlay" id="edit-post-overlay">
-        <!-- Content of the overlay -->
-        <div class="edit-post-card">
-            <div class="edit-post-overlay-header">
-              <div class="edit-post-text">Edit Post</div>
-              <img id="x-edit-post"
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
-              class="x-img"
-              />
-            </div>
-            <div><hr class="hr"></div>
-            <div class="image-name">
-                <img  class="profile-photo-edit-post" src="images/rayan-profile.JPG">
-                <a class="user-name">Rayan Soltan</a>
-            </div>
-            <div class="text-hashtag">
-                <input type="text" class="change-caption" placeholder="Say Something About This Post...">
-                <input type="text" class="change-hashtag" placeholder="Put Your Hashtags #">
-                <label for="image" style="margin-top: 3%;margin-left: 3.5%;">Update your post's image:</label>
-                <input type="file" name="image" id="image" accept="image/*" style="margin-left: 3.5%;" onchange="previewImage()">
-            </div>
-            <img  class="edit-post-photo" src="images/white-background.png" id="preview-img">
-            <button class="custom-btn-post save-edit-post" id="closeButton">Save</button>
-            
-      </div>
-    </div>
-
-
-      <!-------------------------------this Form  for view All comment inside Overlay------------------------------------------------------>
-
-
-    <div id="view-Comments-Overlay-Id" class="view-Comments-Overlay">
-        <div class="view-Comments-Overlay-Form">
-            <p>This is the caption for the image.</p>
-                   <div id="exit-comment"> <img 
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
-                    class="x-imgComments"
-                    />
-                 
-                </div>
-            <hr class="hrComments">
-            <img src=  "images/images (1).jpg" alt="Post Image" class="post-imageComment " >
-            <hr class="hrComments">
-            <h3 style="text-align: center; margin-top: 2px;">All Comments</h3>
-            <div class="All-Comments-Inside-Overlay">
-                   <div class="Comments-inside-O">
-                     <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                     <div class="usersComments"> Nice</div>
-                   </div>
-                     
-                   <div class="Comments-inside-O">
-                     <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                     <div class="usersComments"> Amazing!</div>
-                   </div>
-                   <div class="Comments-inside-O">
-                     <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                     <div class="usersComments"> I like this !!!</div>
-                   </div>
-            </div>
-            <div class="comment-overlay">
-            <input type="text" class="write_comment-overlay" placeholder="Write a comment">
-            </div>
-
-        </div>
-</div>
     <!------------edit profile overlay------------------->
     <div class="overlay" id="overlay">
         <!-- Content of the overlay -->
@@ -492,110 +385,44 @@
      });
      </script>
 
-     
-    
-      <script>
-        document.getElementById('edit-post').addEventListener('click', function() {
-       document.getElementById('edit-post-overlay').style.display = 'block';
-       document.querySelector('.main-content').classList.add('blurred');
-     });
-     
-     document.getElementById('closeButton').addEventListener('click', function() {
-       document.getElementById('edit-post-overlay').style.display = 'none';
-       document.querySelector('.main-content').classList.remove('blurred');
-     });
+    <script>
+        /*----------------overview page--------------*/
+   document.addEventListener('DOMContentLoaded', function() {
+   document.getElementById('overview-link').addEventListener('click', function() {
+   // Specify the URL of the page you want to navigate to
+   var overviewPageUrl = 'edit-post.html';
 
-     document.getElementById('x-edit-post').addEventListener('click', function() {
-       document.getElementById('edit-post-overlay').style.display = 'none';
-       document.querySelector('.main-content').classList.remove('blurred');
-     });
-   
-     // Open overlay
-   document.body.classList.add('overlay-open');
-   
-   // Close overlay
-   document.body.classList.remove('overlay-open');
-    </script>
-    <script src="vanilla-tilt.js"></script>
-    <script> 
-    function showMenu(icon) {
-    // Hide all other menus
-    hideAllMenus();
-
-    // Find the parent menu and show its actions-menu
-    const parentMenu = icon.closest('.post_menu');
-    const actionsMenu = parentMenu.querySelector('.actions-menu');
-    actionsMenu.style.display = 'block';
-
-    // Close the menu when clicking outside of it
-    document.addEventListener('click', function closeMenu(event) {
-        if (!parentMenu.contains(event.target)) {
-            actionsMenu.style.display = 'none';
-            document.removeEventListener('click', closeMenu);
-        }
-    });
-}
-
-function hideAllMenus() {
-    // Hide all actions-menus
-    const allMenus = document.querySelectorAll('.actions-menu');
-    allMenus.forEach(menu => {
-        menu.style.display = 'none';
-    });
-}
-
-/*----------------photos page--------------*/
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('photos-link').addEventListener('click', function() {
-    // Specify the URL of the page you want to navigate to
-    var photosPageUrl = 'my-photos-page.html';
-
-    // Navigate to the specified page
-    window.location.href = photosPageUrl;
+   // Navigate to the specified page
+   window.location.href = overviewPageUrl;
 });
 });
 
 
 // JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('aboutus').addEventListener('click', function() {
-    // Specify the URL of the page you want to navigate to
-    var profilePageUrl = 'about-us.html';
+       document.getElementById('aboutus').addEventListener('click', function() {
+   // Specify the URL of the page you want to navigate to
+   var profilePageUrl = 'about-us.html';
 
-    // Navigate to the specified page
-    window.location.href = profilePageUrl;
+   // Navigate to the specified page
+   window.location.href = profilePageUrl;
 });
 });
 
-  // JavaScript
-  document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('contactus').addEventListener('click', function() {
-    // Specify the URL of the page you want to navigate to
-    var profilePageUrl = 'contactUs.html';
+ // JavaScript
+ document.addEventListener('DOMContentLoaded', function() {
+       document.getElementById('contactus').addEventListener('click', function() {
+   // Specify the URL of the page you want to navigate to
+   var profilePageUrl = 'contactUs.html';
 
-    // Navigate to the specified page
-    window.location.href = profilePageUrl;
+   // Navigate to the specified page
+   window.location.href = profilePageUrl;
 });
 });
-    </script>
-    <!--show image-->
-	<script>
-        function previewImage() {
-            var input = document.getElementById('image');
-            var preview = document.getElementById('preview-img');
+     </script>
 
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-                preview.style.display = 'block';
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    </script>
+   
      
 <script src="./indexAll.js" ></script>
-<script src="index.js"></script>
 </body>
 </html>

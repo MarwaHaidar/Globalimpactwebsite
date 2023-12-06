@@ -37,17 +37,17 @@ body.light-mode {
   --varBoxShadowColor:5px 6px 10px black;
 }
 body.dark-mode {
-  --navbarColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --navbarColor:rgba(51,52,61,100);
   --navbarColorSite:  rgba(51,52,61,100);
-  --navbarColorTopic:white;
+  --navbarColorTopic:#FB941E;
   --navbarColorLink:white;
-  --navbarColorLinkHover:rgba(30,73,128,1) ;
-  --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
-  --ColorGrey:red;
+  --navbarColorLinkHover:#FB941E ;
+  --navbarColorButtom:#191C24;
+  --OverlayBackgroundColor:#404245;
+  --ColorGrey:#404245;
   --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
-  --IcansColor:black;
-  --varBoxShadowColor:5px 6px 10px black;
+  --IcansColor:white;
+  --varBoxShadowColor:5px 6px 10px #404245 ;
 } 
 /* --------------------------------- */
 .header {
@@ -359,7 +359,7 @@ body.dark-mode {
   justify-content: center;
   line-height: 42px;
   border: none;
-  background: linear-gradient(0deg, gray 0%,gray 100%);
+  background: linear-gradient(0deg, #4071f8 0%,#4071f8  100%);
   bottom: 10%;
   left: 20%;
 }
@@ -1156,6 +1156,9 @@ color: var(--navbarColor) !important;
   height: 800px;
   object-fit: cover; /* Ensure the image covers the container while maintaining its aspect ratio */
   border-radius: 10px;
+  box-shadow: 10px 10px 10px  gray;
+  
+  
 }
 
 
@@ -1191,10 +1194,14 @@ color: var(--navbarColor) !important;
   margin-top: -400px;
   margin-bottom: 300px;
   margin-left: 10%;
+
+  
+  
 }
 .AboutUsParagraph:hover {
   color: var(--navbarColorTopic); /* Change the color on hover, you can use your preferred gold color code */
   transform: scale(1.1); /* Scale the image on hover */
+  box-shadow: 10px 10px 10px  gray;
 }
 .cardsFlex{
 
@@ -1206,13 +1213,14 @@ color: var(--navbarColor) !important;
   justify-items: center;
   width: 60%;
   height: 500px;
+  
 
 }
 
 .FirstCardFlex{
   width: 50%;
   height: inherit;
-
+ 
 }
 .firstHeaderInsideFlex{
   font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif;
@@ -1269,6 +1277,9 @@ color: var(--navbarColor) !important;
     width: 80%;
     height: 60%;
     border-radius: 20px;
+    box-shadow: 10px 10px 10px  gray;
+ 
+    
 }
 
 
@@ -1289,15 +1300,23 @@ color: var(--navbarColor) !important;
   height: inherit;
   display: flex;
   flex-direction: column;
+ box-shadow: 10px 10px 10px  gray;
+ margin-right: 20px;
  
 }
 .SecondCardFlexWork{
   width: 50%;
   height: inherit;
+  box-shadow: 10px 10px 10px  gray;
+  margin-right: 20px;
+  
 }
 .thirdCardFlexWork{
   width: 50%;
   height: inherit;
+  box-shadow: 10px 10px 10px  gray;
+  margin-right: 20px;
+  
 }
 .FirstCardFlexWork:hover,
 .SecondCardFlexWork:hover,

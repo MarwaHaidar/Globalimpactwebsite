@@ -126,17 +126,23 @@
         </nav>
     </div>
 
-     <!--profile page creation-->
-     <div class="image-container">
-        <img src="images/profile_back_img.jpg" alt="profile-img" class="profile-img">
-        <i class="fa-solid fa-camera camera-icon" style="color: #ffffff;"></i>
-        <img src="images/rayan1.jpg" alt="circle-profile" class="circle-img">
+      <!--profile page creation-->
+      <div class="image-container">
+        <img src="images/profile_back_img.jpg" alt="profile-img" class="profile-img" id="profile-image">
         <button type="button" class="edit-profile" id="openButton">Edit Profile</button>
      </div>
+     <img src="images/profile_back_img.jpg" alt="circle-profile" class="circle-img" id="circle-img">
+     
+      <div class="camera-cont"><i class="fa-solid fa-camera camera-icon" onclick="uploadFile('camera1')"></i></div>
+      <div class="camera-cont2"><i class="fa-solid fa-camera camera-icon2" onclick="uploadFile('camera2')"></i></div>
 
      <div class="navbar-profile">
-        <div class="overview">OVERVIEW</div>
-        <div class="nav-prof-name">PHOTOS</div>
+        <a href="edit-post.html">
+            <div class="overview">OVERVIEW</div>
+        </a>
+        <a href="my-photo-page.html">
+            <div class="overview">PHOTOS</div>
+        </a>
         <div class="nav-prof-name">UPVOTED</div>
         <div class="nav-prof-name">DOWNVOTED</div>
       </div>
@@ -267,19 +273,27 @@
             <div class="img-image-form">
                 <div class="img-image-text">Image</div>
                 <div class="img-img-container">
-                    <img src="images/white-background.png" alt="profile-img" class="img-upload-img">
-                    <i class="fa-solid fa-upload img-upload-icon"></i>
+                    <img src="images/white-background.png" alt="Preview" class="img-upload-img" id="img-preview">
                 </div>
+                <i class="fa-solid fa-upload img-upload-icon" onclick="uploadFile('userFileInput')"></i>
                 <div class="img-profile-container">
-                    <i class="fa-solid fa-user img-user-icon"></i>
-                    <i class="fa-solid fa-upload img-user-upload-icon"></i>
+                    <img src="images/white-background.png" alt="Preview2" class="img-upload-img2" id="img-preview-2">
                 </div>
+                <i class="fa-solid fa-upload img-user-upload-icon" onclick="uploadFile('FileInput')"></i>
                 <div class="img-custom-btn img-edit-img-save" id="img-closeButton">Save</div>
     
                 
     
             </div>
+
       </div>
+      </div>
+      <!-- for choose file image-->
+      <input type="file" id="userFileInput" style="display: none" onchange="previewImage(this)">
+      <input type="file" id="FileInput" style="display: none" onchange="previewImage2(this)">
+      <input type="file" id="camera1" style="display: none" onchange="previewImage3(this)">
+      <input type="file" id="camera2" style="display: none" onchange="previewImage4(this)">
+      
       <script>
          document.getElementById('openButton').addEventListener('click', function() {
         document.getElementById('overlay').style.display = 'block';
@@ -369,6 +383,94 @@
 });
 
       </script>
+      <script>
+        //for choosing image file
+        function uploadFile(input) {
+            // Trigger the click event of the corresponding file input
+            document.getElementById(input).click();
+        }
+
+        function handleFileChange(input) {
+            // Handle the file change event here
+            // You can access the selected file using input.files[0]
+            console.log("Selected file:", input.files[0].name);
+        }
+    </script>
+
+    <!-- for preview the selected images-->
+    <script>
+        function previewImage() {
+            let input = document.getElementById('userFileInput');
+            let preview = document.getElementById('img-preview');
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+            // Add your additional file change handling logic here
+            handleFileChange(input);
+        }
+    </script>
+    <script>
+        function previewImage2() {
+            let input = document.getElementById('FileInput');
+            let preview2 = document.getElementById('img-preview-2');
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview2.src = e.target.result;
+                preview2.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            
+            // Add your additional file change handling logic here
+            handleFileChange(input);
+        }
+    </script>
+    <script>
+        function previewImage3() {
+            let input = document.getElementById('camera1');
+            let preview2 = document.getElementById('circle-img');
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview2.src = e.target.result;
+                preview2.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            
+            // Add your additional file change handling logic here
+            handleFileChange(input);
+        }
+    </script>
+    <script>
+        function previewImage4() {
+            let input = document.getElementById('camera2');
+            let preview2 = document.getElementById('profile-image');
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview2.src = e.target.result;
+                preview2.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            
+            // Add your additional file change handling logic here
+            handleFileChange(input);
+        }
+    </script>
+    
      
 <script src="./indexAll.js" ></script>
 </body>

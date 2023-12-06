@@ -98,24 +98,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
       switch (pageType) {
           case 'sports':
-              postsSection.style.backgroundColor = 'black';
-              sectionColorModeId.style.backgroundColor = 'black';
+              postsSection.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+              sectionColorModeId.style.backgroundColor = '#0099ff';
               break;
           case 'news':
-              postsSectionNews.style.backgroundColor = 'black';
-              SectionColorModeIdNews.style.backgroundColor = 'black';
+              postsSectionNews.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+              SectionColorModeIdNews.style.backgroundColor = 'grey';
               break;
               case 'Technologies':
-                  postsSectionTechnologie.style.backgroundColor = 'black';
-                  sectionColorModeIdTechnologies.style.backgroundColor = 'black';
+                  postsSectionTechnologie.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+                  sectionColorModeIdTechnologies.style.backgroundColor = 'rgb(59, 59, 94)';
                   break;
                   case 'Movies':
-                      postsSectionMovies.style.backgroundColor = 'black';
-                      SectionColorModeIdMovies.style.backgroundColor = 'black';
+                      postsSectionMovies.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+                      SectionColorModeIdMovies.style.backgroundColor = 'rgb(184, 139, 139)';
                       break;
                       case 'Arts':
-                          postsSectionArt.style.backgroundColor = 'black';
-                          sectionColorModeIdArts.style.backgroundColor = 'black';
+                          postsSectionArt.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+                          sectionColorModeIdArts.style.backgroundColor = '#0099ff';
                           break;
           
           default:
@@ -161,50 +161,47 @@ document.addEventListener('DOMContentLoaded', function() {
 //this dark mode for categories  ----------------------------
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const MarketBackground = document.getElementById('MarkertDarkmOdeId');
-  const body = document.body;
-  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const body = document.body;
+//     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 
-  // Check for saved dark mode preference
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme) {
-      body.classList.add(currentTheme);
-      if (currentTheme === 'dark-mode') {
-          toggleSwitch.checked = true;
-          enableDarkMode();
-      } else {
-          enableLightMode();
-      }
-  }
+//     // Check for saved dark mode preference
+//     const currentTheme = localStorage.getItem('theme');
+//     if (currentTheme) {
+//         body.classList.add(currentTheme);
+//         if (currentTheme === 'dark-mode') {
+//             toggleSwitch.checked = true;
+//             enableDarkMode();
+//         } else {
+//             enableLightMode();
+//         }
+//     }
 
-  // Toggle dark mode
-  toggleSwitch.addEventListener('change', function() {
-      if (this.checked) {
-          body.classList.replace('light-mode', 'dark-mode');
-          localStorage.setItem('theme', 'dark-mode');
-          enableDarkMode();
-      } else {
-          body.classList.replace('dark-mode', 'light-mode');
-          localStorage.setItem('theme', 'light-mode');
-          enableLightMode();
-      }
-  });
+//     // Toggle dark mode
+//     toggleSwitch.addEventListener('change', function() {
+//         if (this.checked) {
+//             body.classList.replace('light-mode', 'dark-mode');
+//             localStorage.setItem('theme', 'dark-mode');
+//             enableDarkMode();
+//         } else {
+//             body.classList.replace('dark-mode', 'light-mode');
+//             localStorage.setItem('theme', 'light-mode');
+//             enableLightMode();
+//         }
+//     });
 
-  function enableDarkMode() {
-      // Adjust background color for dark mode
-      body.style.backgroundColor = 'black';
-      document.documentElement.style.backgroundColor = 'black';
-      MarketBackground.style.backgroundColor = 'black';
-  }
+//     function enableDarkMode() {
+//         // Adjust background color for dark mode
+//         body.style.backgroundColor = 'black';
+//         document.documentElement.style.backgroundColor = 'black';
+//     }
 
-  function enableLightMode() {
-      // Adjust background color for light mode
-      body.style.backgroundColor = 'white';
-      document.documentElement.style.backgroundColor = 'white';
-      MarketBackground.style.backgroundColor = 'white';
-  }
-});
+//     function enableLightMode() {
+//         // Adjust background color for light mode
+//         body.style.backgroundColor = 'white';
+//         document.documentElement.style.backgroundColor = 'white';
+//     }
+// });
 
 
 // --------------------this for story next and privous buttom-------------------------- 

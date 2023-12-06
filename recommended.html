@@ -7,13 +7,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	</head>
 	<body>
-		<header>
+		<div class="theme-switch" style="display: none;">
+			<span class="nav__name" style="margin-bottom: 10px;">Dark mode</span>
+			<input type="checkbox" id="toggle-switch">
+			<label for="toggle-switch"></label>
+		</div>
+		<header id="HeaderColor">
 			<div class="website-header">
 				<img src="images/global logo.png">
 				<h1>GLOBAL IMPACT</h1>
 			
 			</div>
-			<nav class="navbar navbar-expand-md ">
+			<nav class="navbar navbar-expand-md " id="navColor" >
   
   
 
@@ -304,5 +309,36 @@
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
                         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 					   
+						<script>
+
+
+							// this for dark mode 
+						document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const toggleSwitch = document.getElementById('toggle-switch');
+            const PostNR = document.getElementById('POSTS');
+            const currentTheme = localStorage.getItem('theme');
+			const HeaderColor = document.getElementById('HeaderColor');
+			const navColor =document.getElementById('navColor');
+
+
+            if (currentTheme) {
+                body.style.background = currentTheme === 'dark-mode' ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
+                toggleSwitch.checked = currentTheme === 'dark-mode';
+                PostNR.style.background = currentTheme === 'dark-mode' ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
+				HeaderColor.style.background = currentTheme === 'dark-mode'? 'rgba(51,52,61,100)' : '#0099ff';
+				navColor.style.background = currentTheme === 'dark-mode'? 'rgba(51,52,61,100)' : '#0099ff';
+            }
+
+            // Toggle dark mode
+            toggleSwitch.addEventListener('change', function() {
+                const isDarkMode = this.checked;
+                body.style.background = isDarkMode ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
+                localStorage.setItem('theme', isDarkMode ? 'dark-mode' : 'light-mode');
+                PostNR.style.background = isDarkMode ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
+				HeaderColor.style.background = isDarkMode ? 'rgba(51,52,61,100)' : '#0099ff';
+				navColor.style.background = isDarkMode ? 'rgba(51,52,61,100)' : '#0099ff';
+            });
+        });   </script>
 					</body>
 				</html>

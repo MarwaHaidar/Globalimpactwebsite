@@ -37,17 +37,17 @@ body.light-mode {
   --varBoxShadowColor:5px 6px 10px black;
 }
 body.dark-mode {
-  --navbarColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --navbarColor:rgba(51,52,61,100);
   --navbarColorSite:  rgba(51,52,61,100);
-  --navbarColorTopic:white;
+  --navbarColorTopic:#FB941E;
   --navbarColorLink:white;
-  --navbarColorLinkHover:rgba(30,73,128,1) ;
-  --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
-  --ColorGrey:red;
+  --navbarColorLinkHover:#FB941E ;
+  --navbarColorButtom:#191C24;
+  --OverlayBackgroundColor:#404245;
+  --ColorGrey:#404245;
   --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
-  --IcansColor:black;
-  --varBoxShadowColor:5px 6px 10px black;
+  --IcansColor:white;
+  --varBoxShadowColor:5px 6px 10px #404245 ;
 } 
 /* --------------------------------- */
 .header {
@@ -308,7 +308,7 @@ body.dark-mode {
   display: block;
   width: 40px; /* Adjust the width as needed */
   height: 20px; /* Adjust the height as needed */
-  background-color: #000000; /* Dark background color for the switch */
+  background-color: #191C24; /* Dark background color for the switch */
   border-radius: 10px; /* Rounded corners for the switch */
   cursor: pointer;
 }
@@ -542,7 +542,7 @@ body.dark-mode {
 	font-size: 100%;
 	text-align: left;
 	line-height: 24px;
-	color:#333333;
+	color:var(--navbarColorLink);
   }
   .phone-nb:hover {
     font-size: 120%;
@@ -572,7 +572,7 @@ body.dark-mode {
 	font-size: 100%;
 	text-align: left;
 	line-height: 24px;
-	color:#333333;
+	color:var(--IcansColor);
   }
   .email-text:hover {
     font-size: 120%;

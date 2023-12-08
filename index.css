@@ -34,7 +34,7 @@ body.light-mode {
   --ColorGrey:#404245;
   --backGroundColor: #ecf0f3;
   --IcansColor:#ecf0f3;
-  --varBoxShadowColor:5px 6px 10px black;
+  --varBoxShadowColor:5px 6px 10px gray;
 }
 body.dark-mode {
   --navbarColor:rgba(51,52,61,100);
@@ -1750,3 +1750,14 @@ z-index: 1;
   cursor: pointer;
 }
 
+/* -------------communityall-------------------- */
+.communitylinksbtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  
+}
+.communityall__container{
+  width: 60%;
+  margin-top: 60px;
+}

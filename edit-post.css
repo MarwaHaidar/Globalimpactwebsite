@@ -366,7 +366,7 @@ body.dark-mode {
     /*top: 50px;
     left: 23%;*/
     left: 20%;
-    top: 7%;
+    top: 9.2%;
     overflow: hidden;
     z-index: 1;
     }
@@ -411,7 +411,7 @@ body.dark-mode {
    }
    .circle-img{
     position: absolute;
-    top:31%;
+    top:34%;
     left: 21%;
     height: 17%;
     width: 9%;
@@ -457,7 +457,7 @@ body.dark-mode {
   position: absolute;
   width: 54%;
   height: 15%;
-  top:74%;
+  top:79%;
   left: 22%;
   border: 1px solid #ccc;
   padding: 20px;
@@ -578,7 +578,7 @@ body.dark-mode {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: white;
   left: 21.5%;
-  top: 42%;
+  top: 47%;
 }
 
 .name-job{
@@ -835,6 +835,195 @@ body.dark-mode {
   }
   
 }
+ /*about-info-profile  for userrrrrrrr------------------------->*/
+ .container-user{
+  position: absolute;
+  height: 20%;
+  width: 57%;
+  border-left-color: black;
+  border-right-color: black;
+  border-top-color: black;
+  border-bottom-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  left: 21.5%;
+  top: 47%;
+}
+
+.name-job-user{
+  display: flex;
+  flex-direction: column;
+  margin-top: -20px;
+}
+.name-job-user span{
+  display: flex;
+  flex-direction: column;
+  margin-right: 450px;
+}
+
+.text-content-user{
+  text-align: center;
+  color: black;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 30%;
+  transition: .5s;
+
+}
+
+/*---------------------------------*/
+.name-job-user span {
+  font-size: 20px; /* Set the desired font size */
+  font-weight: bold; /* Set the desired font weight */
+  /* You can add additional styling properties as needed */
+}
+.row-2-user span {
+  font-size: 20px; /* Set the desired font size */
+  font-weight: normal;
+  /* You can add additional styling properties as needed */
+}
+
+.column-user .fa-solid {
+  font-size: 20px;
+}
+.column-user .fa-regular{
+  font-size: 20px;
+}
+/*custom css*/
+
+.row-2-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 35%;
+  margin-top: 4.5%;
+  gap: 14%;
+
+}
+
+.column-user {
+  display: flex;
+  flex-direction: row; /* Change to row to have icon and label on the same line */
+  align-items: center;
+  gap: 5px;
+}
+
+.location-user {
+  font-weight: bolder;
+}
+
+.icon-user {
+  color: grey;
+}
+
+.numbers-user {
+  font-weight: bolder;
+}
+@media(max-width : 1414px){
+  .name-job-user span {
+    font-size: 15px; /* Set the desired font size */
+    font-weight: bold; /* Set the desired font weight */
+    /* You can add additional styling properties as needed */
+  }
+  .row-2-user span {
+    font-size: 15px; /* Set the desired font size */
+    font-weight: normal;
+    /* You can add additional styling properties as needed */
+  }
+  
+  .column-user .fa-solid {
+    font-size: 15px;
+  }
+  .column-user .fa-regular{
+    font-size: 15px;
+  }
+  /*custom css*/
+  
+  .row-2-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 35%;
+    gap: 14%;
+  
+  }
+  
+}
+@media(max-width : 1100px){
+  .name-job-user span {
+    font-size: 13px; /* Set the desired font size */
+    font-weight: bold; /* Set the desired font weight */
+    /* You can add additional styling properties as needed */
+    margin-left: 60px;
+  }
+  .row-2-user span {
+    font-size: 13px; /* Set the desired font size */
+    font-weight: normal;
+    /* You can add additional styling properties as needed */
+  }
+  
+  .column-user .fa-solid {
+    font-size: 13px;
+  }
+  .column-user .fa-regular{
+    font-size: 13px;
+  }
+  /*custom css*/
+  
+  .row-2-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 29%;
+    gap: 14%;
+  
+  }
+  
+}
+@media(max-width : 1000px){
+  .name-job-user span {
+    font-size: 13px; /* Set the desired font size */
+    font-weight: bold; /* Set the desired font weight */
+    /* You can add additional styling properties as needed */
+  }
+  .row-2-user span {
+    font-size: 13px; /* Set the desired font size */
+    font-weight: normal;
+    /* You can add additional styling properties as needed */
+  }
+  
+  .column-user .fa-solid {
+    font-size: 13px;
+  }
+  .column-user .fa-regular{
+    font-size: 13px;
+  }
+  /*custom css*/
+  
+  .row-2-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 27%;
+    gap: 14%;
+  
+  }
+  
+}
+
 
 
  /*navbar-profile*/
@@ -843,7 +1032,7 @@ body.dark-mode {
   width: 53%;
   height: 8%;
   left: 21.5%;
-  top: 64%;
+  top: 69%;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 15px;
@@ -1705,7 +1894,7 @@ overflow: hidden;
     background-color: transparent;
     padding: 2px;
     left: 25%;
-    top: 97%;
+    top: 102%;
     overflow-y:scroll;
     overflow-x: hidden;
   }
@@ -1754,6 +1943,79 @@ overflow: hidden;
       flex-direction: column;
     }
     .grid-item {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      font-size: 0; /* Hide the text content */
+      text-align: center;
+      border-radius: 10%;
+    }
+
+
+  }
+  /* ------------------photo section for user-------------------*/
+  .grid-photo-container-user {
+    position:absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 68%;
+    display: grid;
+    gap: 20px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: transparent;
+    padding: 2px;
+    left: 25%;
+    top: 84%;
+    overflow-y:scroll;
+    overflow-x: hidden;
+  }
+  .grid-item-user {
+    flex:1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 0; /* Hide the text content */
+    text-align: center;
+    border-radius: 10%;
+  }
+
+  .grid-item-user:nth-child(1) {
+    position: relative;
+    background-image: url('images/marwa1.jpg'); /* Replace with your image path */
+    width: 88%;
+    height: 82%;
+  }
+
+  .grid-item-user:nth-child(2) {
+    position: relative;
+    background-image: url('images/marwa2.jpg'); /* Replace with your image path */
+    width: 88%;
+    height: 82%;
+  }
+  .grid-item-user:nth-child(3) {
+    position: relative;
+    background-image: url('images/marwa3.jpg'); /* Replace with your image path */
+    width: 88%;
+    height: 82%;
+  }
+
+  .grid-item-user:nth-child(4) {
+    position: relative;
+    background-image: url('images/marwa4.jpg'); /* Replace with your image path */
+    width: 88%;
+    height: 82%;
+  }
+  @media (max-width: 800px) {
+    .grid-photo-container-user {
+      display: flex;
+      flex-direction: column;
+    }
+    .grid-item-user {
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -1852,7 +2114,7 @@ padding: 10px;
   position: absolute;
   width: 40%;
   height: auto;
-  top: 100%;
+  top: 106%;
   left: 29%;
   border: 1px solid #ccc;
   padding: 20px;
@@ -1958,6 +2220,20 @@ padding: 10px;
   border:none;
   margin-left: 10px;
   width: 150px;
+}
+/*-------------display posts overview for user-----------*/
+.post-user {
+  position: absolute;
+  width: 40%;
+  height: auto;
+  top: 83%;
+  left: 29%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow:var(--varBoxShadowColor);
+  background-color: white;
+
 }
 
 

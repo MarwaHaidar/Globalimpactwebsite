@@ -11,6 +11,7 @@ body {
     overflow: hidden;
     position: relative;
   }
+  /* // */
   :root{
     --backGroundColor:#ecf0f3;
     --primaryColor:#0466C8;

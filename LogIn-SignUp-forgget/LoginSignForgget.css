@@ -1,3 +1,5 @@
+
+
 body {
     width: 100%;
     height: 90%;
@@ -8,6 +10,13 @@ body {
     min-height: 100vh;
     overflow: hidden;
     position: relative;
+  }
+  :root{
+    --backGroundColor:#ecf0f3;
+    --primaryColor:#0466C8;
+    --secondColor:rgba(176,191,238,1);
+    --OrangeColor:#FFA500;
+    --ButtonColor:#0466C8;
   }
   /*-------------------------------------------------*/
   .image-container-kawkab {
@@ -69,8 +78,8 @@ body {
   }
   .global-text {
     position: absolute;
-    margin-top: 30%;
-    left: 61%;
+    margin-top: 35%;
+    left: 63%;
     width: 70%;
     animation: pulsateImage 2s ease-in-out infinite alternate;
   
@@ -100,11 +109,11 @@ body {
   
   /*-------------------------------------------------*/
   .backgroundColor-box {
-    background: -webkit-linear-gradient(-180.00000399125deg, rgba(240, 230, 247, 1) 0%, rgba(218, 193, 237, 1) 100%);
+    background:var(--backGroundColor);
   }
   
   .box {
-    border: solid 3px #b392d0;
+    border: solid 3px var(--primaryColor);
     border-radius: 2rem;
     box-sizing: border-box;
     position: absolute;
@@ -124,10 +133,10 @@ body {
   }
   @keyframes neonGlow {
     0% {
-      box-shadow: 0 0 10px rgba(179, 146, 208, 0.8);
+      box-shadow: 0 0 10px var(--primaryColor);
     }
     100% {
-      box-shadow: 0 0 20px rgba(179, 146, 208, 0.8), 0 0 30px rgba(179, 146, 208, 0.6), 0 0 40px rgba(179, 146, 208, 0.4);
+      box-shadow: 0 0 20px var(--primaryColor), 0 0 30px var(--primaryColor), 0 0 40px var(--primaryColor);
     }
   }
   
@@ -138,13 +147,13 @@ body {
     font-size: 30px;
     font-weight: bold;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #000000;
-    -ms-text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
-    -o-text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
-    -webkit-text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
-    -moz-text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
-    text-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
-    color: #0D0D0D;
+    -webkit-text-stroke-color: var(--primaryColor);
+    -ms-text-shadow: 1px 5px 4px var(--OrangeColor);
+    -o-text-shadow: 1px 5px 4px var(--OrangeColor);
+    -webkit-text-shadow: 1px 5px 4px var(--OrangeColor);
+    -moz-text-shadow: 1px 5px 4px var(--OrangeColor);
+    text-shadow: 1px 5px 4px var(--OrangeColor);
+    color: var(--primaryColor);
     
   }
   
@@ -155,7 +164,7 @@ body {
     height: 40px;
     border-radius: 12px;
     border: none;
-    border-bottom: 2px solid #64148c; 
+    border-bottom: 2px solid var(--primaryColor); 
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0);
     margin-top: 15px;
@@ -171,7 +180,7 @@ body {
   .input-password:focus ,
   .input-email:focus{
     outline: none;
-    border: 2px solid #64148c; /* Underline color on focus */
+    border: 2px solid var(--primaryColor); /* Underline color on focus */
     
   }
   
@@ -189,12 +198,12 @@ body {
     position: relative;
     padding-left: 10px;
     cursor: pointer;
-    color: #64148c;
+    color: var(--primaryColor);
     margin-left: 10px;
   }
   
   input[type="checkbox"]:checked + .custom-checkbox-label::before {
-    background-color: #b392d0;
+    background:var(--secondColor);
   }
   
 
@@ -227,7 +236,7 @@ body {
     overflow: hidden;
     font-family: Noto Sans;
     font-size: 16px;
-    color: #64148c;
+    color: var(--primaryColor);
     padding-top: 10px;
     text-decoration: none;
   }
@@ -294,7 +303,7 @@ body {
   
   
   .half-image-container {
-    z-index: 0;
+    z-index: 0; 
     width: 70%;
   }
   
@@ -404,15 +413,15 @@ body {
     line-height: 42px;
     padding: 0;
     border: none;
-    background: #9370DB;
-    background: linear-gradient(0deg, #9370DB 0%, #9370DB 100%);
+    background: var(--primaryColor);
+    background: linear-gradient(0deg, var(--primaryColor) 0%, var(--primaryColor) 100%);
 }
 
 .login-button:hover,
 .SignUp-button:hover,
-.reset-button :hover {
-    color: white;
-    background: #b392d0;
+.reset-button:hover {
+    color:var(--ButtonColor);
+    background: var(--OrangeColor);
     box-shadow: none;
 }
 
@@ -420,7 +429,7 @@ body {
 .login-button:after ,
 .SignUp-button:before,
 .SignUp-button:after,
-.reset-button::before,
+.reset-button:before,
 .reset-button:after
 {
     content: '';
@@ -429,7 +438,7 @@ body {
     right: 0;
     height: 2px;
     width: 0;
-    background: #9370DB;
+    background: var(--ButtonColor);
     box-shadow:
         -1px -1px 5px 0px #fff,
         7px 7px 20px 0px #0003,

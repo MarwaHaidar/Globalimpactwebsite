@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const sectionColorModeIdArts = document.getElementById('sectionColorModeIdArts');
 
 
+
   const currentTheme = localStorage.getItem('theme');
   if (currentTheme === 'dark-mode') {
       enableDarkMode();
@@ -98,23 +99,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
       switch (pageType) {
           case 'sports':
-              postsSection.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+              postsSection.style.backgroundColor = '#0b0c10';
               sectionColorModeId.style.backgroundColor = '#0099ff';
               break;
           case 'news':
-              postsSectionNews.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+              postsSectionNews.style.backgroundColor = '#0b0c10';
               SectionColorModeIdNews.style.backgroundColor = 'grey';
               break;
               case 'Technologies':
-                  postsSectionTechnologie.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+                  postsSectionTechnologie.style.backgroundColor= '#0b0c10';
                   sectionColorModeIdTechnologies.style.backgroundColor = 'rgb(59, 59, 94)';
                   break;
                   case 'Movies':
-                      postsSectionMovies.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+                      postsSectionMovies.style.backgroundColor = '#0b0c10';
                       SectionColorModeIdMovies.style.backgroundColor = 'rgb(184, 139, 139)';
                       break;
                       case 'Arts':
-                          postsSectionArt.style.background = 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)';
+                          postsSectionArt.style.backgroundColor = '#0b0c10';
                           sectionColorModeIdArts.style.backgroundColor = '#0099ff';
                           break;
           

@@ -29,25 +29,31 @@ body.light-mode {
   --navbarColorTopic:#FB941E;
   --navbarColorLink:#ecf0f3;
   --navbarColorLinkHover:#E39942 ;
-  --navbarColorButtom:#0099ff ;
+  --navbarColorButtom:#0099ff;
   --OverlayBackgroundColor:#0099ff;
   --ColorGrey:#404245;
   --backGroundColor: #ecf0f3;
   --IcansColor:#ecf0f3;
-  --varBoxShadowColor:5px 6px 10px black;
+  --varBoxShadowColor:5px 6px 10px gray;
+  --varColorLightDrak:#ecf0f3;
+  --varInputColorLightDrak:#ecf0f3;
+  --varBlackLight:black;
 }
 body.dark-mode {
-  --navbarColor:rgba(51,52,61,100);
-  --navbarColorSite:  rgba(51,52,61,100);
+  --navbarColor:#191C24;
+  --navbarColorSite: #191C24;
   --navbarColorTopic:#FB941E;
   --navbarColorLink:white;
   --navbarColorLinkHover:#FB941E ;
   --navbarColorButtom:#191C24;
-  --OverlayBackgroundColor:#404245;
+  --OverlayBackgroundColor:#191C24;
   --ColorGrey:#404245;
-  --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
+  --backGroundColor:#0b0c10;
   --IcansColor:white;
-  --varBoxShadowColor:5px 6px 10px #404245 ;
+  --varBoxShadowColor:5px 6px 10px #272b38 ;
+  --varColorLightDrak:#191C24;
+  --varInputColorLightDrak:#272b38;
+  --varBlackLight:#ecf0f3;
 } 
 /* --------------------------------- */
 .header {
@@ -369,7 +375,7 @@ body.dark-mode {
     -moz-box-shadow: inset -9.59px -9.59px 9.5866670608521px 10px rgba(180, 163, 190, 0.4);
 	/*box-shadow: inset 0 0 5px 5px rgba(180, 163, 190, 0.4);*/
 	box-shadow: inset 0 0 5px 5px rgba(22, 8, 43, 0.1);
-	background:white;
+	background:var(--varColorLightDrak);
 }
 
 .question-header{
@@ -407,7 +413,7 @@ body.dark-mode {
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	border: 2px solid white;
-	background:#d2d2d160;
+	background:var(--varInputColorLightDrak);
     font-size: 60%;
     padding: 5px 5px 5px 15px;
     
@@ -443,7 +449,7 @@ body.dark-mode {
 	text-align: left;
 	line-height: 24px;
 	color:#333333;
-    background-color: #d2d2d160;
+    background-color: var(--varInputColorLightDrak);
   }
   .msg-text:hover {
     width: 90%;
@@ -509,9 +515,10 @@ body.dark-mode {
 
   }
   .hr-line{
-    border: 1px solid black;
+    border: 1px solid #0099ff;
     width: 10%;
     margin-left: 27.5%;
+  
   }
   .contact-img{
     margin-top: 5%;
@@ -519,6 +526,8 @@ body.dark-mode {
   }
   .get-in-touch{
     margin-right: 38%;
+    color: #0099ff;
+    font-weight: bold;
   }
 
   .phone-form{
@@ -542,7 +551,7 @@ body.dark-mode {
 	font-size: 100%;
 	text-align: left;
 	line-height: 24px;
-	color:var(--navbarColorLink);
+	color:#0099ff;
   }
   .phone-nb:hover {
     font-size: 120%;
@@ -572,7 +581,7 @@ body.dark-mode {
 	font-size: 100%;
 	text-align: left;
 	line-height: 24px;
-	color:var(--IcansColor);
+	color:#0099ff;
   }
   .email-text:hover {
     font-size: 120%;

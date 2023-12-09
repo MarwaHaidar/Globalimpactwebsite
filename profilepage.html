@@ -159,9 +159,9 @@
             </div>
             <div class="post_features">
                 <div class="createpost_icons">
-                    <i class="fa-solid fa-face-smile" style="color: #333333;"></i>
-                    <i class="fa-solid fa-hashtag" style="color: #333333;"></i>
-                    <i class="fa-solid fa-image" style="color: #333333;"></i>
+                    <i class="fa-solid fa-face-smile" style="color: #0099ff;"></i>
+                    <i class="fa-solid fa-hashtag" style="color: #0099ff;"></i>
+                    <i class="fa-solid fa-image" style="color: #0099ff;"></i>
                 </div>    
                     <button class="post_post">Post</button>
             </div>
@@ -295,13 +295,19 @@
       <input type="file" id="camera2" style="display: none" onchange="previewImage4(this)">
       
       <script>
-         document.getElementById('openButton').addEventListener('click', function() {
-        document.getElementById('overlay').style.display = 'block';
-        document.querySelector('.main-content').classList.add('blurred');
-      });
+        document.getElementById('openButton').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('div').style.display = 'block';
+            document.getElementById('img-div').style.display = 'none'; 
+            document.getElementById('bio-div').style.display = 'none';
+            document.querySelector('.main-content').classList.add('blurred');
+        });
 
       document.getElementById('x-button').addEventListener('click', function() {
          document.getElementById('overlay').style.display = 'none';
+        document.getElementById('div').style.display = 'none';
+        document.getElementById('img-div').style.display = 'none';
+        document.getElementById('bio-div').style.display = 'none';
         document.querySelector('.main-content').classList.remove('blurred');
       });
       document.getElementById('bio-text').addEventListener('click', function() {

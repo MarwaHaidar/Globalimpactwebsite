@@ -34,21 +34,28 @@ body.light-mode {
   --ColorGrey:#404245;
   --backGroundColor: #ecf0f3;
   --IcansColor:#ecf0f3;
-  --varBoxShadowColor:5px 6px 10px black;
+  --varBoxShadowColor:5px 6px 10px gray;
+  --varColorLightDrak:#ecf0f3;
+  --varInputColorLightDrak:#ecf0f3;
+  --varBlackLight:black;
 }
 body.dark-mode {
-  --navbarColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
-  --navbarColorSite:  rgba(51,52,61,100);
-  --navbarColorTopic:white;
+  --navbarColor:#191C24;
+  --navbarColorSite: #191C24;
+  --navbarColorTopic:#FB941E;
   --navbarColorLink:white;
-  --navbarColorLinkHover:rgba(30,73,128,1) ;
-  --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
-  --ColorGrey:red;
-  --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
-  --IcansColor:black;
-  --varBoxShadowColor:5px 6px 10px black;
+  --navbarColorLinkHover:#FB941E ;
+  --navbarColorButtom:#191C24;
+  --OverlayBackgroundColor:#191C24;
+  --ColorGrey:#404245;
+  --backGroundColor:#0b0c10;
+  --IcansColor:white;
+  --varBoxShadowColor:5px 6px 10px #272b38 ;
+  --varColorLightDrak:#191C24;
+  --varInputColorLightDrak:#272b38;
+  --varBlackLight:#ecf0f3;
 } 
+
 /* --------------------------------- */
 .header {
     height: 4rem; 
@@ -378,6 +385,7 @@ top: 0;
 left: 0;
 object-fit: cover;
 z-index: 2;
+
 }
 @media (max-width: 700px) {
 .image-container{
@@ -485,7 +493,7 @@ border: 3px solid white;
   position:absolute;
   top: 80%;
   left: 21%;
-  height: 10%;
+  height: 30px;
   width: 10%;
   font-size: 12px;
   border-radius: 2px;
@@ -495,13 +503,16 @@ border: 3px solid white;
   line-height: 42px;
   border: none;
   z-index: 300;
-  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+  background: linear-gradient(0deg, #0099ff 0%, #0099ff 100%);
+  
 }
 
 .edit-profile:hover {
   color: rgb(0, 191, 255);
   background: white;
   box-shadow: none;
+ 
+
 }
 
 .edit-profile:before,
@@ -525,12 +536,14 @@ border: 3px solid white;
   top: 28px;
   left: 0;
   bottom: 0;
+  
 }
 
 .edit-profile:hover:before,
 .edit-profile:hover:after {
   width: 100%;
   transition: 800ms ease all;
+ 
 }
 
 
@@ -547,8 +560,8 @@ border: 3px solid white;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  box-shadow:var(--varBoxShadowColor);
+  background-color: var(--varColorLightDrak);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -566,7 +579,8 @@ border: 3px solid white;
   opacity: 0.5;
   margin-left: 1%;
   margin-top: 2%;
-
+  border-radius: 5px;
+  background-color: var(--varInputColorLightDrak);
 }
 .post_features{
   display: flex;
@@ -591,7 +605,7 @@ border: 3px solid white;
   line-height: 42px;
   border: none;
   z-index: 300;
-  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+  background: linear-gradient(0deg,#0099ff 0%, #0099ff 100%);
 }
 
 .post_post:hover {
@@ -655,8 +669,8 @@ border: 3px solid white;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  box-shadow:var(--varBoxShadowColor);;
+  background-color: var(--varColorLightDrak);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -664,14 +678,14 @@ border: 3px solid white;
 }
 
 .nav-prof-name {
-  color: #333333;
+  color: #0099ff;
   text-transform: uppercase;
   margin-top: 15px;
   margin-bottom:15px ;
   font: 200 14px/150% Poppins, sans-serif;
 }
 .overview{
-  color: #333333;
+  color:#0099ff;
   text-transform: uppercase;
   margin-top: 15px;
   margin-bottom:15px ;
@@ -987,6 +1001,7 @@ border: 3px solid white;
   height: 600px;
   top: 8%;
   left: 28%;
+  display: none;
 }
 @media (max-width: 991px) {
   .bio-div {
@@ -1211,6 +1226,7 @@ border: 3px solid white;
   height: 600px;
   top: 10%;
   left: 28%;
+  display: none;
 }
 @media (max-width: 991px){
   .img-div {

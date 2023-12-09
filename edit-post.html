@@ -11,7 +11,7 @@
     <!--Section: Contact v.2-->
     <section class="section">
         <!-- Header Section -->
-        <header class="header">
+        <header class="header" >
             <div class="header__container">
                 
 
@@ -190,9 +190,9 @@
             </div>
             <div class="post_features">
                 <div class="createpost_icons">
-                    <i class="fa-solid fa-face-smile" style="color: #333333;"></i>
-                    <i class="fa-solid fa-hashtag" style="color: #333333;"></i>
-                    <i class="fa-solid fa-image" style="color: #333333;"></i>
+                    <i class="fa-solid fa-face-smile" style="color: #0099ff;"></i>
+                    <i class="fa-solid fa-hashtag" style="color: #0099ff;"></i>
+                    <i class="fa-solid fa-image" style="color: #0099ff;"></i>
                 </div>    
                     <button class="post_post">Post</button>
             </div>
@@ -208,35 +208,35 @@
     <div class="post">
         <div class="post-header">
             <img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" >
-            <div class="user-ProfilePost">
-            <p class="account-name">Rayan Sultan</p>
-                <div class="account-Date">
-                <small>3h ago</small>
-             <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
+                    <div class="user-ProfilePost">
+                    <p class="account-name">Rayan Sultan</p>
+                        <div class="account-Date">
+                        <small>3h ago</small>
+                     <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
+                        </div>
+                    </div>
+                    <div class="post_menu">
+                        <i class="fa-solid fa-ellipsis-vertical" style="color:#0099ff;" onclick="showMenu(this)"></i>
+                        <div class="actions-menu">
+                            <ul>
+                                <li onclick="editAction()">Edit</li>
+                                <li onclick="deleteAction()">Delete</li>
+                            </ul>
+                        </div>    
+                    </div>
                 </div>
-            </div>
-            <div class="post_menu">
-                <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
-                <div class="actions-menu">
-                    <ul>
-                        <li onclick="editAction()" id="edit-post">Edit</li>
-                        <li onclick="deleteAction()">Delete</li>
-                    </ul>
-                </div>    
-            </div>
-        </div>
-   
-       
-        <p class="post-caption">This is the caption for the image.</p>
-        <img src="images/images (1).jpg" alt="Post Image" class="post-image">
-        
-        <div class="post-actions">
-            <div class="vote-buttons">
-                <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
-                <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
-            </div>
-            <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" ></i></button><span class="count">60</span>
-        </div>
+           
+               
+                <p class="post-caption">This is the caption for the image.</p>
+                <img src="images/images (1).jpg" alt="Post Image" class="post-image">
+                
+                <div class="post-actions">
+                    <div class="vote-buttons">
+                        <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass" ></i></button><span class="count">100</span>
+                        <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass"></i></button><span class="count">50</span>
+                    </div>
+                    <button class="comment-button CommentsLink darkmodeUpDownComments"  onclick="comment()" ><i class="fa-solid fa-comment commnetsVote" ></i></button><span class="count">60</span>
+                </div>
            <!--view comments--------------------------------------------->
            <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
          
@@ -594,8 +594,36 @@ document.addEventListener('DOMContentLoaded', function() {
             reader.readAsDataURL(input.files[0]);
         }
     </script>
+        <script>
+
+            let commentLinks = document.querySelectorAll('.CommentsLink');
+            
+            
+            // Add the click event listener to each link
+            commentLinks.forEach(function(link) {
+             link.addEventListener('click', function() {
+                 document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
+                 document.querySelector('.main-content').classList.add('blurred');
+             });
+            });
+            // for exit comment form inside overlay
+            document.getElementById('exit-comment').addEventListener('click', function() {
+                 document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
+                 document.querySelector('.main-content').classList.remove('blurred');
+              
+             });
+                        function imgSlider(someThing){
+                            document.querySelector('.sports').src = someThing;
+                        }
+                        function changeColor(color){
+                            const sec = document.querySelector('.main');
+                            sec.style.background = color;
+                        }
+            
+                    </script>
      
 <script src="./indexAll.js" ></script>
 <script src="index.js"></script>
+
 </body>
 </html>

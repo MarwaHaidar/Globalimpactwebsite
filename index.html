@@ -25,7 +25,7 @@
     
                 <div class="header__search">
                     <input type="search" placeholder="Search" class="header__input">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass" ></i>
                 </div>
     
                 <a href="profilepage.html" id="ProfilePath">
@@ -117,7 +117,7 @@
                             <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
     
                             <div class="theme-switch">
-                                <span class="nav__name" style="margin-bottom: 10px;" >Dark mode</span>
+                                <span class="nav__name" style="margin-bottom: 10px;" ><div class="DarkModeColorName"> Dark mode</div> </span>
                                 <input type="checkbox" id="toggle-switch">
                                 <label for="toggle-switch"></label>
                             </div>
@@ -216,9 +216,9 @@
                 </div>
                 <div class="post_features">
                     <div class="createpost_icons">
-                        <i class="fa-solid fa-face-smile" style="color: #333333; "></i>
-                        <i class="fa-solid fa-hashtag" style="color: #333333;"></i>
-                        <i class="fa-solid fa-image" style="color: #333333;"></i>
+                        <i class="fa-solid fa-face-smile" style="color:#0099ff;"></i>
+                        <i class="fa-solid fa-hashtag" style="color:#0099ff;"></i>
+                        <i class="fa-solid fa-image" style="color:#0099ff;"></i>
                     </div>    
                         <button class="post_post">Post</button>
                     </div>
@@ -241,7 +241,7 @@
                         </div>
                     </div>
                     <div class="post_menu">
-                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" style="color:#0099ff;" onclick="showMenu(this)"></i>
                         <div class="actions-menu">
                             <ul>
                                 <li onclick="editAction()">Edit</li>
@@ -257,13 +257,13 @@
                 
                 <div class="post-actions">
                     <div class="vote-buttons">
-                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
-                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+                        <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass" ></i></button><span class="count">100</span>
+                        <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass"></i></button><span class="count">50</span>
                     </div>
-                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" ></i></button><span class="count">60</span>
+                    <button class="comment-button CommentsLink darkmodeUpDownComments"  onclick="comment()" ><i class="fa-solid fa-comment commnetsVote" ></i></button><span class="count">60</span>
                 </div>
                    <!--view comments--------------------------------------------->
-                   <div class="view-comments"><a class="CommentsLink" href="#1">View All Comments </a></div>
+                   <div class="view-comments" ><a class="CommentsLink" href="#1">View All Comments </a></div>
                  
                    <!------------------------------------------------------->
                 <hr class="divider">
@@ -289,7 +289,7 @@
                         </div>
                     </div>
                     <div class="post_menu">
-                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" style="color:#0099ff;"onclick="showMenu(this)"></i>
                         <div class="actions-menu">
                             <ul>
                                 <li onclick="editAction()">Edit</li>
@@ -303,10 +303,10 @@
                 
                 <div class="post-actions">
                     <div class="vote-buttons">
-                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
-                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+                        <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass" ></i></button><span class="count">100</span>
+                        <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass" ></i></button><span class="count">50</span>
                     </div>
-                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">20</span>
+                    <button class="comment-button CommentsLink darkmodeUpDownComments " onclick="comment()"><i class="fa-solid fa-comment commnetsVote" ></i></button><span class="count">20</span>
                 </div>
                 <!--view comments--------------------------------------------->
                 <div class="view-comments"><a class="CommentsLink" href="#2">View All Comments </a></div>          
@@ -333,7 +333,7 @@
                         </div>
                     </div>
                     <div class="post_menu">
-                        <i class="fa-solid fa-ellipsis-vertical" style="color: #333333;" onclick="showMenu(this)"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" style="color:#0099ff;" onclick="showMenu(this)"></i>
                         <div class="actions-menu">
                             <ul>
                                 <li onclick="editAction()">Edit</li>
@@ -347,10 +347,10 @@
                 
                 <div class="post-actions">
                     <div class="vote-buttons">
-                        <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i></button><span class="count">100</span>
-                        <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+                        <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass" ></i></button><span class="count">100</span>
+                        <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass"></i></button><span class="count">50</span>
                     </div>
-                    <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">10</span>
+                    <button class="comment-button CommentsLink darkmodeUpDownComments" onclick="comment()"><i class="fa-solid fa-comment commnetsVote" ></i></button><span class="count">10</span>
                 </div>
                   <!--view comments--------------------------------------------->
                   <div class="view-comments" id=""><a class="CommentsLink" href="#3">View All Comments </a></div>    
@@ -412,7 +412,7 @@
     <!------------------------------------------------------------------------------------->
     <div class="right_navbar">
         <div class="Trending_bar">
-            <div class="title"><i class="fa-solid fa-fire-flame-curved" style="color: #333333;"></i>
+            <div class="title"><i class="fa-solid fa-fire-flame-curved" style="color:#0099ff;" ></i>
             <p class="title-word">Trending</p></div>
             <hr class="right-divider">
             <div class="element1">
@@ -434,7 +434,7 @@
         </div>
 
         <div class="recommended_bar">
-            <div class="title"><i class="fa-solid fa-people-group" style="color: #333333;"></i>
+            <div class="title"><i class="fa-solid fa-people-group" style="color:#0099ff;"></i>
                 <p class="title-word"> Recommended</p></div>
                 <hr class="right-divider">
                 <div class="element1">
@@ -464,7 +464,7 @@
         </div>
 
         <div class="community_bar">
-           <a href="#overlayPage"> <div class="title"  ><i class="fa-solid fa-people-roof" style="color: #333333;" id="ComunityPath"></i>
+           <a href="#overlayPage"> <div class="title"  ><i class="fa-solid fa-people-roof" style="color:#0099ff;" id="ComunityPath"></i>
                 <p class="title-word"> Community</p></div></a>
                 <hr class="right-divider">
                 <div class="element1">
@@ -492,7 +492,7 @@
                 </div>
 
                 <hr class="right-divider">
-                <div class="titleCommunity"><i class="fa-solid fa-people-roof" style="color: #333333; font-size: 20px;" ></i>
+                <div class="titleCommunity"><i class="fa-solid fa-people-roof" style="color:#0099ff;" font-size: 20px;" ></i>
                     <p class="add-community" style="font-size: 12px;"> ADD Community</p>
                     <i class="fa-solid fa-circle-plus iconCommunity" id="open_overlay" ></i></div>
 

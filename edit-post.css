@@ -34,21 +34,28 @@ body.light-mode {
   --ColorGrey:#404245;
   --backGroundColor: #ecf0f3;
   --IcansColor:#ecf0f3;
-  --varBoxShadowColor:5px 6px 10px black;
+  --varBoxShadowColor:5px 6px 10px gray;
+  --varColorLightDrak:#ecf0f3;
+  --varInputColorLightDrak:#ecf0f3;
+  --varBlackLight:black;
 }
 body.dark-mode {
-  --navbarColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
-  --navbarColorSite:  rgba(51,52,61,100);
-  --navbarColorTopic:white;
+  --navbarColor:#191C24;
+  --navbarColorSite: #191C24;
+  --navbarColorTopic:#FB941E;
   --navbarColorLink:white;
-  --navbarColorLinkHover:rgba(30,73,128,1) ;
-  --navbarColorButtom:rgba(30,73,128,1) ;
-  --OverlayBackgroundColor:rgba(0, 0, 0, 0.7);
-  --ColorGrey:red;
-  --backGroundColor:linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%);
-  --IcansColor:black;
-  --varBoxShadowColor:5px 6px 10px black;
+  --navbarColorLinkHover:#FB941E ;
+  --navbarColorButtom:#191C24;
+  --OverlayBackgroundColor:#191C24;
+  --ColorGrey:#404245;
+  --backGroundColor:#0b0c10;
+  --IcansColor:white;
+  --varBoxShadowColor:5px 6px 10px #272b38 ;
+  --varColorLightDrak:#191C24;
+  --varInputColorLightDrak:#272b38;
+  --varBlackLight:#ecf0f3;
 } 
+
 /* --------------------------------- */
 .header {
     height: 4rem; 
@@ -63,6 +70,8 @@ body.dark-mode {
     z-index: 100;
     
   }
+
+
   .header__container {
     display: flex;
     align-items: center;
@@ -463,7 +472,7 @@ body.dark-mode {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: var(--varColorLightDrak);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -479,8 +488,10 @@ body.dark-mode {
   width: 90%;
   height: 50%;
   opacity: 0.5;
-  margin-left: 3%;
+  margin-left: 5%;
   margin-top: 2%;
+background-color: var(--varInputColorLightDrak);
+border-radius: 5px;
 
 }
 .post_features{
@@ -506,7 +517,7 @@ body.dark-mode {
   line-height: 42px;
   border: none;
   z-index: 300;
-  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+  background: linear-gradient(0deg, #0099ff 0%, #0099ff 100%);
 }
 
 .post_post:hover {
@@ -576,7 +587,7 @@ body.dark-mode {
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: var(--varColorLightDrak);
   left: 21.5%;
   top: 47%;
 }
@@ -584,6 +595,7 @@ body.dark-mode {
 .name-job{
   display: flex;
   flex-direction: column;
+  color: var(--varBlackLight);
 }
 .row-1{
   display: flex;
@@ -621,7 +633,7 @@ body.dark-mode {
   line-height: 42px;
   border: none;
   z-index: 300;
-  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+  background: linear-gradient(0deg, #0099ff 0% , #0099ff 100%);
 }
 
 .btn:hover {
@@ -695,10 +707,12 @@ body.dark-mode {
   flex-direction: row; /* Change to row to have icon and label on the same line */
   align-items: center;
   gap: 5px;
+  color: var(--varBlackLight);
 }
 
 .location {
   font-weight: bolder;
+  color: var(--varBlackLight);
 }
 
 .icon {
@@ -1037,7 +1051,7 @@ body.dark-mode {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color:var(--varColorLightDrak);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1045,14 +1059,14 @@ body.dark-mode {
 }
 
 .nav-prof-name {
-  color: #333333;
+  color: #0099ff;
   text-transform: uppercase;
   margin-top: 15px;
   margin-bottom:15px ;
   font: 200 14px/150% Poppins, sans-serif;
 }
 .overview{
-  color: var(--navbarColorButtom);
+  color: #0099ff;
   text-transform: uppercase;
   margin-top: 15px;
   margin-bottom:15px ;
@@ -2091,9 +2105,8 @@ padding: 10px;
 
 .account-name {
   font-weight: bold;
-  color: #333333;
+  color: var(--varBlackLight);
   font-size: medium;
-
   margin-top: 5px;
 
 }
@@ -2101,13 +2114,16 @@ padding: 10px;
   display: flex;
   align-items: center;
   margin-top: -18px;
-
+  color: var(--varBlackLight);
 }
 .user-ProfilePost{
   width: 50%;
   display: flex;
   flex-direction: column;
   height: 10%;
+}
+.count{
+  color: var(--varBlackLight);
 }
 /*------------------------------------*/
  .post {
@@ -2120,7 +2136,7 @@ padding: 10px;
   padding: 20px;
   border-radius: 8px;
   box-shadow:var(--varBoxShadowColor);
-  background-color: white;
+  background-color: var(--varColorLightDrak);
 
 }
 
@@ -2139,7 +2155,7 @@ padding: 10px;
 .post-caption {
   margin-top: 10px;
   font-size: 14px;
-  color: #333333;
+  color: var(--varBlackLight);
   font-family:'Poppins', sans-serif ;
 }
 
@@ -2161,8 +2177,15 @@ padding: 10px;
   font-size: 15px;
   cursor: pointer;
 }
-
-
+.darkmodeUpDownComments{
+  background-color: var(--varColorLightDrak)!important;
+}
+.UpvateClass,
+.DownClass,
+.commnetsVote
+{
+color:#0099ff;
+}
 .comment-button {
   background-color: white;
   color: #333333 !important;
@@ -2198,8 +2221,8 @@ padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  margin-left: 6%;
+  margin: auto;
+  margin-left: -20px;
 }
 
 .comment_profile{
@@ -2220,6 +2243,9 @@ padding: 10px;
   border:none;
   margin-left: 10px;
   width: 150px;
+  background-color: var(--varInputColorLightDrak);
+  border-radius:5px ;
+  padding-left: 30px;
 }
 /*-------------display posts overview for user-----------*/
 .post-user {

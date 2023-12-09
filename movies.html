@@ -14,46 +14,22 @@
 			<label for="toggle-switch"></label>
 		</div>
 		<div class="movies-top" style="height: 650px;">
-		<header id="HeaderColor" class="movies-header" >
-			
-				
-				<h1 style="margin-left: 20px;">MOVIES</h1>
-				<a href="#POSTS" class="view-posts">View POSTS</a>
-			
-			<nav class="navbar navbar-expand-md " id="navColor"  >
-  
+
+			<header id="headermoviesCss">
+                <a href="#" id="LogoMoviesCss">Movies</a>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                <li><a href="./categories.html">Sports</a></li>
+                <li><a href="./news.html">News</a></li>
+                <li><a href="./technology.html">Technologies</a></li>
+                <li><a href="./movies.html"  class="AcitveCategory">Movies</a></li>
+                <li><a href="./arts.html">Arts</a></li>
+             
+                </ul>
+            </header>
+
   
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav" >
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">HOME</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="categories.html">SPORTS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="news.html">NEWS</a>
-      </li> 
-		<li class="nav-item">
-        <a class="nav-link" href="technology.html">TECHNOLOGY</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="arts.html">ARTS</a>
-      </li>
-      
-    
-    </ul>
-  </div> 
-			</nav>
-		
-		</header>
 		<main style="margin-top: 35px;" >
 			<article id="popular-news" style="width: 100%; margin: 0;">
 				<div id="featured">
@@ -67,7 +43,7 @@
 						  </ol>
 						  <div class="carousel-inner">
 							<div class="carousel-item active">
-							  <img class="d-block w-100" src="images/moviess4.jpg" alt="First slide" style="height: inherit;">
+							  <img class="d-block w-100" src="images/moviess4.jpg" alt="First slide" height="506">
 								<div class="carousel-caption d-none d-md-block">
 									
 									<p>11th Jan 2019</p>
@@ -85,7 +61,7 @@
 								
 							</div>
 							<div class="carousel-item">
-							  <img class="d-block w-100" src="images/moviess3.jpg" alt="Third slide" style="height: inherit;">
+							  <img class="d-block w-100" src="images/moviess3.jpg" alt="Third slide" height="506">
 								<div class="carousel-caption d-none d-md-block">
 									
 									<p>11th Jan 2019</p>
@@ -143,38 +119,39 @@
 				<div class="post">
 					<div class="post-header">
 						<img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" >
-						<div class="user-ProfilePost">
-						<p class="account-name">Rayan Sultan</p>
-							<div class="account-Date">
-							<small>3h ago</small>
-						 <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
-							</div>
-						</div>
-						<div class="post_menu">
-							<div class="actions-menu">
-								<ul>
-									<li onclick="editAction()">Edit</li>
-									<li onclick="deleteAction()">Delete</li>
-								</ul>
-							</div>    
-						</div>
-					</div>
-					
-					<div class="image_container">
-				
-					<p class="post-caption">This is the caption for the image.</p>
-					<img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
-					
-					<div class="post-actions">
-						<div class="vote-buttons">
-							<button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i><span class="count">100</span>
-							<button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
-						
-						
-						<button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
-					</div>
-					
-					</div>
+        <div class="user-ProfilePost">
+        <p class="account-name">Rayan Sultan</p>
+            <div class="account-Date">
+            <small>3h ago</small>
+         <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
+            </div>
+        </div>
+        <div class="post_menu">
+           
+            <div class="actions-menu">
+                <ul>
+                    <li onclick="editAction()">Edit</li>
+                    <li onclick="deleteAction()">Delete</li>
+                </ul>
+            </div>    
+        </div>
+    </div>
+    
+    <div class="image_container">
+
+    <p class="post-caption">This is the caption for the image.</p>
+    <img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
+    
+    <div class="post-actions">
+        <div class="vote-buttons">
+            <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass" ></i><span class="count">100</span>
+            <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass" ></i></button><span class="count">50</span>
+        
+        
+        <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment commnetsVote"></i></button><span class="count">60</span>
+    </div>
+    
+    </div>
 					   <!--view comments--------------------------------------------->
 					   <div class="view-comments"><a class="CommentsLink" href="#3">View All Comments </a></div>
 					 
@@ -196,39 +173,39 @@
 				<div class="post">
 					<div class="post-header">
 						<img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" >
-						<div class="user-ProfilePost">
-						<p class="account-name">Rayan Sultan</p>
-							<div class="account-Date">
-							<small>3h ago</small>
-						 <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
-							</div>
-						</div>
-						<div class="post_menu">
-						   
-							<div class="actions-menu">
-								<ul>
-									<li onclick="editAction()">Edit</li>
-									<li onclick="deleteAction()">Delete</li>
-								</ul>
-							</div>    
-						</div>
-					</div>
-					
-					<div class="image_container">
-				
-					<p class="post-caption">This is the caption for the image.</p>
-					<img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
-					
-					<div class="post-actions">
-						<div class="vote-buttons">
-							<button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i><span class="count">100</span>
-							<button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
-						
-						
-						<button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
-					</div>
-					
-					</div>
+        <div class="user-ProfilePost">
+        <p class="account-name">Rayan Sultan</p>
+            <div class="account-Date">
+            <small>3h ago</small>
+         <small> <i class="fa-solid fa-earth-americas"   style="padding-left: 3px;"></i></small>  
+            </div>
+        </div>
+        <div class="post_menu">
+           
+            <div class="actions-menu">
+                <ul>
+                    <li onclick="editAction()">Edit</li>
+                    <li onclick="deleteAction()">Delete</li>
+                </ul>
+            </div>    
+        </div>
+    </div>
+    
+    <div class="image_container">
+
+    <p class="post-caption">This is the caption for the image.</p>
+    <img src="images/sports1.jpg" alt="Post Image" class="post-image"></div>
+    
+    <div class="post-actions">
+        <div class="vote-buttons">
+            <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass" ></i><span class="count">100</span>
+            <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass" ></i></button><span class="count">50</span>
+        
+        
+        <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment commnetsVote"></i></button><span class="count">60</span>
+    </div>
+    
+    </div>
 					   <!--view comments--------------------------------------------->
 					   <div class="view-comments"><a class="CommentsLink" href="#3">View All Comments </a></div>
 					 
@@ -314,8 +291,8 @@
 						<script>
 
 
-							// this for dark mode 
-							document.addEventListener('DOMContentLoaded', function() {
+					// this for dark mode 
+					document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
             const toggleSwitch = document.getElementById('toggle-switch');
             const PostNR = document.getElementById('POSTS');
@@ -325,22 +302,26 @@
 
 
             if (currentTheme) {
-                body.style.background = currentTheme === 'dark-mode' ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
+                body.style.background = currentTheme === 'dark-mode' ? '#0b0c10' : 'white';
                 toggleSwitch.checked = currentTheme === 'dark-mode';
-                PostNR.style.background = currentTheme === 'dark-mode' ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
-				HeaderColor.style.background = currentTheme === 'dark-mode'? 'rgba(51,52,61,100)' : '#0099ff';
-				navColor.style.background = currentTheme === 'dark-mode'? 'rgba(51,52,61,100)' : '#0099ff';
+                PostNR.style.background = currentTheme === 'dark-mode' ? '#0b0c10' : 'white';
+				HeaderColor.style.background = currentTheme === 'dark-mode'? '#191C24' : '#0099ff';
+				navColor.style.background = currentTheme === 'dark-mode'? '#191C24' : '#0099ff';
             }
 
             // Toggle dark mode
             toggleSwitch.addEventListener('change', function() {
                 const isDarkMode = this.checked;
-                body.style.background = isDarkMode ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
+                body.style.background = isDarkMode ? '#0b0c10' : 'white';
                 localStorage.setItem('theme', isDarkMode ? 'dark-mode' : 'light-mode');
-                PostNR.style.background = isDarkMode ? 'linear-gradient(90deg,rgba(51,52,61,100)0%, rgba(79,80,88,100) 18%, rgba(120,121,130,100) 40%, rgba(120,121,130,100) 60%, rgba(79,80,88,100) 86%, rgba(51,52,61,100) 100%)' : 'white';
-				HeaderColor.style.background = isDarkMode ? 'rgba(51,52,61,100)' : '#0099ff';
-				navColor.style.background = isDarkMode ? 'rgba(51,52,61,100)' : '#0099ff';
+                PostNR.style.background = isDarkMode ? '#0b0c10' : 'white';
+				HeaderColor.style.background = isDarkMode ? '#191C24' : '#0099ff';
+				navColor.style.background = isDarkMode ? '#191C24' : '#0099ff';
             });
-        });   </script>
+        }); 
+		
+		
+		  </script>
+		<script src="./indexAll.js"></script>
 					</body>
 				</html>

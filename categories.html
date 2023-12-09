@@ -78,11 +78,11 @@
     
     <div class="post-actions">
         <div class="vote-buttons">
-            <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i><span class="count">100</span>
-            <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+            <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass"></i><span class="count">100</span>
+            <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass"></i></button><span class="count">50</span>
         
         
-        <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
+        <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment commnetsVote" ></i></button><span class="count">60</span>
     </div>
     
     </div>
@@ -132,11 +132,11 @@
     
     <div class="post-actions">
         <div class="vote-buttons">
-            <button onclick="upvote()"><i class="fa-solid fa-thumbs-up UpvateClass" style="color: #333333;"></i><span class="count">100</span>
-            <button onclick="downvote()"><i class="fa-solid fa-thumbs-down DownClass" style="color: #333333;"></i></button><span class="count">50</span>
+            <button onclick="upvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-up UpvateClass" ></i><span class="count">100</span>
+            <button onclick="downvote()" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass" ></i></button><span class="count">50</span>
         
         
-        <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment" style="color: #333333;"></i></button><span class="count">60</span>
+        <button class="comment-button CommentsLink" onclick="comment()"><i class="fa-solid fa-comment commnetsVote"></i></button><span class="count">60</span>
     </div>
     
     </div>
@@ -198,32 +198,33 @@
 </div>
 
 
- <script>
+<script>
 
-let commentLinks = document.querySelectorAll('.CommentsLink');
-
-// Add the click event listener to each link
-commentLinks.forEach(function(link) {
- link.addEventListener('click', function() {
-     document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
-     document.querySelector('.main-content').classList.add('blurred');
- });
-});
-// for exit comment form inside overlay
-document.getElementById('exit-comment').addEventListener('click', function() {
-     document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
-     document.querySelector('.main-content').classList.remove('blurred');
-  
- });
-
-            function imgSlider(someThing){
-                document.querySelector('.sports').src = someThing;
-            }
-            function changeColor(color){
-                const sec = document.querySelector('.main');
-                sec.style.background = color;
-            }
-        </script>
+    let commentLinks = document.querySelectorAll('.CommentsLink');
+    
+    
+    // Add the click event listener to each link
+    commentLinks.forEach(function(link) {
+     link.addEventListener('click', function() {
+         document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
+         document.querySelector('.main-content').classList.add('blurred');
+     });
+    });
+    // for exit comment form inside overlay
+    document.getElementById('exit-comment').addEventListener('click', function() {
+         document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
+         document.querySelector('.main-content').classList.remove('blurred');
+      
+     });
+                function imgSlider(someThing){
+                    document.querySelector('.sports').src = someThing;
+                }
+                function changeColor(color){
+                    const sec = document.querySelector('.main');
+                    sec.style.background = color;
+                }
+    
+            </script>
        
     </body>
     <script src="./indexAll.js"></script>

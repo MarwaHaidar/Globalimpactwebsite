@@ -1,7 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-
-
+body.light-mode {
+  --navbarColor:#0099ff;
+  --navbarColorSite:#0099ff;
+  --navbarColorTopic:#FB941E;
+  --navbarColorLink:#ecf0f3;
+  --navbarColorLinkHover:#E39942 ;
+  --navbarColorButtom:#0099ff;
+  --OverlayBackgroundColor:#0099ff;
+  --ColorGrey:#404245;
+  --backGroundColor: #ecf0f3;
+  --IcansColor:#ecf0f3;
+  --varBoxShadowColor:5px 6px 10px gray;
+  --varColorLightDrak:#ecf0f3;
+  --varInputColorLightDrak:#ecf0f3;
+  --varBlackLight:black;
+}
+body.dark-mode {
+  --navbarColor:#191C24;
+  --navbarColorSite: #191C24;
+  --navbarColorTopic:#FB941E;
+  --navbarColorLink:white;
+  --navbarColorLinkHover:#FB941E ;
+  --navbarColorButtom:#191C24;
+  --OverlayBackgroundColor:#191C24;
+  --ColorGrey:#404245;
+  --backGroundColor:#0b0c10;
+  --IcansColor:white;
+  --varBoxShadowColor:5px 6px 10px #272b38 ;
+  --varColorLightDrak:#191C24;
+  --varInputColorLightDrak:#272b38;
+  --varBlackLight:#ecf0f3;
+} 
 
 .section{
     font-family: 'Poppins', sans-serif;
@@ -142,6 +172,7 @@ header ul li a{
     display: flex;
     flex-direction: column;
     padding: 20px 0px;
+ 
 }
 
 .post-header {
@@ -195,7 +226,7 @@ header ul li a{
 
   .account-name {
     font-weight: bold;
-    color: #333333;
+    color: var(--varBlackLight);
     font-size: medium;
     margin-top: 5px;
   
@@ -203,19 +234,19 @@ header ul li a{
   .account-Date{
     display: flex;
     align-items: center;
+    color: var(--varBlackLight);
   }
 
 .post {
     width: 50%;
     height: auto;
     margin-top: 30px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--varColorLightDrak);
     padding: 20px;
     border-radius: 8px;
     box-shadow:var(--varBoxShadowColor);
-    background-color: white;
-  
-  
+    background-color: var(--varColorLightDrak);
+
   }
   
   
@@ -234,7 +265,7 @@ header ul li a{
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 14px;
-    color: #333333;
+    color: var(--varBlackLight);
     font-family:'Poppins', sans-serif ;
   }
   
@@ -257,17 +288,27 @@ header ul li a{
     cursor: pointer;
   }
   
+  .UpvateClass,
+.DownClass,
+.commnetsVote
+{
+color:#0099ff;
+}
   
+.darkmodeUpDownComments{
+  background: var(--varColorLightDrak) !important;
+}
  
   .count{
     padding: 5px;
-    
+    color: var(--varBlackLight);
   }
 
 
 
   .view-comments a{
     text-decoration: none;
+    color: #0099ff;
   }
   .comment-button:hover, .vote-buttons button:hover{
     transform: scale(1.1);
@@ -276,9 +317,10 @@ header ul li a{
   
   .view-comments{
     text-align: center;
+  
   }
   .CommentsLink{
-    color: var(--navbarColorSite);
+    background: var(--varColorLightDrak) !important;
   
   }
   .CommentsLink a:hover{
@@ -295,8 +337,9 @@ header ul li a{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
+    margin-left: -20px;
     margin-top: 10px;
-    margin-left: 6%;
   }
   
   .comment_profile{
@@ -315,10 +358,12 @@ header ul li a{
   
   .write_comment{
     border:none;
-    margin-left: 10px;
-    width: 150px;
+    margin-left: 15px;
+    width: 170px;
+    background-color: var(--varInputColorLightDrak);
+    border-radius: 5px;
+    
   }
-  
   .user-ProfilePost{
     width: 50%;
     display: flex;

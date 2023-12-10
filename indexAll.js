@@ -309,14 +309,17 @@ function openFileInput() {
   
 
 
-// this for Community path -------------
+// this for Community path for users -------------
 
 document.getElementById('ComunityPath').addEventListener('click', function(){
   window.location.href = 'communityall.html';
 });
+
 
 // -------------this for Profile  path-----------------
 
 document.getElementById('ProfilePath').addEventListener('click', function(){
   window.location.href = 'profilepage.html';
 });
+
+

@@ -468,10 +468,9 @@ body.dark-mode {
   height: 15%;
   top:79%;
   left: 22%;
-  border: 1px solid #ccc;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow:var(--varBoxShadowColor);
   background-color: var(--varColorLightDrak);
   display: flex;
   flex-direction: column;
@@ -584,9 +583,8 @@ border-radius: 5px;
   justify-content: space-between;
   align-items:center;
   flex-direction: column;
-  border: 1px solid #ccc;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--varBoxShadowColor);
   background-color: var(--varColorLightDrak);
   left: 21.5%;
   top: 47%;
@@ -595,7 +593,7 @@ border-radius: 5px;
 .name-job{
   display: flex;
   flex-direction: column;
-  color: var(--varBlackLight);
+  color: #0099ff;
 }
 .row-1{
   display: flex;
@@ -623,7 +621,7 @@ border-radius: 5px;
   padding: 0px 10px;
   margin-left: 120px;
   margin-bottom: 20px;
-  height: 35px;
+  height: 34px;
   width: 100px;
   font-size: 15px;
   border-radius: 2px;
@@ -635,6 +633,7 @@ border-radius: 5px;
   z-index: 300;
   background: linear-gradient(0deg, #0099ff 0% , #0099ff 100%);
 }
+
 
 .btn:hover {
   color: rgb(0, 191, 255);
@@ -864,7 +863,7 @@ border-radius: 5px;
   flex-direction: column;
   border: 1px solid #ccc;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--varBoxShadowColor);
   background-color: white;
   left: 21.5%;
   top: 47%;
@@ -1047,15 +1046,17 @@ border-radius: 5px;
   height: 8%;
   left: 21.5%;
   top: 69%;
-  border: 1px solid #ccc;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--varBoxShadowColor);
   background-color:var(--varColorLightDrak);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px 0 30px;
+}
+.ActiveClassProfile{
+  border-bottom:2px solid #0099ff ;
 }
 
 .nav-prof-name {
@@ -1897,7 +1898,8 @@ overflow: hidden;
 
   /*----------------------------photos section----------*/
   .grid-photo-container {
-    position:absolute;
+    margin: 10px;
+  position:absolute;
     display: flex;
     flex-wrap: wrap;
     width: 50%;
@@ -1909,8 +1911,9 @@ overflow: hidden;
     padding: 2px;
     left: 25%;
     top: 102%;
-    overflow-y:scroll;
+    overflow-y:scroll ;
     overflow-x: hidden;
+   
   }
 
   .grid-item {
@@ -1923,6 +1926,8 @@ overflow: hidden;
     font-size: 0; /* Hide the text content */
     text-align: center;
     border-radius: 10%;
+    box-shadow: var(--varBoxShadowColor);
+   
   }
 
   .grid-item:nth-child(1) {
@@ -2132,7 +2137,6 @@ padding: 10px;
   height: auto;
   top: 106%;
   left: 29%;
-  border: 1px solid #ccc;
   padding: 20px;
   border-radius: 8px;
   box-shadow:var(--varBoxShadowColor);

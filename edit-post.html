@@ -438,13 +438,19 @@
     <!-----------------edit   profile overlay-->
     <script>
         document.getElementById('openButton1').addEventListener('click', function() {
-       document.getElementById('overlay').style.display = 'block';
-       document.querySelector('.main-content').classList.add('blurred');
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('div').style.display = 'block';
+            document.getElementById('img-div').style.display = 'none'; 
+            document.getElementById('bio-div').style.display = 'none';
+            document.querySelector('.main-content').classList.add('blurred');
      });
 
      document.getElementById('x-button').addEventListener('click', function() {
         document.getElementById('overlay').style.display = 'none';
-       document.querySelector('.main-content').classList.remove('blurred');
+        document.getElementById('div').style.display = 'none';
+        document.getElementById('img-div').style.display = 'none';
+        document.getElementById('bio-div').style.display = 'none';
+        document.querySelector('.main-content').classList.remove('blurred');
      });
      document.getElementById('bio-text').addEventListener('click', function() {
        document.getElementById('div').style.display ="none";

@@ -312,7 +312,7 @@ function openFileInput() {
 // this for Community path -------------
 
 document.getElementById('ComunityPath').addEventListener('click', function(){
-  window.location.href = 'community.html';
+  window.location.href = 'communityall.html';
 });
 
 // -------------this for Profile  path-----------------

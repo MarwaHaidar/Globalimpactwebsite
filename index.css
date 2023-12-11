@@ -514,7 +514,7 @@ padding: 10px;
   border-radius: 8px;
   box-shadow:var(--varBoxShadowColor);
   background-color: var(--varColorLightDrak);
-
+  
 }
 
 
@@ -683,6 +683,9 @@ color:#0099ff;
 {
 transform: scale(1.6);
 
+}
+.see-more-link{
+  color:#0099ff ;
 }
 
 .fa-fire-flame-curved ,.fa-people-group,.fa-people-roof {
@@ -1014,7 +1017,7 @@ transform: scale(1.6);
 }
 .community_name{
   font-weight:500;
-  color: #333333;
+  color:#0099ff;
   font-size: large;
   padding-left: 2%;
   margin-bottom: 0;
@@ -1032,7 +1035,12 @@ transform: scale(1.6);
 .community-topic{
   margin-top: 3px;
   margin-left: 3px;
+  color:var(--varBlackLight);
 
+}
+.community_desc{
+  font-size: small;
+  color: var(--varBlackLight);
 }
 
 /*-------------------------- view All comment-------------------------------*/

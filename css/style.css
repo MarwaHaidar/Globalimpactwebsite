@@ -695,7 +695,7 @@ body.dark-mode {
       border-right: 15px solid var(--IcansColor);
   }
   .back-ground{
-    background-color: var(--backGroundColor);
+    background-color: var(red);
   }
  /* this for Dark mode Form  */
 /* Container for the theme switch */
@@ -718,7 +718,7 @@ body.dark-mode {
   display: block;
   width: 40px; /* Adjust the width as needed */
   height: 20px; /* Adjust the height as needed */
-  background-color: #000000; /* Dark background color for the switch */
+  background-color: #0b0c10; /* Dark background color for the switch */
   border-radius: 10px; /* Rounded corners for the switch */
   cursor: pointer;
 }
@@ -820,4 +820,73 @@ body.dark-mode {
 .nav_logout:hover:after{
   width: 100%;
   transition: 800ms ease all;
+}
+
+/* ------------------------about us footer ------------------------------------ */
+
+.AboutFooter{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+margin-top: 20px;
+width: 100%;
+height: 200px;
+background: var(--navbarColor);
+border-radius: 5px;
+
+}
+
+.boxAboutIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+  width: 65px;
+  margin: 10px 0;
+  background: #fff;
+  border-radius: 50px;
+  transition: 0.5s;
+  overflow: hidden;
+  cursor: pointer;
+  
+}
+.iconAboutIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+  width: 65px;
+  font-size: 2.3em;
+ 
+ 
+}
+.spanAboutIcon{
+  display: none;
+  font-family: 'Ubuntu';
+  font-size: 1.4em;
+  font-weight: 500;
+  margin-right: 20px;
+}
+.boxAboutIcon:hover{
+  width: 180px;
+  color: #fff;
+  margin: 10px;
+}
+.boxAboutIcon:hover span{
+  display: flex;
+}
+.boxAboutIcon:nth-child(1):hover{
+  background: #3b5998;
+}
+.boxAboutIcon:nth-child(2):hover{
+  background: linear-gradient(45deg, #f09647 0%, #e6554d 25%, #dc2840 50%, #cc2366 75%, #bc1888 100%);
+}
+.boxAboutIcon:nth-child(3):hover{
+  background: #1da1f2;
+}
+.boxAboutIcon:nth-child(4):hover{
+  background: #ff0000;
+}
+.boxAboutIcon:nth-child(5):hover{
+  background: #0e76a8;
 }

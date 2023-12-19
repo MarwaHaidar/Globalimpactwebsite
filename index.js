@@ -36,42 +36,4 @@
  });
 
 
-/*---------------home page------------------*/
-
-
-/*
- //click view all comments 
-     document.getElementById('CommentsId').addEventListener('click', function() {
-    document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
-    document.querySelector('.main-content').classList.add('blurred');
-  });
-   
-  // for exit comment form inside overlay
-  document.getElementById('exit-comment').addEventListener('click', function() {
-     document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
-     document.querySelector('.main-content').classList.remove('blurred');
-  
- });*/
-// Get all elements with the class 'CommentsLink'
-var commentLinks = document.querySelectorAll('.CommentsLink');
-
-
-// Add the click event listener to each link
-commentLinks.forEach(function(link) {
- link.addEventListener('click', function() {
-     document.getElementById('view-Comments-Overlay-Id').style.display = 'block';
-     document.querySelector('.main-content').classList.add('blurred');
- });
-});
-// for exit comment form inside overlay
-document.getElementById('exit-comment').addEventListener('click', function() {
-     document.getElementById('view-Comments-Overlay-Id').style.display = 'none';
-     document.querySelector('.main-content').classList.remove('blurred');
-  
- });
-
-
-
-
-
 

@@ -322,4 +322,3 @@ document.getElementById('ProfilePath').addEventListener('click', function(){
   window.location.href = 'profilepage.html';
 });
 
-

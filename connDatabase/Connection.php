@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost','root','','globalimpact');
+$conn = mysqli_connect('localhost','root','','globalimpactou');
 
 if(!$conn)
 {

@@ -143,57 +143,21 @@ include './connDatabase/Connection.php';
         <div class="post__container">
 
 
-            <!--create Stories--> 
-<div class="main_contentStory">
-  <div class="StoryGallery">
-    <div class="navigation left">&lt;</div>
-    <div class="scroll-container">
-      <div class="inner-container">
-        <div class="Poststory Poststory1" id="PostStory" onclick="openFileInput()">
-            <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="displaySelectedImage()">
-            <img src="./images/UploadImageStory.png" id="postImage">
-            <p>Post Story</p>
-          </div>
-          <!-- <div id="selectedImageContainer">
-            <img id="selectedImage" src="" alt="Selected Image">   past into html
-          </div>
-           -->
-        <div class="story story2" >
-          <img src="./images/rayan1.jpg">
-          <p>Rayan</p>
-        </div>
-        <div class="story story3">
-          <img src="./images/marwa1.jpg">
-          <p>Marwa</p>
-        </div>
-        <div class="story story4">
-          <img src="./images/member.jpg">
-          <p>Ahmad</p>
-        </div>
-        <div class="story story5">
-          <img src="./images/member.jpg">
-          <p>Amjad</p>
-        </div>
-        <div class="story story6">
-          <img src="./images/member.jpg">
-          <p>Ismail</p>
-        </div>
-        <div class="story story7">
-          <img src="./images/member.jpg">
-          <p>Ali</p>
-        </div>
-      </div>
-    </div>
-    <div class="navigation right">&gt;</div>
-  </div>
-</div>
-<!-- this for overlay stories  -->
-<div class="overlayStories" id="overlayStories">
-  <div class="overlay-content-Story">
-    <span class="close-btn-Story" onclick="closeOverlayStory()">&times;</span>
-    <img id="overlayimageStory" src="" alt="Overlay Image Story">
-  </div>
-</div>
+<?php
+    //  // <!-- sql stry Profile  post  -->
+    //  $userstoryprifileId=2;// get from session
+
+    //  $sqlstoriesProfile = "SELECT profile.*
+    //  FROM profile
+    //  INNER JOIN user ON user.user_id = profile.user_id 
+    //  WHERE profile.user_id=  $userstoryprifileId ";
+
+    //  $resultVariablestoriesProfile = mysqli_query($conn,$sqlstoriesProfile);
+    //  $usersVariablestoriesProfile = mysqli_fetch_all($resultVariablestoriesProfile, MYSQLI_ASSOC);
+    //   print_r($usersVariablestoriesProfile);   
+?>
+
+ 
 
 
 
@@ -205,7 +169,7 @@ include './connDatabase/Connection.php';
                 use Cloudinary\Api\Upload\UploadApi;
                 use Cloudinary\Configuration\Configuration;
 
-                $CreatePostuser_id = 2; // get user_id from session when creating login
+                $CreatePostuser_id = 2; //user_id get from session when creating login
                 $CreatePostCategory = $_POST['dropdownPostCategory'] ?? ''; // get the category from the table category; has five categories
                 $CreatePosttype_something = $_POST['type_something']?? '';
                 $CreatePostInputImage = $_FILES['CreatePostInputImage']['tmp_name']?? '';
@@ -282,24 +246,171 @@ include './connDatabase/Connection.php';
                 }
                 ?>
 
+
+<!-- -=--------------------------this SQL for posts display----------------------------- -->
+
+                  
+                    <?php
+                // <!-- sql for NAME AND Time post  -->
+                
+                $sqlUserPost = "SELECT userposts.*, profile.*, user.First_name ,user.last_name,TIME(userposts.created_at) AS formatted_created_time
+                FROM userposts
+                INNER JOIN profile ON userposts.user_id = profile.user_id
+                INNER JOIN user ON userposts.user_id = user.user_id
+                ORDER BY userposts.created_at DESC";
+
+                $resultVariable = mysqli_query($conn, $sqlUserPost);
+                $usersVariable = mysqli_fetch_all($resultVariable, MYSQLI_ASSOC);
+                //  print_r($usersVariable);   
+
+                // <!-- sql for text and image  post  -->
+
+                $sqltextImage = "SELECT userposts.*, 
+                COALESCE(textpost.content, '') AS content,  --  using for emty string
+                COALESCE(imagepost.caption, '') AS caption, image
+                FROM userposts
+                LEFT JOIN imagepost ON userposts.userpost_id = imagepost.userpost_id
+                LEFT JOIN textpost ON userposts.userpost_id = textpost.userpost_id;
+                ";
+
+                $resultVariabletextImage = mysqli_query($conn, $sqltextImage);
+                $usersVariabletextImage = mysqli_fetch_all($resultVariabletextImage, MYSQLI_ASSOC);
+                // print_r($usersVariabletextImage);
+
+                 // <!-- sql for comment post  -->   
+              
+                $sqlComment = "SELECT user.*, comment.*, profile.*
+                FROM comment
+                INNER JOIN user ON comment.user_id = user.user_id
+                INNER JOIN profile ON comment.user_id = profile.user_id";
+                
+                            
+                    $resultVariableComment = mysqli_query($conn, $sqlComment);
+                    $usersVariableComment = mysqli_fetch_all($resultVariableComment, MYSQLI_ASSOC);
+                    
+                    // print_r($usersVariableComment);
+
+                // sql for image profile from user
+                $userprofileId=2; // get from session
+                $sqlprofileUser = "SELECT user.*, profile.*
+                FROM user
+                INNER JOIN profile ON user.user_id = profile.user_id
+                WHERE user.user_id = $userprofileId";// get from session
+                
+                            
+                 $resultVariableprofileUser = mysqli_query($conn, $sqlprofileUser);
+                $usersVariableprofileUser = mysqli_fetch_all($resultVariableprofileUser, MYSQLI_ASSOC);
+                  print_r($usersVariableprofileUser);
+
+
+                    //  $sqlprofileaction = "SELECT userposts.*,actiontype.*
+                    // FROM actions
+                    // INNER JOIN userposts ON userposts.userpost_id = actions.post_id
+                    // INNER JOIN actiontype ON actions.action_id = actiontype.action_id
+                    // WHERE actions.post_id=242";
+
+                    // $resultVariableaction = mysqli_query($conn, $sqlprofileaction);
+                    // $upvoteCounts = mysqli_fetch_all($resultVariableaction, MYSQLI_ASSOC);
+                    // print_r($upvoteCounts);
+
+
+            ?>
+<!---------------------------create Stories--------------------------------> 
+
+<div class="main_contentStory">
+  <div class="StoryGallery">
+    <div class="navigation left">&lt;</div>
+    <div class="scroll-container">
+      <div class="inner-container">
+        <!-- get profile image of story self  -->
+            <?php foreach ($usersVariableprofileUser as $userDStoryself): ?>
+                    <?php
+                            // Cloudinary cloud name
+                                $cloudinaryCloudNameprofileStoryself = 'dbete4djx';
+                                $imageNameuserStoryself = $userDStoryself['profile_photo'];
+                                $imageUrluserStoryself = "https://res.cloudinary.com/{$cloudinaryCloudNameprofileStoryself}/image/upload/{$imageNameuserStoryself}.jpg";
+                                ?>
+                            <div class="Poststory Poststory1" id="PostStory" onclick="openFileInput()" style="background-image: linear-gradient(transparent, rgba(0,0,0,0.5)), url(<?php echo  $imageUrluserStoryself; ?>);">
+                <?php endforeach; ?>
+
+
+            <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="displaySelectedImage()">
+            <img src="./images/UploadImageStory.png" id="postImage">
+            <p>Post Story</p>
+          </div>
+        <div class="story story2" >
+          <img src="./images/rayan1.jpg">
+          <p>Rayan</p>
+        </div>
+        <div class="story story3">
+          <img src="./images/marwa1.jpg">
+          <p>Marwa</p>
+        </div>
+        <div class="story story4">
+          <img src="./images/member.jpg">
+          <p>Ahmad</p>
+        </div>
+        <div class="story story5">
+          <img src="./images/member.jpg">
+          <p>Amjad</p>
+        </div>
+        <div class="story story6">
+          <img src="./images/member.jpg">
+          <p>Ismail</p>
+        </div>
+        <div class="story story7">
+          <img src="./images/member.jpg">
+          <p>Ali</p>
+        </div>
+      </div>
+    </div>
+    <div class="navigation right">&gt;</div>
+  </div>
+</div>
+<!-- this for overlay stories  -->
+<div class="overlayStories" id="overlayStories">
+  <div class="overlay-content-Story">
+    <span class="close-btn-Story" onclick="closeOverlayStory()">&times;</span>
+    <img id="overlayimageStory" src="" alt="Overlay Image Story">
+  </div>
+</div>
+
+
 <!-- -----------------------------fORM social media posts-------------------------------------------------------->
 
-            <form action="index.php" method="POST" enctype="multipart/form-data">
+<form action="index.php" method="POST" enctype="multipart/form-data">
             <div class="create_post">
                 <div class="create">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
+        <?php foreach ($usersVariableprofileUser as $userDprofile): ?>
+               <?php
+                      // Cloudinary cloud name
+                        $cloudinaryCloudNameuserDprofile = 'dbete4djx';
+                        $imageNameuserDprofile = $userDprofile['profile_photo'];
+                        $imageUrluserDprofile = "https://res.cloudinary.com/{$cloudinaryCloudNameuserDprofile}/image/upload/{$imageNameuserDprofile}.jpg";
+                        ?>
+                        <div class="comment_profile">
+                        <img  class="profile_photo" src="<?php echo $imageUrluserDprofile; ?>">
+                      </div>
+        <?php endforeach; ?>
+                    
+               
 
-                <input type="text" class="type_something" name="type_something" placeholder="Type Something">
+                <input type="text" class="type_something" name="type_something"  id="type_something_input" placeholder="Type Something">
                 </div>
                 <div style="color:red ; margin-left:55px " ><?php echo $CreatePosterrosVariables['CreatePosttype_somethingError'] ?></div>
                 <div class="post_features">
                     <div class="createpost_icons">
-                        <i class="fa-solid fa-face-smile" style="color:#0099ff;"></i>
-                        <i class="fa-solid fa-hashtag" style="color:#0099ff;"></i>
+                      <i class="fa-solid fa-face-smile" style="color:#0099ff; cursor: pointer;" id="openEmojiOverlay"></i>
+                        <i class="fa-solid fa-hashtag" style="color:#0099ff; cursor: pointer;" id="typehashting"></i>
 
-                         <input type="file" name="CreatePostInputImage">
+                         <!-- <input type="file" name="CreatePostInputImage" class="CreatePostInputImage"> -->
+                         <label for="CreatePostInputImage" class="CreatePostInputImageLabel">
+                        <i class="fa-regular fa-image" style="color:#0099ff;cursor: pointer;"></i>
+                        <input type="file" name="CreatePostInputImage" id="CreatePostInputImage" class="CreatePostInputImage" onchange="displayFileName(this)">
+                        </label>
+                        <div class="CreatePostInputImageDisplay" id="CreatePostInputImageDisplay">No image selected</div>
+
+
                     </div>   
                 <select id="dropdownPostCategory" name="dropdownPostCategory" class="dropdownPostCategory">
                     <option value="1">Sports</option>
@@ -313,46 +424,20 @@ include './connDatabase/Connection.php';
                    
                 </div>
                 </form>
-<!-- -=--------------------------this SQL for posts display----------------------------- -->
-
-                  
-                    <?php
-                // <!-- sql for NAME AND Time post  -->
+                <div class="emoji-overlay" id="emojiOverlay">
+                <i class="fa-solid fa-face-smile emoji-icon" data-emoji="😊"></i>
+                <i class="fa-solid fa-face-sad-cry emoji-icon" data-emoji="😭"></i>
+                <i class="fa-solid fa-face-grin-tears emoji-icon" data-emoji="😂"></i>
+                <i class="fa-solid fa-face-angry emoji-icon" data-emoji="😡"></i>
+                <i class="fa-solid fa-face-sad-tear emoji-icon" data-emoji="😢"></i><br>
+                <i class="fa-solid fa-face-kiss-wink-heart emoji-icon" data-emoji="😘"></i>
+                <i class="fa-solid fa-face-grin-tongue-wink emoji-icon" data-emoji="😜"></i>
+                <i class="fa-solid fa-face-grin-stars emoji-icon" data-emoji="🤩"></i>
+                <i class="fa-solid fa-face-flushed emoji-icon" data-emoji="😳"></i>
+                <i class="fa-solid fa-face-dizzy emoji-icon" data-emoji="😵"></i>
                 
-                $sqlUserPost = "SELECT userposts.*, profile.*, user.First_name ,user.last_name,TIME(userposts.created_at) AS formatted_created_time
-                FROM userposts
-                INNER JOIN profile ON userposts.user_id = profile.user_id
-                INNER JOIN user ON userposts.user_id = user.user_id";
-
-                $resultVariable = mysqli_query($conn, $sqlUserPost);
-                $usersVariable = mysqli_fetch_all($resultVariable, MYSQLI_ASSOC);
-
-                // <!-- sql for text and image  post  -->
-
-                $sqltextImage = "SELECT userposts.*, 
-                COALESCE(textpost.content, '') AS content,  --  using for emty string
-                COALESCE(imagepost.caption, '') AS caption
-                FROM userposts
-                LEFT JOIN imagepost ON userposts.userpost_id = imagepost.userpost_id
-                LEFT JOIN textpost ON userposts.userpost_id = textpost.userpost_id;
-                ";
-
-                $resultVariabletextImage = mysqli_query($conn, $sqltextImage);
-                $usersVariabletextImage = mysqli_fetch_all($resultVariabletextImage, MYSQLI_ASSOC);
-                // print_r($usersVariabletextImage);   
-
-                 // <!-- sql for comment post  -->   
-                
-                 $sqlComment = "SELECT userposts.*, comment.*
-                 FROM userposts
-                 INNER JOIN comment ON userposts.userpost_id = comment.post_id";
-  
-                    $resultVariableComment = mysqli_query($conn, $sqlComment);
-                    $usersVariableComment = mysqli_fetch_all($resultVariableComment, MYSQLI_ASSOC);
-                    
-                    // print_r($usersVariableComment);
-    
-            ?>
+                <!-- Add more emojis as needed -->
+                </div>
 
 <!-- -=----------------PHP FOR NAME AND TIME ------------------------ -->
 
@@ -360,7 +445,14 @@ include './connDatabase/Connection.php';
                     <div class="post">
                     <?php  echo  $userpostD['userpost_id']?>
                         <div class="post-header">
-                            <img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" >
+                            <!-- <img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" > -->
+                        <?php
+                        // Replace 'YOUR_CLOUDINARY_CLOUD_NAME' with your actual Cloudinary cloud name
+                        $cloudinaryCloudNameProfile = 'dbete4djx';
+                        $imageNameProfile = $userpostD['profile_photo']; // Assuming 'image' is the field name in your database
+                        $imageUrlProfile = "https://res.cloudinary.com/{$cloudinaryCloudNameProfile}/image/upload/{$imageNameProfile}.jpg";
+                        ?>
+                          <img src="<?php echo $imageUrlProfile; ?>" alt="Account Image" class="AccountImage" >
                             <div class="user-ProfilePost">
                             <p class="account-name"><?php echo $userpostD['First_name']." ".$userpostD['last_name'] ?></p>
                                 <div class="account-Date">
@@ -373,17 +465,137 @@ include './connDatabase/Connection.php';
 
 <!-- -=------------------PHP IF TEXT OT IMAGE---------------------- -->
 
-                        <?php foreach ($usersVariabletextImage as $userDtetxImage): ?>
-                        <?php if ($userDtetxImage['userpost_id'] == $userpostD['userpost_id']): ?>
-                            <?php if ($userDtetxImage['type_id'] == 1): ?>
-                                <p class="post-caption"><?php echo $userDtetxImage['content']; ?></p>
-                            <?php elseif ($userDtetxImage['type_id'] == 2): ?>
-                                <p class="post-caption"><?php echo $userDtetxImage['caption']; ?></p>
-                                <img src="images/rayan-post.jpg" alt="Post Image" class="post-image">
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
 
+
+
+
+                <?php foreach ($usersVariabletextImage as $userDtetxImage): ?>
+                <?php if ($userDtetxImage['userpost_id'] == $userpostD['userpost_id']): ?>
+                    <?php if ($userDtetxImage['type_id'] == 1): ?>
+                        <p class="post-caption"><?php echo $userDtetxImage['content']; ?></p>
+                    <?php elseif ($userDtetxImage['type_id'] == 2): ?>
+                        <p class="post-caption"><?php echo $userDtetxImage['caption']; ?></p>
+                       <?php $userDtetxImage['image'];?>   <!-- get name of picure from database -->
+                        <?php
+                        // Replace 'YOUR_CLOUDINARY_CLOUD_NAME' with your actual Cloudinary cloud name
+                        $cloudinaryCloudName = 'dbete4djx';
+                        $imageName = $userDtetxImage['image']; // Assuming 'image' is the field name in your database
+                        $imageUrl = "https://res.cloudinary.com/{$cloudinaryCloudName}/image/upload/{$imageName}.jpg";
+                        ?>
+                        <img src="<?php echo $imageUrl; ?>" alt="Post Image" class="post-image">
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- this for upvote down vote form -->
+                    <?php
+                        //sql for upvote select 
+                        
+                        $sqlprofileupvote = "SELECT COUNT(*) AS Upvote
+                        FROM actions
+                        INNER JOIN userposts ON userposts.userpost_id = actions.post_id
+                        INNER JOIN actiontype ON actions.action_id = actiontype.action_id
+                        WHERE actions.action_id =1  -- the number one is upvote -->
+                        AND actions.post_id = " . $userpostD['userpost_id'];
+    
+                        $resultVariableupvote = mysqli_query($conn,$sqlprofileupvote);
+                        $upvoteCounts = mysqli_fetch_all($resultVariableupvote, MYSQLI_ASSOC);
+                        // print_r($upvoteCounts);
+
+                     
+                        //sql for downvote select
+                        
+                        $sqlprofiledownvote = "SELECT COUNT(*) AS Dowvote
+                        FROM actions
+                        INNER JOIN userposts ON userposts.userpost_id = actions.post_id
+                        INNER JOIN actiontype ON actions.action_id = actiontype.action_id
+                        WHERE actions.action_id =2  -- the number one is downvotevote -->
+                        AND actions.post_id = " . $userpostD['userpost_id'];
+    
+                        $resultVariabledownvote = mysqli_query($conn, $sqlprofiledownvote);
+                        $downvoteCounts = mysqli_fetch_all($resultVariabledownvote, MYSQLI_ASSOC);
+                        // print_r($downvoteCounts);
+                       
+
+                        //sql for comment select
+                          
+                           $sqlprofilecomment = "SELECT COUNT(*) AS Comment
+                           FROM comment
+                           INNER JOIN userposts ON userposts.userpost_id = comment.post_id
+                           WHERE comment.post_id = " . $userpostD['userpost_id'];
+       
+                           $resultVariablecomment = mysqli_query($conn, $sqlprofilecomment );
+                           $usersVariablecomment = mysqli_fetch_all($resultVariablecomment, MYSQLI_ASSOC);
+                        //    print_r($usersVariablecomment);
+
+                        
+                        
+                        
+                        //sql for upvote and downvote insert
+
+                        if (isset($_POST['upvotebtn'])) {
+                            $upvoteContent = 1;
+                        } elseif (isset($_POST['downvotebtn'])) {
+                            $upvoteContent = 2;
+                        }
+
+
+                        
+                        if (isset($_POST['upvotebtn']) || isset($_POST['downvotebtn'])) {
+                            $userIdWriteupvote = 2; // get from session
+                            $userpostupvote_id = $_POST['userpostupvote_id'];
+
+
+                            // Check if the user has already voted
+                            $sqlCheckVote = "SELECT * FROM actions WHERE user_id = ? AND post_id = ?";
+                            $stmtCheckVote = $conn->prepare($sqlCheckVote);
+                            $stmtCheckVote->bind_param("ii", $userIdWriteupvote, $userpostupvote_id);
+                            $stmtCheckVote->execute();
+                            $resultCheckVote = $stmtCheckVote->get_result();
+
+                          
+                            
+                            if ($resultCheckVote->num_rows > 0) {
+                                // User has already voted, delete the previous vote
+                                $sqlDeleteVote = "DELETE FROM actions WHERE user_id = ? AND post_id = ?";
+                                $stmtDeleteVote = $conn->prepare($sqlDeleteVote);
+                                $stmtDeleteVote->bind_param("ii", $userIdWriteupvote, $userpostupvote_id);
+                                $stmtDeleteVote->execute();
+                            } else {
+                                // User hasn't voted yet, insert the new vote
+                                $sqlupvoteContentInsert = "INSERT INTO actions(user_id, post_id, action_id) VALUES (?, ?, ?)";
+                                $stmtupvote = $conn->prepare($sqlupvoteContentInsert);
+                                $stmtupvote->bind_param("iii", $userIdWriteupvote, $userpostupvote_id, $upvoteContent);
+                        
+                                try {
+                                    $stmtupvote->execute();
+                                    echo '<script>window.location.href = "index.php";</script>';
+                                    exit();
+                                } catch (mysqli_sql_exception $e) {
+                                    // Handle the duplicate entry error silently
+                                    // Log the error for debugging purposes
+                                    error_log('Error in your query failed: ' . $e->getMessage());
+                        
+                                    // Redirect to index.php without displaying the error
+                                    echo '<script>window.location.href = "index.php";</script>';
+                                    exit();
+                                }
+                            }
+                        }
+                    ?>
+                   
+                    <form action="index.php" method="POST" >
+                    <div class="post-actions">
+                    <div class="vote-buttons">
+                        <button name="upvotebtn"  class="darkmodeUpDownComments"><i  class="fa-solid fa-thumbs-up UpvateClass" ></i><span class="count"><?php foreach ($upvoteCounts as $upvote):  echo $upvote['Upvote']; endforeach; ?></span>
+                        <button name="downvotebtn" class="darkmodeUpDownComments"><i class="fa-solid fa-thumbs-down DownClass" ></i></button><span class="count"><?php foreach ($downvoteCounts as $Downvote):  echo $Downvote['Dowvote']; endforeach; ?></span>
+                    <button class="comment-button darkmodeUpDownComments" onclick="comment()"><i class="fa-solid fa-comment commnetsVote"></i></button><span class="count"><?php foreach ($usersVariablecomment as $commentcount):  echo $commentcount['Comment']; endforeach; ?></span>
+                
+                    <input type="hidden" name="userpostupvote_id" value="<?php echo $userpostD['userpost_id']; ?>">
+                    </div>
+                    </div>
+                    </form>
+            <!-- -----------this for view all comment--------------- -->
 
     
                     <div class="view-comments">
@@ -394,58 +606,73 @@ include './connDatabase/Connection.php';
 <!-------------------------------this Form Overlay for comments ---------------------------------->
         
 
+                    
+                        <div id="view-Comments-Overlay-Id-<?php echo $userpostD['userpost_id']; ?>" class="view-Comments-Overlay" style="display: none;">
+                            <div class="view-Comments-Overlay-Form">
+                           
+         <?php foreach ($usersVariabletextImage as $userDtetxImage): ?>
+                    <?php if ($userDtetxImage['userpost_id'] == $userpostD['userpost_id']): ?>
+                    <?php if ($userDtetxImage['type_id'] == 1): ?>
+                        <div class="headerComentinsideOverlay">  <h4 class="post-caption"><?php echo $userDtetxImage['content']; ?></p>  </h4>
+                    
+                        </div> 
+                      
+                    <?php elseif ($userDtetxImage['type_id'] == 2): ?>
+                        <div class="headerComentinsideOverlay">  <h4 class="post-caption"><?php echo $userDtetxImage['caption']; ?></h4></div> 
+                       <?php $userDtetxImage['image'];?>   <!-- get name of picure from database -->
+                       <hr class="hrComments">
+                        <?php
+                        // Replace 'YOUR_CLOUDINARY_CLOUD_NAME' with your actual Cloudinary cloud name
+                        $cloudinaryCloudName = 'dbete4djx';
+                        $imageName = $userDtetxImage['image']; // Assuming 'image' is the field name in your database
+                        $imageUrl = "https://res.cloudinary.com/{$cloudinaryCloudName}/image/upload/{$imageName}.jpg";
+                        ?>
+                        <img src="<?php echo $imageUrl; ?>" alt="Post Image" class="post-imageComment">
+                    <?php endif; ?>
+                <?php endif; ?>
+        <?php endforeach; ?>
 
-                    <div id="view-Comments-Overlay-Id-<?php echo $userpostD['userpost_id']; ?>" class="view-Comments-Overlay" style="display: none;">
-                        <div class="view-Comments-Overlay-Form">
-                            <p>This is the caption for the image.</p>
+
                             <div id="exit-comment" class="exit-comment" onclick="exitCommentsOverlay()">
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
-                                    class="x-imgComments"
-                                />
+                            <i class="fa-solid fa-xmark x-imgComments" style="color:#0099ff"></i>  
                             </div>
                             <hr class="hrComments">
-                            <img src="images/images (1).jpg" alt="Post Image" class="post-imageComment ">
-                            <hr class="hrComments">
                             <h3 style="text-align: center; margin-top: 2px;">All Comments</h3>
-                            <div class="All-Comments-Inside-Overlay" style="overflow-y: scroll; height: inherit;">
+                            <div class="All-Comments-Inside-Overlay" >
                                 <?php foreach ($usersVariableComment as $userDComment): ?>
                                     <?php if ($userpostD['userpost_id'] == $userDComment['post_id']): ?>
                                         <div class="Comments-inside-O">
-                                            <img class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                                            <div class="usersComments"><?php echo $userDComment['content']; ?></div>
+                                        <?php
+                                        // Replace 'YOUR_CLOUDINARY_CLOUD_NAME' with your actual Cloudinary cloud name
+                                        $cloudinaryCloudNameProfilecomment = 'dbete4djx';
+                                        $imageNameProfilecomment = $userDComment['profile_photo']; // Assuming 'image' is the field name in your database
+                                        $imageUrlProfilecomment = "https://res.cloudinary.com/{$cloudinaryCloudNameProfilecomment}/image/upload/{$imageNameProfilecomment}.jpg";
+                                        ?>
+                                             <img class="profile_photo" src="<?php echo $imageUrlProfilecomment; ?>">
+                                             <div class="prcomment"><?php echo $userDComment['First_name'] . ' ' . $userDComment['last_name'];  ?> </div>
                                         </div>
+                                        <div class="usersComments"><?php echo $userDComment['content']; ?></div>
+                                        <hr style="width:95%">
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
 
- <!----------------------------------------this  for comment Form----------------------------------------------->
-                            <hr class="divider">
-                            <form action="index.php" method="POST" >
-                                        <div class="comment">
-                                        <div class="comment_profile">
-                                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                                        </div>
-                                        <input type="text" class="write_comment" placeholder="Write a comment" name="comment_<?php echo $userpostD['userpost_id']; ?>">
-                                        <!-- Add a hidden input field for the post ID  to get the userpost for each comment-->
-                                        <input type="hidden" name="userpost_id" value="<?php echo $userpostD['userpost_id']; ?>">
-                                        <input type="submit" name="submitWrite_comment" value="Comment" >
-                                        </div>
-                                    </div>               
-                        </form>
  <!----------------------------------------this  for comment PHP Form----------------------------------------------->
-                                            <?php
+ <?php
+                           
+                            
                                 if (isset($_POST['submitWrite_comment'])) {
                                     $postIdWrite_comment = $_POST['userpost_id'];
                                     $userIdWrite_comment = 2; // get from session
                                     $commentContent = $_POST['comment_' . $postIdWrite_comment]; 
+                                    
+          
+    
+                                      // echo ' post id ' . $postIdWrite_comment . " user id " .  $userIdWrite_comment . ' comment ' . $commentContent;
 
-                                    echo ' post id ' . $postIdWrite_comment . " user id " .  $userIdWrite_comment . ' comment ' . $commentContent;
-
-                                    if ($commentContent !== null) {
+                                    if (!empty($commentContent)) {
                                         $sqlCommentInsert = "INSERT INTO comment (post_id, user_id, content) VALUES (?, ?, ?)";
 
                                         $stmtComment = $conn->prepare($sqlCommentInsert);
@@ -459,15 +686,40 @@ include './connDatabase/Connection.php';
                                         } else {
                                             echo 'Error in your query failed: ' . $stmtComment->error;
                                         }
-                                    } else {
-                                        echo 'Error: Comment content is NULL';
-                                    }
+                                    } 
                                 }
                                 ?>
+
+ <!----------------------------------------this  for comment Form----------------------------------------------->
+                            <hr class="divider">
+                            <form action="index.php" method="POST" >
+                                        <div class="comment">
+                                                <div class="comment_profile">
+                            <?php foreach ($usersVariableprofileUser as $userDprofile): ?>
+                                            <?php
+                                                // Cloudinary cloud name
+                                                    $cloudinaryCloudNameuserDprofile = 'dbete4djx';
+                                                    $imageNameuserDprofile = $userDprofile['profile_photo'];
+                                                    $imageUrluserDprofile = "https://res.cloudinary.com/{$cloudinaryCloudNameuserDprofile}/image/upload/{$imageNameuserDprofile}.jpg";
+                                                    ?>
+                                                    <div class="comment_profile">
+                                                    <img  class="profile_photo" src="<?php echo $imageUrluserDprofile; ?>">
+                                                </div>
+                            <?php endforeach; ?>
+                                        </div>
+                                        <input type="text" class="write_comment" placeholder="Write a comment" name="comment_<?php echo $userpostD['userpost_id']; ?>">
+                                        <!-- Add a hidden input field for the post ID  to get the userpost for each comment-->
+                                        <input type="hidden" name="userpost_id" value="<?php echo $userpostD['userpost_id']; ?>">
+                                        <button type="submit" name="submitWrite_comment" class="submitWrite_comment">Comment</button>
+                                      
+                                        </div>
+                                    </div>               
+                        </form>
+
  
  <?php endforeach;?>
  </div>
-        
+
 <!-------------------------------this Form  for right navbar----------------------------------------------------->
     <div class="right_navbar">
         <div class="Trending_bar">
@@ -602,6 +854,7 @@ include './connDatabase/Connection.php';
             
         </div>
     </div>
+<!-- this for emojies -->
     </body>
       <script src="index.js"></script>
        <script src="indexAll.js"></script>
@@ -620,7 +873,12 @@ include './connDatabase/Connection.php';
     }
 </script>
 
+<script>
+function displayFileName(input) {
+  var display = document.getElementById("CreatePostInputImageDisplay");
+  display.textContent = input.files.length > 0 ? input.files[0].name : "No image selected";
+}
 
-
+</script>
 
 </html>

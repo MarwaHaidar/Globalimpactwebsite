@@ -322,3 +322,47 @@ document.getElementById('ProfilePath').addEventListener('click', function(){
   window.location.href = 'profilepage.html';
 });
 
+
+
+// --------for emojies--------------
+
+var inputElement = document.getElementById('type_something_input');
+var emojiOverlay = document.getElementById('emojiOverlay');
+var openEmojiOverlayButton = document.getElementById('openEmojiOverlay');
+
+// Function to check if an element is a descendant of another element
+function isDescendant(parent, child) {
+  var node = child.parentNode;
+  while (node != null) {
+    if (node == parent) {
+      return true;
+    }
+    node = node.parentNode;
+  }
+  return false;
+}
+
+openEmojiOverlayButton.addEventListener('click', function() {
+  emojiOverlay.style.display = 'block';
+
+  // Close the overlay when clicking outside of it
+  document.addEventListener('click', function(event) {
+    if (!isDescendant(emojiOverlay, event.target) && event.target !== openEmojiOverlayButton) {
+      emojiOverlay.style.display = 'none';
+    }
+  });
+});
+
+document.querySelectorAll('.emoji-icon').forEach(function(emojiIcon) {
+  emojiIcon.addEventListener('click', function() {
+    var selectedEmoji = this.getAttribute('data-emoji');
+    inputElement.value += selectedEmoji;
+  });
+});
+
+// --------for hashtag--------------
+
+document.getElementById('typehashting').addEventListener('click', function() {
+  var inputElement = document.getElementById('type_something_input');
+  inputElement.value += '#';
+});

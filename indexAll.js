@@ -233,29 +233,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ----------overlay Stories------------ 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const stories = document.querySelectorAll(".story");
-    const overlayStories = document.getElementById("overlayStories");
-    const overlayImageStory = document.getElementById("overlayimageStory");
+// document.addEventListener("DOMContentLoaded", function () {
+//     const stories = document.querySelectorAll(".story");
+//     const overlayStories = document.getElementById("overlayStories");
+//     const overlayImageStory = document.getElementById("overlayimageStory");
   
-    stories.forEach((story, index) => {
-      story.addEventListener("click", function () {
-        showOverlayS(index);
-      });
-    });
+//     stories.forEach((story, index) => {
+//       story.addEventListener("click", function () {
+//         showOverlayS(index);
+//       });
+//     });
   
-    function showOverlayS(index) {
-        overlayImageStory.src = `./images/StoryImage${index + 1}.jpg`; // Change this based on your image naming convention
-        overlayStories.style.display = "flex";
-    }
+//     function showOverlayS(index) {
+//         overlayImageStory.src = `./images/StoryImage${index + 1}.jpg`; // Change this based on your image naming convention
+//         overlayStories.style.display = "flex";
+//     }
   
-    window.closeOverlayStory = function () {
-        overlayStories.style.display = "none";
-    };
-  });
+//     window.closeOverlayStory = function () {
+//         overlayStories.style.display = "none";
+//     };
+//   });
   
-
-
 
 // --------------overlay Stories my self--------------------- 
 function openFileInput() {

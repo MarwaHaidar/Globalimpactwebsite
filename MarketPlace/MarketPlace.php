@@ -1,3 +1,7 @@
+<?php
+include '../connDatabase/Connection.php';
+?>  
+
 <!DOCTYPE html>
 
 <html lang="zxx">
@@ -56,7 +60,7 @@
 				<div class="row">
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
 						<div class="try_logo_wrapper try_logo_wrapper_top market-div">
-							<a href="#" class="market">
+							<a href="./MarketPlace.php" class="market">
 								<i class="fa-solid fa-shop market-icon "></i> &nbsp;Market Place
 							</a>
 						</div>
@@ -210,39 +214,82 @@
 			</div>
 		</div>
 	</div>
-	<div id="mobile" class="width_calc">
-		<!--try Slider banner Start-->
-		<div class="try_banner_slider_wrapper">
-			<div class="try_banner_slider_inner_wrapper">
-				<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<div class="carousel-captions caption-1">
-								<div class="container">
-									<div class="row">
-										<div class="col-lg-5 col-md-6 col-sm-5 col-xs-8">
-											<div class="try_slider_img_Wrapper try_mob_slider_img_Wrapper" data-animation="animated bounceInUp">
-												<img src="images/content/headphone1.jpg" alt="mobail" class="product1Carousel">
-											</div>
-										</div>
-										<div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-7 col-xs-12">
-											<div class="content try_slider_banner_cont">
-												
-												<h2 data-animation="animated fadeInUp" style="color: black;">Samsung Galaxy A51</h2>
-												<p data-animation="animated fadeInUp" style="color: black">
-													Dyson Zone™ noise-cancelling headphones (Ultra Blue/Prussian Blue)
-													
-												</p>
-												<p data-animation="animated fadeInUp" style="color: black">Price : $279.95</p>	
-												<p data-animation="animated fadeInUp" style="color: black">  For Contact : example@gmail.com</p> </p>	
-											</div>	
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="item">
+		<!--try lt st section Start-->
+					<?php
+			$sqlSelectItem = "SELECT marketplace.* 
+			FROM marketplace
+			ORDER BY marketplace.created_at DESC";
+
+			$resultVariableItem = mysqli_query($conn, $sqlSelectItem);
+			$usersVariableItem = mysqli_fetch_all($resultVariableItem, MYSQLI_ASSOC);
+			//  print_r($usersVariableItem);   
+
+			?>
+
+<div id="mobile" class="width_calc">
+    <!--try Slider banner Start-->
+    <div class="try_banner_slider_wrapper">
+        <div class="try_banner_slider_inner_wrapper">
+            <div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <!-- carousel -->
+                    <?php
+                    $active = true; // Set the first item as active
+                    foreach ($usersVariableItem as $Itemcarousel):
+                    ?>
+                    <div class="item <?php echo $active ? 'active' : ''; ?>">
+                        <div class="carousel-captions caption-1">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6 col-sm-5 col-xs-8">
+                                        <div class="try_slider_img_Wrapper try_mob_slider_img_Wrapper" data-animation="animated bounceInUp">
+											<?php
+											// Cloudinary cloud name
+											$cloudinaryItemcarousel = 'dbete4djx';
+											$imageNameItemcarousel = $Itemcarousel['ImageItem'];
+											$imageUrlItemcarousel = "https://res.cloudinary.com/{$cloudinaryItemcarousel}/image/upload/{$imageNameItemcarousel}.jpg";
+											?>
+                                            <img src="<?php echo $imageUrlItemcarousel; ?>" alt="<?php echo $Itemcarousel['item_name']; ?>" class="product1Carousel">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-7 col-xs-12">
+                                        <div class="content try_slider_banner_cont">
+                                            <h2 data-animation="animated fadeInUp" style="color: black;"><?php echo $Itemcarousel['item_name']; ?></h2>
+                                            <p data-animation="animated fadeInUp" style="color: black"><?php echo $Itemcarousel['description']; ?></p>
+                                            <p data-animation="animated fadeInUp" style="color: black">Price:$ <?php echo $Itemcarousel['price']; ?></p>
+                                            <p data-animation="animated fadeInUp" style="color: black">For Contact: <?php echo $Itemcarousel['Email']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    $active = false; // Remove active class from subsequent items
+                    endforeach;
+                    ?>
+                </div>
+            </div>
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+                <?php
+                foreach ($usersVariableItem as $key => $Itemcarousel):
+                ?>
+                <li data-target="#carousel-example-generic2" data-slide-to="<?php echo $key; ?>" class="<?php echo $key === 0 ? 'active' : ''; ?>"><span class="number"></span></li>
+                <?php endforeach; ?>
+            </ol>
+            <!-- Carousel Navigation -->
+            <div class="carousel-nevigation">
+                <a class="prev" href="#carousel-example-generic2" role="button" data-slide="prev"><i class="flaticon-left-arrow"></i></a>
+                <a class="next" href="#carousel-example-generic2" role="button" data-slide="next"><i class="flaticon-right-arrow"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+						<!-------->
+						<!-- <div class="item">
 							<div class=" carousel-captions caption-2">
 								<div class="container">
 									<div class="row">
@@ -266,8 +313,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="item">
+						</div> -->
+						<!-- <div class="item">
 							<div class="carousel-captions caption-3">
 								<div class="container">
 									<div class="row">
@@ -301,224 +348,156 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic2" data-slide-to="0" class="active"><span class="number"></span>
-							</li>
-							<li data-target="#carousel-example-generic2" data-slide-to="1" class=""><span class="number"></span>
-							</li>
-							<li data-target="#carousel-example-generic2" data-slide-to="2" class=""><span class="number"></span>
-							</li>
-						</ol>
-						<div class="carousel-nevigation">
-							<a class="prev" href="#carousel-example-generic2" role="button" data-slide="prev">	<i class="flaticon-left-arrow"></i>
-							</a>
-							<a class="next" href="#carousel-example-generic2" role="button" data-slide="next"> <i class="flaticon-right-arrow"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-		<!--try lt st section Start-->
+						</div> -->
+					
+			
+	
+
+
+	<!-- -----------------------------------display items--------------------------------------------------- -->
 		<div class="try_lt_st_main_wrapper">
 			<div class="container">
+			<?php foreach ($usersVariableItem as $Item): ?>
 				<div class="row">
 					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
 							<div class="try_rc_mob_img">
-								<img src="images/content/hs3.png" alt="mobail" class="photos">
+
+							<?php
+                            // Cloudinary cloud name
+                                $cloudinaryItem = 'dbete4djx';
+                                $imageNameItem = $Item['ImageItem'];
+                                $imageUrlItem = "https://res.cloudinary.com/{$cloudinaryItem}/image/upload/{$imageNameItem}.jpg";
+                                ?>
+								<img src="<?php echo  $imageUrlItem ?>" alt="mobail" class="photos">
 							</div>
 							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
+								<h1><?php echo $Item['item_name']?></h1>
+								<h3><?php echo $Item['description']?></h3>
 							</div>
 							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
+								<p>$<?php echo $Item['price']?></p>
 								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
+									<div class="mail">Contact Us: <a href="<?php echo $Item['Email']?>" class="email"><?php echo $Item['Email']?></a></div>
 								</div>
 								
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/hs3.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/hs3.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/hs3.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/hs2.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/st5.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/st4.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/cam.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-								<img src="images/content/watch_img.png" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h2>World's Thinnest LED TV</h2>
-								<h3>(55’’, 43’’ , 32’’ Inches)</h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$430</p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="mailto:example@example.com" class="email">example@example.com</a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
+	<?php endforeach; ?>
+					
+
+
 				</div>
 			</div>
 		</div>
 	</div>
 
 	</div>
+
 	
 
-	<div class="edit-post-overlay" id="edit-post-overlay">
+	<?php
+
+require '../vendor/autoload.php';
+use Cloudinary\Api\Upload\UploadApi;
+use Cloudinary\Configuration\Configuration;
+
+$Marketuser_id = 2; // user_id get from session
+$nameItem = isset($_POST['nameItem']) ? $_POST['nameItem'] : '';
+$descriptionItem = isset($_POST['descriptionItem']) ? $_POST['descriptionItem'] : '';
+$priceItem = isset($_POST['priceItem']) ? $_POST['priceItem'] : '';
+$EmailItem = isset($_POST['EmailItem']) ? $_POST['EmailItem'] : '';
+$InputImage = $_FILES['imageItem']['tmp_name'] ?? '';
+
+$MarketerrosVariables = [
+    '$nameItemError' => '',
+    '$descriptionItemError' => '',
+    '$priceItemError' => '',
+    '$EmailItemError' => '',
+];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['closeButton'])) {
+
+    if (empty($nameItem)) {
+        $MarketerrosVariables['$nameItemError'] = 'insert name';
+    }
+    if (empty($descriptionItem)) {
+        $MarketerrosVariables['$descriptionItemError'] = 'insert description';
+    }
+    if (empty($priceItem)) {
+        $MarketerrosVariables['$priceItemError'] = 'insert price';
+    }
+    if (empty($EmailItem)) {
+        $MarketerrosVariables['$EmailItemError'] = 'insert email';
+    }
+
+    if (!array_filter($MarketerrosVariables)) {
+
+        if (!empty($InputImage)) {
+            Configuration::instance('cloudinary://177893987749658:sCL_-AWCJAkCtaRj4kjxf-tIq8Q@dbete4djx?secure=true');
+            $result = (new UploadApi())->upload($InputImage);
+
+            $sql = "INSERT INTO marketplace(user_id,item_name,description,price,Email,ImageItem) VALUES (?, ?, ?,?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+
+            // Check if the statement was prepared successfully
+            if ($stmt) {
+                $stmt->bind_param("isssss", $Marketuser_id, $nameItem, $descriptionItem, $priceItem, $EmailItem, $result['public_id']);
+                $stmt->execute();
+
+                // Check if the execution was successful
+                if ($stmt->affected_rows > 0) {
+                    // Data inserted successfully
+                    echo json_encode(["message" => "Data inserted successfully"]);
+                } else {
+                    // Failed to insert data
+                    echo json_encode(["message" => "Failed to insert data", "error" => $stmt->error]);
+                }
+
+                // Close the statement
+                $stmt->close();
+            } else {
+                // Failed to prepare the statement
+                echo json_encode(["message" => "Failed to prepare statement", "error" => $conn->error]);
+            }
+        }
+    }
+}
+
+?>
+
+
+<form action="MarketPlace.php" method="POST" enctype="multipart/form-data">
+
+    <div class="edit-post-overlay" id="edit-post-overlay">
         <!-- Content of the overlay -->
         <div class="edit-post-card">
             <div class="edit-post-overlay-header">
-              <div class="edit-post-text">Upload Product Or Service</div>
-              <img id="x-edit-post"
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
-              class="x-img"
-              />
+                <div class="edit-post-text">Upload Product Or Service</div>
+                <img id="x-edit-post" loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
+                    class="x-img" />
             </div>
             <div><hr class="hr"></div>
             <div class="text-flex">
-                <input type="text" class="text-input" placeholder="Type Of Product or Service...">
-				<input type="text" class="text-input" placeholder="Description...">
-				<input type="text" class="text-input" placeholder="Price...">
-				<input type="text" class="text-input" placeholder="Email Address...">
+                <input type="text" name="nameItem" class="text-input" placeholder="Name Of Item">
+                <input type="text" name="descriptionItem" class="text-input" placeholder="Description...">
+                <input type="text" name="priceItem" class="text-input" placeholder="Price...">
+                <input type="text" name="EmailItem" class="text-input" placeholder="Email Address...">
             </div>
-			<label for="image" style="margin-top: 3%;">Upload an image for your product:</label>
-            <input type="file" name="image" id="image" accept="image/*" onchange="previewImage()"> 
-			<img id="preview" src="#" alt="Preview" class="edit-post-photo"> 
-            <button class="custom-btn-post save-edit-post" id="closeButton">Upload</button>
-            
-      </div>
+
+            <label for="image" style="margin-top: 3%;">Upload an image for your product:</label>
+            <input type="file" name="imageItem" accept="image/*" onchange="previewImage()">
+            <img id="preview" src="#" alt="Preview" class="edit-post-photo">
+            <button class="custom-btn-post save-edit-post" name="closeButton" type="submit">Upload</button>
+        </div>
+    </div>
+</form>
+
+
+
+
 	<!--try lt st section End-->
 	<script src="js/jquery_min.js"></script>
 	<script src="js/modernizr.js"></script>
@@ -534,12 +513,9 @@
        document.querySelector('.main-content').classList.add('blurred');
      });
      
-     document.getElementById('closeButton').addEventListener('click', function() {
-       document.getElementById('edit-post-overlay').style.display = 'none';
-       document.querySelector('.main-content').classList.remove('blurred');
-     });
 
      document.getElementById('x-edit-post').addEventListener('click', function() {
+		console.log("hello");
        document.getElementById('edit-post-overlay').style.display = 'none';
        document.querySelector('.main-content').classList.remove('blurred');
      });
@@ -571,6 +547,12 @@
 
 </body>
 
+<script>
+	
+	document.getElementById('HomePageMarketPlace').addEventListener('click', function(){
+  window.location.href = '../index.html';
+});
+</script>
 <script>
 	
 	document.getElementById('HomePageMarketPlace').addEventListener('click', function(){
@@ -633,6 +615,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 </script>
-
-
 </html>

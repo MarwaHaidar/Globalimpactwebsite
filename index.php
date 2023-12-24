@@ -16,6 +16,9 @@ include './connDatabase/Connection.php';
 
         <title>Index Page</title>
     </head>
+    <style>
+        
+    </style>
     <body>
         <div class="main_content" id="main_content">
             <section class="section">
@@ -143,21 +146,7 @@ include './connDatabase/Connection.php';
         <div class="post__container">
 
 
-<?php
-    //  // <!-- sql stry Profile  post  -->
-    //  $userstoryprifileId=2;// get from session
 
-    //  $sqlstoriesProfile = "SELECT profile.*
-    //  FROM profile
-    //  INNER JOIN user ON user.user_id = profile.user_id 
-    //  WHERE profile.user_id=  $userstoryprifileId ";
-
-    //  $resultVariablestoriesProfile = mysqli_query($conn,$sqlstoriesProfile);
-    //  $usersVariablestoriesProfile = mysqli_fetch_all($resultVariablestoriesProfile, MYSQLI_ASSOC);
-    //   print_r($usersVariablestoriesProfile);   
-?>
-
- 
 
 
 
@@ -290,41 +279,109 @@ include './connDatabase/Connection.php';
                     
                     // print_r($usersVariableComment);
 
-                // sql for image profile from user
-                $userprofileId=2; // get from session
-                $sqlprofileUser = "SELECT user.*, profile.*
-                FROM user
-                INNER JOIN profile ON user.user_id = profile.user_id
-                WHERE user.user_id = $userprofileId";// get from session
-                
-                            
-                 $resultVariableprofileUser = mysqli_query($conn, $sqlprofileUser);
-                $usersVariableprofileUser = mysqli_fetch_all($resultVariableprofileUser, MYSQLI_ASSOC);
-                  print_r($usersVariableprofileUser);
 
 
-                    //  $sqlprofileaction = "SELECT userposts.*,actiontype.*
-                    // FROM actions
-                    // INNER JOIN userposts ON userposts.userpost_id = actions.post_id
-                    // INNER JOIN actiontype ON actions.action_id = actiontype.action_id
-                    // WHERE actions.post_id=242";
+                    
+                          // sql for image profile from user
+                        $userprofileId=2; // get from session
+                        $sqlprofileUser = "SELECT user.*, profile.*
+                        FROM user
+                        INNER JOIN profile ON user.user_id = profile.user_id
+                        WHERE user.user_id = $userprofileId";// get from session
+                        
+                                    
+                        $resultVariableprofileUser = mysqli_query($conn, $sqlprofileUser);
+                        $usersVariableprofileUser = mysqli_fetch_all($resultVariableprofileUser, MYSQLI_ASSOC);
+                        //   print_r($usersVariableprofileUser);
 
-                    // $resultVariableaction = mysqli_query($conn, $sqlprofileaction);
-                    // $upvoteCounts = mysqli_fetch_all($resultVariableaction, MYSQLI_ASSOC);
-                    // print_r($upvoteCounts);
 
 
+                         // <!-- sql story post  Select -->
+                         $sqlstories = "SELECT stories.*, user.First_name, profile.profile_photo
+                         FROM stories
+                         INNER JOIN user ON user.user_id = stories.user_id
+                         INNER JOIN profile ON profile.user_id = user.user_id
+                         ORDER BY stories.created_at DESC";
+
+                         $resultVariablestories = mysqli_query($conn, $sqlstories);
+                         $usersVariablestories = mysqli_fetch_all($resultVariablestories, MYSQLI_ASSOC);
+                        //   print_r($usersVariablestories);   
+
+                    
+                       
             ?>
+
+
+ 
 <!---------------------------create Stories--------------------------------> 
 
 <div class="main_contentStory">
   <div class="StoryGallery">
     <div class="navigation left">&lt;</div>
     <div class="scroll-container">
+
+                       <!-------------------this  for self story file PHP Form-------------------->
+         
+              
+
+                       <?php
+                    $userIdstory = 2; // get from session
+                    $CreatestoryInputImage = $_FILES['CreatestoryInputImage']['tmp_name'] ?? '';
+
+                    if (isset($_POST['submitStory'])) {
+                        // Process the first form
+                        if (!empty($CreatestoryInputImage)) {
+
+                            // Cloudinary configuration
+                            Configuration::instance('cloudinary://177893987749658:sCL_-AWCJAkCtaRj4kjxf-tIq8Q@dbete4djx?secure=true');
+
+                            // Perform the Cloudinary upload
+                            $result = (new UploadApi())->upload($CreatestoryInputImage);
+
+                            if (isset($result['public_id'])) {
+                                // File uploaded to Cloudinary. Public ID: $result['public_id']
+
+                                // Insert data into the database
+                                $sqlstory = "INSERT INTO stories(user_id, image) VALUES (?, ?)";
+                                $stmtstory = $conn->prepare($sqlstory);
+
+                                if ($stmtstory) {
+                                    $stmtstory->bind_param("is", $userIdstory, $result['public_id']);
+                                    $stmtstory->execute();
+
+                                    // Check if the database operation was successful
+                                    if ($stmtstory->affected_rows > 0) {
+                                        echo "<script>alert('Story uploaded successfully!')</script>";
+                                    } else {
+                                        echo "<script>alert('Error inserting data into the database.')</script>";
+                                    }
+
+                                    $stmtstory->close();
+                                } else {
+                                    echo "<script>alert('Error preparing database statement.')</script>";
+                                }
+                            } else {
+                                // Error uploading to Cloudinary
+                                echo "<script>alert('Error uploading to Cloudinary: " . json_encode($result) . "')</script>";
+                            }
+                        }
+                    }
+?>
+
+<!-------------------------------------------------------------------------------------->
+                <!--  buttun story -->
+          
+            <form action="index.php" method="POST" enctype="multipart/form-data" >
+                <input type="file" name="CreatestoryInputImage" id="fileInput" style="display: none;" accept="image/*" onchange="displaySelectedImage()">
+                <button type="submit" name="submitStory" class="submitstory">Post Story</button>
+            </form>
+
       <div class="inner-container">
+
         <!-- get profile image of story self  -->
+      
             <?php foreach ($usersVariableprofileUser as $userDStoryself): ?>
-                    <?php
+                            <?php
                             // Cloudinary cloud name
                                 $cloudinaryCloudNameprofileStoryself = 'dbete4djx';
                                 $imageNameuserStoryself = $userDStoryself['profile_photo'];
@@ -334,46 +391,67 @@ include './connDatabase/Connection.php';
                 <?php endforeach; ?>
 
 
-            <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="displaySelectedImage()">
+                
+
+
             <img src="./images/UploadImageStory.png" id="postImage">
-            <p>Post Story</p>
-          </div>
-        <div class="story story2" >
-          <img src="./images/rayan1.jpg">
-          <p>Rayan</p>
-        </div>
-        <div class="story story3">
-          <img src="./images/marwa1.jpg">
-          <p>Marwa</p>
-        </div>
-        <div class="story story4">
-          <img src="./images/member.jpg">
-          <p>Ahmad</p>
-        </div>
-        <div class="story story5">
-          <img src="./images/member.jpg">
-          <p>Amjad</p>
-        </div>
-        <div class="story story6">
-          <img src="./images/member.jpg">
-          <p>Ismail</p>
-        </div>
-        <div class="story story7">
-          <img src="./images/member.jpg">
-          <p>Ali</p>
-        </div>
+             </div>
+
+               
+
+                  <!-- profile of story -->
+                    <?php foreach ( $usersVariablestories as $userDStory): ?>
+                        <?php
+                                    $cloudinaryCloudNameprofileStory = 'dbete4djx';
+                                    $imageNameuserStory = $userDStory['profile_photo'];
+                                    $imageUrluserStory = "https://res.cloudinary.com/{$cloudinaryCloudNameprofileStory}/image/upload/{$imageNameuserStory}.jpg";
+                        ?>
+
+
+
+                  <!-- overlay of stories  -->
+                    <div id="storyOverlay-users" class="overlay-stories" onclick="closeStoryOverlay()">
+                        <div class="overlay-stories-content">
+                            <span class="close-stories" onclick="closeStoryOverlay()">&times;</span>
+                            <img src="" id="overlayImage">
+                            <p id="overlayText"></p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- php overlay of stories  -->
+                          <?php
+                                $cloudinaryStory = 'dbete4djx';
+                                $imageStory = $userDStory['image'];
+                                $imageStoryUrl = "https://res.cloudinary.com/{$cloudinaryStory}/image/upload/{$imageStory}.jpg";
+                           ?>
+
+
+                    <div class="story" onclick="openStoryOverlay('<?php echo  $imageStoryUrl; ?>', '<?php echo $userDStory['First_name']; ?>')" style="background-image: linear-gradient(transparent,rgba(0,0,0,0.5)), url(<?php echo $imageUrluserStory; ?>);">
+                    <img src="<?php echo $imageUrluserStory; ?>">
+                    <p><?php echo $userDStory['First_name'] ?></p>
+                     </div>
+                    <!-- <?php echo $userDStory['image'] ?> -->
+
+        
+        <?php endforeach; ?>
+  
+
+
+        
       </div>
     </div>
     <div class="navigation right">&gt;</div>
   </div>
 </div>
 <!-- this for overlay stories  -->
-<div class="overlayStories" id="overlayStories">
+<!-- <div class="overlayStories" id="overlayStories">
   <div class="overlay-content-Story">
     <span class="close-btn-Story" onclick="closeOverlayStory()">&times;</span>
     <img id="overlayimageStory" src="" alt="Overlay Image Story">
   </div>
-</div>
+</div> -->
 
 
 <!-- -----------------------------fORM social media posts-------------------------------------------------------->
@@ -443,7 +521,6 @@ include './connDatabase/Connection.php';
 
 <?php foreach ($usersVariable as $userpostD): ?>
                     <div class="post">
-                    <?php  echo  $userpostD['userpost_id']?>
                         <div class="post-header">
                             <!-- <img src="images/rayan1.jpg" alt="Account Image" class="AccountImage" > -->
                         <?php
@@ -879,6 +956,20 @@ function displayFileName(input) {
   display.textContent = input.files.length > 0 ? input.files[0].name : "No image selected";
 }
 
+</script>
+
+<script>
+    function openStoryOverlay(imageUrl, name) {
+        document.getElementById('overlayImage').src = imageUrl;
+        document.getElementById('storyOverlay-users').style.display = 'flex';
+        document.getElementById('overlayText').innerHTML = name;
+    }
+
+    function closeStoryOverlay() {
+        document.getElementById('storyOverlay-users').style.display = 'none';
+    }
+
+    
 </script>
 
 </html>

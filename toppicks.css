@@ -613,6 +613,11 @@ box-shadow: none !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10px;
+  box-shadow: none;
+  
+
+  
 }
 #LogoMoviesCss{
   position: relative;
@@ -620,11 +625,13 @@ box-shadow: none !important;
   text-decoration: none;
   color: #fff;
   font-weight: 600;
+  padding-top: 50px;
 }
 #headermoviesCss ul{
   position: relative;
   display: flex;
   z-index: 999;
+  padding-top: 50px;
 }
 #headermoviesCss ul li{
   list-style-type: none;

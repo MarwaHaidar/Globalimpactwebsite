@@ -626,9 +626,11 @@ padding: 10px;
   height: 25px;
   background-color: var(--varInputColorLightDrak);
   border-radius: 5px;
+  color: var(--varBlackLight);
 }
 .write_comment::placeholder{
 padding: 10px;
+
 }
 
 .count{

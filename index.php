@@ -936,6 +936,7 @@ include './connDatabase/Connection.php';
       <script src="index.js"></script>
        <script src="indexAll.js"></script>
 <script>      
+    //comment 
     function showCommentsOverlay(userpostId) {
         var overlayId = 'view-Comments-Overlay-Id-' + userpostId;
         var overlay = document.getElementById(overlayId);
@@ -951,6 +952,7 @@ include './connDatabase/Connection.php';
 </script>
 
 <script>
+    //file
 function displayFileName(input) {
   var display = document.getElementById("CreatePostInputImageDisplay");
   display.textContent = input.files.length > 0 ? input.files[0].name : "No image selected";
@@ -959,6 +961,7 @@ function displayFileName(input) {
 </script>
 
 <script>
+    //stories
     function openStoryOverlay(imageUrl, name) {
         document.getElementById('overlayImage').src = imageUrl;
         document.getElementById('storyOverlay-users').style.display = 'flex';

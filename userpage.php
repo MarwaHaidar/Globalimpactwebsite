@@ -144,8 +144,8 @@ $username = $userData['username'];
                    
                 
 
-                    <a href="LogIn-SignUp-forgget/logout.php">
-                    <button class="nav_logout" name="logout_btn">LOGOUT</button>
+                    <!-- <a href="./LogIn-SignUp-forgget/logout.php"> -->
+                    <button class="nav_logout" name="logout_btn" onclick="logout()">LOGOUT</button>
             </nav>
         </div>
 
@@ -877,7 +877,7 @@ $username = $userData['username'];
     
                 <div class="element2">
                     <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+                        <img  class="profile_photo" src="images/Eo_circle_purple_letteunityr-m.svg.png">
                     </div>
                     <p class="name">everyday-talk</p>
                     <button class="follow">Join</button>
@@ -913,9 +913,8 @@ $username = $userData['username'];
           <!--  <button id="closeOverlay">Exit</button>-->
             <i class="fa-regular fa-circle-xmark"  id="closeOverlay" style="color: #000000;"></i>
         </div>
-        
         <div id="form">
-            <form id="createCommunityForm">
+            <form id="createCommunityForm" action="create_com.php" method="POST" enctype="multipart/form-data">
                 <hr style="width: 90%; margin-left: 4%;">
           <div class="comunnityForm">
                     <label for="communityName">Community Name</label><br>
@@ -923,11 +922,11 @@ $username = $userData['username'];
       
           
                     <label for="description">Topic</label><br>
-                    <input type="text" id="communityTopic" name="communityTopic"  placeholder= "This will help relevant users find your community ">
+                    <input type="text" id="communityTopic" name="communitycategory"  placeholder= "This will help relevant users find your community"required>
           
          
                     <label for="description">Description</label><br>
-                    <input type="text" id="communityName" name="communityName"  placeholder="This is how new members come to understand your community" required>
+                    <input type="text" id="communityName" name="communitydesc"  placeholder="This is how new members come to understand your community" required>
           
            
                     <label for="communityPhoto">Community Photo</label><br>
@@ -935,7 +934,7 @@ $username = $userData['username'];
                     
        
                 
-                <button type="submit" class="custom-btn save-edit-aboutinfo">Create Community</button>
+                <button type="submit" class="custom-btn save-edit-aboutinfo" name="create_com_btn">Create Community</button>
                 
             </div>    
             </form>
@@ -985,6 +984,11 @@ function displayFileName(input) {
     }
 
     
+  function logout() {
+
+    window.location.href = 'LogIn-SignUp-forgget/logout.php';
+  }
+
 </script>
 
 </html>

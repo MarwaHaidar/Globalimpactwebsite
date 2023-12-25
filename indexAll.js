@@ -310,7 +310,7 @@ function openFileInput() {
 // this for Community path for users -------------
 
 document.getElementById('ComunityPath').addEventListener('click', function(){
-  window.location.href = 'communityall.html';
+  window.location.href = 'communityall.php';
 });
 
 

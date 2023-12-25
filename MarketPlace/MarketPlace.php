@@ -1,6 +1,12 @@
 <?php
 include '../connDatabase/Connection.php';
+session_start();
+$userData = $_SESSION['auth_user'];
+$userId = $userData['userid'];
+$username = $userData['username'];
+
 ?>  
+
 
 <!DOCTYPE html>
 
@@ -220,7 +226,7 @@ include '../connDatabase/Connection.php';
 			FROM marketplace
 			ORDER BY marketplace.created_at DESC";
 
-			$resultVariableItem = mysqli_query($conn, $sqlSelectItem);
+			$resultVariableItem = mysqli_query($connection, $sqlSelectItem);
 			$usersVariableItem = mysqli_fetch_all($resultVariableItem, MYSQLI_ASSOC);
 			//  print_r($usersVariableItem);   
 
@@ -403,7 +409,7 @@ require '../vendor/autoload.php';
 use Cloudinary\Api\Upload\UploadApi;
 use Cloudinary\Configuration\Configuration;
 
-$Marketuser_id = 2; // user_id get from session
+$Marketuser_id = $userId; // user_id get from session
 $nameItem = isset($_POST['nameItem']) ? $_POST['nameItem'] : '';
 $descriptionItem = isset($_POST['descriptionItem']) ? $_POST['descriptionItem'] : '';
 $priceItem = isset($_POST['priceItem']) ? $_POST['priceItem'] : '';
@@ -439,7 +445,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['closeButton'])) {
             $result = (new UploadApi())->upload($InputImage);
 
             $sql = "INSERT INTO marketplace(user_id,item_name,description,price,Email,ImageItem) VALUES (?, ?, ?,?, ?, ?)";
-            $stmt = $conn->prepare($sql);
+            $stmt = $connection->prepare($sql);
 
             // Check if the statement was prepared successfully
             if ($stmt) {
@@ -459,7 +465,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['closeButton'])) {
                 $stmt->close();
             } else {
                 // Failed to prepare the statement
-                echo json_encode(["message" => "Failed to prepare statement", "error" => $conn->error]);
+                echo json_encode(["message" => "Failed to prepare statement", "error" => $connection->error]);
             }
         }
     }

@@ -1,7 +1,11 @@
 <?php 
-include './connDatabase/Connection.php'
-?>
+include './connDatabase/Connection.php'; // Add a semicolon here
 
+session_start();
+$userData = $_SESSION['auth_user'];
+$userId = $userData['userid'];
+$username = $userData['username'];
+?>
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -63,7 +67,7 @@ INNER JOIN user ON userposts.user_id = user.user_id
 WHERE userposts.category=3
 ORDER BY userposts.created_at DESC";
 
-$resultVariable = mysqli_query($conn, $sqlUserPost);
+$resultVariable = mysqli_query($connection, $sqlUserPost);
 $usersVariable = mysqli_fetch_all($resultVariable, MYSQLI_ASSOC);
 //  print_r($usersVariable);   
 
@@ -77,7 +81,7 @@ LEFT JOIN imagepost ON userposts.userpost_id = imagepost.userpost_id
 LEFT JOIN textpost ON userposts.userpost_id = textpost.userpost_id;
 ";
 
-$resultVariabletextImage = mysqli_query($conn, $sqltextImage);
+$resultVariabletextImage = mysqli_query($connection, $sqltextImage);
 $usersVariabletextImage = mysqli_fetch_all($resultVariabletextImage, MYSQLI_ASSOC);
 // print_r($usersVariabletextImage);
 
@@ -89,7 +93,7 @@ INNER JOIN user ON comment.user_id = user.user_id
 INNER JOIN profile ON comment.user_id = profile.user_id";
 
             
-    $resultVariableComment = mysqli_query($conn, $sqlComment);
+    $resultVariableComment = mysqli_query($connection, $sqlComment);
     $usersVariableComment = mysqli_fetch_all($resultVariableComment, MYSQLI_ASSOC);
     
     // print_r($usersVariableComment);
@@ -98,14 +102,14 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
 
     
           // sql for image profile from user
-        $userprofileId=3; // get from session
+        $userprofileId=$userId; // get from session
         $sqlprofileUser = "SELECT user.*, profile.*
         FROM user
         INNER JOIN profile ON user.user_id = profile.user_id
         WHERE user.user_id = $userprofileId";// get from session
         
                     
-        $resultVariableprofileUser = mysqli_query($conn, $sqlprofileUser);
+        $resultVariableprofileUser = mysqli_query($connection, $sqlprofileUser);
         $usersVariableprofileUser = mysqli_fetch_all($resultVariableprofileUser, MYSQLI_ASSOC);
         //   print_r($usersVariableprofileUser); ?>
 
@@ -165,7 +169,7 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
             WHERE actions.action_id =1  -- the number one is upvote -->
             AND actions.post_id = " . $userpostD['userpost_id'];
 
-            $resultVariableupvote = mysqli_query($conn,$sqlprofileupvote);
+            $resultVariableupvote = mysqli_query($connection,$sqlprofileupvote);
             $upvoteCounts = mysqli_fetch_all($resultVariableupvote, MYSQLI_ASSOC);
             // print_r($upvoteCounts);
 
@@ -179,7 +183,7 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
             WHERE actions.action_id =2  -- the number one is downvotevote -->
             AND actions.post_id = " . $userpostD['userpost_id'];
 
-            $resultVariabledownvote = mysqli_query($conn, $sqlprofiledownvote);
+            $resultVariabledownvote = mysqli_query($connection, $sqlprofiledownvote);
             $downvoteCounts = mysqli_fetch_all($resultVariabledownvote, MYSQLI_ASSOC);
             // print_r($downvoteCounts);
            
@@ -191,7 +195,7 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
                INNER JOIN userposts ON userposts.userpost_id = comment.post_id
                WHERE comment.post_id = " . $userpostD['userpost_id'];
 
-               $resultVariablecomment = mysqli_query($conn, $sqlprofilecomment );
+               $resultVariablecomment = mysqli_query($connection, $sqlprofilecomment );
                $usersVariablecomment = mysqli_fetch_all($resultVariablecomment, MYSQLI_ASSOC);
             //    print_r($usersVariablecomment);
 
@@ -209,13 +213,13 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
 
             
             if (isset($_POST['upvotebtn']) || isset($_POST['downvotebtn'])) {
-                $userIdWriteupvote = 3; // get from session
+                $userIdWriteupvote = $userId; // get from session
                 $userpostupvote_id = $_POST['userpostupvote_id'];
 
 
                 // Check if the user has already voted
                 $sqlCheckVote = "SELECT * FROM actions WHERE user_id = ? AND post_id = ?";
-                $stmtCheckVote = $conn->prepare($sqlCheckVote);
+                $stmtCheckVote = $connection->prepare($sqlCheckVote);
                 $stmtCheckVote->bind_param("ii", $userIdWriteupvote, $userpostupvote_id);
                 $stmtCheckVote->execute();
                 $resultCheckVote = $stmtCheckVote->get_result();
@@ -225,13 +229,13 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
                 if ($resultCheckVote->num_rows > 0) {
                     // User has already voted, delete the previous vote
                     $sqlDeleteVote = "DELETE FROM actions WHERE user_id = ? AND post_id = ?";
-                    $stmtDeleteVote = $conn->prepare($sqlDeleteVote);
+                    $stmtDeleteVote = $connection->prepare($sqlDeleteVote);
                     $stmtDeleteVote->bind_param("ii", $userIdWriteupvote, $userpostupvote_id);
                     $stmtDeleteVote->execute();
                 } else {
                     // User hasn't voted yet, insert the new vote
                     $sqlupvoteContentInsert = "INSERT INTO actions(user_id, post_id, action_id) VALUES (?, ?, ?)";
-                    $stmtupvote = $conn->prepare($sqlupvoteContentInsert);
+                    $stmtupvote = $connection->prepare($sqlupvoteContentInsert);
                     $stmtupvote->bind_param("iii", $userIdWriteupvote, $userpostupvote_id, $upvoteContent);
             
                     try {
@@ -331,7 +335,7 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
                 
                if (isset($_POST['submitWrite_comment'])) {
                    $postIdWrite_comment = $_POST['userpost_id'];
-                   $userIdWrite_comment = 3; // get from session
+                   $userIdWrite_comment = $userId; // get from session
                    $commentContent = $_POST['comment_' . $postIdWrite_comment]; 
                    
 
@@ -341,7 +345,7 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
                    if (!empty($commentContent)) {
                        $sqlCommentInsert = "INSERT INTO comment (post_id, user_id, content) VALUES (?, ?, ?)";
 
-                       $stmtComment = $conn->prepare($sqlCommentInsert);
+                       $stmtComment = $connection->prepare($sqlCommentInsert);
                        $stmtComment->bind_param("iis", $postIdWrite_comment, $userIdWrite_comment, $commentContent);
                        $stmtComment->execute();
 

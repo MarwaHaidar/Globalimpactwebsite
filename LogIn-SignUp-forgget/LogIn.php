@@ -1,3 +1,7 @@
+<?php include("../connDatabase/connection.php");?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,24 +25,37 @@
   
 
 <div class="box backgroundColor-box "  id="loginBox">
+    <form action="logincode.php" method="post">
 
     <div class="Login-title" >Login</div>
-    <input class="input-username" type="text" id="username" name="username" placeholder="Enter your username" required>
-    <input class="input-password"  type="password" id="password" name="password" placeholder="Enter your password" required>
+    <input class="input-email" type="text" id="email" name="email" placeholder="Enter your email" >
+    <input class="input-password"  type="password" id="password" name="password" placeholder="Enter your password">
     
     <div class="checkbox-container">
         <input type="checkbox" id="myCheckbox" name="myCheckbox" value="yes">
         <label for="myCheckbox" class="custom-checkbox-label">Remember me</label>
       </div>
       
-      <button class="login-button"><div class="login-text">Login</div></button>
+      <button class="login-button" name="login_now_btn"><div class="login-text">Login</div></button>
+      </form>
+      <?php     session_start();
+                if(isset($_SESSION['status'])){
+                    ?>
+                    <div class="alert alert-success">
+                        <h5><?= $_SESSION['status'];?></h5>
+                    </div>
+                    
+                    <?php
+                    unset($_SESSION['status']);
+                }
+               ?>
     
       <a id="forgotPass"class="forgotPassword-link" href="./ForgotPassword.html">Forgot Password</a>
-      <p >Don't have an account ?  <a id="SignUpLink" class="SignUp-link" href="./SignUp.html">SignUp</a>
+      <p >Don't have an account ?  <a id="SignUpLink" class="SignUp-link" href="./SignUp.php">SignUp</a>
       </p>
-      <p >Terms & Conditions </p>
+      <!-- <p >Terms & Conditions </p>
       <p >Support</p>
-      
+       -->
 
       
         
@@ -60,7 +77,7 @@
             document.getElementById('loginBox').classList.add('zoom-out');
     
             setTimeout(() => {
-                window.location.href = './SignUp.html';
+                window.location.href = './SignUp.php';
             }, 1000);
         });
     
@@ -69,7 +86,7 @@
             document.getElementById('loginBox').classList.add('zoom-out');
     
             setTimeout(() => {
-                window.location.href = './ForgotPassword.html';
+                window.location.href = './ForgotPassword.php';
             }, 1000);
         });
     

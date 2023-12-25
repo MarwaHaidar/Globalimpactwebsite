@@ -21,28 +21,35 @@
         <img class="img-Logo global-text" src="./LogSignImages/global-text.png" alt="Global Text">
       </div>
 
-<div class="box backgroundColor-box " id="loginBox">
+      <div class="box backgroundColor-box" id="loginBox" style="display:flex;justify-content:center;">
 
+            <div class="forgot-title">Forgot Password?</div>
+            <!-- <p class="pleaseEnterYourEmail" style="display:flex;justify-content:center;">Please enter your email</p> -->
 
-    <div class="forgot-title" >Forgot Password ?</div>
-    <p class="pleaseEnterYourEmail">please enter your email  </p>
-    
-    <input class="input-email" type="text" id="username" name="username" placeholder="example@mail.com" required>
-     
-      <button class="reset-button"><div class="reset-text">Reset Password</div></button>
-      <p style="margin-top: 100px;">Don't have an account ?  <a id="SignUpLink" class="SignUp-link" href="./SignUp.html">SignUp</a></p>
-      <p >Terms & Conditions </p>
-      <p >Support</p>
-    
+            <form action="resetpass_code.php" method="post">
 
+                <input class="input-email" type="hidden" id="token" name="password_token" value="<?php if(isset($_GET['token'])){echo $_GET['token'];}?>" >
+                
+                <input class="input-email" type="text" id="username" name="email" placeholder="Your Email Address" value="<?php if(isset($_GET['email'])){echo $_GET['email'];}?>">
+                
+                <input class="input-email" type="text" id="username" name="password" placeholder="New Password">
+                
+                <input class="input-email" type="text" id="username" name="confirmpass" placeholder="Confirm New Password">
+                <button class="reset-button" type="submit" name="password_update">
+                    <div class="reset-text">Reset Password</div>
+                </button>
+            </form>
 
-</div>
+            <p>Terms & Conditions</p>
+            <p>Support</p>
+
+    </div>
 <div class='stars'></div>
 <div class='twinkling'></div>
 <div class='clouds'></div>
 </body>
 
-<script>
+<!-- <script>
   document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('SignUpLink').addEventListener('click', function (event) {
           event.preventDefault();
@@ -62,7 +69,7 @@
               document.getElementById('loginBox').classList.remove('zoom-in');
           }, 1000); // Adjust the time as needed
       });
-  });
+  }); -->
   
     
   </script>

@@ -1,3 +1,4 @@
+
 (function ($) {
     "use strict";
 
@@ -46,18 +47,98 @@
         inline: true,
         format: 'L'
     });
+ // Testimonials carousel
+ $(".testimonial-carousel").owlCarousel({
+    autoplay: true,
+    smartSpeed: 1000,
+    items: 1,
+    dots: true,
+    loop: true,
+    nav : false
+});
+
+    // ---------------------------------------------------------------------------
+//Event listener for datetimepicker change
+$('#calender').on('change', function(e) {
+    // Get the selected date when the calendar changes
+    var selectedDate = e.date.format('YYYY-MM-DD');
+    console.log('Selected Date:', selectedDate);
+});
+
+// Event listener for button click
+// Event listener for button click
+$('#retrieveDataButton').on('click', function() {
+    // Get the selected date from the datetimepicker
+    
+    var selectedDate = $('#calender').datetimepicker('viewDate').format('YYYY-MM-DD');
+
+    // Use AJAX to send the selected date to the server
+    // $.ajax({
+    //     type: "POST",
+    //     url: "./selectuserbirthdate.php", // Replace with the actual path to your PHP file
+    //     data: { selectedDate: selectedDate },
+    //     success: function(response) {
+    //         // Handle the response from the server if needed
+    //         console.log(response);
+    //     }
+    // });
+
+    // Use AJAX to send the selected date to the server
+$.ajax({
+    type: "POST",
+    url: "selectuserbirthdate.php",
+    data: { selectedDate: selectedDate },
+    success: function(response) {
+        // Parse the JSON response
+        var userData = JSON.parse(response);
+
+        // Clear the existing table rows
+        $('#userDataBody').empty();
+
+        // Append new rows based on the received data
+        for (var i = 0; i < userData.length; i++) {
+            var row = `<tr>
+                            <td><input class="form-check-input" type="checkbox"></td>
+                            <td>${userData[i].firstn}</td>
+                            <td>${userData[i].lastn}</td>
+                            <td>${userData[i].usern}</td>
+                            <td>${userData[i].location}</td>
+                            <td>${userData[i].birthdate}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        user
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">send</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>`;
+            $('#userDataBody').append(row);
+        }
+    }
+});
 
 
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        items: 1,
-        dots: true,
-        loop: true,
-        nav : false
-    });
+
+    // Make an AJAX request or perform other actions based on the selected date
+    alert('Selected Date for Data Retrieval: ' + selectedDate);
+});
+
+
+
+
+
+    // ================================================================================
+
+
+   
+   
 //////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
     // Worldwide Sales Chart
     var ctx1 = $("#ActivateUsersId").get(0).getContext("2d");
@@ -195,30 +276,31 @@ function changeYear(selectedYear) {
 
 
     // Pie Chart
-    var ctx5 = $("#pie-chart").get(0).getContext("2d");
-    var myChart5 = new Chart(ctx5, {
-        type: "pie",
-        data: {
-            labels: ["Italy", "France", "Spain", "USA", "Argentina"],
-            datasets: [{
-                backgroundColor: [
-                    "rgba(0, 156, 255, .7)",
-                    "rgba(0, 156, 255, .6)",
-                    "rgba(0, 156, 255, .5)",
-                    "rgba(0, 156, 255, .4)",
-                    "rgba(0, 156, 255, .3)"
-                ],
-                data: [55, 49, 44, 24, 15]
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
+    // var ctx5 = $("#pie-chart").get(0).getContext("2d");
+    // var myChart5 = new Chart(ctx5, {
+    //     type: "pie",
+    //     data: {
+    //         labels: ["Italy", "France", "Spain", "USA", "Argentina"],
+    //         datasets: [{
+    //             backgroundColor: [
+    //                 "rgba(0, 156, 255, .7)",
+    //                 "rgba(0, 156, 255, .6)",
+    //                 "rgba(0, 156, 255, .5)",
+    //                 "rgba(0, 156, 255, .4)",
+    //                 "rgba(0, 156, 255, .3)"
+    //             ],
+    //             data: [55, 49, 44, 24, 15]
+    //         }]
+    //     },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
 
 
     // Doughnut Chart
     var ctx6 = $("#doughnut-chart").get(0).getContext("2d");
+    //
     var myChart6 = new Chart(ctx6, {
         type: "doughnut",
         data: {
@@ -320,5 +402,25 @@ function updateContentContainers(isDarkMode) {
 checkDarkMode();
 
 
+$(document).ready(function() {
+    function updateMessages() {
+        $.ajax({
+            type: "GET",
+            url: "index.php", // Use the PHP file you created to fetch messages
+            success: function(response) {
+                $("#messagesContainer").html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching messages:", status, error);
+            }
+        });
+
+        // Schedule the next update after a certain interval (e.g., 5 seconds)
+        setTimeout(updateMessages, 5000); // 5000 milliseconds = 5 seconds
+    }
+
+    // Initial call to start updating messages
+    updateMessages();
+});
 
 			

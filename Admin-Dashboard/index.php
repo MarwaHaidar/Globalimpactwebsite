@@ -21,7 +21,10 @@ session_start();   ?>
     
     <!-- Icon Font Stylesheet -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@5.3.1/font/bootstrap-icons.css" rel="stylesheet">
+      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@5.3.1/font/bootstrap-icons.css" rel="stylesheet"> -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@5.3.1/font/bootstrap-icons.css"> -->
+      
+      
 
   
 
@@ -58,15 +61,15 @@ session_start();   ?>
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Oussama Hamzeh</h6>
+                        <h6 class="mb-0"><?php echo $_SESSION['auth_user']['firstname'].$_SESSION['auth_user']['lastname']?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <a href="../adminpage.html" class="nav-item nav-link"><i class="fa-solid fa-eye"></i>View Posts</a>
+                    <a href="../adminpage.php" class="nav-item nav-link"><i class="fa-solid fa-eye"></i>View Posts</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -159,16 +162,25 @@ session_start();   ?>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Oussama Hamzeh</span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['auth_user']['firstname'].$_SESSION['auth_user']['lastname']?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="./signin.html" class="dropdown-item">Log Out</a>
+                            <a href="../LogIn-SignUp-forgget/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
             </nav>
             <!-- Navbar End -->
+            <?php
+$numuser = "SELECT count(user_id) AS user_count FROM user";
+$numuser_run = mysqli_query($connection, $numuser);
 
+if (mysqli_num_rows($numuser_run) > 0) {
+    while ($row = mysqli_fetch_assoc($numuser_run)) {
+        $count = $row['user_count'];
+    }
+}
+?>
 
             <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4 ">
@@ -178,43 +190,93 @@ session_start();   ?>
                             <i class="fa-solid fa-users fa-3x text-primary"></i>
                             <div class="ms-3" style=" width: 100%;">
                                 <p class="mb-2 colorAllContent">Nb. Of Users</p>
-                                <h6 class="mb-0 colorAllContent">1234</h6>
+                                <h6 class="mb-0 colorAllContent"><?php echo $count   ?></h6>
                             </div>
                         </div>
                     </div>
+                    <!-- ------------------------------------------------------------------------------------ -->
+
+
+                    <?php 
+                    $numcom="SELECT count(com_id) as com_count from community";
+                    $numcom_run=mysqli_query($connection,$numcom);
+                    if(mysqli_num_rows($numcom_run)>0){
+                        while($row=mysqli_fetch_assoc($numcom_run)){
+                            $com_count=$row['com_count'];
+                        }
+                    }
+                         ?>
                     <div class="col-sm-6 col-xl-2">
                         <div style="height: 100%;" class=" rounded d-flex align-items-center justify-content-between p-4 colorAllContent">
                             <i class="fa-solid fa-users-viewfinder fa-3x text-primary"></i>
                             <div class="ms-3" style=" width: 100%;">
                                 <p class="mb-2 colorAllContent">Nb. Of  Communities</p>
-                                <h6 class="mb-0 colorAllContent">234</h6>
+                                <h6 class="mb-0 colorAllContent"><?php echo $com_count  ?></h6>
                             </div>
                         </div>
                     </div>
+
+
+                    <?php
+         $num_actions="SELECT count(id) as action_count from actions";
+         $num_actions_run=mysqli_query($connection,$num_actions);
+         if(mysqli_num_rows($num_actions_run)>0){
+            while($row=mysqli_fetch_assoc($num_actions_run)){
+                $num_actions=$row['action_count'];
+            }
+         }
+
+?>
                     <div class="col-sm-6 col-xl-2">
                         <div style="height: 100%;" class=" rounded d-flex align-items-center justify-content-between p-4 colorAllContent">
                             <i class="fa-solid fa-arrow-pointer fa-3x text-primary"></i>
                             <div class="ms-3" style=" width: 100%;">
                                 <p class="mb-2 colorAllContent">Total Actions</p>
-                                <h6 class="mb-0 colorAllContent">29000</h6>
+                                <h6 class="mb-0 colorAllContent"><?php echo $num_actions  ?></h6>
                             </div>
                         </div>
                     </div>
+                    <?php
+         $num_posts="SELECT count(userpost_id) as posts_count from userposts";
+         $num_posts_run=mysqli_query($connection,$num_posts);
+         if(mysqli_num_rows($num_posts_run)>0){
+            while($row=mysqli_fetch_assoc($num_posts_run)){
+                $num_posts=$row['posts_count'];
+            }
+         }
+
+?>
+
+
+  
                     <div class="col-sm-6 col-xl-2">
                         <div style="height: 100%;" class=" rounded d-flex align-items-center justify-content-between p-4 colorAllContent">
                             <i class="fa-regular fa-clone fa-3x text-primary"></i>
                             <div class="ms-3" style=" width: 100%;">
                                 <p class="mb-2 colorAllContent">Nb. Of Posts</p>
-                                <h6 class="mb-0 colorAllContent">20000</h6>
+                                <h6 class="mb-0 colorAllContent"><?php echo $num_posts  ?></h6>
                             </div>
                         </div>
                     </div>
+
+
+
+                    <?php
+         $num_ban="SELECT count(user_id) as ban_count from user where status_id='0'";
+         $num_ban_run=mysqli_query($connection,$num_ban);
+         if(mysqli_num_rows($num_ban_run)>0){
+            while($row=mysqli_fetch_assoc($num_ban_run)){
+                $num_banned=$row['ban_count'];
+            }
+         }
+
+?>
                     <div class="col-sm-6 col-xl-2">
                         <div style="height: 100%;" class=" rounded d-flex align-items-center justify-content-between p-4 colorAllContent">
                             <i class="fa-solid fa-user-slash fa-3x text-primary"></i>
                             <div class="ms-3" style=" width: 100%;">
                                 <p class="mb-2 colorAllContent">Nb. Of Banned Users</p>
-                                <h6 class="mb-0 colorAllContent">100</h6>
+                                <h6 class="mb-0 colorAllContent"><?php echo $num_banned  ?></h6>
                             </div>
                         </div>
                     </div>
@@ -317,13 +379,13 @@ session_start();   ?>
                                 <tbody>
                                 <?php  
             $sql="SELECT * from user";
-            $sql_run=mysqli_query($sql);
+            $sql_run = mysqli_query($connection, $sql);
 
             if(mysqli_num_rows($sql_run)>0){
                 while ($row = mysqli_fetch_assoc($sql_run)) {
                  $firstname=$row['First_name'];
                  $lastname=$row['last_name'];
-                 $username=$row['username'];?>
+                 $username=$row['user_name'];?>
                                     <tr>
                                         <td><input class="form-check-input" type="checkbox"></td>
                                         
@@ -346,139 +408,7 @@ session_start();   ?>
                                     </tr>
                                     <?php
                 }}?>
-                                    <!-- <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Ali</td>
-                                        <td>Medlej</td>
-                                        <td>Ali_m_123</td>
-                                        <td>Lebanon</td>
-                                        <td>01 Jan 1990</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Ali</td>
-                                        <td>Medlej</td>
-                                        <td>Ali_m_123</td>
-                                        <td>Lebanon</td>
-                                        <td>01 Jan 1990</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Nabil</td>
-                                        <td>Khalaf</td>
-                                        <td>Nabi_198</td>
-                                        <td>Syria</td>
-                                        <td>01 Jan 1990</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Rami</td>
-                                        <td>Ayash</td>
-                                        <td>RM_ayyash</td>
-                                        <td>Jordan</td>
-                                        <td>01 Jan 2001</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Samir</td>
-                                        <td>Alwaan</td>
-                                        <td>Sami_12</td>
-                                        <td>Lebanon</td>
-                                        <td>01 Feb 1899</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Rola</td>
-                                        <td>Said</td>
-                                        <td>Roro_300</td>
-                                        <td>Omman</td>
-                                        <td>01 Dec 1880</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Nadia</td>
-                                        <td>Barakat</td>
-                                        <td>Nado_5000</td>
-                                        <td>Syria</td>
-                                        <td>11 Mar 1780</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>-->
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -521,13 +451,13 @@ $result = mysqli_stmt_get_result($stmt); -->
                             <tbody>
             <?php  
             $sql="SELECT * from user where status_id='0'";
-            $sql_run=mysqli_query($sql);
+            $sql_run = mysqli_query($connection, $sql);
 
             if(mysqli_num_rows($sql_run)>0){
                 while ($row = mysqli_fetch_assoc($sql_run)) {
                  $firstname=$row['First_name'];
                  $lastname=$row['last_name'];
-                 $username=$row['username'];?>
+                 $username=$row['user_name'];?>
                  
 
         
@@ -583,62 +513,107 @@ $result = mysqli_stmt_get_result($stmt); -->
                                 <a href="">Show All</a>
                             </div>
                             <!-- -------------------------------------------------------------------------------- -->
+                         
                             <?php
-                            // Function definition
-                                function formatTime($seconds) {
-                                    $intervals = array(
-                                        'year' => 31536000,
-                                        'month' => 2592000,
-                                        'week' => 604800,
-                                        'day' => 86400,
-                                        'hour' => 3600,
-                                        'minute' => 60,
-                                        'second' => 1
-                                    );
-
-                                    foreach ($intervals as $name => $duration) {
-                                        $quotient = floor($seconds / $duration);
-                                        if ($quotient > 0) {
-                                            return $quotient . ' ' . $name . ($quotient > 1 ? 's' : '') . ' ago';
-                                        }
-                                       
-                                    }
-                                    return 'just now';
-
-                                  
-                                }
 
 
-                                $query = "SELECT messages.message, user.First_name ,messages.time
-                                        FROM messages 
-                                        LEFT JOIN user ON messages.user_id = user.user_id";
+// Function definition
+function formatTime($seconds) {
+    $intervals = array(
+        'year' => 31536000,
+        'month' => 2592000,
+        'week' => 604800,
+        'day' => 86400,
+        'hour' => 3600,
+        'minute' => 60,
+        'second' => 1
+    );
 
-                                $query_run = mysqli_query($connection, $query);
+    foreach ($intervals as $name => $duration) {
+        $quotient = floor($seconds / $duration);
+        if ($quotient > 0) {
+            return $quotient . ' ' . $name . ($quotient > 1 ? 's' : '') . ' ago';
+        }
+    }
 
-                                if (mysqli_num_rows($query_run) > 0) {
-                                    while ($row = mysqli_fetch_assoc($query_run)) {
-                                        $message = $row['message'];
-                                        $firstname = $row['First_name'];
-                                        $time=$row['time'];
-                                        $currenttime=time();
-                                        $messagetime=strtotime($time);
-                                        $timedifference=$currenttime-$messagetime;
-                                        $formatted_time = formatTime($timedifference);
-                                ?>
-                                        <div class="d-flex align-items-center border-bottom py-3">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                            <div class="w-100 ms-3">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h6 class="mb-0 bg-dark content-container"><?php echo $firstname ?></h6>
-                                                    <small><?php echo $formatted_time ?></small>
-                                                </div>
-                                                <span style="overflow-x:hidden;"><?php echo $message; ?></span>
-                                            </div>
-                                        </div>
-                                <?php
-                                    }
-                                }
-                                ?>
+    // If we reach here, it means the time is within the last second
+    return 'just now';
+}
+
+// Fetch the latest messages from the database
+$query = "SELECT messages.message, user.First_name, messages.time
+          FROM messages
+          LEFT JOIN user ON messages.user_id = user.user_id
+          ORDER BY messages.time DESC
+          LIMIT 10"; // Limit the number of messages returned
+$result = mysqli_query($connection, $query);
+
+if ($result) {
+    // Generate HTML for the latest messages
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Format the time using the formatTime function
+        $formatted_time = formatTime(time() - strtotime($row['time']));
+
+        echo "<div class='d-flex align-items-center border-bottom py-3'>";
+        echo "<img class='rounded-circle flex-shrink-0' src='img/user.jpg' alt='' style='width: 40px; height: 40px;'>";
+        echo "<div class='w-100 ms-3'>";
+        echo "<div class='d-flex w-100 justify-content-between'>";
+        echo "<h6 class='mb-0 bg-dark content-container'>" . $row['First_name'] . "</h6>";
+        echo "<small>" . $formatted_time . "</small>";
+        echo "</div>";
+        echo "<span style='overflow-x:hidden;'>" . $row['message'] . "</span>";
+        echo "</div>";
+        echo "</div>";
+    }
+
+    // Free result set
+    mysqli_free_result($result);
+} else {
+    echo "Error fetching messages: " . mysqli_error($connection);
+}
+
+// Close the database connection
+mysqli_close($connection);
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              
                                 <!-- ------------------------------------------------------------------------------------ -->
                          
                             </div>
@@ -650,6 +625,8 @@ $result = mysqli_stmt_get_result($stmt); -->
             <!-- Widgets End -->
 
             <!--calender start-->
+          
+
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-md-6 col-xl-4">
@@ -659,8 +636,11 @@ $result = mysqli_stmt_get_result($stmt); -->
                                 <a href="">Show All</a>
                             </div>
                             <div id="calender"></div>
+                            <button id="retrieveDataButton">Retrieve Data</button>
                         </div>
                     </div>
+                    
+           
                     <!-- table of users Start -->
                     <div class="bg-light text-center rounded p-4 bg-dark content-container" style="width: 65%;height: 320px;">
                         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -672,7 +652,7 @@ $result = mysqli_stmt_get_result($stmt); -->
                             <a href="">Show All</a>
                         </div>
                         <div class="table-responsive " style="height: 200px;">
-                            <table class="table text-start align-middle table-bordered table-hover mb-0 ">
+                            <table class="table text-start align-middle table-bordered table-hover mb-0 " >
                                 <thead>
                                     <tr class="text-dark" >
                                         <th scope="col" ></th>
@@ -684,27 +664,15 @@ $result = mysqli_stmt_get_result($stmt); -->
                                         <th scope="col"><h5 class="colorAllContent">Action</h5></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Ali</td>
-                                        <td>Medlej</td>
-                                        <td>Ali_m_123</td>
-                                        <td>Lebanon</td>
-                                        <td>01 Jan 1990</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                <tbody id="userDataBody">
+                                    
+
+                            
+
+                            
+                         
+
+                                    <!-- <tr>
                                         <td><input class="form-check-input" type="checkbox"></td>
                                         <td>Nabil</td>
                                         <td>Khalaf</td>
@@ -798,7 +766,7 @@ $result = mysqli_stmt_get_result($stmt); -->
                                                 </ul>
                                               </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -857,6 +825,7 @@ $result = mysqli_stmt_get_result($stmt); -->
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <script>
         // Call checkDarkMode() on page load
         checkDarkMode();

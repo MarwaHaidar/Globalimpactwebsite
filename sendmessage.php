@@ -15,6 +15,8 @@ if(isset($_POST['send_message'])){
     $query->close();
 }
 
-
-
 ?>
+
+
+                        
+                     

@@ -71,6 +71,7 @@ body.dark-mode {
     box-shadow: var(--varBoxShadowColor);
     padding: 0 5px;
     z-index: 100;
+ 
     
   }
   .header__container {
@@ -1969,4 +1970,23 @@ z-index: 1;
 
 .emoji-icon:hover {
   color: #0099ff; /* Highlight on hover */
+}
+
+.searchpageclass{
+  background-color:red;
+  right: 32.5%;
+  position: absolute;
+  left:34%;
+  border-radius:10px;
+  box-shadow:var(--varBoxShadowColor);
+  z-index: 1001;
+  background: var(--varInputColorLightDrak);
+  margin-top: 0.7%;
+}
+.searchpageclass a{
+color:#0099ff;
+padding:20px;
+padding-top:2%;
+font-weight: bold;
+
 }

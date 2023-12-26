@@ -6,8 +6,6 @@ $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
 
-
-
 ?>  
 
 <!DOCTYPE html>
@@ -25,9 +23,9 @@ $username = $userData['username'];
         <title>Index Page</title>
     </head>
     <style>
-        
+   
     </style>
-    <body>
+    <body onload="refreshsearchpage();">
         <div class="main_content" id="main_content">
             <section class="section">
        
@@ -38,10 +36,14 @@ $username = $userData['username'];
 
                 <a href="#Home" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
     
-                <div class="header__search">
-                    <input type="search" placeholder="Search" class="header__input">
-                    <i class="fa-solid fa-magnifying-glass" ></i>
-                </div>
+                
+                    <!-- -=----------------Search For name user has Post ------------------------ -->
+                    <div class="header__search">
+                        <input onkeyup="gosearch();" type="text" id="searchfield" placeholder="Search" class="header__input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                                    
     
                 <a href="profilepage.html" id="ProfilePath">
                     <div class="header__profile">
@@ -140,8 +142,6 @@ $username = $userData['username'];
                     </div>
 
 
-
-                   
                 
 
                     <!-- <a href="./LogIn-SignUp-forgget/logout.php"> -->
@@ -154,7 +154,8 @@ $username = $userData['username'];
 
         <div class="post__container">
 
-
+        
+        <div  class="searchpageclass" id="searchpage"></div>
 
 
 
@@ -529,7 +530,7 @@ $username = $userData['username'];
                 <!-- Add more emojis as needed -->
                 </div>
 
-<!-- -=----------------PHP FOR NAME AND TIME ------------------------ -->
+<!-- -=----------------PHP For Posts ------------------------ -->
 
 <?php foreach ($usersVariable as $userpostD): ?>
                     <div class="post">
@@ -991,4 +992,100 @@ function displayFileName(input) {
 
 </script>
 
+
+<script>
+    // this for search
+    function getXMLHttpRequest() { // This function is used to create an XMLHttpRequest object, taking into account different ways browsers handle it
+        var xhr = null;
+        if (window.XMLHttpRequest || window.ActiveXObject) {
+
+            if (window.ActiveXObject) {
+
+                try {
+                    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP")
+                }
+            } else {
+                xhr = new XMLHttpRequest();
+            }
+
+        } else {
+            alert("your browser does not support XMLHttpRequest ...");
+            return null;
+        }
+
+        return xhr;
+    }
+    // using getc
+
+    var xhr = getXMLHttpRequest();
+
+    function refresh(s) {
+        var xhr = getXMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status === 0)) {
+                document.getElementById(s).innerHTML = xhr.responseText;
+            }
+        };
+
+        xhr.open("GET", s + ".php", true);
+        xhr.send(null);
+    }
+
+    function refreshsearchpage() {
+        refresh('searchpage');
+    }
+
+    function gosearch() {
+        var xhr = getXMLHttpRequest(); 
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status === 0)) {
+                document.getElementById('searchpage').innerHTML = xhr.responseText;
+            }
+        };
+
+        var search = document.getElementById('searchfield').value;
+
+        xhr.open("POST", "searchpage.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("search=" + search);
+    }
+
+    refreshsearchpage();
+
+
+    // using fetch 
+
+    // function refreshsearchpage() {
+    //     refresh('searchpage');
+    // }
+
+    // function gosearch() {
+    //     var search = document.getElementById('searchfield').value;
+
+    //     fetch('searchpage.php', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/x-www-form-urlencoded'
+    //         },
+    //         body: `search=${search}`
+    //     })
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! Status: ${response.status}`);
+    //             }
+    //             return response.text();
+    //         })
+    //         .then(data => {
+    //             document.getElementById('searchpage').innerHTML = data;
+    //         })
+    //         .catch(error => {
+    //             console.error('Fetch error:', error);
+    //         });
+    // }
+
+    // refreshsearchpage();
+
+</script>
 </html>

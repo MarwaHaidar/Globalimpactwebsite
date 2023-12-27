@@ -6,6 +6,11 @@ $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
 
+if (!$userId) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}
 ?>  
 
 <!DOCTYPE html>
@@ -320,8 +325,11 @@ $username = $userData['username'];
                          $usersVariablestories = mysqli_fetch_all($resultVariablestories, MYSQLI_ASSOC);
                         //   print_r($usersVariablestories);   
 
-                    
-                       
+
+
+                        
+                      
+                   
             ?>
 
 
@@ -811,26 +819,63 @@ $username = $userData['username'];
  </div>
 
 <!-------------------------------this Form  for right navbar----------------------------------------------------->
+
+<?php
+            // sql for trend hshatag
+
+            $sqlhashtag = "SELECT userpost_id, content AS post_content, NULL AS caption, NULL AS image
+            FROM textpost
+            WHERE LOCATE('#', content) > 0
+
+            UNION
+
+            SELECT i.userpost_id, NULL AS post_content, i.caption, i.image
+            FROM imagepost i
+            WHERE LOCATE('#', i.caption) > 0";
+
+            $resultVariablehashtag = mysqli_query($connection, $sqlhashtag);
+            $usersVariablehashtag = mysqli_fetch_all($resultVariablehashtag, MYSQLI_ASSOC);
+
+            $combinedTexts = array();
+            foreach ($usersVariablehashtag as $posthash) {
+            if (!empty($posthash['post_content'])) {
+            $combinedTexts[] = $posthash['post_content'];
+            }
+            if (!empty($posthash['caption'])) {
+            $combinedTexts[] = $posthash['caption'];
+            }
+            }
+            // Combine all text into a single string
+            $combinedText = implode(' ', $combinedTexts);
+            // Tokenize the text into words
+            $words = str_word_count($combinedText, 1);
+            // Count the frequency of each word
+            $wordFrequency = array_count_values($words);
+            // Sort the words by frequency in descending order
+            arsort($wordFrequency);
+
+?>
+
     <div class="right_navbar">
         <div class="Trending_bar">
             <div class="title"><i class="fa-solid fa-fire-flame-curved" style="color:#0099ff;" ></i>
             <p class="title-word">Trending</p></div>
-            <hr class="right-divider">
-            <div class="element1">
-                <p class="name">#mhmd</p>
-                <button class="follow">Follow</button>
-            </div>
+              <hr class="right-divider">
 
-            <div class="element2">
-                <p class="name">#ahmd</p>
-                <button class="follow">Follow</button>
-            </div>
-            <div class="element2">
-                <p class="name">#amjad</p>
-                <button class="follow">Follow</button>
-            </div>
-           
-
+            
+     <!-- this for hashtag trend Form  -->
+            <?php
+            $count = 0;
+            foreach ($wordFrequency as $word => $frequency) {
+                echo '<div class="element1">';
+                echo '<p class="name"> #' . $word . '</p>';
+                echo '</div>';            
+             $count++;
+                if ($count >= 4) {
+                    break;
+                }
+            }
+            ?>
 
         </div>
 
@@ -912,7 +957,7 @@ $username = $userData['username'];
             <div id="overlay_header">
             <h2>Create Community</h2>
           <!--  <button id="closeOverlay">Exit</button>-->
-            <i class="fa-regular fa-circle-xmark"  id="closeOverlay" style="color: #000000;"></i>
+            <i class="fa-regular fa-circle-xmark"  id="closeOverlay" style="color: #0099ff;"></i>
         </div>
         <div id="form">
             <form id="createCommunityForm" action="create_com.php" method="POST" enctype="multipart/form-data">

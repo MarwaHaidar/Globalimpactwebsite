@@ -80,7 +80,9 @@
 
                        
 
-                <button class="nav_logout">LOGOUT</button>
+                    <a href="LogIn-SignUp-forgget/logout.php">
+                    <button class="nav_logout" name="logout_btn">LOGOUT</button>
+                    </a>
             </nav>
         </div>
 

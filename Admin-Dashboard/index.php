@@ -1,5 +1,56 @@
 <?php include("../connDatabase/connection.php");
-session_start();   ?>
+session_start(); 
+if (isset($_POST['deleteUserId'])) {
+    $deleteUserId = $_POST['deleteUserId'];
+
+    // Perform the deletion
+    $deleteUserQuery = "DELETE FROM user WHERE user_id = '$deleteUserId'";
+    $result = mysqli_query($connection, $deleteUserQuery);
+
+    if ($result) {
+        // Redirect back to the same page after deletion
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Error deleting user: " . mysqli_error($connection);
+    }
+}
+if(isset($_POST['banUserId'])){
+    $banUserId=$_POST['banUserId'];
+
+    $banuserquery="UPDATE user set status_id='0' where user_id='$banUserId'";
+    $banresult=mysqli_query($connection,$banuserquery);
+    if($banresult){
+        header("Location:index.php");
+        exit();
+    }
+    else{
+        echo "Error banning user: ".mysqli_error($connection);
+    }
+};
+if(isset($_POST['unbanUserId'])){
+    $unbanUserId=$_POST['unbanUserId'];
+
+    $unbanuserquery="UPDATE user set status_id='1' where user_id='$unbanUserId'"; 
+    $unbanresult=mysqli_query($connection,$unbanuserquery);
+    if($unbanresult){
+        header("Location:index.php");
+        exit();
+    }
+    else{
+        echo "Error unbanning user: ".mysqli_error($connection);
+    }
+}
+
+
+$sql="SELECT * from user where status_id='0'";
+$sql_run = mysqli_query($connection, $sql);
+
+// Fetch the latest user data
+$selectUserQuery = "SELECT * FROM user";
+$selectUserResult = mysqli_query($connection, $selectUserQuery);
+
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -159,6 +210,7 @@ session_start();   ?>
                             <a href="#" class="dropdown-item text-center">See all notifications</a>
                         </div>
                     </div>
+<!-- ---------------------------------------admin profile----------------------------------------------------------------------------------------------- -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
@@ -170,7 +222,7 @@ session_start();   ?>
                     </div>
                 </div>
             </nav>
-            <!-- Navbar End -->
+<!-- -------------user number card-------------------------------------------------------------------------------------------------------------------- -->
             <?php
 $numuser = "SELECT count(user_id) AS user_count FROM user";
 $numuser_run = mysqli_query($connection, $numuser);
@@ -194,7 +246,7 @@ if (mysqli_num_rows($numuser_run) > 0) {
                             </div>
                         </div>
                     </div>
-                    <!-- ------------------------------------------------------------------------------------ -->
+<!----------- -------------------------------------community number card----------------------------------------------- --------------------------------->
 
 
                     <?php 
@@ -215,7 +267,7 @@ if (mysqli_num_rows($numuser_run) > 0) {
                             </div>
                         </div>
                     </div>
-
+<!-- --------------------------------------------------------number of actions card-------------------------------------------------------------------------------------------- -->
 
                     <?php
          $num_actions="SELECT count(id) as action_count from actions";
@@ -236,6 +288,7 @@ if (mysqli_num_rows($numuser_run) > 0) {
                             </div>
                         </div>
                     </div>
+<!------------------------------------------------number of posts card------------------------------------------------------------------------------------------------------- -->
                     <?php
          $num_posts="SELECT count(userpost_id) as posts_count from userposts";
          $num_posts_run=mysqli_query($connection,$num_posts);
@@ -259,7 +312,7 @@ if (mysqli_num_rows($numuser_run) > 0) {
                         </div>
                     </div>
 
-
+<!-- ------------------------------------number of banned users--------------------------------------------------------------------------------------------------------------- -->
 
                     <?php
          $num_ban="SELECT count(user_id) as ban_count from user where status_id='0'";
@@ -283,7 +336,7 @@ if (mysqli_num_rows($numuser_run) > 0) {
                 </div>
             </div>
        
-
+<!-- ----------------------------charts----------------------------------------------------------------------------------------------------------------------- -->
 
             <!-- Sales Chart Start -->
             <div class="container-fluid pt-4 px-4  ">
@@ -347,7 +400,7 @@ if (mysqli_num_rows($numuser_run) > 0) {
             
 
             
-                   <!-- table of users Start -->
+<!-- ------------------------------table of users Start ----------------------------------------------------------------------------------------------------->
 
 
 
@@ -376,46 +429,60 @@ if (mysqli_num_rows($numuser_run) > 0) {
                                         <th scope="col"><h5 class="colorAllContent">Action</h5></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                <?php  
-            $sql="SELECT * from user";
-            $sql_run = mysqli_query($connection, $sql);
-
-            if(mysqli_num_rows($sql_run)>0){
-                while ($row = mysqli_fetch_assoc($sql_run)) {
-                 $firstname=$row['First_name'];
-                 $lastname=$row['last_name'];
-                 $username=$row['user_name'];?>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
+                                <tbody id="userTableBody">
+                                <?php
+            while ($row = mysqli_fetch_assoc($selectUserResult)) {
+                $userId = $row['user_id'];
+                $firstname = $row['First_name'];
+                $lastname = $row['last_name'];
+                $username = $row['user_name'];
+                ?>
+                <tr>
+                    <td><input class="form-check-input" type="checkbox"></td>
+                    <td><?php echo $firstname; ?></td>
+                    <td><?php echo $lastname; ?></td>
+                    <td><?php echo $username; ?></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                user
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                <form method="post" action="">
+                                    <input type="hidden" name="banUserId" value="<?php echo $userId; ?>">
+                                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to ban user?')">Ban</button>
                                         
-                                    <td><?php echo $firstname?></td>
-                                    <td><?php echo $lastname?></td>
-                                    <td><?php echo $username?></td>
-                                    <td></td>
-                                    <td></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <?php
-                }}?>
-                                    
-                                </tbody>
-                            </table>
+                                    </form>
+                                </li>
+                               
+                                <li>
+                                    <form method="post" action="">
+                                        <input type="hidden" name="deleteUserId" value="<?php echo $userId; ?>">
+                                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')">Delete</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+
+
+
+
                         </div>
                     </div>
                 </div> 
+                
 
-                     <!-- table ogf users End -->
+<!---------------------------------------------------------------------- table ogf users End----------------------------------------------------------------------- -->
 
                      <!-- $sql = "SELECT * FROM user WHERE status_id = ?";
 $stmt = mysqli_prepare($connection, $sql);
@@ -424,7 +491,7 @@ $status_id = 0;
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt); -->
 
-             <!-- table of banned users Start -->
+<!-------------------------------------------------------- table of banned users Start ------------------------------------------------------------------------------>
              <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4 bg-dark content-container">
                     <div class="d-flex align-items-center justify-content-between mb-4">
@@ -448,66 +515,62 @@ $result = mysqli_stmt_get_result($stmt); -->
                                     <th scope="col"><h5 class="colorAllContent">Action</h5></th>
                                 </tr>
                             </thead>
-                            <tbody>
-            <?php  
-            $sql="SELECT * from user where status_id='0'";
-            $sql_run = mysqli_query($connection, $sql);
+                            <tbody id="userTableBody">
+    <?php
+    while ($row = mysqli_fetch_assoc($sql_run)) {
+        $firstname = $row['First_name'];
+        $lastname = $row['last_name'];
+        $username = $row['user_name'];
+        $user_Id = $row['user_id']; // Assuming this is the correct field name in your database
+        ?>
 
-            if(mysqli_num_rows($sql_run)>0){
-                while ($row = mysqli_fetch_assoc($sql_run)) {
-                 $firstname=$row['First_name'];
-                 $lastname=$row['last_name'];
-                 $username=$row['user_name'];?>
-                 
+        <tr>
+            <td><input class="form-check-input" type="checkbox"></td>
+            <td><?php echo $firstname ?></td>
+            <td><?php echo $lastname ?></td>
+            <td><?php echo $username ?></td>
+            <td></td>
+            <td></td>
+            <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        user
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <form method="post" action="">
+                                <input type="hidden" name="unbanUserId" value="<?php echo $user_Id; ?>">
+                                <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to unban user?')">UnBan</button>
+                            </form>
+                        </li>
 
-        
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td><?php echo $firstname?></td>
-                                    <td><?php echo $lastname?></td>
-                                    <td><?php echo $username?></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                              user
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                              <li><a class="dropdown-item" href="#">UnBan</a></li>
-                                              <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                          </div>
-                                    </td>
-                                </tr>
+                        <li>
+                            <form method="post" action="">
+                                <input type="hidden" name="deleteUserId" value="<?php echo $user_Id; ?>">
+                                <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
 
+    <?php } ?>
+</tbody>
 
-
-<?php
-
-
-                    
-            }
-            
-            
-        }
-            
-            ?>
-
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- table of banned users End -->
+<!-- -----------------------------------------------table of banned users End --------------------------------------------------------------------------------------------------->
 
 
 
-            <!-- Widgets Start -->
+<!--------------------------------------------------------- Widgets Start /messages/ realted to main.js and contact us and sendmessage.php----------------------------------------------------------------------------->
             <div class="container-fluid pt-4 px-4 ">
                 <div class="row g-4 ">
                     <div class="col-sm-12 col-md-12 col-xl-12 " style="height:400px;width: 100%;">
-                        <div class="h-100 bg-light rounded p-4 bg-dark content-container" style="overflow-y: scroll;">
+                        <div class="h-100 bg-light rounded p-4 bg-dark content-container" style="overflow-y: scroll;" id="messagesContainer">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0 bg-dark content-container">Messages</h6>
                                 <a href="">Show All</a>
@@ -554,10 +617,10 @@ if ($result) {
         // Format the time using the formatTime function
         $formatted_time = formatTime(time() - strtotime($row['time']));
 
-        echo "<div class='d-flex align-items-center border-bottom py-3'>";
+        echo "<div class='d-flex align-items-center border-bottom py-3'id='messagesContainer' >";
         echo "<img class='rounded-circle flex-shrink-0' src='img/user.jpg' alt='' style='width: 40px; height: 40px;'>";
         echo "<div class='w-100 ms-3'>";
-        echo "<div class='d-flex w-100 justify-content-between'>";
+        echo "<div class='d-flex w-100 justify-content-between' >";
         echo "<h6 class='mb-0 bg-dark content-container'>" . $row['First_name'] . "</h6>";
         echo "<small>" . $formatted_time . "</small>";
         echo "</div>";
@@ -574,57 +637,21 @@ if ($result) {
 
 // Close the database connection
 mysqli_close($connection);
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                               
                                 <!-- ------------------------------------------------------------------------------------ -->
                          
-                            </div>
+                                 </div>
                          
                             </div>
-                    
-                </div>
-            </div>
-            <!-- Widgets End -->
+                        </div>
+                  </div>
+ <!-- ---------------------------------------------------Widgets End------------------------------------------------------------------------------------- -->
 
-            <!--calender start-->
+<!--------------------------------------------------------calender start related to main.js and selectuserbirthdate.php---------------------------------------------------------------------------------->
           
 
             <div class="container-fluid pt-4 px-4">
@@ -665,133 +692,20 @@ mysqli_close($connection);
                                     </tr>
                                 </thead>
                                 <tbody id="userDataBody">
-                                    
 
-                            
-
-                            
-                         
-
-                                    <!-- <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Nabil</td>
-                                        <td>Khalaf</td>
-                                        <td>Nabi_198</td>
-                                        <td>Syria</td>
-                                        <td>01 Jan 1990</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Rami</td>
-                                        <td>Ayash</td>
-                                        <td>RM_ayyash</td>
-                                        <td>Jordan</td>
-                                        <td>01 Jan 2001</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Samir</td>
-                                        <td>Alwaan</td>
-                                        <td>Sami_12</td>
-                                        <td>Lebanon</td>
-                                        <td>01 Feb 1899</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Rola</td>
-                                        <td>Said</td>
-                                        <td>Roro_300</td>
-                                        <td>Omman</td>
-                                        <td>01 Dec 1880</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox"></td>
-                                        <td>Nadia</td>
-                                        <td>Barakat</td>
-                                        <td>Nado_5000</td>
-                                        <td>Syria</td>
-                                        <td>11 Mar 1780</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                  user
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="#">Ban</a></li>
-                                                  <li><a class="dropdown-item" href="#">Delete</a></li>
-                                                </ul>
-                                              </div>
-                                        </td>
-                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                     <!-- table of users End -->
+            <!------------------------------------ table of users End ------------------------------------------------------------->
                     
                 </div>
 
             </div>
-            <!--calender ends-->
+    <!---------------------------------------------------------calender ends---------------------------------------------------------------------------->
 
 
 
-
-
-
-
-            
-
-
-
-
-
-            
- 
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -829,6 +743,10 @@ mysqli_close($connection);
     <script>
         // Call checkDarkMode() on page load
         checkDarkMode();
+        updateMessages();
+
+
+        
     </script>
 
 </body>

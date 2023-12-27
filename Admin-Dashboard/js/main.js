@@ -42,7 +42,7 @@
     }, {offset: '80%'});
 
 
-    // Calender
+    // --------------------------------------Calender------------------------------------------------------------------------------
     $('#calender').datetimepicker({
         inline: true,
         format: 'L'
@@ -57,7 +57,7 @@
     nav : false
 });
 
-    // ---------------------------------------------------------------------------
+    // ------------------------------related to calender part in index.php---------------------------------------------
 //Event listener for datetimepicker change
 $('#calender').on('change', function(e) {
     // Get the selected date when the calendar changes
@@ -131,12 +131,12 @@ $.ajax({
 
 
 
-    // ================================================================================
+// ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
    
    
-//////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -401,12 +401,13 @@ function updateContentContainers(isDarkMode) {
 // Call checkDarkMode() on page load
 checkDarkMode();
 
+// ---------------------------------------------------related to date in messages part-------------------------------------------------------------------
 
 $(document).ready(function() {
     function updateMessages() {
         $.ajax({
             type: "GET",
-            url: "index.php", // Use the PHP file you created to fetch messages
+            url: "./index.php", // Use the PHP file you created to fetch messages
             success: function(response) {
                 $("#messagesContainer").html(response);
             },
@@ -422,5 +423,7 @@ $(document).ready(function() {
     // Initial call to start updating messages
     updateMessages();
 });
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-			
+
+

@@ -40,6 +40,7 @@ if (isset($_POST['create_com_btn'])) {
                     if ($stmtText->affected_rows > 0) {
                         // Insertion successful
                         echo "Community created successfully!";
+                        echo '<script>window.location.href = "communityall.php";</script>';
                     } else {
                         // Insertion failed
                         echo "Error creating community: " . $stmtText->error;

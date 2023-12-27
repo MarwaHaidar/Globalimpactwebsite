@@ -712,7 +712,7 @@ transform: scale(1.6);
   color: var(--varBlackLight);
 }
 .right-divider{
-  max-width: 100%;
+  width: 93%;
   margin-bottom: 0px;
   margin-top: 0px;
 }
@@ -854,9 +854,7 @@ transform: scale(1.6);
 .element2 {
   margin-bottom: 10px;
 }
-.right-divider{
-  max-width: 150px;
-}
+
 /*--------------------overlay page of community------------------------------------------------*/
 .section{
   position: relative;
@@ -886,10 +884,10 @@ transform: scale(1.6);
   margin-left: 30%;
   margin-top: 1%;
   margin-bottom: 5%;
-  background: #ecf0f3;
+  background: var(--varColorLightDrak);
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--varBoxShadowColor);
   z-index: 2;
 }
 
@@ -905,7 +903,7 @@ transform: scale(1.6);
   justify-content: space-between;
   text-align: center;
   margin-left: 5%;
- 
+ color : var(--varBlackLight);
 }
 
 #form {
@@ -913,7 +911,7 @@ transform: scale(1.6);
   flex-direction: column;
   justify-content: center;
   margin-bottom: 250px;
-
+  color: var(--varBlackLight);
 }
 
 #createCommunityForm label {
@@ -928,14 +926,13 @@ transform: scale(1.6);
   padding: 10px;
   box-sizing: border-box;
   border: none;
-  background-color: #ecf0f3;
-   box-shadow:  8px 8px 8px #cbced1,
-   -8px -8px 8px #ffffff;
+  background-color:var(--varInputColorLightDrak);
+   box-shadow:  var(--varBoxShadowColor);
   border-radius: 5px;
 }
 #createCommunityForm input[type="text"]::placeholder{
   font-size: larger;
-  color: gray;
+  color: var(--varBlackLight);
   opacity: 0.4;
 }
 .comunnityForm{
@@ -963,7 +960,7 @@ transform: scale(1.6);
   align-items: center;
   width: 130px;
   height: 40px;
-  color: #fff;
+  color: white;
   border-radius: 5px;
   padding: 10px 25px;
   font-family: 'Lato', sans-serif;
@@ -989,13 +986,13 @@ transform: scale(1.6);
   padding: 0;
   border: none;
   background: var(--navbarColorButtom);
-  background: linear-gradient(0deg, var(--navbarColorButtom) 0%, var(--navbarColorButtom) 100%);
+  background: linear-gradient(0deg, #0099ff 0%, #0099ff 100%);
   bottom: 4px;
   
 
 }
 .save-edit-aboutinfo:hover{
-  color: var(--navbarColorButtom);
+  color: #0099ff;
   background: transparent;
    box-shadow:none;
 }
@@ -1007,7 +1004,7 @@ transform: scale(1.6);
   right:0;
   height:2px;
   width:0;
-  background: var(--navbarColorButtom);
+  background: #FB941E;
   box-shadow:
    -1px -1px 5px 0px #fff,
    7px 7px 20px 0px #0003,
@@ -1035,8 +1032,7 @@ transform: scale(1.6);
   cursor: pointer;
   margin-right: 10px;
   margin-top: 8px;
-  box-shadow:  8px 8px 8px #cbced1,
-   -8px -8px 8px #ffffff;
+  box-shadow:  var(--varBoxShadowColor);
   display: flex;
   justify-content: center;
   align-items: center;

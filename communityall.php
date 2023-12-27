@@ -206,6 +206,7 @@ session_start(); ?>
 
         if (isset($_SESSION['auth_user']) && $_SESSION['auth_user'] && isset($_SESSION['auth_user']['userid'])) {
             $userId = $_SESSION['auth_user']['userid'];
+        
 
             if ($userId) {
                 $sql = "SELECT com_id,name, description, com_profile, com_category,followers FROM community";
@@ -270,18 +271,21 @@ session_start(); ?>
             
 
        
-                 <script>
-                   function joinCommunity(communityId) {
-                            $.post('join_community.php', { communityId: communityId }, function (response) {
-                                if (response === 'success') {
-                                    alert('Joined community!');
-                                } else if (response === 'already_joined') {
-                                    alert('You have already joined this community.');
-                                } else {
-                                    alert('Error joining community.');
-                                }
-                            });
-                        }
+      <script>
+               function joinCommunity(communityId) {
+                $.post('join_community.php', { communityId: communityId }, function (response) {
+                    var result = JSON.parse(response);
+                    if (result.status === 'success') {
+                        alert('Joined community!');
+                    } else if (result.status === 'already_joined') {
+                        alert('You have already joined this community.');
+                    } else {
+                        alert('Error joining community: ' + result.message);
+                    }
+                });
+            }
+
+
 
                     /* So, when a user clicks the "Join" button for a community, it triggers this AJAX request to 'join_community.php' with the 
                     community ID as data. The server-side script ('join_community.php') is responsible for updating the database to reflect that 

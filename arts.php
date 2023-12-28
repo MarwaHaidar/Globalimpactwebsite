@@ -6,7 +6,11 @@ $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
 
-
+if (!$userId) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}
 
 ?>  
 <!DOCTYPE html>
@@ -14,8 +18,8 @@ $username = $userData['username'];
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        
+        <!--========== For scrolling ==========-->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <link rel="stylesheet" href="categories.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -28,14 +32,14 @@ $username = $userData['username'];
             <section class="section">
         <section class="main-arts" id="sectionColorModeIdArts"  >
             <header>
-                <a href="#" class="logo">Arts</a>
+                <a href="./arts.php" class="logo">Arts</a>
                 <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./categories.html" >Sports</a></li>
-                    <li><a href="./news.html" >News</a></li>
-                    <li><a href="./technology.html" >Technologies</a></li>
-                    <li><a href="./movies.html">Movies</a></li>
-                    <li><a href="./arts.html" class="AcitveCategory">Arts</a></li>
+                    <li><a href="./userpage.php">Home</a></li>
+                    <li><a href="./categories.php" >Sports</a></li>
+                    <li><a href="./news.php" >News</a></li>
+                    <li><a href="./technology.php" >Technologies</a></li>
+                    <li><a href="./movies.php">Movies</a></li>
+                    <li><a href="./arts.php" class="AcitveCategory">Arts</a></li>
                 </ul>
             </header>
             <div class="content">
@@ -413,5 +417,31 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
          
      });
     }
+</script>
+<script>
+    // ---------------------this for Scroll-------------------------
+
+// Function to set the scroll position in a cookie
+function setScrollPosition() {
+  sessionStorage.setItem('scroll_position', $(window).scrollTop());
+}
+// Function to get the scroll position from sessionStorage and scroll to it
+function getAndScrollToPosition() {
+  var scrollPosition = sessionStorage.getItem('scroll_position');
+  if (scrollPosition !== null) {
+      $(window).scrollTop(scrollPosition);
+      sessionStorage.removeItem('scroll_position');
+  }
+}
+// Save the scroll position when the page is unloaded (refreshed or closed)
+$(window).on('beforeunload', function () {
+  setScrollPosition();
+});
+
+// Scroll to the saved position when the page is loaded
+$(document).ready(function () {
+  getAndScrollToPosition();
+});
+
 </script>
 </html>

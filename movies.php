@@ -5,6 +5,12 @@ session_start();
 $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
+
+if (!$userId) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}
 ?>
 <html>
 	<head>
@@ -12,6 +18,9 @@ $username = $userData['username'];
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="toppicks.css">
+		       <!--========== For scrolling ==========-->
+			   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
        
 	</head>
@@ -21,17 +30,17 @@ $username = $userData['username'];
 			<input type="checkbox" id="toggle-switch">
 			<label for="toggle-switch"></label>
 		</div>
-		<div class="movies-top" style="height: 650px;">
+		<div class="movies-top" style="height: 680px;">
 
 			<header id="headermoviesCss">
-                <a href="#" id="LogoMoviesCss">Movies</a>
+                <a href="./movies.php" id="LogoMoviesCss">Movies</a>
                 <ul>
-                    <li><a href="./index.html">Home</a></li>
-                <li><a href="./categories.html">Sports</a></li>
-                <li><a href="./news.html">News</a></li>
-                <li><a href="./technology.html">Technologies</a></li>
-                <li><a href="./movies.html"  class="AcitveCategory">Movies</a></li>
-                <li><a href="./arts.html">Arts</a></li>
+                    <li><a href="./userpage.php">Home</a></li>
+                <li><a href="./categories.php">Sports</a></li>
+                <li><a href="./news.php">News</a></li>
+                <li><a href="./technology.php">Technologies</a></li>
+                <li><a href="./movies.php"  class="AcitveCategory">Movies</a></li>
+                <li><a href="./arts.php">Arts</a></li>
              
                 </ul>
             </header>
@@ -51,7 +60,7 @@ $username = $userData['username'];
 						  </ol>
 						  <div class="carousel-inner">
 							<div class="carousel-item active">
-							  <img class="d-block w-100" src="images/moviess4.jpg" alt="First slide" height="506">
+							  <img class="d-block w-100" src="images/moviess4.jpg" alt="First slide" height="600">
 								<div class="carousel-caption d-none d-md-block">
 									
 									<p>11th Jan 2019</p>
@@ -62,14 +71,14 @@ $username = $userData['username'];
                               
                                 <!-- Assuming Bootstrap carousel structure -->
                                 
-                              <iframe width="100%" height="506" src="https://www.youtube.com/embed/zhxWIZmSL3M" title="Afghan Luke (2011) - Trailer | VMI Worldwide" frameborder="0"  ></iframe>
+                              <iframe width="100%" height="600" src="https://www.youtube.com/embed/zhxWIZmSL3M" title="Afghan Luke (2011) - Trailer | VMI Worldwide" frameborder="0"  ></iframe>
                            
                             
 
 								
 							</div>
 							<div class="carousel-item">
-							  <img class="d-block w-100" src="images/moviess3.jpg" alt="Third slide" height="506">
+							  <img class="d-block w-100" src="images/moviess3.jpg" alt="Third slide" height="600">
 								<div class="carousel-caption d-none d-md-block">
 									
 									<p>11th Jan 2019</p>
@@ -92,13 +101,13 @@ $username = $userData['username'];
 					<h2 style="background-color: #0099ff;">LITTLE ASHES</h2>
 					<section class="news">
 						<div class="news-container">
-							<img src="images/moviess2.jpg" style="height: 252px;">
+							<img src="images/moviess2.jpg" style="height: 300px;">
 											
 						</div>						
 					</section>
 					<section class="news">
 						<div class="news-container">
-							<img src="images/moviess5.jpg" style="height: 253px;">
+							<img src="images/moviess5.jpg" style="height: 300px;">
 										
 						</div>						
 					</section>
@@ -107,13 +116,13 @@ $username = $userData['username'];
 					<h2>THE TALL MAN</h2>
 					<section class="news">
 						<div class="news-container">
-							<img src="images/moviess6.jpg" style="height: 252px;">
+							<img src="images/moviess6.jpg" style="height: 300px;">
 										
 						</div>						
 					</section>
 					<section class="news">
 						<div class="news-container">
-							<img src="images/moviess7.jpg" style="height: 253px;">
+							<img src="images/moviess7.jpg" style="height: 300px;">
 											
 						</div>						
 					</section>
@@ -126,8 +135,8 @@ $username = $userData['username'];
             
 			<?php
    
-   echo "User ID: " . $userId . "<br>";
-   echo "Username: " . $username . "<br>";
+//    echo "User ID: " . $userId . "<br>";
+//    echo "Username: " . $username . "<br>";
    // <!-- sql for NAME AND Time post  -->
    
    $sqlUserPost = "SELECT userposts.*, profile.*, user.First_name ,user.last_name,TIME(userposts.created_at) AS formatted_created_time
@@ -515,6 +524,32 @@ $username = $userData['username'];
          
      });
     }
+</script>
+<script>
+    // ---------------------this for Scroll-------------------------
+
+// Function to set the scroll position in a cookie
+function setScrollPosition() {
+  sessionStorage.setItem('scroll_position', $(window).scrollTop());
+}
+// Function to get the scroll position from sessionStorage and scroll to it
+function getAndScrollToPosition() {
+  var scrollPosition = sessionStorage.getItem('scroll_position');
+  if (scrollPosition !== null) {
+      $(window).scrollTop(scrollPosition);
+      sessionStorage.removeItem('scroll_position');
+  }
+}
+// Save the scroll position when the page is unloaded (refreshed or closed)
+$(window).on('beforeunload', function () {
+  setScrollPosition();
+});
+
+// Scroll to the saved position when the page is loaded
+$(document).ready(function () {
+  getAndScrollToPosition();
+});
+
 </script>
 					</body>
 				</html>

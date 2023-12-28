@@ -5,6 +5,12 @@ $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
 
+if (!$userId) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}
+
 ?>  
 
 
@@ -556,13 +562,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['closeButton'])) {
 <script>
 	
 	document.getElementById('HomePageMarketPlace').addEventListener('click', function(){
-  window.location.href = '../index.html';
-});
-</script>
-<script>
-	
-	document.getElementById('HomePageMarketPlace').addEventListener('click', function(){
-  window.location.href = '../index.html';
+  window.location.href = '../userpage.php';
 });
 </script>
 <script>

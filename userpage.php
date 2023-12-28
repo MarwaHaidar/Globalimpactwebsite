@@ -5,6 +5,8 @@ session_start();
 $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
+$role = $userData['role'];
+
 
 if (!$userId) {
     // Redirect to the login page or handle authentication as needed
@@ -21,6 +23,8 @@ if (!$userId) {
 
         <!--========== Font Awsome ==========-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <!--========== For scrolling ==========-->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
         <!--========== CSS ==========-->
         <link rel="stylesheet" href="index.css">
@@ -39,7 +43,7 @@ if (!$userId) {
             <div class="header__container">
                 
 
-                <a href="#Home" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+                <a href="./userpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
     
                 
                     <!-- -=----------------Search For name user has Post ------------------------ -->
@@ -48,14 +52,38 @@ if (!$userId) {
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
 
-                                    
+                    <!-- php for profile header  -->
+                             <?php
+                                 // sql for image profile from user header
+                                 $userprofileHeaderId=$userId; // get from session
+                                 $sqlprofileHeader = "SELECT user.*, profile.*
+                                 FROM user
+                                 INNER JOIN profile ON user.user_id = profile.user_id
+                                 WHERE user.user_id = $userprofileHeaderId";// get from session
+                                 
+                                             
+                                 $resultVariableprofileHeader = mysqli_query($connection, $sqlprofileHeader);
+                                 $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYSQLI_ASSOC);
+                                //    print_r($usersVariableprofileHeader);
+                                 ?>
+
+                                <?php foreach ($usersVariableprofileHeader as $userDprofileHeader): ?>
+                                <?php
+                                 // Cloudinary cloud name
+                                 $cloudinaryCloudNameuserDprofileHeader = 'dbete4djx';
+                                $imageNameuserDprofileHeader = $userDprofileHeader['profile_photo'];
+                                 $imageUrluserprofileHeader = "https://res.cloudinary.com/{$cloudinaryCloudNameuserDprofileHeader}/image/upload/{$imageNameuserDprofileHeader}.jpg";
+                                 ?>
+
+                           
     
                 <a href="profilepage.html" id="ProfilePath">
                     <div class="header__profile">
-                        <img class="header_profile" src="./images/myselZoom.jpg" alt="Profile Image">
+                        <img class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>" alt="Profile Image">
                     </div>
                 </a>
             </div>
+            <?php endforeach; ?>
         </header>
 
         <!--========== NAV ==========-->
@@ -63,7 +91,7 @@ if (!$userId) {
             <nav class="nav__container">
                 <div>
                    
-                    <a href="./userpage.html" class="nav__logo">
+                    <a href="./userpage.php" class="nav__logo">
                         <img src="images/global logo.png" alt="Global Impact">   
                     </a>
 
@@ -72,13 +100,13 @@ if (!$userId) {
                             <h3 class="nav__subtitle">Our World</h3>
                             
                             
-                            <a href="./userpage.html" class="nav__link Activeclass">
+                            <a href="./userpage.php" class="nav__link Activeclass">
                                 <i class="fa-solid fa-house nav_icon iconsColor "></i>
                                 <span class="nav__name ">Home</span>
                             </a>
                         
                             <div class="nav__dropdown">
-                                <a href="./categories.html" class="nav__link">
+                                <a href="./categories.php" class="nav__link">
                                     <i class="fa-solid fa-layer-group iconsColor"></i>
                                     <span class="nav__name">Categories</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
@@ -86,54 +114,58 @@ if (!$userId) {
 
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="./categories.html" class="nav__dropdown-item">Sports</a>
-                                        <a href="./news.html" class="nav__dropdown-item">News</a>
-                                        <a href="./technology.html" class="nav__dropdown-item">Technologies</a>
-                                        <a href="./movies.html" class="nav__dropdown-item">Movies</a>
-                                        <a href="./arts.html" class="nav__dropdown-item">Arts</a>
+                                        <a href="./categories.php" class="nav__dropdown-item">Sports</a>
+                                        <a href="./news.php" class="nav__dropdown-item">News</a>
+                                        <a href="./technology.php" class="nav__dropdown-item">Technologies</a>
+                                        <a href="./movies.php" class="nav__dropdown-item">Movies</a>
+                                        <a href="./arts.php" class="nav__dropdown-item">Arts</a>
                                     </div>
                                 </div>
                             </div>
 
-                            <a href="./about-us.html" class="nav__link">
+                            <a href="./about-us.php" class="nav__link">
                                 <i class="fa-solid fa-earth-americas iconsColor" ></i>
                                 <span class="nav__name">About Us</span>
                             </a>
                         </div>
 
-                        <a href="./contactus.html" class="nav__link">
+                        <a href="./contactus.php" class="nav__link">
                             <i class="fa-solid fa-envelope iconsColor" ></i>
                             <span class="nav__name">Contact Us</span>
                         </a>
-                        <a href="./MarketPlace/MarketPlace.html" class="nav__link">
+                        <a href="./MarketPlace/MarketPlace.php" class="nav__link">
                             <i class="fa-solid fa-shop iconsColor"></i>
                             <span class="nav__name">Market Place</span>
                         </a>
+                        
+                        <?php if ($role == 'admin'): ?>
+                        <a href="./adminpage.php" class="nav__link">
+                        <i class="fa-solid fa-user-tie iconsColor"></i>
+                            <span class="nav__name">Admin Page</span>
+                        </a>
+                    <?php endif; ?>
+
                     </div>
     
                         <div class="nav__items">
                             <h3 class="nav__subtitle">Top Picks</h3>
     
                            
-                                <a href="./New.html" class="nav__link">
+                                <a href="./New.php" class="nav__link">
                                     <i class="fa-solid fa-folder-plus iconsColor" ></i>
                                     <span class="nav__name">New</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                 </a>
 
-                                
-
+                            
                             
 
-                            <a href="./toppicks.html" class="nav__link">
+
+                            <a href="./toppicks.php" class="nav__link">
                                 <i class="fa-solid fa-arrow-trend-up iconsColor"></i>
                                 <span class="nav__name">Trendy</span>
                             </a>
-                            <a href="./recommended.html" class="nav__link">
-                                <i class="fas fa-thumbs-up iconsColor" ></i>
-                                <span class="nav__name">Recommended</span>
-                            </a>
-                            
+
                         </div>
                         <div class="nav__items">
                             <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
@@ -169,9 +201,10 @@ if (!$userId) {
 
 
                 <?php
-                echo "User ID: " . $userId . "<br>";
-                echo "Username: " . $username . "<br>";
-
+                // echo "User ID: " . $userId . "<br>";
+                // echo "Username: " . $username . "<br>";
+                // echo 'role is :'. $role;
+                
                 require 'vendor/autoload.php';
                 use Cloudinary\Api\Upload\UploadApi;
                 use Cloudinary\Configuration\Configuration;
@@ -372,7 +405,7 @@ if (!$userId) {
 
                                     // Check if the database operation was successful
                                     if ($stmtstory->affected_rows > 0) {
-                                        echo "<script>alert('Story uploaded successfully!')</script>";
+                                        echo '<script>window.location.href = "userpage.php";</script>';
                                     } else {
                                         echo "<script>alert('Error inserting data into the database.')</script>";
                                     }
@@ -818,7 +851,7 @@ if (!$userId) {
  <?php endforeach;?>
  </div>
 
-<!-------------------------------this Form  for right navbar----------------------------------------------------->
+<!-------------------------------this Form  for hashtag----------------------------------------------------->
 
 <?php
             // sql for trend hshatag
@@ -879,66 +912,98 @@ if (!$userId) {
 
         </div>
 
+    <!------------------------------ this for recomended bar ------------------------->
+
+    <?php        
+        // sql for recomended      
+        $sqlrecomended = "SELECT user.*, profile.*
+        FROM user
+        INNER JOIN profile ON user.user_id = profile.user_id";            
+         $resultVariablerecomended = mysqli_query($connection, $sqlrecomended);
+         $usersVariablerecomended = mysqli_fetch_all($resultVariablerecomended, MYSQLI_ASSOC);     
+        //  print_r($usersVariablerecomended);
+    ?>
         <div class="recommended_bar">
             <div class="title"><i class="fa-solid fa-people-group" style="color:#0099ff;"></i>
                 <p class="title-word"> Recommended</p></div>
                 <hr class="right-divider">
-                <div class="element1">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-                    <p class="name">Ali Tarhini</p>
-                    <button class="follow">Follow</button>
-                </div>
-    
-                <div class="element2">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-                    <p class="name">Ali Mantache</p>
-                    <button class="follow">Follow</button>
-                </div>
+            
+         <!-- this for recomended Form  -->     
+                <?php
+                $count = 0;
+                 foreach ($usersVariablerecomended as $userrecommended):
+                    if ($count < 4): 
+                ?>
+                        <div class="element5">
+                            <div class="comment_profile">
+                                        <?php
+                                            // Cloudinary cloud name
+                                            $cloudinaryCloudNamerecommended = 'dbete4djx';
+                                            $imageNameuserrecommended  = $userrecommended['profile_photo'];
+                                            $imageUrlrecommended= "https://res.cloudinary.com/{$cloudinaryCloudNamerecommended}/image/upload/{$imageNameuserrecommended}.jpg";
+                                            ?>
+                                <img class="profile_photo" src="<?php echo $imageUrlrecommended ?>">
+                            </div>
+                            <p class="name"><?php echo $userrecommended['First_name']."  ".$userrecommended['last_name'] ?></p>
+                        </div>
+                <?php
+                    endif;
+                    $count++; // Increment the counter
+                endforeach;
+                ?>
+
                 
-                <div class="element4">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-                    <p class="name">rayan sultan</p>
-                    <button class="follow">Follow</button>
-                </div>
+     <!------------------------------ this for community ---------------------------->   
                 
         </div>
 
-        <div class="community_bar">
-           <a href="#overlayPage"> <div class="title"  ><i class="fa-solid fa-people-roof" style="color:#0099ff;" id="ComunityPath"></i>
-                <p class="title-word"> Community</p></div></a>
+                    <?php
+            // sql for recommended
+            $sqlrightcommunity = "SELECT community.*
+                                FROM community";            
+            $resultVariablerightcommunity = mysqli_query($connection, $sqlrightcommunity);
+            $usersVariablerightcommunity = mysqli_fetch_all($resultVariablerightcommunity, MYSQLI_ASSOC);     
+            // print_r($usersVariablerightcommunity);
+            ?>
+
+            <div class="community_bar">
+                <a href="#overlayPage"> 
+                    <div class="title">
+                        <i class="fa-solid fa-people-roof" style="color:#0099ff;" id="ComunityPath"></i>
+                        <p class="title-word"> Community</p>
+                    </div>
+                </a>
                 <hr class="right-divider">
-                <div class="element1">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
+
+                <?php
+                $countco = 0;
+                foreach ($usersVariablerightcommunity as $usercommunity):
+                    $usercommunityId = $usercommunity['com_id']; // Assuming 'com_id' is the identifier for communities
+                    if ($countco < 4): 
+                ?>
+                    <div class="element1">
+                        <div class="comment_profile">
+                                          <?php
+                                            // Cloudinary cloud name
+                                            $cloudinaryCloudNamecommunity= 'dbete4djx';
+                                            $imageNameuserrecommunity  = $usercommunity['com_profile'];
+                                            $imageUrlrecommunity= "https://res.cloudinary.com/{$cloudinaryCloudNamecommunity}/image/upload/{$imageNameuserrecommunity}.jpg";
+                                            ?>
+                            <img class="profile_photo" src="<?php echo   $imageUrlrecommunity ?>">
+                        </div>
+                        <p class="name"><?php echo $usercommunity['name'] ?></p>
+                        <button class="follow" onclick='joinRightCommunity("<?php echo $usercommunityId; ?>")'>Join</button>
                     </div>
-                    <p class="name">crypto-edu</p>
-                    <button class="follow">Join</button>
-                </div>
-    
-                <div class="element2">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letteunityr-m.svg.png">
-                    </div>
-                    <p class="name">everyday-talk</p>
-                    <button class="follow">Join</button>
-                </div>
-                
-                <div class="element3">
-                    <div class="comment_profile">
-                        <img  class="profile_photo" src="images/Eo_circle_purple_letter-m.svg.png">
-                    </div>
-                    <p class="name">Esa-coding Lab</p>
-                    <button class="follow">Join</button>
-                </div>
+                <?php
+                    endif;
+                    $countco++; // Increment the counter
+                endforeach;
+                ?>
+
+
 
                 <hr class="right-divider">
-                <div class="titleCommunity"><i class="fa-solid fa-people-roof" style="color:#0099ff;" font-size: 20px;" ></i>
+                <div class="titleCommunity"><i class="fa-solid fa-people-roof" style="color:#0099ff;" font-size: 20px; ></i>
                     <p class="add-community" style="font-size: 12px;"> ADD Community</p>
                     <i class="fa-solid fa-circle-plus iconCommunity" id="open_overlay" ></i></div>
 
@@ -981,6 +1046,8 @@ if (!$userId) {
        
                 
                 <button type="submit" class="custom-btn save-edit-aboutinfo" name="create_com_btn">Create Community</button>
+        
+
                 
             </div>    
             </form>
@@ -1133,4 +1200,50 @@ function displayFileName(input) {
     // refreshsearchpage();
 
 </script>
+
+
+<script>
+
+    // ---------------------this for Scroll-------------------------
+
+    // Function to set the scroll position in a cookie
+    function setScrollPosition() {
+      sessionStorage.setItem('scroll_position', $(window).scrollTop());
+  }
+  // Function to get the scroll position from sessionStorage and scroll to it
+  function getAndScrollToPosition() {
+      var scrollPosition = sessionStorage.getItem('scroll_position');
+      if (scrollPosition !== null) {
+          $(window).scrollTop(scrollPosition);
+          sessionStorage.removeItem('scroll_position');
+      }
+  }
+  // Save the scroll position when the page is unloaded (refreshed or closed)
+  $(window).on('beforeunload', function () {
+      setScrollPosition();
+  });
+
+  // Scroll to the saved position when the page is loaded
+  $(document).ready(function () {
+      getAndScrollToPosition();
+  });
+</script>
+
+<!-- this for join right community -->
+<script>
+    function joinRightCommunity(communityId) {
+        console.log("Community ID:", communityId);
+        $.post('join_community.php', { communityId: communityId }, function (response) {
+            var result = JSON.parse(response);
+            if (result.status === 'success') {
+                alert('Joined community!');
+            } else if (result.status === 'already_joined') {
+                alert('You have already joined this community.');
+            } else {
+                alert('Error joining community: ' + result.message);
+            }
+        });
+    }
+</script>
+
 </html>

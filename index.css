@@ -728,12 +728,15 @@ transform: scale(1.6);
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-  padding: 0px 10px;
-  
+  padding: 0px 10px; 
 }
-.name{
-  color:red;
+.element5{
+  display: flex;
+  justify-content:flex-start;
+  margin-top: 5px;
+  padding: 0px 10px; 
 }
+
 /*------------------------follow button--------------------------------------------*/
 .follow {
   background: var(--navbarColorButtom);
@@ -849,6 +852,9 @@ transform: scale(1.6);
   color: var(--varBlackLight);
   margin-right: 14px;
   margin-top: 5px;
+width: 100%;
+ margin-left: 10px;
+
 }
 
 .element2 {

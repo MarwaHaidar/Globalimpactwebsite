@@ -39,8 +39,8 @@
       <button class="login-button" name="login_now_btn"><div class="login-text">Login</div></button>
       </form>
       <?php     session_start();
-                if(isset($_SESSION['status'])){
-                    ?>
+                    if(isset($_SESSION['status'])){
+                        ?>
                     <div class="alert alert-success">
                         <h5><?= $_SESSION['status'];?></h5>
                     </div>
@@ -51,7 +51,7 @@
                ?>
     
       <a id="forgotPass"class="forgotPassword-link" href="./ForgotPassword.html">Forgot Password</a>
-      <p >Don't have an account ?  <a id="SignUpLink" class="SignUp-link" href="./SignUp.php">SignUp</a>
+      <p style="font-size:90%;">Don't have an account ?  <a id="SignUpLink" class="SignUp-link" href="./SignUp.php">SignUp</a>
       </p>
       <!-- <p >Terms & Conditions </p>
       <p >Support</p>

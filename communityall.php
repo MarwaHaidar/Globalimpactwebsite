@@ -14,16 +14,13 @@ session_start(); ?>
     <link rel="stylesheet" href="index.css">
     
     <style>
-       .communityall__container {
-        width: 900px !important;       
-        margin-top: 60px;
-        }
+
         
         .post-com {
-            width: 85%;
+            width: 100%;
             height: auto;
             margin-top: 30px;
-            margin-left: 30%;
+            margin-left: 33%;
             border: 1px solid var(--varColorLightDrak);
             padding: 20px;
             border-radius: 8px;
@@ -68,7 +65,7 @@ session_start(); ?>
     <div class="header__container">
         
 
-        <a href="./index.html" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+        <a href="userpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
 
         <div class="header__search">
             <input type="search" placeholder="Search" class="header__input">
@@ -87,7 +84,7 @@ session_start(); ?>
     <nav class="nav__container">
         <div>
            
-            <a href="./index.html" class="nav__logo">
+            <a href="./userpage.php" class="nav__logo">
                 <img src="images/global logo.png" alt="Global Impact">   
             </a>
 
@@ -96,13 +93,13 @@ session_start(); ?>
                     <h3 class="nav__subtitle">Our World</h3>
                     
                     
-                    <a href="./index.html" class="nav__link">
+                    <a href="./userpage.php" class="nav__link">
                         <i class="fa-solid fa-house nav_icon iconsColor "></i>
                         <span class="nav__name ">Home</span>
                     </a>
                 
                     <div class="nav__dropdown">
-                        <a href="./categories.html" class="nav__link">
+                        <a href="./categories.php" class="nav__link">
                             <i class="fa-solid fa-layer-group iconsColor"></i>
                             <span class="nav__name">Categories</span>
                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
@@ -110,26 +107,26 @@ session_start(); ?>
 
                         <div class="nav__dropdown-collapse">
                             <div class="nav__dropdown-content">
-                                <a href="./categories.html" class="nav__dropdown-item">Sports</a>
-                                <a href="./news.html" class="nav__dropdown-item">News</a>
-                                <a href="./technology.html" class="nav__dropdown-item">Technologies</a>
-                                <a href="./movies.html" class="nav__dropdown-item">Movies</a>
-                                <a href="./arts.html" class="nav__dropdown-item">Arts</a>
+                                <a href="./categories.php" class="nav__dropdown-item">Sports</a>
+                                <a href="./news.php" class="nav__dropdown-item">News</a>
+                                <a href="./technology.php" class="nav__dropdown-item">Technologies</a>
+                                <a href="./movies.php" class="nav__dropdown-item">Movies</a>
+                                <a href="./arts.php" class="nav__dropdown-item">Arts</a>
                             </div>
                         </div>
                     </div>
 
-                    <a href="./about-us.html" class="nav__link">
+                    <a href="./about-us.php" class="nav__link">
                         <i class="fa-solid fa-earth-americas iconsColor" ></i>
                         <span class="nav__name">About Us</span>
                     </a>
                 </div>
 
-                <a href="#" class="nav__link">
+                <a href="./contactus.php" class="nav__link">
                     <i class="fa-solid fa-envelope iconsColor" ></i>
                     <span class="nav__name">Contact Us</span>
                 </a>
-                <a href="#" class="nav__link">
+                <a href="MarketPlace/MarketPlace.php" class="nav__link">
                     <i class="fa-solid fa-shop iconsColor"></i>
                     <span class="nav__name">Market Place</span>
                 </a>
@@ -139,25 +136,19 @@ session_start(); ?>
                     <h3 class="nav__subtitle">Top Picks</h3>
 
                    
-                        <a href="#" class="nav__link">
+                        <a href="./New.php" class="nav__link">
                             <i class="fa-solid fa-folder-plus iconsColor" ></i>
                             <span class="nav__name">New</span>
                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                         </a>
 
-                        
+                                   
 
-                    
-
-                    <a href="#" class="nav__link">
+                    <a href="./toppicks.php" class="nav__link">
                         <i class="fa-solid fa-arrow-trend-up iconsColor"></i>
                         <span class="nav__name">Trendy</span>
                     </a>
-                    <a href="#" class="nav__link">
-                        <i class="fas fa-thumbs-up iconsColor" ></i>
-                        <span class="nav__name">Recommended</span>
-                    </a>
-                    
+ 
                 </div>
                 <div class="nav__items">
                     <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
@@ -267,10 +258,7 @@ session_start(); ?>
     </div>
 
         
-
-            
-
-       
+ 
       <script>
                function joinCommunity(communityId) {
                 $.post('join_community.php', { communityId: communityId }, function (response) {

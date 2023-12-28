@@ -48,7 +48,7 @@
   echo '<h6>'.$_GET['message'].'</h6>';}
  ?>
     
-    <p> Already Registration ? <a id="LogInLink" class="Login-link" href="LogIn.php">Login</a></p>
+    <p style="font-size:90%;"> Already Registration ? <a id="LogInLink" class="Login-link" href="LogIn.php">Login</a></p>
     <!-- <p>Terms & Conditions </p>
     <p>Support</p> -->
 

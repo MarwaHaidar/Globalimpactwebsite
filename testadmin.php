@@ -1,5 +1,23 @@
 <?php
 include './connDatabase/Connection.php';
+
+session_start();
+$userData = $_SESSION['auth_user'];
+$userId = $userData['userid'];
+$username = $userData['username'];
+$role = $userData['role'];
+
+if (!$userId ) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}
+if ($role=='user') {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./userpage.php");
+    exit;
+}
+
 ?>  
 
 <!DOCTYPE html>
@@ -16,7 +34,7 @@ include './connDatabase/Connection.php';
         <!--========== CSS ==========-->
         <link rel="stylesheet" href="index.css">
 
-        <title>Ananymos</title>
+        <title>Admin Page</title>
     </head>
     <style>
    
@@ -30,15 +48,41 @@ include './connDatabase/Connection.php';
             <div class="header__container">
                 
 
-                <a href="./index.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
-         
+                <a href="./userpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
     
-                <a>
+                
+                    <!-- php for profile header  -->
+                             <?php
+                                 // sql for image profile from user header
+                                 $userprofileHeaderId=$userId; // get from session
+                                 $sqlprofileHeader = "SELECT user.*, profile.*
+                                 FROM user
+                                 INNER JOIN profile ON user.user_id = profile.user_id
+                                 WHERE user.user_id = $userprofileHeaderId";// get from session
+                                 
+                                             
+                                 $resultVariableprofileHeader = mysqli_query($connection, $sqlprofileHeader);
+                                 $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYSQLI_ASSOC);
+                                //    print_r($usersVariableprofileHeader);
+                                 ?>
+
+                                <?php foreach ($usersVariableprofileHeader as $userDprofileHeader): ?>
+                                <?php
+                                 // Cloudinary cloud name
+                                 $cloudinaryCloudNameuserDprofileHeader = 'dbete4djx';
+                                $imageNameuserDprofileHeader = $userDprofileHeader['profile_photo'];
+                                 $imageUrluserprofileHeader = "https://res.cloudinary.com/{$cloudinaryCloudNameuserDprofileHeader}/image/upload/{$imageNameuserDprofileHeader}.jpg";
+                                 ?>
+
+                           
+    
+                <a href="profilepage.html" id="ProfilePath">
                     <div class="header__profile">
-                        <img class="header_profile" src="./images/login (1).png" alt="Profile Image" id="loginAnanymos">
+                        <img class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>" alt="Profile Image">
                     </div>
                 </a>
-
+            </div>
+            <?php endforeach; ?>
         </header>
 
 
@@ -47,7 +91,7 @@ include './connDatabase/Connection.php';
             <nav class="nav__container">
                 <div>
                    
-                    <a href="./index.php" class="nav__logo">
+                    <a href="./adminpage.html" class="nav__logo">
                         <img src="images/global logo.png" alt="Global Impact">   
                     </a>
 
@@ -56,7 +100,7 @@ include './connDatabase/Connection.php';
                             <h3 class="nav__subtitle">Our World</h3>
                             
                             
-                            <a href="./index.php" class="nav__link Activeclass">
+                            <a href="./adminpage.html" class="nav__link Activeclass">
                                 <i class="fa-solid fa-house nav_icon iconsColor "></i>
                                 <span class="nav__name ">Home</span>
                             </a>
@@ -68,7 +112,17 @@ include './connDatabase/Connection.php';
                         </div>
 
 
-        
+                        <a href="./userpage.php" class="nav__link">
+                        <i class="fa-solid fa-user-tie iconsColor"></i>
+                            <span class="nav__name">User Page</span>
+                        </a>
+
+    
+
+                        <a href="../Globalimpactwebsite/Admin-Dashboard/index.php" class="nav__link">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span class="nav__name">Dashboard</span>
+                        </a>
                     </div>
     
   
@@ -86,7 +140,7 @@ include './connDatabase/Connection.php';
                     </div>
 
                     <!-- <a href="./LogIn-SignUp-forgget/logout.php"> -->
-                    <!-- <button class="nav_logout" name="logout_btn" onclick="logout()">LOGOUT</button> -->
+                    <button class="nav_logout" name="logout_btn" onclick="logout()">LOGOUT</button>
             </nav>
         </div>
 
@@ -150,10 +204,20 @@ include './connDatabase/Connection.php';
 
                     
                           // sql for image profile from user
-                  
+                        $userprofileId=$userId; // get from session
+                        $sqlprofileUser = "SELECT user.*, profile.*
+                        FROM user
+                        INNER JOIN profile ON user.user_id = profile.user_id
+                        WHERE user.user_id = $userprofileId";// get from session
+                        
+                                    
+                        $resultVariableprofileUser = mysqli_query($connection, $sqlprofileUser);
+                        $usersVariableprofileUser = mysqli_fetch_all($resultVariableprofileUser, MYSQLI_ASSOC);
+                        //   print_r($usersVariableprofileUser);
                
                    
             ?>
+
 
 
 
@@ -246,7 +310,7 @@ include './connDatabase/Connection.php';
 
                     ?>
                    
-                    <form action="index.php" method="POST" >
+                    <form action="testadmin.php" method="POST" >
                     <div class="post-actions">
                     <div class="vote-buttons">
                         <button name="upvotebtn"  class="darkmodeUpDownComments"><i  class="fa-solid fa-thumbs-up UpvateClass" ></i><span class="count"><?php foreach ($upvoteCounts as $upvote):  echo $upvote['Upvote']; endforeach; ?></span>
@@ -542,16 +606,49 @@ function displayFileName(input) {
     }
 
     
-    // ananymos login 
-    document.getElementById('loginAnanymos').addEventListener('click', function(){
-  window.location.href = './LogIn-SignUp-forgget/Login.php';
-});
-   
+  function logout() {
+
+    window.location.href = 'LogIn-SignUp-forgget/logout.php';
+  }
+
 </script>
 
 
 
+<script>
 
+    // ---------------------this for Scroll-------------------------
+
+    // Function to set the scroll position in a cookie
+    function setScrollPosition() {
+      sessionStorage.setItem('scroll_position', $(window).scrollTop());
+  }
+  // Function to get the scroll position from sessionStorage and scroll to it
+  function getAndScrollToPosition() {
+      var scrollPosition = sessionStorage.getItem('scroll_position');
+      if (scrollPosition !== null) {
+          $(window).scrollTop(scrollPosition);
+          sessionStorage.removeItem('scroll_position');
+      }
+  }
+  // Save the scroll position when the page is unloaded (refreshed or closed)
+  $(window).on('beforeunload', function () {
+      setScrollPosition();
+  });
+
+  // Scroll to the saved position when the page is loaded
+  $(document).ready(function () {
+      getAndScrollToPosition();
+  });
+</script>
+<!-- this for join right community -->
+<script>
+ // community path     
+document.getElementById('ComunityPathAdmin').addEventListener('click', function(){
+  window.location.href = 'communityallAdmin.php';
+});
+
+</script>
 
 
 </html>

@@ -364,3 +364,6 @@ document.getElementById('typehashting').addEventListener('click', function() {
   var inputElement = document.getElementById('type_something_input');
   inputElement.value += '#';
 });
+
+
+

@@ -37,8 +37,8 @@
                 echo '<h5>'.$_GET['message'].'</h5>';}
                 ?>
 
-              <p>Terms & Conditions</p>
-              <p>Support</p>
+              <p style="font-size:90%;">Terms & Conditions</p>
+              <p style="font-size:90%;">Support</p>
 
       </div>
 <div class='stars'></div>

@@ -4,7 +4,6 @@ session_start();
 
 if(isset($_POST['send_message'])){
 
-
     $message = mysqli_real_escape_string($connection, $_POST['message']);
     $userId = $_SESSION['auth_user']['userid']; 
 

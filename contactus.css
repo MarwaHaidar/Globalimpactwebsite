@@ -414,9 +414,10 @@ body.dark-mode {
 	border-radius: 10px;
 	border: 2px solid white;
 	background:var(--varInputColorLightDrak);
-    font-size: 60%;
-    padding: 5px 5px 5px 15px;
-    
+  font-size: 80%;
+  padding: 5px 5px 5px 15px;
+  color:#FB941E;
+ 
   } 
 
   .input-text-control:hover {
@@ -448,7 +449,7 @@ body.dark-mode {
     font-family: "poppins";
 	text-align: left;
 	line-height: 24px;
-	color:#333333;
+ color:#FB941E;
     background-color: var(--varInputColorLightDrak);
   }
   .msg-text:hover {
@@ -602,5 +603,62 @@ body.dark-mode {
     color: #0099ff; /* Change color on hover to red (you can choose any color) */
 }
 
+/* 
+----------log out btn ------ */
+.nav_logout{
+  width: 100px;
+  background: var(--navbarColorButtom);
+  color:white;
+  padding: 0px 10px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 2px;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 42px;
+  border: none;
+  background: linear-gradient(0deg, #E39942 0%,#E39942  100%);
+  bottom: 10%;
+  left: 20%;
+}
 
-        
+.nav_logout:hover {
+  color: rgb(0, 191, 255);
+  background: white;
+  box-shadow: none;
+}
+
+
+.nav_logout:before ,
+.nav_logout:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: var(--navbarColorTopic);
+  box-shadow:
+      -1px -1px 5px 0px #fff,
+      7px 7px 20px 0px #0003,
+      4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+
+
+.nav_logout:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+
+.nav_logout:hover:before,
+.nav_logout:hover:after{
+  width: 100%;
+  transition: 800ms ease all;
+}

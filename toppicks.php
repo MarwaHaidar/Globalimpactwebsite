@@ -5,6 +5,12 @@ session_start();
 $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
+
+if (!$userId) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}
 ?>
 <html>
 	<head>
@@ -12,6 +18,8 @@ $username = $userData['username'];
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="toppicks.css">
+		        <!--========== For scrolling ==========-->
+				<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	</head>
 	<body>
@@ -22,7 +30,7 @@ $username = $userData['username'];
 		</div>
 		<header id="HeaderColor">
 			<div class="website-header">
-				<a  href="./index.html"><img src="images/global logo.png" alt="Global Impact"></a>
+				<a  href="./userpage.php"><img src="images/global logo.png" alt="Global Impact"></a>
 				<h1>GLOBAL IMPACT</h1>
 				
 			</div>
@@ -39,16 +47,13 @@ $username = $userData['username'];
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.html">HOME</a>
+        <a class="nav-link" href="userpage.php">HOME</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="recommended.html">RECOMMENDED</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="toppicks.html">TRENDY</a>
+        <a class="nav-link" href="toppicks.php">TRENDY</a>
       </li> 
 		<li class="nav-item">
-        <a class="nav-link" href="New.html">NEW</a>
+        <a class="nav-link" href="New.php">NEW</a>
       </li>
     
     </ul>
@@ -126,21 +131,7 @@ $username = $userData['username'];
 						</div>						
 					</section>
 				</div>
-				<div id="our-picks">
-					<h2>RECOMMENDED</h2>
-					<section class="news">
-						<div class="news-container">
-							<img src="images/carousel3.jpg">
-							<p class="carousel-text">Edinburgh considering tourist tax </p>				
-						</div>						
-					</section>
-					<section class="news">
-						<div class="news-container">
-							<img src="images/carousel1.jpg">
-							<p class="carousel-text">This floating entertainment hub</p>				
-						</div>						
-					</section>
-				</div>
+
 			</article>
 
 			
@@ -148,8 +139,8 @@ $username = $userData['username'];
             
 			<?php
    
-   echo "User ID: " . $userId . "<br>";
-   echo "Username: " . $username . "<br>";
+//    echo "User ID: " . $userId . "<br>";
+//    echo "Username: " . $username . "<br>";
    // <!-- sql for NAME AND Time post  -->
    
    $sqlUserPost = "SELECT userposts.*, profile.*, user.First_name, user.last_name, TIME(userposts.created_at) AS formatted_created_time,
@@ -558,6 +549,32 @@ $usersVariable = mysqli_fetch_all($resultVariable, MYSQLI_ASSOC);
          
      });
     }
+</script>
+<script>
+    // ---------------------this for Scroll-------------------------
+
+// Function to set the scroll position in a cookie
+function setScrollPosition() {
+  sessionStorage.setItem('scroll_position', $(window).scrollTop());
+}
+// Function to get the scroll position from sessionStorage and scroll to it
+function getAndScrollToPosition() {
+  var scrollPosition = sessionStorage.getItem('scroll_position');
+  if (scrollPosition !== null) {
+      $(window).scrollTop(scrollPosition);
+      sessionStorage.removeItem('scroll_position');
+  }
+}
+// Save the scroll position when the page is unloaded (refreshed or closed)
+$(window).on('beforeunload', function () {
+  setScrollPosition();
+});
+
+// Scroll to the saved position when the page is loaded
+$(document).ready(function () {
+  getAndScrollToPosition();
+});
+
 </script>
 					</body>
 				</html>

@@ -160,6 +160,7 @@ body.dark-mode {
     overflow: auto;
     scrollbar-width: none; /* For mozilla */
     margin-left: 15px;
+   
   }
   /* For Google Chrome and others */
 .nav__container::-webkit-scrollbar {
@@ -1991,4 +1992,202 @@ padding:20px;
 padding-top:2%;
 font-weight: bold;
 
+}
+
+/* ------------------------------------------------------------------ */
+@media (max-width: 600px ){
+
+  body{
+    width: 100%;
+     
+  }
+  html{
+  width: 100px;
+  }
+  .header {
+    width:415px;
+  }
+  .header_profile{
+    height: 30px;
+    width: 30px;
+  }
+  .header__profile{
+    height: 30px;
+    width: 30px;
+}
+  .header__container {
+    width: 400px;
+
+  }
+  .header__search {
+    width: 20%;
+    height: 10px;
+  }  
+
+  .right_navbar{
+    display: none;
+
+  }
+  .header__logo img{
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .nav__logo img{
+  display: none;
+ }
+ .nav:hover {
+    
+  width: 150px;
+
+}
+.nav__subtitle {
+  font-size: 12px;
+}
+.nav__link {
+font-size: 10px;
+}
+.nav__name {
+  font-size: 10px;
+  
+}
+.StoryGallery {
+  width: 250px;
+  margin-left: 70px;
+}
+.story img{
+  display: none !important;
+}
+.story p{
+ font-size: 10px;
+}
+.submitstory{
+ font-size: 10px;
+ margin-left: 0px;
+  }
+
+  .navigation {
+    font-size: 10px;
+  }
+  .create_post{
+    width: 250px;
+  }
+  .dropdownPostCategory {
+    width: 50px;
+    font-size: 7px;
+   left: 190px
+  }
+  .createpost_icons i{
+    width: 6px;
+  }
+  .type_something::placeholder{
+    font-size: 10px;
+  }
+  .post_post
+{
+  width: 50px;
+  height: 20px;
+  font-size: 10px;
+}
+.post {
+  width: 250px;
+
+}
+
+.AccountImage{
+  width: 30px;
+  height: 30px;
+}
+
+.account-name {
+
+ font-size: 10px;
+}
+.account-Date{
+  margin-top: -10px;
+font-size: 10px;
+}
+
+.post-caption {
+  font-size: 10px;
+}
+
+.vote-buttons button{
+  font-size: 12px;
+}
+
+
+.comment-button {
+  font-size: 10px;
+}
+.count{
+  font-size: 10px;
+}
+.view-comments{
+  font-size: 10px;
+  
+}
+.write_comment{
+  width: 45%;
+  height: 15px;
+}
+.write_comment::placeholder{
+  font-size: 10px;
+}
+.submitWrite_comment
+{
+  width: 50px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.nav_logout{
+  width: 50px;
+  font-size: 10px;
+}
+.nav_logout p{
+  font-size: 10px;
+}
+
+.view-Comments-Overlay-Form{
+  left: 3%;
+  top: 10%;
+  width: 250px;
+  height: 400px;
+}
+.post-caption {
+  font-size: 10px;
+}
+h3{
+  font-size: 10px;
+}
+
+.prcomment{
+font-size: 10px;
+}
+.usersComments{
+  margin-top: -5px;
+  font-size: 10px; 
+}
+.comment_profile{
+  height: 20px;
+  width: 20px;
+  }
+.profile_photo{
+  width: 20px;
+  height: 20px;
+}
+.overlay-stories-content {
+  position: absolute;
+  left: 3%;
+  top: 2%;
+ 
+}
+ 
+.overlay-stories-content img {
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+}
 }

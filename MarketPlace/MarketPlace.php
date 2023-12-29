@@ -79,8 +79,8 @@ if (!$userId) {
 					</div>
 					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
 						<div class="try_top_login_wrapper btn-header" >
-							<button class="home-page" id="HomePageMarketPlace" ><i class="fa-solid fa-house house-icon"></i> &nbsp;Home Page</button>
-							<button id="upload-post" class="upload-post">upload post</button>
+							<button class="home-page" id="HomePageMarketPlace" ><i class="fa-solid fa-house house-icon"></i> &nbsp;Home</button>
+							<button id="upload-post" class="upload-post">upload</button>
 						</div>
 					</div>
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -266,10 +266,10 @@ if (!$userId) {
                                     </div>
                                     <div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-7 col-xs-12">
                                         <div class="content try_slider_banner_cont">
-                                            <h2 data-animation="animated fadeInUp" style="color: black;"><?php echo $Itemcarousel['item_name']; ?></h2>
-                                            <p data-animation="animated fadeInUp" style="color: black"><?php echo $Itemcarousel['description']; ?></p>
-                                            <p data-animation="animated fadeInUp" style="color: black">Price:$ <?php echo $Itemcarousel['price']; ?></p>
-                                            <p data-animation="animated fadeInUp" style="color: black">For Contact: <?php echo $Itemcarousel['Email']; ?></p>
+                                            <h2 data-animation="animated fadeInUp" style="color: black;" class="name1"><?php echo $Itemcarousel['item_name']; ?></h2>
+                                            <p data-animation="animated fadeInUp" style="color: black" class="des1"><?php echo $Itemcarousel['description']; ?></p>
+                                            <p data-animation="animated fadeInUp" style="color: black" class="price1">Price:$ <?php echo $Itemcarousel['price']; ?></p>
+                                            <p data-animation="animated fadeInUp" style="color: black" class="email1">For Contact: <?php echo $Itemcarousel['Email']; ?></p>
                                         </div>
                                     </div>
                                 </div>

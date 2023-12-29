@@ -1,5 +1,10 @@
 <?php  include("connDatabase/connection.php");
-session_start(); ?>
+session_start();
+$userData = $_SESSION['auth_user'];
+$userId = $userData['userid'];
+$username = $userData['username'];
+$role = $userData['role']; ?>
+
 
 
 <!DOCTYPE html>
@@ -62,117 +67,106 @@ session_start(); ?>
         <div class="main_content" id="main_content">
             <section class="section">
        
- <!--========== HEADER ==========-->
- <header class="header">
-    <div class="header__container">
+<!--========== HEADERR ==========-->
+<header class="header">
+            <div class="header__container">
+                
+
+                <a href="./adminpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+    
+                
+                    <!-- php for profile header  -->
+                             <?php
+                                 // sql for image profile from user header
+                                 $userprofileHeaderId=$userId; // get from session
+                                 $sqlprofileHeader = "SELECT user.*, profile.*
+                                 FROM user
+                                 INNER JOIN profile ON user.user_id = profile.user_id
+                                 WHERE user.user_id = $userprofileHeaderId";// get from session
+                                 
+                                             
+                                 $resultVariableprofileHeader = mysqli_query($connection, $sqlprofileHeader);
+                                 $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYSQLI_ASSOC);
+                                //    print_r($usersVariableprofileHeader);
+                                 ?>
+
+                                <?php foreach ($usersVariableprofileHeader as $userDprofileHeader): ?>
+                                <?php
+                                 // Cloudinary cloud name
+                                 $cloudinaryCloudNameuserDprofileHeader = 'dbete4djx';
+                                $imageNameuserDprofileHeader = $userDprofileHeader['profile_photo'];
+                                 $imageUrluserprofileHeader = "https://res.cloudinary.com/{$cloudinaryCloudNameuserDprofileHeader}/image/upload/{$imageNameuserDprofileHeader}.jpg";
+                                 ?>
+
+                           
+    
+                <a>
+                    <div class="header__profile">
+                        <img class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>" alt="Profile Image">
+                    </div>
+                </a>
+            </div>
+            <?php endforeach; ?>
+        </header>
+
+
+        <!--========== NAV ==========-->
+        <div class="nav" id="navbar">
+            <nav class="nav__container">
+                <div>
+                   
+                    <a href="./adminpage.php" class="nav__logo">
+                        <img src="images/global logo.png" alt="Global Impact">   
+                    </a>
+
+                    <div class="nav__list">
+                        <div class="nav__items">
+                            <h3 class="nav__subtitle">Our World</h3>
+                            
+                            
+                            <a href="./adminpage.php" class="nav__link Activeclass">
+                                <i class="fa-solid fa-house nav_icon iconsColor "></i>
+                                <span class="nav__name ">Home</span>
+                            </a>
+                        
         
 
-        <a href="./userpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+                   
+                     
+                        </div>
 
-        <div class="header__search">
-            <input type="search" placeholder="Search" class="header__input">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
 
-        <div class="header__profile">
-            <img  class="header_profile" src="./images/myselZoom.jpg">
-            
-        </div>
-    </div>
-</header>
-
-<!--========== NAV ==========-->
-<div class="nav" id="navbar">
-    <nav class="nav__container">
-        <div>
-           
-            <a href="./userpage.php" class="nav__logo">
-                <img src="images/global logo.png" alt="Global Impact">   
-            </a>
-
-            <div class="nav__list">
-                <div class="nav__items">
-                    <h3 class="nav__subtitle">Our World</h3>
-                    
-                    
-                    <a href="./userpage.php" class="nav__link">
-                        <i class="fa-solid fa-house nav_icon iconsColor "></i>
-                        <span class="nav__name ">Home</span>
-                    </a>
-                
-                    <div class="nav__dropdown">
-                        <a href="./categories.php" class="nav__link">
-                            <i class="fa-solid fa-layer-group iconsColor"></i>
-                            <span class="nav__name">Categories</span>
-                            <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                        <a href="./userpage.php" class="nav__link">
+                        <i class="fa-solid fa-user-tie iconsColor"></i>
+                            <span class="nav__name">User Page</span>
                         </a>
 
-                        <div class="nav__dropdown-collapse">
-                            <div class="nav__dropdown-content">
-                                <a href="./categories.php" class="nav__dropdown-item">Sports</a>
-                                <a href="./news.php" class="nav__dropdown-item">News</a>
-                                <a href="./technology.php" class="nav__dropdown-item">Technologies</a>
-                                <a href="./movies.php" class="nav__dropdown-item">Movies</a>
-                                <a href="./arts.php" class="nav__dropdown-item">Arts</a>
+    
+
+                        <a href="../Globalimpactwebsite/Admin-Dashboard/index.php" class="nav__link">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span class="nav__name">Dashboard</span>
+                        </a>
+                    </div>
+    
+  
+
+
+                    <div class="nav__items">
+                            <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
+    
+                            <div class="theme-switch">
+                                <span class="nav__name" style="margin-bottom: 10px;" ><div class="DarkModeColorName"> Dark mode</div> </span>
+                                <input type="checkbox" id="toggle-switch">
+                                <label for="toggle-switch"></label>
                             </div>
                         </div>
                     </div>
 
-                    <a href="./about-us.php" class="nav__link">
-                        <i class="fa-solid fa-earth-americas iconsColor" ></i>
-                        <span class="nav__name">About Us</span>
-                    </a>
-                </div>
-
-                <a href="./contactus.php" class="nav__link">
-                    <i class="fa-solid fa-envelope iconsColor" ></i>
-                    <span class="nav__name">Contact Us</span>
-                </a>
-                <a href="./MarketPlace/MarketPlace.php" class="nav__link">
-                    <i class="fa-solid fa-shop iconsColor"></i>
-                    <span class="nav__name">Market Place</span>
-                </a>
-            </div>
-
-                <div class="nav__items">
-                    <h3 class="nav__subtitle">Top Picks</h3>
-
-                   
-                        <a href="New.php" class="nav__link">
-                            <i class="fa-solid fa-folder-plus iconsColor" ></i>
-                            <span class="nav__name">New</span>
-                            <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-                        </a>
-
-                        
-
-                    
-
-                    <a href="toppicks.php" class="nav__link">
-                        <i class="fa-solid fa-arrow-trend-up iconsColor"></i>
-                        <span class="nav__name">Trendy</span>
-                    </a>
-                    
-                </div>
-                <div class="nav__items">
-                    <h3 class="nav__subtitle " style="margin-top: 30px;">Settings</h3>
-
-                    <div class="theme-switch">
-                        <span class="nav__name" style="margin-bottom: 10px; color: #ecf0f3;" >Dark mode</span>
-                        <input type="checkbox" id="toggle-switch">
-                        <label for="toggle-switch"></label>
-                    </div>
-                </div>
-            </div>
-
-
-
-           
-        
-
-        <button class="nav_logout" onclick="logout()">LOGOUT</button>
-    </nav>
-</div>
+                    <!-- <a href="./LogIn-SignUp-forgget/logout.php"> -->
+                    <button class="nav_logout" name="logout_btn" onclick="logout()">LOGOUT</button>
+            </nav>
+        </div>
 
 
 
@@ -276,25 +270,29 @@ session_start(); ?>
                 
                 
             
-
-            
+ 
                 <script>
                         function deletecommunity(communityId) {
-                            // Ask for confirmation
-                            var confirmation = confirm("Are you sure you want to delete this community?");
-                            
-                            if (confirmation) {
-                                // User confirmed, proceed with deletion
-                                $.post('delete_community.php', { communityId: communityId }, function (response) {
-                                    if (response === 'success') {
-                                        alert('Community deleted successfully!');
-                                        // Optionally, you can redirect the user to another page or update the UI.
-                                    } else {
-                                        alert('Error deleting community.');
-                                    }
-                                });
-                            }
+                        // Ask for confirmation
+                        var confirmation = confirm("Are you sure you want to delete this community?");
+                        
+                        if (confirmation) {
+                            // User confirmed, proceed with deletion
+                            $.post('delete_community.php', { communityId: communityId }, function (response) {
+                                if (response.trim() === 'success') {
+                                    alert('Community deleted successfully!');
+                                    window.location.href = 'communityallAdmin.php';
+                                    // Optionally, you can redirect the user to another page or update the UI.
+                                } else {
+                                    alert('Error deleting community.');
+                                }
+                            })
+                            .fail(function() {
+                                alert('Error communicating with the server.');
+                            });
                         }
+                    }
+
 
 
                         function logout() {

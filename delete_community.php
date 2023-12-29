@@ -10,6 +10,7 @@ if(isset($_POST['communityId'])){
     
     if($sqldeletecommunity_run){
         echo 'success';
+
     }
     else{
         echo 'error';

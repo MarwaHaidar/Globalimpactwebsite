@@ -447,19 +447,6 @@ body.dark-mode {
       z-index: 300;
      }
   }
-   .edit-profile{
-    position:absolute;
-    top: 270px;
-    left: 190px;
-    height: 30px;
-    width: 110px;
-    border-radius: 15px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--navbarColorButtom);
-    font-size: 10px;
-    border: rgb(0, 191, 255);
-   }
 /*----------------type something------------------------------------------------*/
 /*-----------------type   something----------------*/   
 .create_post{
@@ -572,6 +559,266 @@ border-radius: 5px;
 
  /*about-info-profile------------------------->*/
  .container{
+  position: absolute;
+  height: 20%;
+  width: 57%;
+  border-left-color: black;
+  border-right-color: black;
+  border-top-color: black;
+  border-bottom-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: var(--varBoxShadowColor);
+  background-color: var(--varColorLightDrak);
+  left: 21.5%;
+  top: 47%;
+}
+
+.name-job{
+  display: flex;
+  flex-direction: column;
+  color: #0099ff;
+}
+.row-1{
+  display: flex;
+  flex-direction: row;
+  gap:390px;
+}
+
+.text-content{
+  text-align: center;
+  color: black;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 30%;
+  transition: .5s;
+
+}
+
+/*------------------------follow button--------------------------------------------*/
+.btn{
+  background: var(--navbarColorButtom);
+  color: white;
+  padding: 0px 10px;
+  margin-left: 120px;
+  margin-bottom: 20px;
+  height: 34px;
+  width: 100px;
+  font-size: 15px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 42px;
+  border: none;
+  z-index: 300;
+  background: linear-gradient(0deg, #0099ff 0% , #0099ff 100%);
+}
+
+
+.btn:hover {
+  color: rgb(0, 191, 255);
+  background: white;
+  box-shadow: none;
+}
+
+.btn:before,
+.btn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: var(--navbarColorTopic);
+  box-shadow:
+      -1px -1px 5px 0px #fff,
+      7px 7px 20px 0px #0003,
+      4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+
+.btn:after {
+  right: inherit;
+  top: 32px;
+  left: 640px;
+  bottom: 0;
+}
+
+.btn:hover:before,
+.btn:hover:after {
+  width: 14%;
+  transition: 800ms ease all;
+}
+
+
+/*---------------------------------*/
+
+.name-job span {
+  font-size: 20px; /* Set the desired font size */
+  font-weight: bold; /* Set the desired font weight */
+  /* You can add additional styling properties as needed */
+}
+.row-2 span {
+  font-size: 20px; /* Set the desired font size */
+  font-weight: normal;
+  /* You can add additional styling properties as needed */
+}
+
+.column .fa-solid {
+  font-size: 20px;
+}
+.column .fa-regular{
+  font-size: 20px;
+}
+/*custom css*/
+
+.row-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 35%;
+  gap: 14%;
+
+}
+
+.column {
+  display: flex;
+  flex-direction: row; /* Change to row to have icon and label on the same line */
+  align-items: center;
+  gap: 5px;
+  color: var(--varBlackLight);
+}
+
+.location {
+  font-weight: bolder;
+  color: var(--varBlackLight);
+}
+
+.icon {
+  color: grey;
+}
+
+.numbers {
+  font-weight: bolder;
+}
+@media(max-width : 1414px){
+  .row-1{
+    display: flex;
+    flex-direction: row;
+    gap:300px;
+  }
+  .name-job span {
+    font-size: 15px; /* Set the desired font size */
+    font-weight: bold; /* Set the desired font weight */
+    /* You can add additional styling properties as needed */
+  }
+  .row-2 span {
+    font-size: 15px; /* Set the desired font size */
+    font-weight: normal;
+    /* You can add additional styling properties as needed */
+  }
+  
+  .column .fa-solid {
+    font-size: 15px;
+  }
+  .column .fa-regular{
+    font-size: 15px;
+  }
+  /*custom css*/
+  
+  .row-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 35%;
+    gap: 14%;
+  
+  }
+  
+}
+@media(max-width : 1100px){
+  .row-1{
+    display: flex;
+    flex-direction: row;
+    gap:200px;
+  }
+  .name-job span {
+    font-size: 13px; /* Set the desired font size */
+    font-weight: bold; /* Set the desired font weight */
+    /* You can add additional styling properties as needed */
+  }
+  .row-2 span {
+    font-size: 13px; /* Set the desired font size */
+    font-weight: normal;
+    /* You can add additional styling properties as needed */
+  }
+  
+  .column .fa-solid {
+    font-size: 13px;
+  }
+  .column .fa-regular{
+    font-size: 13px;
+  }
+  /*custom css*/
+  
+  .row-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 35%;
+    gap: 14%;
+  
+  }
+  
+}
+@media(max-width : 1000px){
+  .row-1{
+    display: flex;
+    flex-direction: row;
+    gap:100px;
+  }
+  .name-job span {
+    font-size: 10px; /* Set the desired font size */
+    font-weight: bold; /* Set the desired font weight */
+    /* You can add additional styling properties as needed */
+  }
+  .row-2 span {
+    font-size: 10px; /* Set the desired font size */
+    font-weight: normal;
+    /* You can add additional styling properties as needed */
+  }
+  
+  .column .fa-solid {
+    font-size: 10px;
+  }
+  .column .fa-regular{
+    font-size: 10px;
+  }
+  /*custom css*/
+  
+  .row-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 35%;
+    gap: 14%;
+  
+  }
+}
+ /*about-info-profile  for userrrrrrrr------------------------->*/
+ /*about-info-profile------------------------->*/
+.container{
   position: absolute;
   height: 20%;
   width: 57%;
@@ -827,213 +1074,7 @@ border-radius: 5px;
     gap: 14%;
   
   }
-  .btn{
-    height: 30px;
-    width: 70px;
-    font-size: 10px;
-    font-weight: 500;
-    background: white;
-    color: #0cf;
-    border: 2px solid #0cf;
-    cursor: pointer;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    transition: .5s;
-  }
   
-  .btn:hover{
-    background: #0cf;
-    color: white;
-    box-shadow: 0 0 10px #0cf;
-  }
-  
-}
- /*about-info-profile  for userrrrrrrr------------------------->*/
- .container-user{
-  position: absolute;
-  height: 20%;
-  width: 57%;
-  border-left-color: black;
-  border-right-color: black;
-  border-top-color: black;
-  border-bottom-color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-shadow: var(--varBoxShadowColor);
-  background-color: white;
-  left: 21.5%;
-  top: 47%;
-}
-
-.name-job-user{
-  display: flex;
-  flex-direction: column;
-  margin-top: -20px;
-}
-.name-job-user span{
-  display: flex;
-  flex-direction: column;
-  margin-right: 450px;
-}
-
-.text-content-user{
-  text-align: center;
-  color: black;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  top: 30%;
-  transition: .5s;
-
-}
-
-/*---------------------------------*/
-.name-job-user span {
-  font-size: 20px; /* Set the desired font size */
-  font-weight: bold; /* Set the desired font weight */
-  /* You can add additional styling properties as needed */
-}
-.row-2-user span {
-  font-size: 20px; /* Set the desired font size */
-  font-weight: normal;
-  /* You can add additional styling properties as needed */
-}
-
-.column-user .fa-solid {
-  font-size: 20px;
-}
-.column-user .fa-regular{
-  font-size: 20px;
-}
-/*custom css*/
-
-.row-2-user {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 35%;
-  margin-top: 4.5%;
-  gap: 14%;
-
-}
-
-.column-user {
-  display: flex;
-  flex-direction: row; /* Change to row to have icon and label on the same line */
-  align-items: center;
-  gap: 5px;
-}
-
-.location-user {
-  font-weight: bolder;
-}
-
-.icon-user {
-  color: grey;
-}
-
-.numbers-user {
-  font-weight: bolder;
-}
-@media(max-width : 1414px){
-  .name-job-user span {
-    font-size: 15px; /* Set the desired font size */
-    font-weight: bold; /* Set the desired font weight */
-    /* You can add additional styling properties as needed */
-  }
-  .row-2-user span {
-    font-size: 15px; /* Set the desired font size */
-    font-weight: normal;
-    /* You can add additional styling properties as needed */
-  }
-  
-  .column-user .fa-solid {
-    font-size: 15px;
-  }
-  .column-user .fa-regular{
-    font-size: 15px;
-  }
-  /*custom css*/
-  
-  .row-2-user {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 35%;
-    gap: 14%;
-  
-  }
-  
-}
-@media(max-width : 1100px){
-  .name-job-user span {
-    font-size: 13px; /* Set the desired font size */
-    font-weight: bold; /* Set the desired font weight */
-    /* You can add additional styling properties as needed */
-    margin-left: 60px;
-  }
-  .row-2-user span {
-    font-size: 13px; /* Set the desired font size */
-    font-weight: normal;
-    /* You can add additional styling properties as needed */
-  }
-  
-  .column-user .fa-solid {
-    font-size: 13px;
-  }
-  .column-user .fa-regular{
-    font-size: 13px;
-  }
-  /*custom css*/
-  
-  .row-2-user {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 29%;
-    gap: 14%;
-  
-  }
-  
-}
-@media(max-width : 1000px){
-  .name-job-user span {
-    font-size: 13px; /* Set the desired font size */
-    font-weight: bold; /* Set the desired font weight */
-    /* You can add additional styling properties as needed */
-  }
-  .row-2-user span {
-    font-size: 13px; /* Set the desired font size */
-    font-weight: normal;
-    /* You can add additional styling properties as needed */
-  }
-  
-  .column-user .fa-solid {
-    font-size: 13px;
-  }
-  .column-user .fa-regular{
-    font-size: 13px;
-  }
-  /*custom css*/
-  
-  .row-2-user {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 27%;
-    gap: 14%;
-  
-  }
   
 }
 
@@ -1910,7 +1951,7 @@ overflow: hidden;
     background-color: transparent;
     padding: 2px;
     left: 25%;
-    top: 102%;
+    top: 85%;
     overflow-y:scroll ;
     overflow-x: hidden;
    
@@ -1922,39 +1963,12 @@ overflow: hidden;
     background-position: center;
     background-repeat: no-repeat;
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
+    padding: 0px;
     font-size: 0; /* Hide the text content */
     text-align: center;
     border-radius: 10%;
     box-shadow: var(--varBoxShadowColor);
    
-  }
-
-  .grid-item:nth-child(1) {
-    position: relative;
-    background-image: url('images/rayan-post.jpg'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
-  }
-
-  .grid-item:nth-child(2) {
-    position: relative;
-    background-image: url('images/rayan1.jpg'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
-  }
-  .grid-item:nth-child(3) {
-    position: relative;
-    background-image: url('images/rayan2.jpg'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
-  }
-
-  .grid-item:nth-child(4) {
-    position: relative;
-    background-image: url('images/rayan-profile.JPG'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
   }
   @media (max-width: 800px) {
     .grid-photo-container {
@@ -1980,7 +1994,7 @@ overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     width: 50%;
-    height: 68%;
+    height: 48%;
     display: grid;
     gap: 20px 20px;
     grid-template-columns: repeat(2, 1fr);
@@ -1997,37 +2011,10 @@ overflow: hidden;
     background-position: center;
     background-repeat: no-repeat;
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
+    padding: 0px;
     font-size: 0; /* Hide the text content */
     text-align: center;
     border-radius: 10%;
-  }
-
-  .grid-item-user:nth-child(1) {
-    position: relative;
-    background-image: url('images/marwa1.jpg'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
-  }
-
-  .grid-item-user:nth-child(2) {
-    position: relative;
-    background-image: url('images/marwa2.jpg'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
-  }
-  .grid-item-user:nth-child(3) {
-    position: relative;
-    background-image: url('images/marwa3.jpg'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
-  }
-
-  .grid-item-user:nth-child(4) {
-    position: relative;
-    background-image: url('images/marwa4.jpg'); /* Replace with your image path */
-    width: 88%;
-    height: 82%;
   }
   @media (max-width: 800px) {
     .grid-photo-container-user {
@@ -2268,6 +2255,69 @@ color:#0099ff;
 
 
 /*----------------------------------------------------------*/
+/*------------------------follow button--------------------------------------------*/
+.edit-profile{
+  background: var(--navbarColorButtom);
+  color: white;
+  padding: 0px 10px;
+  position:absolute;
+  top: 80%;
+  left: 21%;
+  height: 30px;
+  width: 10%;
+  font-size: 12px;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 42px;
+  border: none;
+  z-index: 300;
+  background: linear-gradient(0deg, #0099ff 0%, #0099ff 100%);
+  
+}
+
+.edit-profile:hover {
+  color: rgb(0, 191, 255);
+  background: white;
+  box-shadow: none;
+ 
+
+}
+
+.edit-profile:before,
+.edit-profile:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: var(--navbarColorTopic);
+  box-shadow:
+      -1px -1px 5px 0px #fff,
+      7px 7px 20px 0px #0003,
+      4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+
+.edit-profile:after {
+  right: inherit;
+  top: 28px;
+  left: 0;
+  bottom: 0;
+  
+}
+
+.edit-profile:hover:before,
+.edit-profile:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+ 
+}
+
+
+/*---------------------------------*/
 
 
   /*-----------edit post overlay*/

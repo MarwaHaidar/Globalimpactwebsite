@@ -77,7 +77,7 @@ if (!$userId) {
 
                            
     
-                <a href="profilepage.html" id="ProfilePath">
+                <a href="profilepage.php" id="ProfilePath">
                     <div class="header__profile">
                         <img class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>" alt="Profile Image">
                     </div>
@@ -583,7 +583,7 @@ if (!$userId) {
                         $imageNameProfile = $userpostD['profile_photo']; // Assuming 'image' is the field name in your database
                         $imageUrlProfile = "https://res.cloudinary.com/{$cloudinaryCloudNameProfile}/image/upload/{$imageNameProfile}.jpg";
                         ?>
-                          <img src="<?php echo $imageUrlProfile; ?>" alt="Account Image" class="AccountImage" >
+                          <img src="<?php echo $imageUrlProfile; ?>" alt="Account Image" class="AccountImage" img-pub-id="<?php echo $imageNameProfile; ?>">
                             <div class="user-ProfilePost">
                             <p class="account-name"><?php echo $userpostD['First_name']." ".$userpostD['last_name'] ?></p>
                                 <div class="account-Date">
@@ -1244,6 +1244,24 @@ function displayFileName(input) {
             }
         });
     }
+</script>
+<script>
+    // Get all elements with the class "prof-img"
+    const profileImages = document.querySelectorAll('.AccountImage');
+
+    // Add a click event listener to each profile image
+    profileImages.forEach(function(profimg) {
+        profimg.addEventListener('click', function() {
+            // Extract the user ID from the data attribute
+            const imgPubId = this.getAttribute('img-pub-id');
+
+            // Log or perform any action with the user ID
+            console.log('Clicked on profile image of user ID:', imgPubId);
+
+            // Redirect to the user profile page using the user ID
+            window.location.href = 'user-profile.php?pub_id=' + imgPubId;
+        });
+    });
 </script>
 
 </html>

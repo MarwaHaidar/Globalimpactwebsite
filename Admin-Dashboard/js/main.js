@@ -1,3 +1,4 @@
+
 (function ($) {
     "use strict";
 
@@ -41,95 +42,203 @@
     }, {offset: '80%'});
 
 
-    // Calender
+    // --------------------------------------Calender------------------------------------------------------------------------------
     $('#calender').datetimepicker({
         inline: true,
         format: 'L'
     });
+ // Testimonials carousel
+ $(".testimonial-carousel").owlCarousel({
+    autoplay: true,
+    smartSpeed: 1000,
+    items: 1,
+    dots: true,
+    loop: true,
+    nav : false
+});
 
+    // ------------------------------related to calender part in index.php---------------------------------------------
+//Event listener for datetimepicker change
+$('#calender').on('change', function(e) {
+    // Get the selected date when the calendar changes
+    var selectedDate = e.date.format('YYYY-MM-DD');
+    console.log('Selected Date:', selectedDate);
+});
 
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        items: 1,
-        dots: true,
-        loop: true,
-        nav : false
-    });
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-    // Worldwide Sales Chart
-    var ctx1 = $("#ActivateUsersId").get(0).getContext("2d");
-    var myChart1 = new Chart(ctx1, {
-        type: "bar",
-        data: {
-            labels: [ "2017", "2018", "2019", "2020", "2021", "2022","2023"],
-            datasets: [{
-                    label: "Activate Users",
-                    data: [15, 30, 55, 65, 60, 80, 95],
-                    backgroundColor: "rgba(0, 156, 255, .7)"
-                },
-                {
-                    label: "Deactivate Users",
-                    data: [8, 35, 40, 60, 70, 55, 75],
-                    backgroundColor: "rgba(0, 156, 255, .2)"
-                },
-            ]
-            },
-        options: {
-            responsive: true
-        }
-    });
-
-
-
-    // Salse & Revenue Chart
-    var ctx2 = $("#Like-DislikeId").get(0).getContext("2d");
-    var myChart2 = new Chart(ctx2, {
-        type: "line",
-        data: {
-            labels: [ "2017", "2018", "2019", "2020", "2021", "2022","2023"],
-            datasets: [{
-                    label: "Like",
-                    data: [15000, 30000, 55000, 45000, 70000, 65000, 85000],
-                    backgroundColor: "rgba(0, 156, 255, .2)",
-                    fill: true
-                },
-                {
-                    label: "Dislike",
-                    data: [10000, 12000, 14000, 33000, 23000, 6000, 1000],
-                    backgroundColor: "rgba(0, 156, 255, .7)",
-                    fill: true
-                }
-            ]
-            },
-        options: {
-            responsive: true
-        }
-    });
+// Event listener for button click
+// Event listener for button click
+$('#retrieveDataButton').on('click', function() {
+    // Get the selected date from the datetimepicker
     
-        // Single Bar Chart
-var ctx4 = document.getElementById("CountryId").getContext("2d");
-var myChart4 = new Chart(ctx4, {
-    type: "bar",
-    data: {
-        labels: ["Lebanon", "Syria", "Egypt", "Emarate", "Others"],
-        datasets: [{
-            backgroundColor: [
-                "rgba(0, 156, 255, .7)",
-                "rgba(0, 156, 255, .6)",
-                "rgba(0, 156, 255, .5)",
-                "rgba(0, 156, 255, .4)",
-                "rgba(0, 156, 255, .3)"
-            ],
-            data: [55, 49, 44, 24, 15]
-        }]
-    },
-    options: {
-        responsive: true
+    var selectedDate = $('#calender').datetimepicker('viewDate').format('YYYY-MM-DD');
+
+    // Use AJAX to send the selected date to the server
+    // $.ajax({
+    //     type: "POST",
+    //     url: "./selectuserbirthdate.php", // Replace with the actual path to your PHP file
+    //     data: { selectedDate: selectedDate },
+    //     success: function(response) {
+    //         // Handle the response from the server if needed
+    //         console.log(response);
+    //     }
+    // });
+
+    // Use AJAX to send the selected date to the server
+$.ajax({
+    type: "POST",
+    url: "selectuserbirthdate.php",
+    data: { selectedDate: selectedDate },
+    success: function(response) {
+        // Parse the JSON response
+        var userData = JSON.parse(response);
+
+        // Clear the existing table rows
+        $('#userDataBody').empty();
+
+        // Append new rows based on the received data
+        for (var i = 0; i < userData.length; i++) {
+            var row = `<tr>
+                           
+                            <td>${userData[i].firstn}</td>
+                            <td>${userData[i].lastn}</td>
+                            <td>${userData[i].userid}</td>
+                            <td>${userData[i].location}</td>
+                            <td>${userData[i].birthdate}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        user
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                    <li>
+                                        <form method="post" action="./send_email.php"> <!-- Replace with the actual path to your PHP script -->
+                                            <input type="hidden" name="userId" value="${userData[i].userid}">
+
+                                            <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to send an email?')">Send</button>
+                                        </form>
+                                    </li>
+                                   
+                                </ul>
+                                </div>
+                            </td>
+                        </tr>`;
+            $('#userDataBody').append(row);
+        }
+       
     }
 });
+
+
+
+    // Make an AJAX request or perform other actions based on the selected date
+    alert('Selected Date for Data Retrieval: ' + selectedDate);
+});
+
+
+
+    
+
+
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+   
+   
+
+
+
+
+    // Worldwide Sales Chart
+    // var ctx1 = $("#ActivateUsersId").get(0).getContext("2d");
+    // var myChart1 = new Chart(ctx1, {
+    //     type: "bar",
+    //     data: {
+    //         labels: [ "2017", "2018", "2019", "2020", "2021", "2022","2023"],
+    //         datasets: [{
+    //                 label: "Activate Users",
+    //                 data: [15, 30, 55, 65, 60, 80, 95],
+    //                 backgroundColor: "rgba(0, 156, 255, .7)"
+    //             },
+    //             {
+    //                 label: "Deactivate Users",
+    //                 data: [8, 35, 40, 60, 70, 55, 75],
+    //                 backgroundColor: "rgba(0, 156, 255, .2)"
+    //             },
+    //         ]
+    //         },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
+
+// ---------------------------------like and dislike chart------------------
+
+    // Salse & Revenue Chart
+    // var ctx2 = $("#Like-DislikeId").get(0).getContext("2d");
+    // var myChart2 = new Chart(ctx2, {
+    //     type: "line",
+    //     data: {
+    //         labels: [ "2017", "2018", "2019", "2020", "2021", "2022","2023"],
+    //         datasets: [{
+    //                 label: "Like",
+    //                 data: [15000, 30000, 55000, 45000, 70000, 65000, 85000],
+    //                 backgroundColor: "rgba(0, 156, 255, .2)",
+    //                 fill: true
+    //             },
+    //             {
+    //                 label: "Dislike",
+    //                 data: [10000, 12000, 14000, 33000, 23000, 6000, 1000],
+    //                 backgroundColor: "rgba(0, 156, 255, .7)",
+    //                 fill: true
+    //             }
+    //         ]
+    //         },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // -------------------------------------------------------------------------------------------------------------------------------------
+    
+        // Single Bar Chart
+// var ctx4 = document.getElementById("CountryId").getContext("2d");
+// var myChart4 = new Chart(ctx4, {
+//     type: "bar",
+//     data: {
+//         labels: ["Lebanon", "Syria", "Egypt", "Emarate", "Others"],
+//         datasets: [{
+//             backgroundColor: [
+//                 "rgba(0, 156, 255, .7)",
+//                 "rgba(0, 156, 255, .6)",
+//                 "rgba(0, 156, 255, .5)",
+//                 "rgba(0, 156, 255, .4)",
+//                 "rgba(0, 156, 255, .3)"
+//             ],
+//             data: [55, 49, 44, 24, 15]
+//         }]
+//     },
+//     options: {
+//         responsive: true
+//     }
+// });
 
 
 
@@ -195,52 +304,53 @@ function changeYear(selectedYear) {
 
 
     // Pie Chart
-    var ctx5 = $("#pie-chart").get(0).getContext("2d");
-    var myChart5 = new Chart(ctx5, {
-        type: "pie",
-        data: {
-            labels: ["Italy", "France", "Spain", "USA", "Argentina"],
-            datasets: [{
-                backgroundColor: [
-                    "rgba(0, 156, 255, .7)",
-                    "rgba(0, 156, 255, .6)",
-                    "rgba(0, 156, 255, .5)",
-                    "rgba(0, 156, 255, .4)",
-                    "rgba(0, 156, 255, .3)"
-                ],
-                data: [55, 49, 44, 24, 15]
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
+    // var ctx5 = $("#pie-chart").get(0).getContext("2d");
+    // var myChart5 = new Chart(ctx5, {
+    //     type: "pie",
+    //     data: {
+    //         labels: ["Italy", "France", "Spain", "USA", "Argentina"],
+    //         datasets: [{
+    //             backgroundColor: [
+    //                 "rgba(0, 156, 255, .7)",
+    //                 "rgba(0, 156, 255, .6)",
+    //                 "rgba(0, 156, 255, .5)",
+    //                 "rgba(0, 156, 255, .4)",
+    //                 "rgba(0, 156, 255, .3)"
+    //             ],
+    //             data: [55, 49, 44, 24, 15]
+    //         }]
+    //     },
+    //     options: {
+    //         responsive: true
+    //     }
+    // });
 
 
     // Doughnut Chart
-    var ctx6 = $("#doughnut-chart").get(0).getContext("2d");
-    var myChart6 = new Chart(ctx6, {
-        type: "doughnut",
-        data: {
-            labels: ["Italy", "France", "Spain", "USA", "Argentina"],
-            datasets: [{
-                backgroundColor: [
-                    "rgba(0, 156, 255, .7)",
-                    "rgba(0, 156, 255, .6)",
-                    "rgba(0, 156, 255, .5)",
-                    "rgba(0, 156, 255, .4)",
-                    "rgba(0, 156, 255, .3)"
-                ],
-                data: [55, 49, 44, 24, 15]
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
+//     var ctx6 = $("#doughnut-chart").get(0).getContext("2d");
+//     //
+//     var myChart6 = new Chart(ctx6, {
+//         type: "doughnut",
+//         data: {
+//             labels: ["Italy", "France", "Spain", "USA", "Argentina"],
+//             datasets: [{
+//                 backgroundColor: [
+//                     "rgba(0, 156, 255, .7)",
+//                     "rgba(0, 156, 255, .6)",
+//                     "rgba(0, 156, 255, .5)",
+//                     "rgba(0, 156, 255, .4)",
+//                     "rgba(0, 156, 255, .3)"
+//                 ],
+//                 data: [55, 49, 44, 24, 15]
+//             }]
+//         },
+//         options: {
+//             responsive: true
+//         }
+//     });
 
     
-})(jQuery);
+ })(jQuery);
 
 
 
@@ -319,6 +429,29 @@ function updateContentContainers(isDarkMode) {
 // Call checkDarkMode() on page load
 checkDarkMode();
 
+// ---------------------------------------------------related to date in messages part-------------------------------------------------------------------
+
+$(document).ready(function() {
+    function updateMessages() {
+        $.ajax({
+            type: "GET",
+            url: "./index.php", // Use the PHP file you created to fetch messages
+            success: function(response) {
+                $("#messagesContainer").html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching messages:", status, error);
+            }
+        });
+
+        // Schedule the next update after a certain interval (e.g., 5 seconds)
+        setTimeout(updateMessages, 5000); // 5000 milliseconds = 5 seconds
+    }
+
+    // Initial call to start updating messages
+    updateMessages();
+});
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-			
+

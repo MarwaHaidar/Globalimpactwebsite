@@ -361,3 +361,7 @@ color: var(--ColorSidBarb);
   }
 
   /* -------------------------------------------------------------- */
+
+  .text-center {
+    text-align: center;
+}

@@ -62,12 +62,8 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
             <div class="header__container">
                 
 
-                <a class="header__logo" href="./index.html"><img src="images/global logo.png" alt="Global Impact"></a>
+                <a class="header__logo" href="./userpage.php"><img src="images/global logo.png" alt="Global Impact"></a>
     
-                <div class="header__search">
-                    <input type="search" placeholder="Search" class="header__input">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
     
                 <div class="header__profile" id="ProfilePath">
                     <img  class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>">
@@ -81,7 +77,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
         <nav class="nav__container">
             <div>
                
-                <a href="./index.html" class="nav__logo">
+                <a href="./userpage.php" class="nav__logo">
                     <img src="images/global logo.png" alt="Global Impact">   
                 </a>
 
@@ -299,7 +295,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
       <form action="profilepagecode.php" method="POST" enctype="multipart/form-data" id="regForm">
       <div class="image-container">
         <img src="<?php echo $cover; ?>" alt="profile-img" class="profile-img" id="profile-image">
-        <button type="button" class="edit-profile" id="openButton">Edit Profile</button>
+  
      </div>
      <img src="<?php echo $profile; ?>" alt="circle-profile" class="circle-img" id="circle-img">
      

@@ -1331,6 +1331,7 @@ width: 100%;
   letter-spacing: 2px;
   line-height: 1.2em;
 }
+
 .AboutUsName:hover {
   color: var(--navbarColorTopic); /* Change the color on hover, you can use your preferred gold color code */
   transform: scale(1.1); /* Scale the image on hover */
@@ -2190,4 +2191,25 @@ font-size: 10px;
   height: 300px;
   border-radius: 15px;
 }
+.searchpageclass{
+  margin-right: -300px;
+  position: absolute;
+
+  border-radius:10px;
+  box-shadow:var(--varBoxShadowColor);
+  z-index: 1001;
+  background: var(--varInputColorLightDrak);
+  margin-top: 0.7%;
+}
+.searchpageclass a{
+color:#0099ff;
+padding:20px;
+padding-top:2%;
+font-size: 10px;
+
+}
+.Aboutusclass{
+ display: none !important;
+}
+
 }

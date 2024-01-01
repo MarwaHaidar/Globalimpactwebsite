@@ -417,6 +417,18 @@ INNER JOIN profile ON comment.user_id = profile.user_id";
          
      });
     }
+
+    // change color 
+
+    function imgSlider(someThing){
+                document.querySelector('.arts').src = someThing;
+            }
+            function changeColor(color){
+                const sec = document.querySelector('.main-arts');
+                sec.style.background = color;
+                // const sec2=document.querySelector('.POSTS');
+                // sec2.style.background=color;
+            }
 </script>
 <script>
     // ---------------------this for Scroll-------------------------

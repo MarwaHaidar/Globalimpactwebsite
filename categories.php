@@ -416,15 +416,25 @@ if (!$userId) {
     function showCommentsOverlay(userpostId) {
         var overlayId = 'view-Comments-Overlay-Id-' + userpostId;
         var overlay = document.getElementById(overlayId);
-        // Show the overlay
+             // Show the overlay
         overlay.style.display = 'block';
-        //exit overlay
+             //exit overlay
         var exitComment = overlay.querySelector('.exit-comment');
         exitComment.addEventListener('click', function() {
          overlay.style.display = 'none';
          
      });
     }
+            // change color 
+
+    function imgSlider(someThing){
+                    document.querySelector('.sports').src = someThing;
+                }
+                function changeColor(color){
+                    const sec = document.querySelector('.main');
+                    sec.style.background = color;
+                }
+
 </script>
 <script>
     // ---------------------this for Scroll-------------------------

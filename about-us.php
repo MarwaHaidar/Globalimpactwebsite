@@ -196,7 +196,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0" id="home">
                 <a href="" style="position: absolute; top: 10%; left: 5%;">
-                    <h1 class="mt-4" style="color:var(--txteColor);">About Us</h1>
+                    <h1 class="mt-4 Aboutusclass" style="color:var(--txteColor);">About Us</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
 

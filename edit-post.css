@@ -2118,17 +2118,31 @@ padding: 10px;
   color: var(--varBlackLight);
 }
 /*------------------------------------*/
- .post {
-  position: absolute;
-  width: 40%;
+.nav-post-container{
+  display: flex;
+  flex-direction: column;
+  position: inherit;
+  margin-top: 42%;
+  display: flex;
+  justify-content: center;
+  border: 2px solid red;
+  margin-left: 23%;
+  margin-right:23% ;
+
+}
+.post {
+
+  margin: auto;
+  width: 90%;
   height: auto;
-  top: 106%;
-  left: 29%;
+  margin-top: 30px;
+  /*margin-left: 340px;*/
+  border: 1px solid var(--varColorLightDrak);
   padding: 20px;
   border-radius: 8px;
   box-shadow:var(--varBoxShadowColor);
   background-color: var(--varColorLightDrak);
-
+  
 }
 
 

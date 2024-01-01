@@ -51,7 +51,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account page</title>
-    <link rel="stylesheet" type="text/css" href="edit-post.css">
+    <link rel="stylesheet" type="text/css" href="profilepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>    
@@ -62,12 +62,8 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
             <div class="header__container">
                 
 
-                <a href="./index.html" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
-    
-                <div class="header__search">
-                    <input type="search" placeholder="Search" class="header__input">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <a href="./userpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+
     
                 <a href="profilepage.html" id="ProfilePath">
                     <div class="header__profile">
@@ -82,7 +78,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
         <nav class="nav__container">
             <div>
                
-                <a href="./index.html" class="nav__logo">
+                <a href="./userpage.php" class="nav__logo">
                     <img src="images/global logo.png" alt="Global Impact">   
                 </a>
 
@@ -217,7 +213,6 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
       <form action="profilepagecode.php" method="POST" enctype="multipart/form-data" id="regForm">
       <div class="image-container">
         <img src="<?php echo $cover; ?>" alt="profile-img" class="profile-img" id="profile-image">
-        <button type="button" class="edit-profile" id="openButton">Edit Profile</button>
      </div>
      <img src="<?php echo $profile; ?>" alt="circle-profile" class="circle-img" id="circle-img">
      

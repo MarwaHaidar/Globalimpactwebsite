@@ -62,12 +62,9 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
             <div class="header__container">
                 
 
-                <a href="./index.html" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
+                <a href="./userpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
     
-                <div class="header__search">
-                    <input type="search" placeholder="Search" class="header__input">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+    
     
                 <a href="profilepage.php" id="ProfilePath">
                     <div class="header__profile">
@@ -82,7 +79,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
         <nav class="nav__container">
             <div>
                
-                <a href="./index.html" class="nav__logo">
+                <a href="./userpage.php" class="nav__logo">
                     <img src="images/global logo.png" alt="Global Impact">   
                 </a>
 

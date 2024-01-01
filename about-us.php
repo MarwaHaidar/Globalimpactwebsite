@@ -12,6 +12,30 @@ if (!$userId) {
     exit;
 }
 ?>
+<!-- php for profile header -->
+<?php
+// sql for image profile from user header
+$userprofileHeaderId = $userId; // get from session
+$sqlprofileHeader = "SELECT user.*, profile.*
+    FROM user
+    INNER JOIN profile ON user.user_id = profile.user_id
+    WHERE user.user_id = $userprofileHeaderId"; // get from session
+
+$resultVariableprofileHeader = mysqli_query($connection, $sqlprofileHeader);
+$usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYSQLI_ASSOC);
+// print_r($usersVariableprofileHeader);
+?>
+
+<?php foreach ($usersVariableprofileHeader as $userDprofileHeader): ?>
+    <?php
+    // Cloudinary cloud name
+    $cloudinaryCloudNameuserDprofileHeader = 'dbete4djx';
+    $imageNameuserDprofileHeader = $userDprofileHeader['profile_photo'];
+    $imageUrluserprofileHeader = "https://res.cloudinary.com/{$cloudinaryCloudNameuserDprofileHeader}/image/upload/{$imageNameuserDprofileHeader}.jpg";
+    ?>
+    <!-- Your HTML/PHP code here using $userDprofileHeader and $imageUrluserprofileHeader -->
+<?php endforeach; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,9 +88,9 @@ if (!$userId) {
                     <i class="fa-solid fa-magnifying-glass" ></i>
                 </div>
     
-                <a href="profilepage.html" id="ProfilePath">
+                <a href="profilepage.php" id="ProfilePath">
                     <div class="header__profile">
-                        <img class="header_profile" src="./images/myselZoom.jpg" alt="Profile Image">
+                        <img class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>" alt="Profile Image">
                     </div>
                 </a>
             </div>

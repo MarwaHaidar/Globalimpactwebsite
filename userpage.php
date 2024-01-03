@@ -145,6 +145,21 @@ if (!$userId) {
                         </a>
                     <?php endif; ?>
 
+                     <!-- this for responsive community -->
+                    <?php
+                    $someCondition = (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false);
+                    ?>
+                    <?php if ($someCondition): ?>
+                        <a href="./communityall.php" class="nav__link">
+                        <i class="fa-solid fa-person-shelter iconsColor"></i>
+                            <span class="nav__name">Community</span>
+                        </a>
+                    <?php endif; ?>
+
+
+
+
+
                     </div>
     
                         <div class="nav__items">

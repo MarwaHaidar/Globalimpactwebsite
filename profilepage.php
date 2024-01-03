@@ -879,10 +879,18 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                 <input  type="text" class="input" id="username" placeholder="your user name" name="username" value= <?php echo $row1['user_name']; ?>>
                 <div class="input-info-text" id="about-info">Location</div>
                 <div class="combobox-container">
-                    <select id="locationn" name="locationn">
+                    <select id="locationn" name="locationn" size="5">
                         <option value="Lebanon">Lebanon</option>
                         <option value="Palastine">Palastine</option>
                         <option value="Syria">Syria</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Omman">Omman</option>
+                        <option value="Yaman">Yaman</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Tunisia">Tunisia</option>
                     </select>
                 </div>
 
@@ -1310,44 +1318,86 @@ function hideAllMenus() {
 
         function updateActionimage(postId) {
     console.log(postId);
-        var caption = 'imagecaption' + postId;
-        var caption = document.getElementById(caption).value;
-        // Assuming you have an input element with the id 'image'
-        var fileid = 'image' + postId;
-        var inputFile = document.getElementById(fileid);
 
-        // Get the selected file
-        const selectedFile = inputFile.files[0];
-        const fileName = selectedFile.name;
-        console.log(selectedFile);
+    // Assuming you have an input element with the id 'image'
+    var fileid = 'image' + postId;
+    var inputFile = document.getElementById(fileid);
 
-        const formData = new FormData();
-            formData.append('file', selectedFile);
-            formData.append('caption', caption); // Add cameraId to uniquely identify the file
-            formData.append('postId', postId); // Add file extension to the form data
+    // Check if a file is selected
+    if (inputFile.files.length === 0) {
+        // No file selected, update only the caption
+        updateCaptionOnly(postId);
+        return;
+    }
 
-        const data = {
+    // File is selected, proceed with file-related logic
+    var captionId = 'imagecaption' + postId;
+    var caption = document.getElementById(captionId).value;
+
+    // Get the selected file
+    const selectedFile = inputFile.files[0];
+    const fileName = selectedFile.name;
+    console.log(selectedFile);
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('caption', caption);
+    formData.append('postId', postId);
+
+    const data = {
         postId: postId,
         caption: caption,
         file: fileName,
     };
     console.log(data);
-        
-           // Make a Fetch request to send the data to the server
-        fetch('update_post_image.php', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                autoReloadPage();
-            })
-            .catch(error => {
-                // Error: Handle the error, display a message, etc.
-                console.error('Error updating post:', error);
-            });
-        }
+
+    // Make a Fetch request to send the data to the server
+    fetch('update_post_image.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        autoReloadPage();
+    })
+    .catch(error => {
+        // Error: Handle the error, display a message, etc.
+        console.error('Error updating post:', error);
+    });
+}
+
+function updateCaptionOnly(postId) {
+    console.log("this is the post id:",postId);
+    var captionId = 'imagecaption' + postId;
+    var caption = document.getElementById(captionId).value;
+    console.log("this is the caption:",caption);
+
+    // Proceed to update only the caption
+    //const data = {
+      //  postId: postId,
+        //caption: caption,
+    //};
+    const formData = new FormData();
+    formData.append('caption', caption);
+    formData.append('postId', postId);
+
+    // Make a Fetch request to send the data to the server
+    fetch('update_post_img_caption.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        autoReloadPage();
+    })
+    .catch(error => {
+        // Error: Handle the error, display a message, etc.
+        console.error('Error updating post caption:', error);
+    });
+}
+
 
 
         function editCommunity(comId) {
@@ -1410,32 +1460,25 @@ function hideAllMenus() {
 <script>
 const saveabout3 = async() => { // function addUser(){}
 
-function monthNameToNumber(monthName) {
-    const monthNames = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ];
+// Get the selected date
+const selectedDate = $("#datepicker").datepicker("getDate");
+console.log(selectedDate);
 
-    const monthNumber = monthNames.indexOf(monthName) + 1;
+// Format the date as "yyyy-mm-dd"
+const formattedDate = $.datepicker.formatDate("yy-mm-dd", selectedDate);
+console.log(formattedDate);
 
-    return monthNumber > 0 ? monthNumber : null;
-}
     // console.log(userName.value + " " + pass.value + " " + roles.value);
     const data = {
         firstname: firstname.value,
         lastname: lastname.value,
         username: username.value,
         locationn: locationn.value,
-        birthYear: birthYear.value,
-        birthMonth: birthMonth.value,
-        //birthMonth : monthNameToNumber(birthMonth),
-        birthDay: birthDay.value,
+        formattedDate: formattedDate,
         
     };
     console.log(locationn);
-    console.log(birthYear);
-    console.log(birthMonth);
-    console.log(birthDay);
+    console.log(formattedDate);
     console.log(data);
     await fetch('update_info.php', {
             method: 'POST', // or 'PUT'

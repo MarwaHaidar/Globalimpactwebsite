@@ -1216,6 +1216,11 @@ function hideAllMenus() {
         menu.style.display = 'none';
     });
 }
+
+function logout() {
+
+window.location.href = 'LogIn-SignUp-forgget/logout.php';
+}
 </script>
 
 

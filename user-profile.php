@@ -923,6 +923,11 @@ document.getElementById('unfollowButton1').addEventListener('click', function ()
          
      });
     }
+
+    function logout() {
+
+window.location.href = 'LogIn-SignUp-forgget/logout.php';
+}
 </script>
      
 <script src="./indexAll.js" ></script>

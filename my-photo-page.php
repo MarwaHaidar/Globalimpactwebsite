@@ -53,6 +53,9 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
     <title>Account page</title>
     <link rel="stylesheet" type="text/css" href="profilepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>    
     <!--Section: Contact v.2-->
@@ -327,29 +330,27 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                 <input  type="text" class="input" id="username" placeholder="your user name" name="username" value= <?php echo $row1['user_name']; ?>>
                 <div class="input-info-text" id="about-info">Location</div>
                 <div class="combobox-container">
-                    <select id="locationn" name="locationn">
+                    <select id="locationn" name="locationn" size="5">
                         <option value="Lebanon">Lebanon</option>
                         <option value="Palastine">Palastine</option>
                         <option value="Syria">Syria</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Omman">Omman</option>
+                        <option value="Yaman">Yaman</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Tunisia">Tunisia</option>
                     </select>
                 </div>
+
+
                 <div class="input-info-text" id="about-info">Date Of Birth</div>
+
+                        <!-- calender  -->
                 <div class="date-of-birth">
-                    <select id="birthYear" name="birthYear">
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                    <select id="birthMonth" name="birthMonth">
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                    </select>
-                    <select id="birthDay" name="birthDay">
-                        <option value="1">01</option>
-                        <option value="2">02</option>
-                        <option value="3">03</option>
-                    </select>
+                <input type="text" id="datepicker">
                 </div>
                 <div class="checkbox-form">
                     <input type="checkbox" name="checkbox">
@@ -632,38 +633,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     }
 </script>
+<script>
+ $(function() {
+    $("#datepicker").datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2023", // Adjust the range as needed
+      dateFormat: "yy-mm-dd", // Adjust the format as needed
+    });
+  });
+
+</script>
 
 <script>
 const saveabout3 = async() => { // function addUser(){}
 
-function monthNameToNumber(monthName) {
-    const monthNames = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ];
 
-    const monthNumber = monthNames.indexOf(monthName) + 1;
+// Get the selected date
+const selectedDate = $("#datepicker").datepicker("getDate");
+console.log(selectedDate);
 
-    return monthNumber > 0 ? monthNumber : null;
-}
+// Format the date as "yyyy-mm-dd"
+const formattedDate = $.datepicker.formatDate("yy-mm-dd", selectedDate);
+console.log(formattedDate);
+
     // console.log(userName.value + " " + pass.value + " " + roles.value);
     const data = {
         firstname: firstname.value,
         lastname: lastname.value,
         username: username.value,
         locationn: locationn.value,
-        birthYear: birthYear.value,
-        birthMonth: birthMonth.value,
-        //birthMonth : monthNameToNumber(birthMonth),
-        birthDay: birthDay.value,
+        formattedDate: formattedDate,
         
     };
     console.log(locationn);
-    console.log(birthYear);
-    console.log(birthMonth);
-    console.log(birthDay);
+    console.log(formattedDate);
     console.log(data);
-    await fetch('cloud.php', {
+    await fetch('update_info.php', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

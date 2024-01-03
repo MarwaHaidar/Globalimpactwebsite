@@ -21,11 +21,8 @@ if (isset($_SESSION['auth_user'])) {
     header("Location: ./LogIn-SignUp-forgget/LogIn.php");
     exit();
 }
-?>
 
-<?php
 // Update user information
-
 // Check if the request method is POST and the necessary data is set
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Use json_decode to get the data from the request body
@@ -37,35 +34,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $firstname = mysqli_real_escape_string($connection, $json->firstname);
         $lastname = mysqli_real_escape_string($connection, $json->lastname);
         $username = mysqli_real_escape_string($connection, $json->username);
-        $locationn = trim(mysqli_real_escape_string($connection, $json->locationn));
-        $birthYear = trim(mysqli_real_escape_string($connection, $json->birthYear));
-        $birthMonth = trim(mysqli_real_escape_string($connection, $json->birthMonth));
-        $birthDay = trim(mysqli_real_escape_string($connection, $json->birthDay));
-
         
-            // Convert month name to number
-            //$monthNumber = date_parse($birthMonth)['month'];
-
-            // Check if the conversion was successful
-                // Create the formatted date
-                $formattedDate = sprintf("%04d-%02d-%02d", $birthYear, $birthMonth, $birthDay);
-        // Update the user information in the database
+        // Initialize the update query for the user table
         $updateQuery = "UPDATE user SET First_name = '$firstname', last_name = '$lastname', user_name = '$username' WHERE user_id = '$userid' ";
-        $updateQuery1 = "UPDATE profile SET location = '$locationn', birthdate = '$formattedDate' WHERE user_id = '$userid' ";
+        $connection->query($updateQuery);
+        
 
-        if ($connection->query($updateQuery) === TRUE && $connection->query($updateQuery1) === TRUE ) {
+        // Check if location is present in the JSON data
+        if (isset($json->locationn)) {
+            $locationn = trim(mysqli_real_escape_string($connection, $json->locationn));
+            if($locationn != ""){
+                 // Append the update query for the profile table
+            $updateQuery = "UPDATE profile SET location = '$locationn' WHERE user_id = '$userid'";
+            $connection->query($updateQuery);
+
+            }
+        }
+
+        // Check if formattedDate is present in the JSON data
+        if (isset($json->formattedDate)) {
+            $formattedDate = trim(mysqli_real_escape_string($connection, $json->formattedDate));
+            if($formattedDate != ""){
+                 // Append the update query for the profile table
+            $updateQuery = "UPDATE profile SET birthdate = '$formattedDate' WHERE user_id = '$userid'";
+            $connection->query($updateQuery);
+            }
+        }
+
+       
             // Send JSON response with result
             header('Content-Type: application/json');
-
             // Successful update
             echo json_encode(["status" => "success", "message" => "User information updated successfully"]);
-
             exit;
-        } else {
-            // Error in the update query
-            echo json_encode(["status" => "error", "message" => "Error updating user information: " . mysqli_error($conn)]);
-            exit;
-        }
+       
     } else {
         // Invalid request (missing fields)
         echo json_encode(["status" => "error", "message" => "Invalid request: Missing required fields"]);
@@ -77,5 +79,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 ?>
-
-

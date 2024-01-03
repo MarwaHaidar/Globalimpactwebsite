@@ -3,7 +3,13 @@ session_start();
 $userData = $_SESSION['auth_user'];
 $userId = $userData['userid'];
 $username = $userData['username'];
-$role = $userData['role']; ?>
+$role = $userData['role']; 
+
+if (!$userId) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}?>
 
 
 
@@ -58,6 +64,12 @@ $role = $userData['role']; ?>
     position: relative;
 
     } 
+    @media (max-width: 600px ){
+            .post-com {
+            width: 290px;
+            height: auto;
+        }
+        }
 
     </style>
 

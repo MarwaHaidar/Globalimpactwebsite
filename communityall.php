@@ -384,8 +384,8 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                      it shows an alert saying 'Joined community!'.    */
                     
                     function logout() {
-                        // Redirect to logout.php
-                        window.location.href = 'LogIn-SignUp-forgget/logout.php';
+                        // Redirect to logout.php bbbbbbgut
+                        window.location.href pu= 'LogIn-SignUp-forgget/logout.php';
                     }
 
                     function toggleSeeMore(link) {

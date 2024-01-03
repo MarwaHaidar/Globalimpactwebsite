@@ -385,7 +385,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                     
                     function logout() {
                         // Redirect to logout.php bbbbbbgut
-                        window.location.href pu= 'LogIn-SignUp-forgget/logout.php';
+                        window.location.href = 'LogIn-SignUp-forgget/logout.php';
                     }
 
                     function toggleSeeMore(link) {

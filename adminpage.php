@@ -123,8 +123,20 @@ if ($role=='user') {
                             <i class="fa-solid fa-chart-line"></i>
                             <span class="nav__name">Dashboard</span>
                         </a>
+
+                           <!-- this for responsive community -->
+                    <?php
+                    $someCondition = (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false);
+                    ?>
+                    <?php if ($someCondition): ?>
+                        <a href="./communityallAdmin.php" class="nav__link">
+                        <i class="fa-solid fa-person-shelter iconsColor"></i>
+                            <span class="nav__name">Community</span>
+                        </a>
+                    <?php endif; ?>
+
                     </div>
-    
+                                    
   
 
 

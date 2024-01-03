@@ -1,5 +1,16 @@
 <?php  include("connDatabase/connection.php");
-session_start(); ?>
+session_start();
+$userData = $_SESSION['auth_user'];
+$userId = $userData['userid'];
+$username = $userData['username'];
+
+if (!$userId) {
+    // Redirect to the login page or handle authentication as needed
+    header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+    exit;
+}?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +61,12 @@ session_start(); ?>
         position: relative;
 
         } 
+        @media (max-width: 600px ){
+            .post-com {
+            width: 290px;
+            height: auto;
+        }
+        }
 
     </style>
 

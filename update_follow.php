@@ -26,16 +26,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $queryUpdateFollower = "UPDATE user SET following = following + 1 WHERE user_id = '$loggedInUserId'";
     $resultUpdateFollower = $connection->query($queryUpdateFollower);
 
+    //update the follow table
+    $queryUpdateFollow = "INSERT INTO  follow(user_id,friend_id,follow) VALUES('$loggedInUserId','$friendId',1)";
+    $resultUpdateFollow = $connection->query($queryUpdateFollow);
+
+     //update the follow table
+     $queryselectFollow = "SELECT follow FROM follow WHERE user_id='$loggedInUserId' AND friend_id='$friendId' ORDER BY follow_id DESC LIMIT 1";
+     $resultselectFollow = $connection->query($queryselectFollow);
+
     // Check if both updates were successful
-    if ($resultUpdateFollowing && $resultUpdateFollower) {
+    if ($resultUpdateFollowing && $resultUpdateFollower && $resultUpdateFollow) {
         // Fetch the updated counts from the database
         $queryGetCounts = "SELECT followers, following FROM user WHERE user_id = '$friendId'";
         $resultGetCounts = $connection->query($queryGetCounts);
 
         if ($resultGetCounts) {
             $row = $resultGetCounts->fetch_assoc();
+            $row1 = $resultselectFollow->fetch_assoc();
             $newFollowersCount = $row['followers'];
             $newFollowingCount = $row['following'];
+            $follow = $row1['follow'];
 
             // Send JSON response with result
             header('Content-Type: application/json');
@@ -43,7 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 "status" => "success",
                 "message" => "User information updated successfully",
                 "newFollowersCount" => $newFollowersCount,
-                "newFollowingCount" => $newFollowingCount
+                "newFollowingCount" => $newFollowingCount,
+                "follow" => $follow
             ]);
 
             exit;
@@ -63,4 +74,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 ?>
+
 

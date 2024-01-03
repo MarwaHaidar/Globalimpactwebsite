@@ -173,11 +173,12 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
     <?php
 
 // Get the pub_id from the URL
-$pubId = isset($_GET['pub_id']) ? $_GET['pub_id'] : null;
+$friendId = isset($_GET['friend_id']) ? $_GET['friend_id'] : null;
 // select all the user information  from database and display them in the html form based on the public id of the user's profile picture
 
-$query1 = "SELECT * FROM profile WHERE profile_photo= '$pubId' ";
+$query1 = "SELECT * FROM profile WHERE user_id= '$friendId' ";
 $result1 = $connection->query($query1);
+
 
 if ($result1) {
     // Fetch the rows from the result sets
@@ -191,6 +192,19 @@ if ($result1) {
 
 }
 
+
+     //select from  the follow table
+     $queryselectFollow = "SELECT follow FROM follow WHERE user_id='$userid' AND friend_id='$friendid' ORDER BY follow_id DESC LIMIT 1";
+     $resultselectFollow = $connection->query($queryselectFollow);
+     // Fetch the rows from the result sets
+     $row5 =  $resultselectFollow->fetch_assoc();
+     if($row5){
+        $follow = $row5['follow'];
+
+     }
+     else{
+        $follow= "";
+     }
 
 $query2 = "SELECT First_name, last_name,user_name FROM user WHERE user_id= '$friendid' ";
 $result2 = $connection->query($query2);
@@ -244,8 +258,8 @@ if ($result4) {
                   <span><?php echo $row2['First_name'] . ' ' . $row2['last_name']; ?></span>
                   <small><?php echo $row1['bio']; ?></small>
                 </div>
-                <button class="btn" id="openButton1">Follow</button>
-                <button class="btn" id="unfollowButton1" style=display:none;>UnFollow</button>
+                <button class="btn" id="openButton1"  <?php echo $follow ? 'style="display:none;"' : ''; ?>>Follow</button>
+                <button class="btn" id="unfollowButton1" <?php echo $follow ? '' : 'style="display:none;"'; ?>>UnFollow</button>
 
             </div>
           <div class="row-2">
@@ -360,13 +374,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     overview.addEventListener('click', function() {
         // Redirect to the user profile page using the pub_id
-        const imgPubId = <?php echo json_encode($pubId); ?>;
+        const friendId = <?php echo json_encode($friendId); ?>;
 
         // Check if imgPubId is not null or undefined before redirecting
-        if (imgPubId !== null && imgPubId !== undefined) {
-            window.location.href = 'user-profile.php?pub_id=' + imgPubId;
+        if (friendId !== null && friendId !== undefined) {
+            window.location.href = 'user-profile.php?friend_id=' + friendId;
         } else {
-            console.error('pub_id is null or undefined.');
+            console.error('friend_id is null or undefined.');
         }
     });
 </script>
@@ -375,13 +389,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     up.addEventListener('click', function() {
         // Redirect to the user profile page using the pub_id
-        const imgPubId = <?php echo json_encode($pubId); ?>;
+        const friendId = <?php echo json_encode($friendId); ?>;
 
         // Check if imgPubId is not null or undefined before redirecting
-        if (imgPubId !== null && imgPubId !== undefined) {
-            window.location.href = 'upvoted-user.php?pub_id=' + imgPubId;
+        if (friendId !== null && friendId !== undefined) {
+            window.location.href = 'upvoted-user.php?friend_id=' + friendId;
         } else {
-            console.error('pub_id is null or undefined.');
+            console.error('friend_id is null or undefined.');
         }
     });
 </script>
@@ -390,13 +404,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     down.addEventListener('click', function() {
         // Redirect to the user profile page using the pub_id
-        const imgPubId = <?php echo json_encode($pubId); ?>;
+        const friendId = <?php echo json_encode($friendId); ?>;
 
         // Check if imgPubId is not null or undefined before redirecting
-        if (imgPubId !== null && imgPubId !== undefined) {
-            window.location.href = 'downvoted-user.php?pub_id=' + imgPubId;
+        if (friendId !== null && friendId!== undefined) {
+            window.location.href = 'downvoted-user.php?friend_id=' + friendId;
         } else {
-            console.error('pub_id is null or undefined.');
+            console.error('friend_id is null or undefined.');
         }
     });
 </script>
@@ -430,11 +444,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update the UI with the new counts
             document.getElementById('followersCount').textContent = data.newFollowersCount;
             document.getElementById('followingCount').textContent = data.newFollowingCount;
+            location.reload();
+            
 
             // Toggle the visibility of the buttons
-            document.getElementById('openButton1').style.display = 'none';
-            document.getElementById('unfollowButton1').style.display = 'inline-block';
-
+            //document.getElementById('openButton1').style.display = 'none';
+            //document.getElementById('unfollowButton1').style.display = 'inline-block';
         }
     })
     .catch(error => {
@@ -474,9 +489,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('followersCount').textContent = data.newFollowersCount;
             document.getElementById('followingCount').textContent = data.newFollowingCount;
 
+            location.reload();
+
             // Toggle the visibility of the buttons
-            document.getElementById('openButton1').style.display = 'inline-block';
-            document.getElementById('unfollowButton1').style.display = 'none';
+            //document.getElementById('openButton1').style.display = 'inline-block';
+            //document.getElementById('unfollowButton1').style.display = 'none';
 
         }
     })

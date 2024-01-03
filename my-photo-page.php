@@ -65,7 +65,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                 <a href="./userpage.php" class="header__logo"><img src="images/global logo.png" alt="Global Impact"></a>
 
     
-                <a href="profilepage.html" id="ProfilePath">
+                <a >
                     <div class="header__profile">
                         <img class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>" alt="Profile Image">
                     </div>
@@ -680,6 +680,10 @@ function monthNameToNumber(monthName) {
 
     //userData.reset();
     autoReloadPage();
+}
+function logout() {
+
+window.location.href = 'LogIn-SignUp-forgget/logout.php';
 }
 </script>
 

@@ -53,6 +53,10 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
     <title>Account page</title>
     <link rel="stylesheet" href="profilepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>    
     <!--Section: Contact v.2-->
@@ -65,7 +69,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                 <a class="header__logo" href="./userpage.php"><img src="images/global logo.png" alt="Global Impact"></a>
     
     
-                <div class="header__profile" id="ProfilePath">
+                <div class="header__profile" >
                     <img  class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>">
                     
                 </div>
@@ -810,11 +814,11 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                 ?>
 
 
-
+<!-- 
                 <hr class="right-divider">
                 <div class="titleCommunity"><i class="fa-solid fa-people-roof" style="color:#0099ff;" font-size: 20px; ></i>
                 <p class="add-community" style="font-size: 12px;"> ADD Community</p>
-                <i class="fa-solid fa-circle-plus iconCommunity" id="open_overlay" ></i></div>
+                <i class="fa-solid fa-circle-plus iconCommunity" id="open_overlay" ></i></div> -->
 
 
 
@@ -881,24 +885,16 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                         <option value="Syria">Syria</option>
                     </select>
                 </div>
+
+
                 <div class="input-info-text" id="about-info">Date Of Birth</div>
+
+                        <!-- calender  -->
                 <div class="date-of-birth">
-                    <select id="birthYear" name="birthYear">
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                    <select id="birthMonth" name="birthMonth">
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                    </select>
-                    <select id="birthDay" name="birthDay">
-                        <option value="1">01</option>
-                        <option value="2">02</option>
-                        <option value="3">03</option>
-                    </select>
+                <input type="text" id="datepicker">
                 </div>
+
+
                 <div class="checkbox-form">
                     <input type="checkbox" name="checkbox">
                     <label class="label">Make My Date Of Birth Public</label>
@@ -1721,7 +1717,42 @@ window.location.href = 'LogIn-SignUp-forgget/logout.php';
 
 </script>
 
+<script>
+ $(function() {
+    $("#datepicker").datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2023", // Adjust the range as needed
+      dateFormat: "yy-mm-dd", // Adjust the format as needed
+    });
+  });
 
+</script>
+<script>
+// ---------------------this for Scroll-------------------------
+
+// Function to set the scroll position in a cookie
+function setScrollPosition() {
+  sessionStorage.setItem('scroll_position', $(window).scrollTop());
+}
+// Function to get the scroll position from sessionStorage and scroll to it
+function getAndScrollToPosition() {
+  var scrollPosition = sessionStorage.getItem('scroll_position');
+  if (scrollPosition !== null) {
+      $(window).scrollTop(scrollPosition);
+      sessionStorage.removeItem('scroll_position');
+  }
+}
+// Save the scroll position when the page is unloaded (refreshed or closed)
+$(window).on('beforeunload', function () {
+  setScrollPosition();
+});
+
+// Scroll to the saved position when the page is loaded
+$(document).ready(function () {
+  getAndScrollToPosition();
+});
+</script>
 
 
 </html>

@@ -762,9 +762,98 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
     </div>
     </div>
 
+      <!------------------------------ this for community ---------------------------->   
+      <div class="right_navbar">
+                <?php
+                // sql for recommended
+                $sqlrightcommunity = "SELECT community.*
+                            FROM community
+                            WHERE user_id = '$userid'";            
+                $resultVariablerightcommunity = mysqli_query($connection, $sqlrightcommunity);
+                $usersVariablerightcommunity = mysqli_fetch_all($resultVariablerightcommunity, MYSQLI_ASSOC);     
+                // print_r($usersVariablerightcommunity);
+                ?>
+
+                <div class="community_bar">
+                <a href="#overlayPage"> 
+                <div class="title">
+                    <i class="fa-solid fa-people-roof" style="color:#0099ff;" id="ComunityPath"></i>
+                    <p class="title-word"> Community</p>
+                </div>
+                </a>
+                <hr class="right-divider">
+
+                <?php
+                $countco = 0;
+                foreach ($usersVariablerightcommunity as $usercommunity):
+                $usercommunityId = $usercommunity['com_id']; // Assuming 'com_id' is the identifier for communities
+                if ($countco < 4): 
+                ?>
+                <div class="element1">
+                    <div class="comment_profile">
+                                    <?php
+                                        // Cloudinary cloud name
+                                        $cloudinaryCloudNamecommunity= 'dbete4djx';
+                                        $imageNameuserrecommunity  = $usercommunity['com_profile'];
+                                        $imageUrlrecommunity= "https://res.cloudinary.com/{$cloudinaryCloudNamecommunity}/image/upload/{$imageNameuserrecommunity}.jpg";
+                                        ?>
+                        <img class="profile_photo" src="<?php echo   $imageUrlrecommunity ?>">
+                    </div>
+                    <p class="name"><?php echo $usercommunity['name'] ?></p>
+                    <button  class="follow" onclick='showeditcommunityOverlay("<?php echo $usercommunityId; ?>")'>Edit</button>
+                    <button  class="follow" onclick='deleteCommunity("<?php echo $usercommunityId; ?>")' style="background:red">Delete</button>
+                </div>
+                <?php
+                endif;
+                $countco++; // Increment the counter
+                endforeach;
+                ?>
+
+
+
+                <hr class="right-divider">
+                <div class="titleCommunity"><i class="fa-solid fa-people-roof" style="color:#0099ff;" font-size: 20px; ></i>
+                <p class="add-community" style="font-size: 12px;"> ADD Community</p>
+                <i class="fa-solid fa-circle-plus iconCommunity" id="open_overlay" ></i></div>
+
+
+
+                </div>
+
+                <!--community edit overlay----------------------------------------------------------------->
+
+        <div class="overlay" id="overlayeditcommunityPage<?php echo $usercommunityId; ?>" style="display:none">
+        <!-- Content of the overlay -->
+        <div class="div" id="divcom">
+            <div class="div-2">
+              <div class="edit-profile-text">Edit Community</div>
+              <img id="closecommunityOverlay<?php echo $usercommunityId; ?>"
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ef8b404-e0f7-46ba-9dc3-4941bda62cb2?"
+              class="x-img"
+              onclick="closecommunityoverlay('<?php echo $usercommunityId; ?>')"
+              />
+            </div>
+            <div><hr class="hr"></div>
+            <div class="about-info-form" id="about-infocom">
+                <div class="about-info" id="about-infocom">About Community</div>
+                <div class="input-info-text" id="about-infocom">Community Name</div>
+                <input type="text" class="input" id="communityName<?php echo $usercommunityId; ?>"  name="firstname">
+                <div class="input-info-text" id="about-infocom">Community Topic</div>
+                <input  type="text" class="input" id="communityTopic<?php echo $usercommunityId; ?>"  name="lastname">
+                <div class="input-info-text" id="about-infocom">Community Description</div>
+                <input  type="text" class="input" id="communityDescription<?php echo $usercommunityId; ?>"  name="username">
+                <div class="input-info-text" id="about-infocom">Community Photo</div>
+                <input type="file" id="communityPhoto<?php echo $usercommunityId; ?>" name="communityPhoto" accept="image/*">
+               
+                <div class="custom-btn save-edit-aboutinfo" id="saveButtonAbout<?php echo $usercommunityId; ?>" onclick="editCommunity('<?php echo $usercommunityId; ?>')">Update</div>
+            </div>
+      </div>
+            </div>
+
     
 
-     <div class="overlay" id="overlay">
+     <div class="overlay" id="overlay" style="display:none">
         <!-- Content of the overlay -->
         <div class="div" id="div">
             <div class="div-2">
@@ -947,65 +1036,6 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
      </script>
       
       <script>
-        document.getElementById('openButton').addEventListener('click', function() {
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('div').style.display = 'block';
-            document.getElementById('img-div').style.display = 'none'; 
-            document.getElementById('bio-div').style.display = 'none';
-            document.querySelector('.main-content').classList.add('blurred');
-        });
-
-      document.getElementById('x-button').addEventListener('click', function() {
-         document.getElementById('overlay').style.display = 'none';
-        document.getElementById('div').style.display = 'none';
-        document.getElementById('img-div').style.display = 'none';
-        document.getElementById('bio-div').style.display = 'none';
-        document.querySelector('.main-content').classList.remove('blurred');
-      });
-      document.getElementById('bio-text').addEventListener('click', function() {
-        document.getElementById('div').style.display ="none";
-        document.getElementById('img-div').style.display ="none";
-        document.getElementById('bio-div').style.display ="block";
-        
-      });
-      document.getElementById('x-bio-button').addEventListener('click', function() {
-       /* document.getElementById('bio-div').style.display = 'none';
-        document.getElementById('overlay').style.display = 'none';
-        document.querySelector('.main-content').classList.remove('blurred');*/
-        document.getElementById('overlay').style.display = 'none';
-        document.querySelector('.main-content').classList.remove('blurred');
-      });
-      document.getElementById('image-text').addEventListener('click', function() {
-        document.getElementById('bio-div').style.display ="none";
-        document.getElementById('img-div').style.display ="block";
-        document.getElementById('div').style.display ="none";
-        
-      });
-      document.getElementById('x-img-button').addEventListener('click', function() {
-        /*document.getElementById('img-div').style.display = 'none';
-        document.getElementById('overlay').style.display = 'none';
-        document.querySelector('.main-content').classList.remove('blurred');*/
-        document.getElementById('overlay').style.display = 'none';
-        document.querySelector('.main-content').classList.remove('blurred');
-      });
-      /*for bio page*/
-      document.getElementById('about-info-bio').addEventListener('click', function() {
-        document.getElementById('bio-div').style.display ="none";
-        document.getElementById('div').style.display ="block";
-      });
-      document.getElementById('image-text-bio').addEventListener('click', function() {
-        document.getElementById('bio-div').style.display ="none";
-        document.getElementById('img-div').style.display ="block";
-      });
-      /*for image page*/
-      document.getElementById('img-about-info').addEventListener('click', function() {
-        document.getElementById('img-div').style.display ="none";
-        document.getElementById('div').style.display ="block";
-      });
-      document.getElementById('img-bio-form').addEventListener('click', function() {
-        document.getElementById('img-div').style.display ="none";
-        document.getElementById('bio-div').style.display ="block";
-      });
 
       // JavaScript
       document.addEventListener('DOMContentLoaded', function() {
@@ -1151,6 +1181,16 @@ function hideAllMenus() {
     document.getElementById("img-closeButton").addEventListener('click', function() {
         autoReloadPage();
     });
+
+   
+     function closecommunityoverlay(comId) {
+        var overlayId = 'overlayeditcommunityPage' + comId;
+        var overlay = document.getElementById(overlayId);
+       overlay.style.display = 'none';
+       document.querySelector('.main-content').classList.remove('blurred');
+
+     }
+
 </script>
 <script>
     function saveBio() {
@@ -1208,6 +1248,36 @@ function hideAllMenus() {
             .catch(error => {
                 // Error: Handle the error, display a message, etc.
                 console.error('Error deleting post:', error);
+            });
+        }
+    }
+
+
+    function deleteCommunity(comId) {
+    console.log(comId);
+        var confirmDelete = confirm("Are you sure you want to delete this community?");
+        const data = {
+        comId: comId
+    };
+    console.log(data);
+        
+        if (confirmDelete) {
+           // Make a Fetch request to send the data to the server
+        fetch('delete_com.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+            .then(data => {
+                // Success: Reload the page or update the UI as needed
+                location.reload(); // Example: Reload the page
+            })
+            .catch(error => {
+                // Error: Handle the error, display a message, etc.
+                console.error('Error deleting community:', error);
             });
         }
     }
@@ -1282,6 +1352,63 @@ function hideAllMenus() {
                 console.error('Error updating post:', error);
             });
         }
+
+
+        function editCommunity(comId) {
+    console.log(comId);
+
+    var nameId = 'communityName' + comId;
+    var descriptionId = 'communityDescription' + comId;
+    var topicId = 'communityTopic' + comId;
+
+    var name = document.getElementById(nameId).value;
+    var description = document.getElementById(descriptionId).value;
+    var topic = document.getElementById(topicId).value;
+
+    // Assuming you have an input element with the id 'image'
+    var fileid = 'communityPhoto' + comId;
+    var inputFile = document.getElementById(fileid);
+
+    // Check if a file is selected
+    var selectedFile = inputFile.files.length > 0 ? inputFile.files[0] : null;
+
+    // Create FormData and append data
+    var formData = new FormData();
+    formData.append('comId', comId);
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('topic', topic);
+
+    if (selectedFile) {
+        // If a file is selected, append it to FormData
+        formData.append('file', selectedFile, selectedFile.name);
+    }
+
+    var data = {
+        comId: comId,
+        name: name,
+        file: selectedFile ? selectedFile.name : null,
+        description: description,
+        topic: topic,
+    };
+    console.log(data);
+
+    // Make a Fetch request to send the data to the server
+    fetch('edit_community.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        autoReloadPage();
+    })
+    .catch(error => {
+        // Error: Handle the error, display a message, etc.
+        console.error('Error updating post:', error);
+    });
+}
+
 </script>
 
 <script>
@@ -1332,6 +1459,7 @@ function monthNameToNumber(monthName) {
     //userData.reset();
     autoReloadPage();
 }
+
 function showeditpostoverlay(postId,typeId) {
     // Assuming you have a variable 'typeId' representing the type_id of the post
     console.log(postId);
@@ -1406,6 +1534,64 @@ function showeditpostoverlay(postId,typeId) {
         });
     }
     }
+
+    /* show the edit community overlay -----------------------------------------------*/
+
+    function showeditcommunityOverlay(comId) {
+    // Assuming you have a variable 'typeId' representing the type_id of the post
+    console.log(comId);
+    
+    // Display the correct overlay based on typeId
+        var overlayId = 'overlayeditcommunityPage' + comId;
+        var overlay = document.getElementById(overlayId);
+        console.log(overlay);
+        overlay.style.display = 'block';
+        const data = {
+        comId: comId
+    };
+        var name = 'communityName' + comId;
+        var name = document.getElementById(name);
+        var description = 'communityDescription' + comId;
+        var description = document.getElementById(description);
+        var topic = 'communityTopic' + comId;
+        var topic = document.getElementById(topic);
+        // Assuming you have an input element with the id 'image'
+        //var fileid = 'communityPhoto' + comId;
+        //var inputFile = document.getElementById(fileid);
+
+        // Get the selected file
+       // const selectedFile = inputFile.files[0];
+        //const fileName = selectedFile.name;
+        //console.log(selectedFile);
+    
+        // Send a fetch request for type_id == 2
+        fetch('show_overlay_community.php', {
+            method: 'POST', // or 'PUT', 'DELETE', etc.
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any other headers as needed
+            },
+            body: JSON.stringify(data), // Include data in the request body if needed
+        })
+        .then(response => response.json())
+        .then(data => {
+    // Handle the response data
+    console.log(data);
+
+    // Assuming you have a variable 'textid' representing the text input element
+    name.value = data.name;
+    description.value = data.description;
+    topic.value = data.topic;
+
+    // Assuming you have a variable 'img' representing the image element
+    //const src = data.image;
+    //const cloudinaryUrl = `https://res.cloudinary.com/dbete4djx/image/upload/${src}`;
+    //img.setAttribute('src', cloudinaryUrl);
+    })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    } 
 
 
 

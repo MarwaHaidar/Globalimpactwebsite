@@ -1,5 +1,48 @@
 <?php  include("connDatabase/connection.php");
-session_start(); ?>
+ require 'vendor/autoload.php';
+ use Cloudinary\Api\Upload\UploadApi;
+ use Cloudinary\Configuration\Configuration;
+ Configuration::instance('cloudinary://177893987749658:sCL_-AWCJAkCtaRj4kjxf-tIq8Q@dbete4djx?secure=true');
+?>
+<?php
+    // Start the session
+    session_start();
+
+    // Access the 'auth_user' session variable
+    if (isset($_SESSION['auth_user'])) {
+        // Access individual elements of the array
+        $userid = $_SESSION['auth_user']['userid'];
+        $email = $_SESSION['auth_user']['email'];
+        $role = $_SESSION['auth_user']['role'];
+    } else {
+        // Session variable not set, handle accordingly (e.g., redirect to login page)
+        header("Location: ./LogIn-SignUp-forgget/LogIn.php");
+        exit();
+    }
+?>
+<!-- php for profile header -->
+<?php
+// sql for image profile from user header
+$userprofileHeaderId = $userid; // get from session
+$sqlprofileHeader = "SELECT user.*, profile.*
+    FROM user
+    INNER JOIN profile ON user.user_id = profile.user_id
+    WHERE user.user_id = $userprofileHeaderId"; // get from session
+
+$resultVariableprofileHeader = mysqli_query($connection, $sqlprofileHeader);
+$usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYSQLI_ASSOC);
+// print_r($usersVariableprofileHeader);
+?>
+
+<?php foreach ($usersVariableprofileHeader as $userDprofileHeader): ?>
+    <?php
+    // Cloudinary cloud name
+    $cloudinaryCloudNameuserDprofileHeader = 'dbete4djx';
+    $imageNameuserDprofileHeader = $userDprofileHeader['profile_photo'];
+    $imageUrluserprofileHeader = "https://res.cloudinary.com/{$cloudinaryCloudNameuserDprofileHeader}/image/upload/{$imageNameuserDprofileHeader}.jpg";
+    ?>
+    <!-- Your HTML/PHP code here using $userDprofileHeader and $imageUrluserprofileHeader -->
+<?php endforeach; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,10 +115,11 @@ session_start(); ?>
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <div class="header__profile">
-            <img  class="header_profile" src="./images/myselZoom.jpg">
-            
-        </div>
+        <a href="profilepage.php" id="ProfilePath">
+                    <div class="header__profile">
+                        <img class="header_profile" src="<?php echo $imageUrluserprofileHeader; ?>" alt="Profile Image">
+                    </div>
+                </a>
     </div>
 </header>
 
@@ -174,11 +218,6 @@ session_start(); ?>
 
 
 
-
-
-
-
-
         <!--------------------------------------------------------->
         <div class="communityall__container" id="communityall__container" >
         <?php
@@ -219,6 +258,21 @@ session_start(); ?>
                         $cloudinaryImageUrl = 'https://res.cloudinary.com/dbete4djx/image/upload/' . $cloudinaryPublicId;
                         ?>
 
+                          <?php
+                            //select from  the follow table
+                            $queryselectFollow = "SELECT joins FROM joins  WHERE user_id='$userid' AND community_id='$communityId' ORDER BY join_id DESC LIMIT 1";
+                            $resultselectFollow = $connection->query($queryselectFollow);
+                            // Fetch the rows from the result sets
+                            $row5 =  $resultselectFollow->fetch_assoc();
+                            if($row5){
+                            $join = $row5['joins'];
+
+                            }
+                            else{
+                            $join= "";
+                            }
+                            ?>
+
                         <div class="post-com" >
                             <div class="post-com-header">
                                 <img src="<?php echo $cloudinaryImageUrl; ?>" alt="Community Image" class="community-image">
@@ -236,7 +290,8 @@ session_start(); ?>
                                 </p>
                                 <a href="#" class="see-more-link" onclick="toggleSeeMore(this)">See More</a>
                                 <div class="communitylinksbtn">
-                                    <button class="post_post" id="join_com"style="margin-right: 10px; bottom: 22px;" onclick='joinCommunity(<?php echo $communityId; ?>)'>Join</button>
+                                    <button class="post_post" id="join_com<?php echo $communityId; ?>"  <?php echo $join ? 'style="display:none;margin-right: 10px; bottom: 22px;"' : ''; ?> onclick='join_community(<?php echo $communityId; ?>,<?php echo $userid; ?>)' >Join</button>
+                                    <button class="post_post" id="unjoin_com<?php echo $communityId; ?>" <?php echo $join ? '' : 'style="display:none;margin-right: 10px; bottom: 22px;"'; ?> onclick='unjoin_community(<?php echo $communityId; ?>,<?php echo $userid; ?>)'>Unjoin</button>
                                 </div>
                             </div>
                         </div>
@@ -260,20 +315,68 @@ session_start(); ?>
         
  
       <script>
-               function joinCommunity(communityId) {
-                $.post('join_community.php', { communityId: communityId }, function (response) {
-                    var result = JSON.parse(response);
-                    if (result.status === 'success') {
-                        alert('Joined community!');
-                    } else if (result.status === 'already_joined') {
-                        alert('You have already joined this community.');
-                    } else {
-                        alert('Error joining community: ' + result.message);
-                    }
-                });
-            }
 
+        function join_community(comId,userid){
+    
+    console.log("user_id:",userid);
+    console.log("community id:",comId);
 
+    
+    const data = {
+        loggedInUserId: userid,
+        comId: comId,
+    };
+
+    fetch('join_community.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Update the UI or perform any other actions
+        console.log('join success:', data);
+        window.location.href = window.location.href;
+
+    })
+    .catch(error => {
+        console.error('Follow error:', error);
+    });
+
+        }
+
+        function unjoin_community(comId,userid){
+  
+    console.log(userid);
+    console.log(comId);
+
+    
+    const data = {
+        loggedInUserId: userid,
+        comId: comId,
+    };
+
+    fetch('unjoin.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the UI or perform any other actions
+        console.log('unjoin success:', data);
+        window.location.href = window.location.href;
+
+    })
+    .catch(error => {
+        console.error('Follow error:', error);
+    });
+
+        }
 
                     /* So, when a user clicks the "Join" button for a community, it triggers this AJAX request to 'join_community.php' with the 
                     community ID as data. The server-side script ('join_community.php') is responsible for updating the database to reflect that 

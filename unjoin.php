@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     //update the follow table
-    $queryUpdateFollow = "INSERT INTO  joins(user_id,community_id,joins) VALUES('$loggedInUserId','$comId',1)";
+    $queryUpdateFollow = "INSERT INTO  joins(user_id,community_id,joins) VALUES('$loggedInUserId','$comId',0)";
     $resultUpdateFollow = $connection->query($queryUpdateFollow);
 
      //update the follow table
@@ -37,13 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode([
                 "status" => "success",
                 "message" => "User information updated successfully",
-                "join" => $join
+                //"join" => $join
             ]);
 
             exit;
     } else {
         // Error in the update query
-        echo json_encode(["status" => "error", "message" => "Error updating user information: " . mysqli_error($connection)]);
+        echo json_encode(["status" => "error", "message" => "Error updating user information: " . mysqli_error($conn)]);
         exit;
     }
 } else {
@@ -52,5 +52,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 ?>
-
-

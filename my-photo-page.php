@@ -425,7 +425,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
       
     <!-----------------edit   profile overlay-->
     <script>
-        document.getElementById('openButton').addEventListener('click', function() {
+        document.getElementById('openButton1').addEventListener('click', function() {
        document.getElementById('overlay').style.display = 'block';
        document.querySelector('.main-content').classList.add('blurred');
      });

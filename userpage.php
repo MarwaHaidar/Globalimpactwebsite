@@ -583,7 +583,7 @@ if (!$userId) {
                         $imageNameProfile = $userpostD['profile_photo']; // Assuming 'image' is the field name in your database
                         $imageUrlProfile = "https://res.cloudinary.com/{$cloudinaryCloudNameProfile}/image/upload/{$imageNameProfile}.jpg";
                         ?>
-                          <img src="<?php echo $imageUrlProfile; ?>" alt="Account Image" class="AccountImage" img-pub-id="<?php echo $imageNameProfile; ?>">
+                          <img src="<?php echo $imageUrlProfile; ?>" alt="Account Image" class="AccountImage" friend-id="<?php echo $userpostD['user_id']; ?>">
                             <div class="user-ProfilePost">
                             <p class="account-name"><?php echo $userpostD['First_name']." ".$userpostD['last_name'] ?></p>
                                 <div class="account-Date">
@@ -981,6 +981,20 @@ if (!$userId) {
                     $usercommunityId = $usercommunity['com_id']; // Assuming 'com_id' is the identifier for communities
                     if ($countco < 4): 
                 ?>
+                <?php
+                            //select from  the follow table
+                            $queryselectFollow = "SELECT joins FROM joins  WHERE user_id='$userId' AND community_id='$usercommunityId' ORDER BY join_id DESC LIMIT 1";
+                            $resultselectFollow = $connection->query($queryselectFollow);
+                            // Fetch the rows from the result sets
+                            $row5 =  $resultselectFollow->fetch_assoc();
+                            if($row5){
+                            $join = $row5['joins'];
+
+                            }
+                            else{
+                            $join= "";
+                            }
+                            ?>
                     <div class="element1">
                         <div class="comment_profile">
                                           <?php
@@ -992,7 +1006,9 @@ if (!$userId) {
                             <img class="profile_photo" src="<?php echo   $imageUrlrecommunity ?>">
                         </div>
                         <p class="name"><?php echo $usercommunity['name'] ?></p>
-                        <button class="follow" onclick='joinRightCommunity("<?php echo $usercommunityId; ?>")'>Join</button>
+                        <button class="follow" id="join_com<?php echo $usercommunityId; ?>"  <?php echo $join ? 'style="display:none;"' : ''; ?> onclick='join_community(<?php echo $usercommunityId; ?>,<?php echo $userId; ?>)' >Join</button>
+                        <button class="follow" id="unjoin_com<?php echo $usercommunityId; ?>" <?php echo $join ? '' : 'style="display:none;"'; ?> onclick='unjoin_community(<?php echo $usercommunityId; ?>,<?php echo $userId; ?>)'>Unjoin</button>
+                      
                     </div>
                 <?php
                     endif;
@@ -1085,7 +1101,7 @@ function displayFileName(input) {
 </script>
 
 <script>
-    //stories
+    //stories0
     function openStoryOverlay(imageUrl, name) {
         document.getElementById('overlayImage').src = imageUrl;
         document.getElementById('storyOverlay-users').style.display = 'flex';
@@ -1103,6 +1119,69 @@ function displayFileName(input) {
   }
 
 </script>
+<script>
+    function join_community(comId,userid){
+    
+    console.log("user_id:",userid);
+    console.log("community id:",comId);
+
+    
+    const data = {
+        loggedInUserId: userid,
+        comId: comId,
+    };
+
+    fetch('join_community.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Update the UI or perform any other actions
+        console.log('join success:', data);
+        window.location.href = window.location.href;
+
+    })
+    .catch(error => {
+        console.error('Follow error:', error);
+    });
+
+        }
+
+        function unjoin_community(comId,userid){
+  
+    console.log(userid);
+    console.log(comId);
+
+    
+    const data = {
+        loggedInUserId: userid,
+        comId: comId,
+    };
+
+    fetch('unjoin.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the UI or perform any other actions
+        console.log('unjoin success:', data);
+        window.location.href = window.location.href;
+
+    })
+    .catch(error => {
+        console.error('Follow error:', error);
+    });
+
+        }
+    </script>
 
 
 <script>
@@ -1253,13 +1332,13 @@ function displayFileName(input) {
     profileImages.forEach(function(profimg) {
         profimg.addEventListener('click', function() {
             // Extract the user ID from the data attribute
-            const imgPubId = this.getAttribute('img-pub-id');
+            const friendId = this.getAttribute('friend-id');
 
             // Log or perform any action with the user ID
-            console.log('Clicked on profile image of user ID:', imgPubId);
+            console.log('Clicked on profile image of user ID:', friendId);
 
             // Redirect to the user profile page using the user ID
-            window.location.href = 'user-profile.php?pub_id=' + imgPubId;
+            window.location.href = 'user-profile.php?friend_id=' + friendId;
         });
     });
 </script>

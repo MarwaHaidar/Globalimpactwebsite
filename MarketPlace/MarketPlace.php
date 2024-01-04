@@ -367,45 +367,36 @@ if (!$userId) {
 
 
 	<!-- -----------------------------------display items--------------------------------------------------- -->
-		<div class="try_lt_st_main_wrapper">
-			<div class="container">
-			<?php foreach ($usersVariableItem as $Item): ?>
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-						<div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
-							<div class="try_rc_mob_img">
-
-							<?php
-                            // Cloudinary cloud name
-                                $cloudinaryItem = 'dbete4djx';
-                                $imageNameItem = $Item['ImageItem'];
-                                $imageUrlItem = "https://res.cloudinary.com/{$cloudinaryItem}/image/upload/{$imageNameItem}.jpg";
-                                ?>
-								<img src="<?php echo  $imageUrlItem ?>" alt="mobail" class="photos">
-							</div>
-							<div class="try_rc_mob_img_cont">
-								<h1><?php echo $Item['item_name']?></h1>
-								<h3><?php echo $Item['description']?></h3>
-							</div>
-							<div class="try_rc_mob_img_cont_bottom">
-								<p>$<?php echo $Item['price']?></p>
-								<div class="mail-form">
-									<div class="mail">Contact Us: <a href="<?php echo $Item['Email']?>" class="email"><?php echo $Item['Email']?></a></div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-	<?php endforeach; ?>
-					
-
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	</div>
+	<div class="try_lt_st_main_wrapper">
+    <div class="container">
+        <?php foreach ($usersVariableItem as $Item): ?>
+            <div class="row">
+                <div class="col-lg-5 col-md-4 col-sm-6 col-xs-12">
+                    <div class="try_rc_mob_box_wrapper try_lt_st_main_box_wrapper">
+                        <div class="try_rc_mob_img">
+                            <?php
+                            $cloudinaryItem = 'dbete4djx';
+                            $imageNameItem = $Item['ImageItem'];
+                            $imageUrlItem = "https://res.cloudinary.com/{$cloudinaryItem}/image/upload/{$imageNameItem}.jpg";
+                            ?>
+                            <img src="<?php echo $imageUrlItem ?>" alt="mobile" class="photos">
+                        </div>
+                        <div class="try_rc_mob_img_cont">
+                            <h1><?php echo $Item['item_name'] ?></h1>
+                            <h3><?php echo $Item['description'] ?></h3>
+                        </div>
+                        <div class="try_rc_mob_img_cont_bottom">
+                            <p>$<?php echo $Item['price'] ?></p>
+                            <div class="mail-form">
+                                <div class="mail">Contact Us: <a href="<?php echo $Item['Email'] ?>" class="email"><?php echo $Item['Email'] ?></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<?php endforeach; ?>
+            </div><!-- End of .row -->
+    </div><!-- End of .container -->
+</div><!-- End of .try_lt_st_main_wrapper -->
 
 	
 

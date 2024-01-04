@@ -340,64 +340,66 @@ include './connDatabase/Connection.php';
 
 <!-------------------------------this Form  for hashtag----------------------------------------------------->
 
+<!-------------------------------this Form  for hashtag----------------------------------------------------->
+
 <?php
-            // sql for trend hshatag
+    // sql for trend hashtag
+    $sqlhashtag = "SELECT userpost_id, content AS post_content, NULL AS caption, NULL AS image
+    FROM textpost
+    WHERE LOCATE('#', content) > 0
 
-            $sqlhashtag = "SELECT userpost_id, content AS post_content, NULL AS caption, NULL AS image
-            FROM textpost
-            WHERE LOCATE('#', content) > 0
+    UNION
 
-            UNION
+    SELECT i.userpost_id, NULL AS post_content, i.caption, i.image
+    FROM imagepost i
+    WHERE LOCATE('#', i.caption) > 0";
 
-            SELECT i.userpost_id, NULL AS post_content, i.caption, i.image
-            FROM imagepost i
-            WHERE LOCATE('#', i.caption) > 0";
+    $resultVariablehashtag = mysqli_query($connection, $sqlhashtag);
 
-            $resultVariablehashtag = mysqli_query($connection, $sqlhashtag);
-            $usersVariablehashtag = mysqli_fetch_all($resultVariablehashtag, MYSQLI_ASSOC);
+    if (!$resultVariablehashtag) {
+        die("Error in SQL query: " . mysqli_error($connection));
+    }
 
-            $combinedTexts = array();
-            foreach ($usersVariablehashtag as $posthash) {
-            if (!empty($posthash['post_content'])) {
-            $combinedTexts[] = $posthash['post_content'];
-            }
-            if (!empty($posthash['caption'])) {
-            $combinedTexts[] = $posthash['caption'];
-            }
-            }
-            // Combine all text into a single string
-            $combinedText = implode(' ', $combinedTexts);
-            // Tokenize the text into words
-            $words = str_word_count($combinedText, 1);
-            // Count the frequency of each word
-            $wordFrequency = array_count_values($words);
-            // Sort the words by frequency in descending order
-            arsort($wordFrequency);
+    $usersVariablehashtag = mysqli_fetch_all($resultVariablehashtag, MYSQLI_ASSOC);
 
+    $hashtags = array();
+    foreach ($usersVariablehashtag as $posthash) {
+        if (!empty($posthash['post_content'])) {
+            preg_match_all('/#(\w+)/', $posthash['post_content'], $matches);
+            $hashtags = array_merge($hashtags, $matches[1]);
+        }
+        if (!empty($posthash['caption'])) {
+            preg_match_all('/#(\w+)/', $posthash['caption'], $matches);
+            $hashtags = array_merge($hashtags, $matches[1]);
+        }
+    }
+
+    // Count the frequency of each hashtag word
+    $wordFrequency = array_count_values($hashtags);
+    // Sort the hashtag words by frequency in descending order
+    arsort($wordFrequency);
+    // Take only the top 4 hashtag words
+    $topHashtags = array_slice($wordFrequency, 0, 4);
 ?>
 
-    <div class="right_navbar">
-        <div class="Trending_bar">
-            <div class="title"><i class="fa-solid fa-fire-flame-curved" style="color:#0099ff;" ></i>
-            <p class="title-word">Trending</p></div>
-              <hr class="right-divider">
+<div class="right_navbar">
+    <div class="Trending_bar">
+        <div class="title"><i class="fa-solid fa-fire-flame-curved" style="color:#0099ff;"></i>
+        <p class="title-word">Trending</p></div>
+        <hr class="right-divider">
 
-            
-     <!-- this for hashtag trend Form  -->
-            <?php
-            $count = 0;
-            foreach ($wordFrequency as $word => $frequency) {
+        <!-- Display only the top 4 hashtag words -->
+        <?php
+            foreach ($topHashtags as $word => $frequency) {
                 echo '<div class="element1">';
-                echo '<p class="name"> #' . $word . '</p>';
-                echo '</div>';            
-             $count++;
-                if ($count >= 4) {
-                    break;
-                }
+                echo '<p class="name">' . htmlspecialchars($word) . '</p>';
+                echo '</div>';
             }
-            ?>
+        ?>
+    </div>
 
-        </div>
+
+
 
     <!------------------------------ this for recomended bar ------------------------->
 

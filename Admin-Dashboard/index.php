@@ -104,6 +104,20 @@ $selectUserResult = mysqli_query($connection, $selectUserQuery);
         <!-- Spinner End -->
 
         <!-- Sidebar Start -->
+        <!-- --------------------------------------------------------------------------------------------------------- -->
+        <?php
+$userid = $_SESSION['auth_user']['userid'];
+$profilequery = "SELECT profile.profile_photo FROM profile INNER JOIN user ON user.user_id = profile.user_id WHERE user.user_id = $userid";
+$profilequery_run = mysqli_query($connection, $profilequery);
+
+if (mysqli_num_rows($profilequery_run) > 0) {
+    while ($row = mysqli_fetch_assoc($profilequery_run)) {
+        $profile = $row['profile_photo'];
+    }
+    $cloudinaryImageUrl = 'https://res.cloudinary.com/dbete4djx/image/upload/' . $profile;
+}
+?>   
+        <!-- ------------------------------------------------------------------------------------------------------ -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar ">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
@@ -111,7 +125,7 @@ $selectUserResult = mysqli_query($connection, $selectUserQuery);
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="<?php echo $cloudinaryImageUrl ;?>" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
@@ -211,9 +225,10 @@ $selectUserResult = mysqli_query($connection, $selectUserQuery);
                         </div> -->
                     </div> 
 <!-- ---------------------------------------admin profile----------------------------------------------------------------------------------------------- -->
-                    <div class="nav-item dropdown">
+
+<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="<?php echo $cloudinaryImageUrl ;?>" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['auth_user']['firstname'].$_SESSION['auth_user']['lastname']?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -524,36 +539,45 @@ if (mysqli_num_rows($numuser_run) > 0) {
 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
-<div class="col-sm-12 col-xl-6">
-    <div class="bg-light text-center rounded p-4 bg-dark content-container max-height-100">
+<div class="col-sm-12 col-xl-4">
+    <div class="bg-light text-center rounded p-4 bg-dark content-container max-height-50 ">
         <h6 class="mb-4 bg-dark content-container"></h6>
         <canvas id="doughnut-chart" width="400" height="50"></canvas>
     </div>
 </div>
 <?php
 $chartresult3 = $connection->query("SELECT
-    Location,
-    COUNT(user_id) as userscount
-    FROM profile
-    GROUP BY Location");
+CASE
+    WHEN FLOOR(DATEDIFF(CURDATE(), birthdate) / 365.25) BETWEEN 18 AND 25 THEN '18-25'
+    WHEN FLOOR(DATEDIFF(CURDATE(), birthdate) / 365.25) BETWEEN 26 AND 35 THEN '26-35'
+    WHEN FLOOR(DATEDIFF(CURDATE(), birthdate) / 365.25) BETWEEN 36 AND 45 THEN '36-45'
+    WHEN FLOOR(DATEDIFF(CURDATE(), birthdate) / 365.25) BETWEEN 46 AND 55 THEN '46-55'
+    WHEN FLOOR(DATEDIFF(CURDATE(), birthdate) / 365.25) >= 56 THEN '56+'
+    ELSE 'Unknown'
+END AS AgeGroup,
+COUNT(user_id) as userscount
+FROM profile
+GROUP BY AgeGroup");
 
-$location = [];
+$ageGroup = [];
 $userss = [];
 
 while ($row = $chartresult3->fetch_assoc()) {
-    $location[] = $row['Location'];
+    $ageGroup[] = $row['AgeGroup'];
     $userss[] = $row['userscount'];
 }
+
+
 ?>
 
 <script>
-    $(document).ready(function () {
+     $(document).ready(function () {
         var ctx6 = $("#doughnut-chart").get(0).getContext("2d");
 
         var myChart6 = new Chart(ctx6, {
             type: "doughnut",
             data: {
-                labels: <?php echo json_encode($location); ?>,
+                labels: <?php echo json_encode($ageGroup); ?>,
                 datasets: [{
                     backgroundColor: [
                         "rgba(0, 156, 255, .7)",
@@ -650,11 +674,120 @@ while ($row = $chartresult3->fetch_assoc()) {
     fetchChartData();
 </script>
 
+</div>
 
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 
+<div class="row g-4 ">
+<div class="col-sm-12 col-xl-6">
+    <div class="bg-light text-center rounded p-4 bg-dark content-container max-height-100 ">
+        <h6 class="mb-4 bg-dark content-container"></h6>
+        <canvas id="bar-chart" width="400" height="200"></canvas>
+    </div>
+</div>
 
+<?php
+$chartResult = $connection->query("SELECT
+    YEAR(Date) as year,
+    COUNT(user_id) as usersCount
+    FROM user
+    GROUP BY year");
+
+$years = [];
+$usersCounts = [];
+
+while ($row = $chartResult->fetch_assoc()) {
+    $years[] = $row['year'];
+    $usersCounts[] = $row['usersCount'];
+}
+?>
+
+<script>
+    $(document).ready(function () {
+        var ctx = $("#bar-chart").get(0).getContext("2d");
+
+        var myChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: <?php echo json_encode($years); ?>,
+                datasets: [{
+                    label: 'Users Count',
+                    backgroundColor: "rgba(0, 156, 255, 0.7)",
+                    data: <?php echo json_encode($usersCounts); ?>,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+
+<div class="col-sm-12 col-xl-4">
+    <div class="bg-light text-center rounded p-4 bg-dark content-container max-height-50 ">
+        <h6 class="mb-4 bg-dark content-container"></h6>
+        <canvas id="pie-chart" width="400" height="50"></canvas>
+    </div>
+</div>
+<?php
+$chartresult3 = $connection->query("SELECT
+
+c.category_name as category_name,
+COUNT(up.userpost_id) as post_count
+FROM
+category c
+LEFT JOIN
+userposts up ON c.category_id = up.category
+GROUP BY
+ c.category_name;");
+
+$category_name = [];
+$postcount = [];
+
+while ($row = $chartresult3->fetch_assoc()) {
+    $category_name[] = $row['category_name'];
+    $postcount[] = $row['post_count'];
+}
+?>
+
+<script>
+    $(document).ready(function () {
+        var ctx6 = $("#pie-chart").get(0).getContext("2d");
+
+        var myChart6 = new Chart(ctx6, {
+            type: "pie",
+            data: {
+                labels: <?php echo json_encode($category_name); ?>,
+                datasets: [{
+                    backgroundColor: [
+                        "rgba(0, 156, 255, .7)",
+                        "rgba(0, 156, 255, .2)",
+                        "rgba(0, 156, 255, .9)",
+                        "rgba(0, 156, 255, .4)",
+                        "rgba(0, 156, 255, .3)"
+                    ],
+                    data: <?php echo json_encode($postcount); ?>,
+                    fill: true // Move the fill property here
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    });
+</script>
 
 
 </div>

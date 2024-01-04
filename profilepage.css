@@ -391,104 +391,104 @@ z-index: 2;
 
 }
 @media (max-width: 700px) {
-.image-container{
-  position: absolute;
-  display:inline-block;
-  width: 110%;
-  height: 230px;
-  /*top: 50px;
-  left: 23%;*/
-  margin-left: 20%;
-  margin-top: 15px;
-  overflow: hidden;
-  z-index: 1;
+  .image-container{
+    position: absolute;
+    display:inline-block;
+    width: 110%;
+    height: 230px;
+    /*top: 50px;
+    left: 23%;*/
+    margin-left: 20%;
+    margin-top: 15px;
+    overflow: hidden;
+    z-index: 1;
+    }
+   .profile-img{
+    position: relative;
+    width: 60%;
+    height: 90%;
+    border-radius:20px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 2;
+   }
+  
   }
- .profile-img{
+  .camera-cont{
+    position: absolute;
+    height: 7%;
+    width:3.7%;
+    background-color: rgb(234, 228, 228);
+    border-radius: 50%;
+    top:44%;
+    left: 28%;
+    z-index: 390;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+  
+  .camera-icon{
   position: relative;
-  width: 60%;
-  height: 90%;
-  border-radius:20px;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: 2;
- }
-
-}
-.camera-cont{
+  font-size: 20px;
+  z-index: 400;
+  margin-top: 30%;
+  color: gray;
+  }
+  .camera-cont2{
+    position: absolute;
+    height: 8%;
+    width:4%;
+    background-color: rgb(234, 228, 228);
+    border-radius: 50%;
+    top:42%;
+    left: 77%;
+    z-index: 390;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+  
+  .camera-icon2{
+  position: relative;
+  font-size: 25px;
+  z-index: 400;
+  margin-top: 30%;
+  color: gray;
+  }
+  
+  .circle-img{
   position: absolute;
-  height: 7%;
-  width:3.7%;
-  background-color: rgb(234, 228, 228);
-  border-radius: 50%;
-  top:44%;
-  left: 28%;
-  z-index: 390;
-  text-align: center;
-  border: 2px solid white;
-  border-radius: 50%;
-}
-
-.camera-icon{
-position: relative;
-font-size: 20px;
-z-index: 400;
-margin-top: 30%;
-color: gray;
-}
-.camera-cont2{
-  position: absolute;
-  height: 8%;
-  width:4%;
-  background-color: rgb(234, 228, 228);
-  border-radius: 50%;
-  top:42%;
-  left: 77%;
-  z-index: 390;
-  text-align: center;
-  border: 2px solid white;
-  border-radius: 50%;
-}
-
-.camera-icon2{
-position: relative;
-font-size: 25px;
-z-index: 400;
-margin-top: 30%;
-color: gray;
-}
-
-.circle-img{
-position: absolute;
-top:35%;
-left: 21%;
-height: 17%;
-width: 9%;
-border-radius: 50%;
-background-color: white;
-background-size: cover;
-background-position: center center;
-object-fit: cover;
-z-index: 3;
-border: 3px solid white;
-
-}
-@media (max-width: 700px) {
-.circle-img{
-  position: absolute;
-  margin-top: 170px;
-  left: 23%;
-  height: 80px;
-  width: 80px;
+  top:35%;
+  left: 21%;
+  height: 17%;
+  width: 9%;
   border-radius: 50%;
   background-color: white;
   background-size: cover;
   background-position: center center;
   object-fit: cover;
   z-index: 3;
- }
-}
-
+  border: 3px solid white;
+  
+  }
+  @media (max-width: 700px) {
+  .circle-img{
+    position: absolute;
+    margin-top: 170px;
+    left: 23%;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: white;
+    background-size: cover;
+    background-position: center center;
+    object-fit: cover;
+    z-index: 3;
+   }
+  }
+  
 /*about-info-profile------------------------->*/
 .container{
   position: absolute;
@@ -2740,3 +2740,355 @@ transform: scale(1.6);
 }
 
 
+/* ------------------------------------------------------------------ */
+@media (max-width: 600px ){
+
+  body{
+    width: 100%;
+     
+  }
+  html{
+  width: 100px;
+  }
+  .header {
+    width:415px;
+  }
+  .header_profile{
+    height: 30px;
+    width: 30px;
+  }
+  .header__profile{
+    height: 30px;
+    width: 30px;
+}
+  .header__container {
+    width: 400px;
+
+  }
+  .header__search {
+    width: 20%;
+    height: 10px;
+  }  
+
+  .right_navbar{
+    display: none;
+
+  }
+  .header__logo img{
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .nav__logo img{
+  display: none;
+ }
+ .nav:hover {
+    
+  width: 150px;
+
+}
+.nav__subtitle {
+  font-size: 12px;
+}
+.nav__link {
+font-size: 10px;
+
+}
+.nav__name {
+  font-size: 10px;
+  
+}
+.StoryGallery {
+  width: 250px;
+  margin-left: 70px;
+}
+.story img{
+  display: none !important;
+}
+.story p{
+ font-size: 10px;
+}
+.submitstory{
+ font-size: 10px;
+ margin-left: 0px;
+  }
+
+  .navigation {
+    font-size: 10px;
+  }
+  .create_post{
+    width: 250px;
+  }
+  .dropdownPostCategory {
+    width: 50px;
+    font-size: 7px;
+   left: 190px
+  }
+  .createpost_icons i{
+    width: 6px;
+  }
+  .type_something::placeholder{
+    font-size: 10px;
+  }
+  .post_post
+{
+  width: 50px;
+  height: 20px;
+  font-size: 10px;
+}
+.post {
+
+  width: 220px;
+  top: 20%;
+
+
+  
+}
+
+.AccountImage{
+  width: 30px;
+  height: 30px;
+}
+
+.account-name {
+
+ font-size: 10px;
+}
+.account-Date{
+  margin-top: -10px;
+font-size: 10px;
+}
+
+.post-caption {
+  font-size: 10px;
+}
+
+.vote-buttons button{
+  font-size: 12px;
+}
+
+
+.comment-button {
+  font-size: 10px;
+}
+.count{
+  font-size: 10px;
+}
+.view-comments{
+  font-size: 10px;
+  
+}
+.write_comment{
+  width: 45%;
+  height: 15px;
+}
+.write_comment::placeholder{
+  font-size: 10px;
+}
+.submitWrite_comment
+{
+  width: 50px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.nav_logout{
+  width: 50px;
+  font-size: 10px;
+}
+.nav_logout p{
+  font-size: 10px;
+}
+
+.view-Comments-Overlay-Form{
+  left: 3%;
+  top: 10%;
+  width: 250px;
+  height: 400px;
+}
+.post-caption {
+  font-size: 10px;
+}
+h3{
+  font-size: 10px;
+}
+
+.prcomment{
+font-size: 10px;
+}
+.usersComments{
+  margin-top: -5px;
+  font-size: 10px; 
+}
+.comment_profile{
+  height: 20px;
+  width: 20px;
+  }
+.profile_photo{
+  width: 20px;
+  height: 20px;
+}
+.overlay-stories-content {
+  position: absolute;
+  left: 3%;
+  top: 2%;
+ 
+}
+ 
+.overlay-stories-content img {
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+}
+.searchpageclass{
+  margin-right: -300px;
+  position: absolute;
+
+  border-radius:10px;
+  box-shadow:var(--varBoxShadowColor);
+  z-index: 1001;
+  background: var(--varInputColorLightDrak);
+  margin-top: 0.7%;
+}
+.searchpageclass a{
+color:#0099ff;
+padding:20px;
+padding-top:2%;
+font-size: 10px;
+
+}
+.Aboutusclass{
+ display: none !important;
+}
+
+.profile-img{
+  width: 100%;
+
+  
+  }
+  .image-container{
+position: absolute;
+width: 300px;
+height: 30%;
+left: 20%;
+top: 7%;
+overflow: hidden;
+z-index: 1;
+}
+
+.circle-img{
+  top:8%;
+  left: 25%;
+  height: 90px;
+  width: 100px;
+  }
+
+  .camera-cont{
+    position: absolute;
+    height:40px;
+    width:40px;
+    background-color: rgb(234, 228, 228);
+    border-radius: 50%;
+    top:35%;
+    left: 90%;
+    z-index: 390;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .camera-cont2{
+    position: absolute;
+    height: 50px;
+    width:50px;
+    background-color: rgb(234, 228, 228);
+    border-radius: 50%;
+    top:30%;
+    left: 300px;
+    z-index: 390;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    
+  }
+  
+  .camera-icon2{
+  position: relative;
+  font-size: 22px;
+  z-index: 400;
+  margin-top: 30%;
+  color: gray;
+  }
+.container{
+  width: 280px;
+  left: 50%;
+  top: 35%;
+  height: 150px;
+}
+.btn{
+  width: 40px;
+  font-size: 10px;
+ 
+}
+.column {
+  gap: 2px;
+  color: var(--varBlackLight);
+  margin-left: 10px;
+}
+.navbar-profile {
+  width: 240px;
+  height: 30px;
+  left:50%;
+  top: 54%;
+}
+.nav-prof-name,
+.overview{
+ font-size: 10px;
+}
+.POSTS{
+  margin-top: 450px;
+}
+.POSTSupdo{  margin-top: 450px;
+}
+.grid-photo-container {
+  margin: 10px;
+position:absolute;
+  display: flex;
+  width: 300px;
+  height: 40%;
+  display: grid;
+  gap: 20px 20px;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: transparent;
+  padding: 2px;
+  left: 30%;
+  top: 65%;
+
+ 
+}
+.grid-item {
+  flex:1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 0px;
+  font-size: 0; /* Hide the text content */
+  text-align: center;
+  border-radius: 10%;
+  box-shadow: var(--varBoxShadowColor);
+  
+ 
+}
+.actions-menu {
+
+  font-size: 10px;
+  width: 60px;
+
+
+}
+}

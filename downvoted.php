@@ -354,6 +354,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
       </div>
       <!-- -=----------------PHP For Posts ------------------------ -->
      <div class="nav-post-container">
+     <section class="POSTSupdo" >  
 <?php foreach ($usersVariable as $userpostD): ?>
                     <div class="post">
                         <div class="post-header">

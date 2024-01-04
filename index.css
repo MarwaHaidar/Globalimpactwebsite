@@ -1238,8 +1238,7 @@ width: 100%;
     color: var(--varBlackLight);
     padding-left: 45px;
     width: 100%;
-    white-space: nowrap;
-    
+
   }
 .headerComentinsideOverlay{
   background-color: var(--varInputColorLightDrak);

@@ -820,19 +820,27 @@ while ($row = $chartresult3->fetch_assoc()) {
                                 </thead>
                                 <tbody id="userTableBody">
                                 <?php
+                               
             while ($row = mysqli_fetch_assoc($selectUserResult)) {
                 $userId = $row['user_id'];
                 $firstname = $row['First_name'];
                 $lastname = $row['last_name'];
                 $username = $row['user_name'];
+                $profloc="SELECT location,birthdate from profile where user_id=$userId";
+                $run=mysqli_query($connection,$profloc);
+                while($row=mysqli_fetch_assoc($run)){
+                    $location=$row['location'];
+                    $birthdate=$row['birthdate'];
+                   
+                }
                 ?>
                 <tr>
                     
                     <td><?php echo $firstname; ?></td>
                     <td><?php echo $lastname; ?></td>
                     <td><?php echo $username; ?></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $location; ?></td>
+                    <td><?php echo $birthdate; ?></td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -908,6 +916,13 @@ $result = mysqli_stmt_get_result($stmt); -->
         $lastname = $row['last_name'];
         $username = $row['user_name'];
         $user_Id = $row['user_id']; // Assuming this is the correct field name in your database
+        $location="SELECT location,birthdate from profile where user_id=$user_Id";
+        $run=mysqli_query($connection,$location);
+        while($row=mysqli_fetch_assoc($run)){
+            $locations=$row['location'];
+            $birthdates=$row['birthdate'];
+           
+        }
         ?>
 
         <tr>
@@ -915,8 +930,8 @@ $result = mysqli_stmt_get_result($stmt); -->
             <td><?php echo $firstname ?></td>
             <td><?php echo $lastname ?></td>
             <td><?php echo $username ?></td>
-            <td></td>
-            <td></td>
+            <td><?php echo $locations ?></td>
+            <td><?php echo $birthdates ?></td>
             <td>
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -989,12 +1004,14 @@ function formatTime($seconds) {
     return 'just now';
 }
 
+
 // Fetch the latest messages from the database
-$query = "SELECT messages.message, user.First_name, messages.time
-          FROM messages
-          LEFT JOIN user ON messages.user_id = user.user_id
-          ORDER BY messages.time DESC
-          LIMIT 10"; // Limit the number of messages returned
+$query = "SELECT messages.message, user.First_name, messages.time,profile.profile_photo
+          FROM profile
+           INNER JOIN user ON user.user_id = profile.user_id
+           INNER JOIN messages ON messages.user_id = user.user_id
+           ORDER BY messages.time DESC
+           LIMIT 10"; // Limit the number of messages returned
 $result = mysqli_query($connection, $query);
 
 if ($result) {
@@ -1002,9 +1019,11 @@ if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Format the time using the formatTime function
         $formatted_time = formatTime(time() - strtotime($row['time']));
+        $profile_id = $row['profile_photo'];
+        $profileUrl = 'https://res.cloudinary.com/dbete4djx/image/upload/' .$profile_id;
 
         echo "<div class='d-flex align-items-center border-bottom py-3'id='messagesContainer' >";
-        echo "<img class='rounded-circle flex-shrink-0' src='img/user.jpg' alt='' style='width: 40px; height: 40px;'>";
+        echo "<img class='rounded-circle flex-shrink-0' src='$profileUrl'alt='' style='width: 40px; height: 40px;'>";
         echo "<div class='w-100 ms-3'>";
         echo "<div class='d-flex w-100 justify-content-between' >";
         echo "<h6 class='mb-0 bg-dark content-container'>" . $row['First_name'] . "</h6>";
@@ -1017,7 +1036,8 @@ if ($result) {
 
     // Free result set
     mysqli_free_result($result);
-} else {
+}
+ else {
     echo "Error fetching messages: " . mysqli_error($connection);
 }
 

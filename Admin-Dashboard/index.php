@@ -1178,7 +1178,7 @@ mysqli_close($connection);
     function setScrollPosition() {
       sessionStorage.setItem('scroll_position', $(window).scrollTop());
   }
-  // Function to get the scroll position from sessionStorage and scroll to it
+  // Function to get the scroll position from sessionStorage and scroll to itt
   function getAndScrollToPosition() {
       var scrollPosition = sessionStorage.getItem('scroll_position');
       if (scrollPosition !== null) {

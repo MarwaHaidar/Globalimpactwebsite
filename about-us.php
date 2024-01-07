@@ -241,7 +241,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                                 <div class="d-flex">
                                     <i class="fa fa-address-card fa-2x text-primary-gradient flex-shrink-0 mt-1"></i>
                                     <div class="ms-3">
-                                        <h2 class="mb-0" data-toggle="counter-up">1234</h2>
+                                        <h2 class="mb-0" data-toggle="counter-up" id="myCounter"></h2>
                                         <p class="text-primary-gradient mb-0">Active Accounts</p>
                                     </div>
                                 </div>
@@ -250,7 +250,7 @@ $usersVariableprofileHeader = mysqli_fetch_all($resultVariableprofileHeader, MYS
                                 <div class="d-flex">
                                     <i class="fa fa-comments fa-2x text-secondary-gradient flex-shrink-0 mt-1"></i>
                                     <div class="ms-3">
-                                        <h2 class="mb-0" data-toggle="counter-up">1234</h2>
+                                        <h2 class="mb-0" data-toggle="counter-up" id="counter_comm"></h2>
                                         <p class="text-secondary-gradient mb-0">Different communities</p>
                                     </div>
                                 </div>
@@ -531,6 +531,56 @@ window.location.href = 'LogIn-SignUp-forgget/logout.php';
 }
 
     </script>
+
+    <!-------------------------------------- script to display the nb of active accounts------------------------------------------------->
+    <script>
+         fetch('active_accounts.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the UI or perform any other actions
+        console.log(' success:', data);
+
+      
+            // Update the UI with the new counts
+            document.getElementById("myCounter").textContent = data.activeAccounts;
+            //location.reload();
+
+    })
+    .catch(error => {
+        console.error('Follow error:', error);
+    });
+    </script>
+    <!-------------------------------------- script to display the nb of communities------------------------------------------------->
+    <script>
+         fetch('communities_nb.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the UI or perform any other actions
+        console.log(' success:', data);
+
+      
+            // Update the UI with the new counts
+            document.getElementById("counter_comm").textContent = data.communityNb;
+            //location.reload();
+
+    })
+    .catch(error => {
+        console.error('Follow error:', error);
+    });
+    </script>
+
     <script src="index.js"></script>
     <script src="indexAll.js"></script>
 </body>
